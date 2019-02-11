@@ -8,4 +8,4 @@ config = {
 }
 
 client = Twitter::REST::Client.new(config)
-client.update('This is Tom sending an automated tweet using Ruby')
+client.update('This is Tom3 sending an automated tweet using Ruby')
