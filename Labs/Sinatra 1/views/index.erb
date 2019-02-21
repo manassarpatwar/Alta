@@ -1,0 +1,18 @@
+<% TIMES_TABLE = 48 %> 
+<% TITLE = "Do you know your #{TIMES_TABLE} times table?" %> 
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <TITLE><%= TITLE %></TITLE> 
+</head>
+    
+<body> 
+    <h1><%= TITLE %></h1> 
+    <ul> 
+        <% for i in 1..12 %> 
+            <li><%= i %> times <%= TIMES_TABLE %> = <%= i * TIMES_TABLE %></li> 
+        <% end %> 
+    </ul> 
+</body>
+    
+</html>

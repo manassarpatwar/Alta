@@ -1,0 +1,26 @@
+<!DOCTYPE html> 
+<html> 
+
+<head> 
+	<link href="style/style.css" rel="stylesheet" type="text/css" />
+    <TITLE><%= title %></TITLE> 
+</head>
+    
+<body> 
+    <h1><%= title %></h1> 
+	
+	<table style="width:100%">
+		<tr>
+			<td>Index</td>
+			<td>Tweet</td>
+		</tr>
+		<% for i in 1..7 %> 
+			<tr>
+				<td><%= i %></td>
+				<td><%= tweets[i] %></td>
+			</tr>
+		<% end %> 
+	</table> 
+</body>
+    
+</html>

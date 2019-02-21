@@ -1,0 +1,23 @@
+img {
+    border: 5px solid black;
+}
+
+table, td, th {  
+  	border: 1px solid #ddd;
+  	text-align: left;
+}
+
+table {
+  	border-collapse: collapse;
+}
+
+th, td {
+  	padding: 5px;
+}
+
+body {
+	font-family: Calibri, sans-serif;
+	line-height: 1.2;
+	text-align: justify; /* Ensures text from each full line spans the whole body */
+	margin: auto; /* Centres the body */
+}
