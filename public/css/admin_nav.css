@@ -1,58 +1,78 @@
 #sidebar-wrapper{
   z-index: 1;
   position: absolute;
-  width: 120px;
+  width: 70px;
   height: 100vw;
   overflow-y: hidden;
   background-color: #2c3e50;
-  transition: width 2s ease;
+  transition: width 1s ease;
   top: 0;
   padding-top: 20px;
 }
 
 #menu-toggle{
-  margin-left: 20%;
+  margin-left: 20px;
+  font-size: 0;
+  transform: rotate(0deg);
+  transition: all 1s ease;
 }
 
 .nav-info{
+  display: inline;
   opacity: 0;
-  transition: opacity 2s ease;
+  transition: opacity 1s ease;
 }
 
 #page-content-wrapper{
   padding-left: 120px;
-  transition: padding-left 2s ease;
+  transition: padding-left 1s ease;
 }
 
 #wrapper.menuDisplayed #sidebar-wrapper{
-  width: 200px;
+  width: 130px;
 }
 
 #wrapper.menuDisplayed .nav-info{
  opacity: 1;
 }
 
+#wrapper.menuDisplayed #menu-toggle{
+  margin-left: 80px;
+}
+
+#wrapper.menuDisplayed #nav_arrow{
+  transform: rotate(180deg);
+}
+
 #wrapper.menuDisplayed #page-content-wrapper{
-  padding-left: 200px;
+  padding-left: 150px;
 }
 
 .sidebar-nav{
+  margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .sidebar-nav li{
-  text-indent: 20px;
-  line-height: 40px;
+  text-indent: 5px;
+  line-height: 60px;
 }
 
 .sidebar-nav li a{
   display: block;
+  align-content: flex-start;
+  white-space:nowrap;
   margin: auto;
   text-decoration: none;
   color: #ddd;
 }
 
 .sidebar-nav li a:hover{
- background: #16a085 
+  transform: scale(1.2);
+}
+
+.dashboard-icons{
+  width: 40px;
+  padding-left: 10px;
 }
