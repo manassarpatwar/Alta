@@ -14,7 +14,8 @@
   margin-left: 20px;
   font-size: 0;
   transform: rotate(0deg);
-  transition: all 1s ease;
+  transition: rotate 1s ease;
+  transition: margin-left 1s ease;
 }
 
 .nav-info{
@@ -24,7 +25,7 @@
 }
 
 #page-content-wrapper{
-  padding-left: 120px;
+  padding-left: 90px;
   transition: padding-left 1s ease;
 }
 
@@ -65,13 +66,13 @@
   white-space:nowrap;
   margin: auto;
   text-decoration: none;
+  transform: scale(1);
   color: #ddd;
 }
 
 .sidebar-nav li a:hover{
-  transform: scale(1.2);
+  transform: scale(1.288);
 }
-
 .dashboard-icons{
   width: 40px;
   padding-left: 10px;

@@ -3,19 +3,22 @@
 <head>
   <title>test</title>
   <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="css/admin_nav.css">
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-  <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.min.css">
   <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="js/jquery.min.js"></script>
-  <script src = "js/bootstrap.min.js"></script>
 </head>
 <body>
-    <%= erb :user_header %>
+  <div id = "wrapper">
+    <%= erb :admin_nav %>
+    
     <div id = "page-content-wrapper">
       <nav>
         <h1 id = "#">Alta</h1>
       </nav>
     </div>
+    <script src="js/admin_nav.js"></script>
+  </div>
 </body>
 </html>
