@@ -19,20 +19,27 @@ before do
 end
 
 get '/marketing' do
-  
-  unless params[:search].nil?
-    search_string = params[:search]
-    results = @client.search(search_string)
-    @tweets = results.take(5)
-    @tweets.each do |name|
-      @client.follow(name.user.screen_name)
+  @follow_state = true
+  begin
+    unless params[:follow].nil?
+      follow_string = params[:follow]
+      results = @client.search(follow_string)
+      @marketing_tweets = results.take(5)
+      @marketing_tweets.each do |name|
+        @client.follow(name.user.screen_name)
+      end
     end
+  rescue Twitter::Error::TooManyRequests => err
+    @follow_state = false
+    puts ("To many requests to twitter API Marketing.rb line 34")
   end
   
    unless params[:tweet].nil?
-    tweet_string = params[:tweet]
+     tweet_string = params[:tweet]
      @client.update(tweet_string)
-    end
+   end
+  
+  # if button pressed follow all recent people that tweeted or mentioned us add later
   
   
   

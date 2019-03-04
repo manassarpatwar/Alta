@@ -7,17 +7,25 @@
 <h1>Custom Twitter Marketing</h1>
 
 <form method="get">
-  Search: <input type="text" name="search" value="<%=h params[:search] %>"/>
+  Keyword follow: <input type="text" name="follow" value="<%=h params[:follow] %>"/>
   <input type="submit" name="submit" value="submit" />
 </form>
+  
+  <% unless @marketing_tweets.nil? %>
+  <% if @follow_state %>
+    <p>You followed 5 people that used this keyword recently.</p>
+  <% else %>
+    <p>You already reached your follow limits today. Please come back tomorrow.</p>
+  <% end %>
+  <% end %>
 
 <form method="get">
   Tweet: <input type="text" name="tweet" value="<%=h params[:tweet] %>"/>
   <input type="submit" name="post tweet" value="submit" />
 </form>
   
-<!--<% unless @tweets.nil? %>
-    <% if @tweets.length == 0 %>
+<!-- <% unless @marketing_tweets.nil? %>
+    <% if @marketing_tweets.length == 0 %>
         <p>No search results found!</p>
     <% else %>
         <br />
@@ -27,7 +35,7 @@
               <th>User</th>
               <th>Text</th>
             </tr>
-            <% @tweets.each do |tweet| %>
+            <% @marketing_tweets.each do |tweet| %>
                 <tr>
                   <td>
                     <a href="<%=h tweet.uri %>">
@@ -46,7 +54,7 @@
             <% end %>
         </table>
     <% end %>
-<% end %> -->
+<% end %> --->
 
 </body>
 </html>
