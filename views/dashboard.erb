@@ -17,6 +17,15 @@
       <nav>
         <h1 id = "#">Alta</h1>
       </nav>
+      <table>
+            <% @tweets.each do |tweet| %>
+                  <tr>
+                    <td>
+                      <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/Uber?ref_src=twsrc%5Etfw">@uber</a> <%=h tweet.full_text %></p>&mdash;<a href="<%=h tweet.uri %>"></a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    </td>
+                  </tr>
+            <% end %>
+        </table>
     </div>
     <script src="js/admin_nav.js"></script>
   </div>

@@ -17,7 +17,7 @@ end
 get '/' do
 	redirect '/login' unless session[:logged_in]	
 
-	erb :index_signin
+	erb :index
 end
 
 get '/login' do
