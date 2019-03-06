@@ -5,7 +5,7 @@
 
 .displaytweets{
   width: 400px;
-  padding: 0 40px 0 0;
+  padding: 0 80px 0 0;
   overflow-y: scroll;
   overflow-x: hidden;
   height: 90vh;
@@ -29,7 +29,19 @@
 #page-content-wrapper .tweets .check{
   margin: 0;
   position: absolute;
-  top: 50%;
+  top: 0%;
   left:100%;
-  tab-size: 
+}
+
+#page-content-wrapper .tweets .delete{
+  margin: 0;
+  position: absolute;
+  top: 50px;
+  left:100%;
+}
+
+.tweet_actions{
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
 }

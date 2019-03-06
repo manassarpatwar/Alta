@@ -27,7 +27,10 @@
                   <% @tweets.each do |tweet| %>
                         <tr>
                           <td class = "tweets">
-                              <input type="checkbox" name="incoming_tweet" value="notdone" class = "check">
+                              <div class = "tweet_actions">
+                                <img src = "img/tweetarrow.png" class= "check" alt = "proceed tweet" width = "50">
+                                <img src = "img/cross.png" class = "delete" alt = "delete tweet" width = "50">
+                              </div>
                               <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/Uber?ref_src=twsrc%5Etfw">@Uber</a><%=h tweet.full_text %> </p>&mdash;<a href="<%=h tweet.uri %>"></a></blockquote> <script src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                           </td>
                         </tr>
@@ -50,9 +53,10 @@
     </div>
     <script>
       $('.check').click(function() {
-          $(".check").toggle(this.checked);
-          $(".check").toggleClass("checked");
-          $(".inprogress_table").after($(this).parent());
+          $(".inprogress_table").after($(this).parent().parent());
+      });
+      $('.delete').click(function() {
+          $(this).parent().parent().remove();
       });
     </script>
     <script src="js/admin_nav.js"></script>
