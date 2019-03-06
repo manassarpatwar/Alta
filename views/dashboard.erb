@@ -4,10 +4,12 @@
   <title>test</title>
   <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="css/admin_nav.css">
+  <link rel="stylesheet" type="text/css" href="css/dashboard.css">
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="js/jquery.min.js"></script>
+  
 </head>
 <body>
   <div id = "wrapper">
@@ -15,18 +17,44 @@
     
     <div id = "page-content-wrapper">
       <nav>
-        <h1 id = "#">Alta</h1>
+        <h1 id = "alta">Alta</h1>
       </nav>
-      <table>
-            <% @tweets.each do |tweet| %>
-                  <tr>
-                    <td>
-                      <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/Uber?ref_src=twsrc%5Etfw">@uber</a> <%=h tweet.full_text %></p>&mdash;<a href="<%=h tweet.uri %>"></a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                    </td>
-                  </tr>
-            <% end %>
-        </table>
+      <div id = "requests">
+        <div id = "incoming_tweets">
+          <h2>Incoming tweets</h2>
+          <div class = "displaytweets">
+            <table>
+                  <% @tweets.each do |tweet| %>
+                        <tr>
+                          <td class = "tweets">
+                              <input type="checkbox" name="incoming_tweet" value="notdone" class = "check">
+                              <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/Uber?ref_src=twsrc%5Etfw">@Uber</a><%=h tweet.full_text %> </p>&mdash;<a href="<%=h tweet.uri %>"></a></blockquote> <script src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                          </td>
+                        </tr>
+                  <% end %>
+              </table>
+          </div>
+        </div>
+        <div id = "inprogress_tweets">
+          <h2>Inprogress tweets</h2>
+          <div class  = "displaytweets">
+            <table>
+              <tr>
+                <td class = "inprogress_table">
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
+    <script>
+      $('.check').click(function() {
+          $(".check").toggle(this.checked);
+          $(".check").toggleClass("checked");
+          $(".inprogress_table").after($(this).parent());
+      });
+    </script>
     <script src="js/admin_nav.js"></script>
   </div>
 </body>

@@ -1,0 +1,35 @@
+#requests{
+  display: flex;
+  flex-direction: row;
+}
+
+.displaytweets{
+  width: 400px;
+  padding: 0 40px 0 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 90vh;
+}
+
+#inprogress_tweets{
+  padding-left:50px;
+}
+
+.tweetcheck{
+  position: absolute;
+  top: 30%;
+}
+
+.tweets{
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+#page-content-wrapper .tweets .check{
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left:100%;
+  tab-size: 
+}

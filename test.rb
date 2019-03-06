@@ -19,11 +19,14 @@ before do
 end
 
 get '/dashboard' do
-  results = @client.search("to:uber", result_type: "recent")
-  @tweets = results.take(5)
+  @tweets = @client.search("to:uber", result_type: "recent", lang: "en", geocode: "53.3,-1.5,1000km").take(20)
   erb :dashboard
 end
 
 get '/index' do
   erb :index
+end
+
+get '/cont' do
+  erb :homepage_cont
 end

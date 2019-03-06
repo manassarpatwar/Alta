@@ -27,25 +27,15 @@ body {
   background-size: cover; 
 }
 
-
-/*navigation*/
-.nav{
-  margin: 0;
-  background-color: #FFFFFF;
-  padding: 20px;
-  font-size: 20px;
-}
-
-
 /*header design*/
-header{
+#fade-in{
   box-sizing: border-box;
   min-height: 100vh;
   padding: 30vw 0 5vw;
   position: relative;
   transform-style: inherit;
 }
-header *{
+#fade-in *{
   margin: 0;
   padding: 1em 0;
   font-family: gotham,"Helvetica Neue",sans-serif;
