@@ -11,10 +11,6 @@
   height: 90vh;
 }
 
-#inprogress_tweets{
-  padding-left:50px;
-}
-
 .tweetcheck{
   position: absolute;
   top: 30%;

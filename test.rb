@@ -15,11 +15,11 @@ before do
     :access_token_secret => 'nlDgQf8Cx0wYMhgFQnp1WgaflRt6nlmyO869W4Kxsit88'
   }
   @client = Twitter::REST::Client.new(config)
-  
 end
 
 get '/dashboard' do
-  @tweets = @client.search("to:uber", result_type: "recent", lang: "en", geocode: "53.3,-1.5,1000km").take(20)
+  results = @client.search("to:uber", result_type: "recent", lang: "en", geocode: "53.3,-1.5,1000km").take(20)
+  @tweets = @client.oembeds(results, hide_media: "true")
   erb :dashboard
 end
 
