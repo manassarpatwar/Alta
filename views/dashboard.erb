@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>test</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="css/admin_nav.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="js/jquery.min.js"></script>
+</head>
+<body>
+  <div id = "wrapper">
+    <%= erb :admin_nav %>
+    
+    <div id = "page-content-wrapper">
+      <nav>
+        <h1 id = "#">Alta</h1>
+      </nav>
+      <table>
+            <% @tweets.each do |tweet| %>
+                  <tr>
+                    <td>
+                      <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/Uber?ref_src=twsrc%5Etfw">@uber</a> <%=h tweet.full_text %></p>&mdash;<a href="<%=h tweet.uri %>"></a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    </td>
+                  </tr>
+            <% end %>
+        </table>
+    </div>
+    <script src="js/admin_nav.js"></script>
+  </div>
+</body>
+</html>

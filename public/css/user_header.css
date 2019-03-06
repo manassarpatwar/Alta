@@ -1,0 +1,19 @@
+#logo{
+  padding: 5px 0 0 5px;
+}
+
+.navbar{
+  background-color: #F4F4F4;
+}
+
+.navbar .navbar-header .navbar-toggle .icon-bar{
+  background: black;
+}
+
+.nav.navbar-nav.navbar-right li a {
+    color: black;
+}
+
+#menu-toggle{
+  display: none;
+}
