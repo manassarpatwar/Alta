@@ -165,12 +165,12 @@ p{
   margin:3px;
 }
 .info1-box1:hover {
-  transition:  1.5s ease;
+  transition: 1.5s ease;
   background-color: rgb(255, 255, 255);
   background-image: none;
 }
 .info1-box2:hover {
-  transition: opacity 1.5s ease;
+  transition: 1.5s ease;
   background-color:rgb(255, 255, 255);
   background-image: none;
 }
