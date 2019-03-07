@@ -17,7 +17,7 @@ body {
   background-color: #FFFFFF;
 }
 #bg{
-  background-image: url("bkground.jpeg");
+  background-image: url("../img/bkground.jpeg");
   background-repeat: no-repeat;
   background-size: cover;  
 }
@@ -29,6 +29,7 @@ body {
   padding: 30vw 0 5vw;
   position: relative;
   transform-style: inherit;
+  white-space: nowrap;
 }
 #fade-in *{
   margin: 0;
@@ -113,19 +114,19 @@ body {
   padding: 0 50px;
 }
 .info1-box1 {
-  background-image: url("info1.jpg");
+  background-image: url("../img/info1.jpg");
   background-size: cover;
   height:330px;
   opacity:0.8;
 }
 .info1-box2 {
-  background-image: url("info2.jpg");
+  background-image: url("../img/info2.jpg");
   background-size: cover;
   height:330px;
   opacity:0.8;
 }
 .info1-box3 {
-  background-image: url("info3.jpeg");
+  background-image: url("../img/info3.jpeg");
   background-size: cover;
   height:330px;
   opacity:0.8;

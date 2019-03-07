@@ -24,17 +24,19 @@
           <h2>Incoming tweets</h2>
           <div class = "displaytweets">
             <table>
-                  <% @tweets.reverse_each do |tweet| %>
-                            <tr>
-                              <td class = "tweets">
-                                <div class = "tweet_actions">
-                                  <img src = "img/tweetarrow.png" class= "check" alt = "proceed tweet" width = "50">
-                                  <img src = "img/cross.png" class = "delete" alt = "delete tweet" width = "50">
-                                </div>
-                                 <%= tweet.html %>
-                              </td>
-                            </tr>
-                  <% end %>
+                <% unless @tweets.nil? %>
+                    <% @tweets.reverse_each do |tweet| %>
+                              <tr>
+                                <td class = "tweets">
+                                  <div class = "tweet_actions">
+                                    <img src = "img/tweetarrow.png" class= "check" alt = "proceed tweet" width = "50">
+                                    <img src = "img/cross.png" class = "delete" alt = "delete tweet" width = "50">
+                                  </div>
+                                   <%= tweet.html %>
+                                </td>
+                              </tr>
+                    <% end %>
+                <% end %>
               </table>
           </div>
         </div>
@@ -52,12 +54,17 @@
       </div>
     </div>
     <script>
+      var inprogress_tweets = [];
       $('.check').click(function() {
-          $(".inprogress_table").after($(this).parent().parent());
+          inprogress_tweets.push($(this).parent().parent());
       });
       $('.delete').click(function() {
-          $(this).parent().parent().remove();
+          $(this).parent().parent().parent().remove();
       });
+      for(var i = 0; i < inprogress_tweets.length; i++){
+            //$(".inprogress_table").append(inprogress_tweets[i]);
+            console.log(inprogress_tweets[i]);
+      };
     </script>
     <script src="js/admin_nav.js"></script>
   </div>

@@ -19,7 +19,7 @@ end
 
 get '/dashboard' do
   results = @client.search("to:uber", result_type: "recent", lang: "en", geocode: "53.3,-1.5,1000km").take(20)
-  @tweets = @client.oembeds(results, hide_media: "true")
+  @tweets = @client.oembeds(results, hide_media: "true", hide_thread: "true")
   erb :dashboard
 end
 
