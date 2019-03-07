@@ -17,14 +17,9 @@ body {
   background-color: #FFFFFF;
 }
 #bg{
-  background-image: url("image1.jpeg");
+  background-image: url("bkground.jpeg");
   background-repeat: no-repeat;
   background-size: cover;  
-}
-#bg2{
-  background-image: url("image6.jpeg");
-  background-repeat: no-repeat;
-  background-size: cover; 
 }
 
 /*header design*/
@@ -51,27 +46,27 @@ body {
   transform: translate(-50%, -50%);
   margin-top: 3%;
   color:#FFFFFF;
-  font-size:65px;
 }
 .head-box1{
-  height: 390px;
-  padding: 3px;
+  height: 420px;
+  font-size:70px;
 }
 .head-box2{
-  height: 180px;
-  padding: 3px;
-  font-size:40px;
+  height: 160px;
+  font-size:50px;
 }
 .head-box3{
-  font-size:40px;
+  font-size:45px;
 }
 .twitter{
-  color: #48B1F2;
-  font-weight: 200;
+  color: rgb(92, 192, 255);
 }
+
 .twitter:hover{
-  font-weight: 300;
-  color: #1988CE;
+  transition: 1s ease;
+  color: rgb(42, 173, 255);
+  cursor: pointer;
+  font-size: 50px;
 }
 
 
@@ -118,19 +113,19 @@ body {
   padding: 0 50px;
 }
 .info1-box1 {
-  background-image: url("image3.jpg");
+  background-image: url("info1.jpg");
   background-size: cover;
   height:330px;
   opacity:0.8;
 }
 .info1-box2 {
-  background-image: url("image4.jpg");
+  background-image: url("info2.jpg");
   background-size: cover;
   height:330px;
   opacity:0.8;
 }
 .info1-box3 {
-  background-image: url("image6.jpeg");
+  background-image: url("info3.jpeg");
   background-size: cover;
   height:330px;
   opacity:0.8;
@@ -169,38 +164,41 @@ p{
   margin:3px;
 }
 .info1-box1:hover {
-  transition: .5s ease;
-  background-color: white;
+  transition:  1.5s ease;
+  background-color: rgb(255, 255, 255);
   background-image: none;
 }
 .info1-box2:hover {
-  transition: .5s ease;
-  background-color:white;
+  transition: opacity 1.5s ease;
+  background-color:rgb(255, 255, 255);
   background-image: none;
 }
 .info1-box3:hover {
-  transition: .5s ease;
-  background-color:white;
+  transition: 1.5s ease;
+  background-color:rgb(255, 255, 255);
   background-image: none;
 }
 .info1-cont:hover h2 {
-font-size: 3rem;
-padding-top: 15px;
-padding-bottom:40px;
-margin:0;
-color: #404040;
-text-decoration: underline;
-opacity: 1;
-
+  transition: 1s ease;
+  font-size: 3rem;
+  padding-top: 15px;
+  padding-bottom:40px;
+  margin:0;
+  color: #000000;
+  text-decoration: underline;
+  opacity: 1;
 }
 .info1-cont:hover p {
+  transition: 1s ease;
   font-size: 2rem;
-  color: #282828;
+  color: #272727;
   opacity: 1;
 }
 .info1-cont:hover .info1-p{
+  transition: 1s ease;
   display:block;
 }
+
 
 
 /*Customer Reviews*/
