@@ -46,6 +46,10 @@
             <table>
               <tr>
                 <td class = "inprogress_table">
+                  <form method="post" action = "replyToTweet">
+                    Reply to Tweet: <input type="text" name="reply" value="<%=h params[:reply] %>"/>
+                    <input type="submit" name="button" value="reply" />
+                  </form>
                 </td>
               </tr>
             </table>

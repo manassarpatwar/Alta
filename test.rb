@@ -32,6 +32,12 @@ get '/index' do
   @test = "hello"
 end
 
+post '/replyToTweet' do
+  id = @tweets.id
+  reply_to = tweet.in_reply_to_screen_name
+  @client.update("#{reply_to} #{params[:reply]}", in_reply_to_status_id: id)
+end
+
 get '/cont' do
   erb :homepage_cont
 end
