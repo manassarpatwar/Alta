@@ -9,22 +9,28 @@ include ERB::Util
 
 before do
   config = {
-    :consumer_key => '0gz9YqiS7VD6kgNJTkeVhjnd7',
-    :consumer_secret => 'GEmoZ61BNX8BRXcS2dGwZZ36BIsqKvV1HXlB5v6iOOlSnvif5U',
-    :access_token => '1092444312430919681-7Wfb7Bymkw5i7t1RQc2Lwip0IhFSzR',
-    :access_token_secret => 'nlDgQf8Cx0wYMhgFQnp1WgaflRt6nlmyO869W4Kxsit88'
+    :consumer_key => '6VCt8o2esXR3JoWYSIqxjlfEE',
+    :consumer_secret => 'Cjj1zX9T99xKqb8BFO9WQPjco6WbBpDXNUbaN4Y68ZZJrNU9nL',
+    :access_token => '1092444312430919681-g4S8YlnAD6vaqZ63YU7O7n1vS26O2O',
+    :access_token_secret => 'Hrkx1ZicwUNzRsoKMEPUAMaUqd2GRKY1sawCNRzcL414q'
   }
   @client = Twitter::REST::Client.new(config)
 end
 
 get '/dashboard' do
-  results = @client.search("to:uber", result_type: "recent", lang: "en", geocode: "53.3,-1.5,1000km").take(20)
-  @tweets = @client.oembeds(results, hide_media: "true", hide_thread: "true")
+   helper_method :fetch_tweets
+    def fetch_tweets
+      results = @client.search("to:uber", result_type: "recent", lang: "en", geocode: "53.3,-1.5,1000km").take(20)
+      @tweets = @client.oembeds(results, hide_media: "true", hide_thread: "true")
+    end
+  fetch_tweets
   erb :dashboard
 end
 
 get '/index' do
   erb :index
+  sleep(5)
+  @test = "hello"
 end
 
 get '/cont' do
