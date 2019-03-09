@@ -45,13 +45,11 @@
 .reply{
   display: none;
 }
-
-.displayreply{
-  padding-bottom: 50px;
-}
-
 .displayreply .reply{
   display: block;
-  position: absolute;
-  top:80%;
+}
+
+.displayreply{
+  display: flex;
+  flex-direction: column-reverse;
 }

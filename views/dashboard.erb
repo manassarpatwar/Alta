@@ -32,7 +32,13 @@
                                     <img src = "img/tweetarrow.png" class= "check" alt = "proceed tweet" width = "50">
                                     <img src = "img/cross.png" class = "delete" alt = "delete tweet" width = "50">
                                   </div>
-                                   <%= tweet.html %>
+                                  <div class = "reply">
+                                    <form method="post" action = "replyToTweet"> 
+                                      Reply to Tweet: <input type="text" name="reply" value="<%=h params[:reply] %>"/>
+                                      <input type="submit" name="button" value="reply" />
+                                    </form>
+                                  </div>
+                                  <%= tweet.html %>
                                 </td>
                               </tr>
                     <% end %>
@@ -46,10 +52,6 @@
             <table>
               <tr>
                 <td class = "inprogress_table">
-                  <form method="post" action = "replyToTweet">
-                    Reply to Tweet: <input type="text" name="reply" value="<%=h params[:reply] %>"/>
-                    <input type="submit" name="button" value="reply" />
-                  </form>
                 </td>
               </tr>
             </table>
@@ -58,17 +60,13 @@
       </div>
     </div>
     <script>
-      var inprogress_tweets = [];
       $('.check').click(function() {
-          inprogress_tweets.push($(this).parent().parent());
+          $(".inprogress_table").append($(this).parent().parent().parent());
+          $($(this).parent().parent()).toggleClass("displayreply");
       });
       $('.delete').click(function() {
           $(this).parent().parent().parent().remove();
       });
-      for(var i = 0; i < inprogress_tweets.length; i++){
-            //$(".inprogress_table").append(inprogress_tweets[i]);
-            console.log(inprogress_tweets[i]);
-      };
     </script>
     <script src="js/admin_nav.js"></script>
   </div>
