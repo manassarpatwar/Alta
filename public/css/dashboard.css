@@ -41,3 +41,15 @@
   flex-direction: column;
   cursor: pointer;
 }
+
+.reply{
+  display: none;
+}
+.displayreply .reply{
+  display: block;
+}
+
+.displayreply{
+  display: flex;
+  flex-direction: column-reverse;
+}

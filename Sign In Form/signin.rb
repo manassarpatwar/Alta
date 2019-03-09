@@ -10,38 +10,40 @@ enable :sessions
 set :session_secret, 'super secret'
 
 before do 
-	@db = SQLite3::Database.new './taxi_database.sqlite'
+	@db = SQLite3::Database.open './taxi_database.sqlite'
 end
 
 
-get '/' do
-	redirect '/login' unless session[:logged_in]	
+    get '/' do
+        redirect '/login' unless session[:logged_in]	
 
-	erb :index_signin
-end
+        erb :index_signin
+    end
 
-get '/login' do
-	erb :login
-end
+    get '/login' do
+        erb :login
+    end
 
-post '/login' do
-	query = %{SELECT * FROM customer}
-	@results = @db.execute query
-	
-	@results.each do |record| 
-		if params[:username] == record[0] && params[:password] == record[4]
-	    	session[:logged_in] = true
-	    	session[:login_time] = Time.now
-	    	redirect '/'
-		end
-	end
+    post '/login' do
+        query = %{SELECT * FROM customer}
+        @results = @db.execute query
 
-	@error = "Password incorrect"
+        @results.each do |record| 
+            if params[:username] == record[0] && params[:password] == record[4]
+                session[:logged_in] = true
+                session[:login_time] = Time.now
+                redirect '/'
+            end
+        end
 
-	erb :login
-end
+        @error = "Password incorrect"
 
-get '/logout' do
-	session.clear
-	erb :logout
-end
+        erb :login
+    end
+
+    get '/logout' do
+        session.clear
+        erb :logout
+    end
+
+    
