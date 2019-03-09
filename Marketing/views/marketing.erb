@@ -19,9 +19,13 @@
   <% end %>
   <% end %>
 
-<form method="get">
+<form method="post" action = "tweetToTimeline" >
   Tweet: <input type="text" name="tweet" value="<%=h params[:tweet] %>"/>
   <input type="submit" name="post tweet" value="submit" />
+</form>
+  
+<form method="post" action = "followIfMention">
+  Follow most recent people: <input type="submit" name="button" value="follow mention" />
 </form>
   
 <!-- <% unless @marketing_tweets.nil? %>

@@ -9,17 +9,21 @@ include ERB::Util
 
 before do
   config = {
-    :consumer_key => '0gz9YqiS7VD6kgNJTkeVhjnd7',
-    :consumer_secret => 'GEmoZ61BNX8BRXcS2dGwZZ36BIsqKvV1HXlB5v6iOOlSnvif5U',
-    :access_token => '1092444312430919681-7Wfb7Bymkw5i7t1RQc2Lwip0IhFSzR',
-    :access_token_secret => 'nlDgQf8Cx0wYMhgFQnp1WgaflRt6nlmyO869W4Kxsit88'
+    :consumer_key => 'wVzUO14M25jvS3vmmtfDAtmh6',
+    :consumer_secret => 'x1hieq7QNwhbUM8wjqgl5HujELyyqmZiJUzpaWi1tQEnG8cQrX',
+    :access_token => '1092444312430919681-k6yytElynjt9A1ziskr28eHKLg580X',
+    :access_token_secret => 'UkK1okCoI1kFUKeofvh5Y5QQHkJyVOQxeIQGQfyCjIFQP'
   }
   @client = Twitter::REST::Client.new(config)
   
 end
 
 get '/marketing' do
+  # if to many request give error to the user
   @follow_state = true
+  
+  # Follows 5 people at the time that use the certain keyword most recently
+  # also catches any errors
   begin
     unless params[:follow].nil?
       follow_string = params[:follow]
@@ -33,17 +37,28 @@ get '/marketing' do
     @follow_state = false
     puts ("To many requests to twitter API Marketing.rb line 34")
   end
-  
-   unless params[:tweet].nil?
-     tweet_string = params[:tweet]
-     @client.update(tweet_string)
-   end
-  
-  # if button pressed follow all recent people that tweeted or mentioned us add later
-  
-  
-  
+
+  # if button pressed follow all recent people that tweeted or mentioned us add later 
   erb :marketing
+end
+
+post '/followIfMention' do
+  mentions = @client.mentions_timeline()
+  most_recent = mentions.take(5)
+  most_recent.each do |tweet|
+    @client.follow(tweet.user.screen_name)  
+  end
+  redirect '/marketing'
+end
+
+post '/tweetToTimeline' do
+  
+  # Tweets a message from the dashboard to the Twitter
+  if !(params[:tweet].nil?)
+    tweet_string = params[:tweet]
+    @client.update(tweet_string)
+  end
+  redirect '/marketing'
 end
 
 # client.follow('name')
