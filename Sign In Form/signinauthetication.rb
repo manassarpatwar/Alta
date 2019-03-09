@@ -3,12 +3,13 @@ require 'sinatra'
 require 'sqlite3'
 require 'omniauth-twitter'
 
+
 set :bind, '0.0.0.0' # Only needed if you're running from Codio
 
 use OmniAuth::Builder do 
     provider :twitter,
-    :consumer_key => wVzUO14M25jvS3vmmtfDAtmh6,
-    :consumer_secret => x1hieq7QNwhbUM8wjqgl5HujELyyqmZiJUzpaWi1tQEnG8cQrX,
+    :consumer_key => "wVzUO14M25jvS3vmmtfDAtmh6",
+    :consumer_secret => "x1hieq7QNwhbUM8wjqgl5HujELyyqmZiJUzpaWi1tQEnG8cQrX"
     #:access_token => 1092444312430919681-k6yytElynjt9A1ziskr28eHKLg580X,
     #:access_token_secret => UkK1okCoI1kFUKeofvh5Y5QQHkJyVOQxeIQGQfyCjIFQP 
 end
@@ -24,8 +25,6 @@ helpers do
         session[:customer]
     end
 end
-
-set :session_secret, 'super secret'
 
 before do 
 	@db = SQLite3::Database.open './taxi_database.sqlite'
