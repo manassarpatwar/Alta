@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+Welcome to ...
+</head>
+
+<body>
+<script>
+function saveNews() {
+
+var newsToday = document.getElementById("text");
+//create a variable to allow content to edit by the user
+
+var newContent = newsToday.innerHTML;
+//create a variable o get new content from user
+
+localStorage.newUserInput = newContent;
+//save the content
+
+document.getElementById("updated_info").innerHTML="New information is received and saved!";
+//write to make sure it is saved
+}
+
+function checking() {
+//to check whether the user has saved edits
+if(localStorage.newUserInput!=null)
+	document.getElementById("text").innerHTML=localStorage.newUserInput;
+}
+</script>
+</body>
+
+<body onload="checking()">
+
+<div id="text" contenteditable="true">
+Any information update here.
+</div>
+
+<input type="button" value="save my edits" onclick="saveNews()"/>
+
+<div id="updated_info">What is the news for today?</div>
+</body>
+</html>
+
