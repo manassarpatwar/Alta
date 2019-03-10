@@ -61,7 +61,7 @@ end
    # get '/auth/twitter/callback' do
     #    env['omniauth.auth'] ? session[:customer] = true :
     #halt(401,'Not Authorized')
-     #   "You are now logged in"
+    #   "You are now logged in"
     #end
       
     get '/auth/twitter/callback' do
@@ -73,16 +73,16 @@ end
         time = Time.now
   
         initial = 0      
-        query = %{SELECT * FROM customer}
-        @results = @db.execute query
-        @results.each do |record| 
-          if  env['omniauth.auth']['name'] != record[0] 
-              @db.ebecute("INSERT INTO customer(twitter_handle,sign_up_date,user_type,free_rides) 
-                            VALUES(?,?,?,?)",[env['omniauth.auth']['name'],time,initial,initial])
-             
-        end
+        
+          if  EXISTS(SELECT * FROM customer WHERE twitter_handle = env['omniauth.auth']['name'])
+              #the data had already inserted
+          else
+              @db.execute("INSERT INTO customer(twitter_handle,sign_up_date,user_type,free_rides) 
+                           VALUES(?,?,?,?)",
+                           [env['omniauth.auth']['name'],time,initial,initial])   
+          end
     end
-
+    
     get '/auth/failure' do
         params[:message]
     end
@@ -92,4 +92,4 @@ end
         erb :logout
     end
 
-end
+
