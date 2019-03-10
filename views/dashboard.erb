@@ -18,10 +18,13 @@
     <div id = "page-content-wrapper">
       <nav>
         <h1 id = "alta">Alta</h1>
+        <form method="post" action = "fetch_tweets"> 
+          <input type="submit" name="button" value="Fetch tweets">
+        </form>
       </nav>
       <div id = "requests">
         <div id = "incoming_tweets">
-          <h2>Incoming tweets</h2>
+          <h2>Tweets</h2>
           <div class = "displaytweets">
             <table>
                 <% unless @tweets.nil? %>
@@ -29,7 +32,7 @@
                               <tr>
                                 <td class = "tweets">
                                   <div class = "tweet_actions">
-                                    <img src = "img/tweetarrow.png" class= "check" alt = "proceed tweet" width = "50">
+                                    <img src = "img/check.png" class= "check" alt = "reply tweet" width = "50">
                                     <img src = "img/cross.png" class = "delete" alt = "delete tweet" width = "50">
                                   </div>
                                   <div class = "reply">
@@ -38,7 +41,7 @@
                                       <input type="submit" name="button" value="reply" />
                                     </form>
                                   </div>
-                                  <%= tweet.html %>
+                                   <blockquote class="twitter-tweet" data-conversation="none" data-lang="en" data-theme="dark"><p lang="en" dir="ltr"><a href="https://twitter.com/Uber?ref_src=twsrc%5Etfw">@uber</a> <%= tweet.full_text %></p>&mdash;<a href="<%= tweet.uri %>"></a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                                 </td>
                               </tr>
                     <% end %>
@@ -46,23 +49,12 @@
               </table>
           </div>
         </div>
-        <div id = "inprogress_tweets">
-          <h2>Inprogress tweets</h2>
-          <div class  = "displaytweets">
-            <table>
-              <tr>
-                <td class = "inprogress_table">
-                </td>
-              </tr>
-            </table>
-          </div>
-        </div>
       </div>
     </div>
     <script>
       $('.check').click(function() {
-          $(".inprogress_table").append($(this).parent().parent().parent());
           $($(this).parent().parent()).toggleClass("displayreply");
+          //$(".inprogress_table").append($(this).parent().parent().parent());
       });
       $('.delete').click(function() {
           $(this).parent().parent().parent().remove();
