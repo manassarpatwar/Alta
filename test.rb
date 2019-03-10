@@ -15,20 +15,18 @@ before do
     :access_token_secret => 'UkK1okCoI1kFUKeofvh5Y5QQHkJyVOQxeIQGQfyCjIFQP'
   }
   @client = Twitter::REST::Client.new(config)
+  def fetch_tweets
+    @tweets = @client.search("to:uber", result_type: "recent", lang: "en", geocode: "53.3,-1.5,1000km").take(20)s
+  end
 end
 
 get '/dashboard' do
-    def fetch_tweets
-      results = @client.search("to:lyft", result_type: "recent", lang: "en", geocode: "53.3,-1.5,1000km").take(20)
-      @tweets = @client.oembeds(results, hide_media: "true", hide_thread: "true")
-    end
   fetch_tweets
   erb :dashboard
 end
 
 get '/index' do
   erb :index
-  sleep(5)
   @test = "hello"
 end
 
@@ -36,6 +34,10 @@ post '/replyToTweet' do
   id = @tweets.id
   reply_to = tweet.in_reply_to_screen_name
   @client.update("#{reply_to} #{params[:reply]}", in_reply_to_status_id: id)
+end
+
+post '/fetch_tweets' do 
+  redirect '/dashboard'
 end
 
 get '/cont' do
