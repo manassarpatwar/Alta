@@ -12,20 +12,20 @@
     <link rel="stylesheet" href="css/user_footer.css" />
   </head>
     
-  <!--navigation bar-->
 
   <body id="bg">    
     <div id = "wrapper">
       <div id = "page-content-wrapper">
+
+      <!--navigation bar-->
         <header>
             <%= erb :user_header %>
         </header>
-      <!--end-->
 
-      <!--Content Information 1-->
-        <!--Welcoming Sign up-->
+    <!--Welcoming Sign up-->
         <div id="fade-in">
-            <div id="parallax-box">
+        <!--can be deleted-->
+            <div id="welcoming-box">
 
                 <div class="center">
                     <div class="head-box1">RIDE WITH US
@@ -46,54 +46,79 @@
 
             </div>
         </div>
-        <div class="banner">
-            <div class="banner-text">
-                Sheffield Best Taxi Service
-            </div>
-        </div> 
+        
 
-        <div class="info1-container">
+        <!--Content 1: How to use our service-->
+        <div class="info2-container">
+        
+            <p class="info2-title">
+                How to use our service 
+                </p>
 
-            <div class="info1-column">
-                <div class="info1-box1">
-                    <div class="info1-hover">
-                        <div class="info1-cont">
-                            <h2>Service we provide</h2>
-                            <p class="info1-p">We provide the greatest and one of the most comfortable taxi service</p>
+            <div class="info2-column">
+                <div class="info2-box1">
+                    <div class="info2-hover">
+                        <div class="info2-cont">
+                            <h2>Type 1 name</h2>
+                            <p class="info2-p">text</p>
                         </div>
                     </div>
                 </div>
             </div>        
 
-            <div class="info1-column">
-                <div class="info1-box2">
-                    <div class="info1-hover">
-                        <div class="info1-cont">
-                            <h2>How can you contact us via Twitter?</h2>
-                            <p class="info1-p">You can send a DM to us via Twitter.</p>
+
+
+        </div>
+
+        <div class="parallax-box1" style="height:400px;"></div>
+
+
+    <!--Content 2: types of taxi-->
+        <div class="info2-container">
+        
+            <p class="info2-title">
+                Types of taxi 
+                </p>
+
+            <div class="info2-column">
+                <div class="info2-box1">
+                    <div class="info2-hover">
+                        <div class="info2-cont">
+                            <h2>Type 1 name</h2>
+                            <p class="info2-p">text</p>
+                        </div>
+                    </div>
+                </div>
+            </div>        
+
+            <div class="info2-column">
+                <div class="info2-box2">
+                    <div class="info2-hover">
+                        <div class="info2-cont">
+                            <h2>Type 2 name</h2>
+                            <p class="info2-p">text</p>
                         </div>
                     </div>
                 </div>
             </div>
 
 
-            <div class="info1-column">
-                <div class="info1-box3">
-                    <div class="info1-hover">
-                        <div class="info1-cont">
-                            <h2>How it works</h2>
-                            <p class="info1-p">You need to use twitter for calling a taxi. Just write your Start location and End location. Thats it!</p>
+            <div class="info2-column">
+                <div class="info2-box3">
+                    <div class="info2-hover">
+                        <div class="info2-cont">
+                            <h2>Type 3 name</h2>
+                            <p class="info2-p">text</p>
                         </div>
                     </div>
                 </div>
             </div>
 
         </div>
-      <!--end-->
 
 
 
-        <!-- Customer Reviews Section -->
+    <!-- Customer Reviews Section -->
         <div class="slideshow-container" style="background-color:rgb(250, 247, 240); height: 300px;">
 
             <div class="mySlides "style="text-align:center; background-color:rgb(250, 247, 240);">
@@ -134,8 +159,8 @@
           <span class="dot" onclick="currentSlide(3)"></span> 
           <span class="dot" onclick="currentSlide(4)"></span>
         </div>
-        <!--end-->
-      <div class="parallax-bottom" style="height:400px;">fjhhjhjhj</div>
+
+      <div class="parallax-bottom" style="height:400px;"></div>
 
     <!--footer-->
         <%= erb :user_footer %>
