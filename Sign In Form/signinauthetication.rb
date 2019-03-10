@@ -34,23 +34,22 @@ end
     get '/' do
         redirect '/login' unless customer?
 
-        erb :index_signin
+        erb :index
     end
 
     get '/login' do
-        #erb :logi
         redirect to("/auth/twitter")
     end
 
     #post '/login' do
-       ## query = %{SELECT * FROM customer}
+       # query = %{SELECT * FROM customer}
        # @results = @db.execute query
 
       #  @results.each do |record| 
-         #   if params[:username] == record[0] && params[:password] == record[4]
-        #        session[:customer] = true
-       #         session[:login_time] = Time.now
-       #         redirect '/'
+       #   if params[:username] == record[0] && params[:password] == record[4]
+       #        session[:customer] = true
+       #        session[:login_time] = Time.now
+       #        redirect '/'
        #     end
      #   end
 
@@ -58,13 +57,32 @@ end
 
        # erb :login
     #end
-    
+   
+   # get '/auth/twitter/callback' do
+    #    env['omniauth.auth'] ? session[:customer] = true :
+    #halt(401,'Not Authorized')
+     #   "You are now logged in"
+    #end
+      
     get '/auth/twitter/callback' do
-        env['omniauth.auth'] ? session[:customer] = true :
-    halt(401,'Not Authorized')
-        "You are now logged in"
+       session[:customer] = true 
+       "<h1>Hi #{env['omniauth.auth']['info']['name']}!
+    </h1><img src='#{env['omniauth.auth']['info']['image']}'>"
+        
+        #hidden create new data in the below code
+        time = Time.now
+  
+        initial = 0      
+        query = %{SELECT * FROM customer}
+        @results = @db.execute query
+        @results.each do |record| 
+          if  env['omniauth.auth']['name'] != record[0] 
+              @db.ebecute("INSERT INTO customer(twitter_handle,sign_up_date,user_type,free_rides) 
+                            VALUES(?,?,?,?)",[env['omniauth.auth']['name'],time,initial,initial])
+             
+        end
     end
-       
+
     get '/auth/failure' do
         params[:message]
     end
@@ -74,4 +92,4 @@ end
         erb :logout
     end
 
-
+end
