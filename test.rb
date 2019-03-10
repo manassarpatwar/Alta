@@ -31,9 +31,11 @@ get '/index' do
 end
 
 post '/replyToTweet' do
-  id = @tweets.id
-  reply_to = tweet.in_reply_to_screen_name
-  @client.update("#{reply_to} #{params[:reply]}", in_reply_to_status_id: id)
+
+  puts("lol #{params[:tweetid]} #{params[:screen_name]}" )
+  @client.update("@#{params[:screen_name]} #{params[:reply]}", in_reply_to_status_id: @params[:tweetid])
+  
+  redirect '/dashboard'
 end
 
 post '/fetch_tweets' do 
