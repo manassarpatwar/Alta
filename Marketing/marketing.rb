@@ -52,7 +52,6 @@ post '/followIfMention' do
 end
 
 post '/tweetToTimeline' do
-  
   # Tweets a message from the dashboard to the Twitter
   if !(params[:tweet].nil?)
     tweet_string = params[:tweet]
