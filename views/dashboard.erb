@@ -35,6 +35,8 @@
                                   <div class = "reply">
                                     <form method="post" action = "replyToTweet"> 
                                       Reply to Tweet: <input type="text" name="reply" value="<%=h params[:reply] %>"/>
+                                      <% @nam = tweet.author_name %>
+                                      <input type="hidden" type="string" name="name" value="<%=h params[:@nam] %>">
                                       <input type="submit" name="button" value="reply" />
                                     </form>
                                   </div>
