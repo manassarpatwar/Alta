@@ -4,6 +4,7 @@
   <head>
     <title>ALTA Home</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script async src="js/content.js"></script>
@@ -17,150 +18,348 @@
     <div id = "wrapper">
       <div id = "page-content-wrapper">
 
-      <!--navigation bar-->
+<!--navigation bar-->
         <header>
             <%= erb :user_header %>
         </header>
 
-    <!--Welcoming Sign up-->
+<!--Welcoming Sign up-->
+<div class="welcome-row">
+    <div class="welcome-column1">
         <div id="fade-in">
-        <!--can be deleted-->
+            <!--can be deleted-->
             <div id="welcoming-box">
 
                 <div class="center">
                     <div class="head-box1">RIDE WITH US
-
                     </div>
                 </div>
-
                 <div class="center">
                     <div class="head-box2">Sign up now
-
                     </div>
                 </div>
-
-                <div class="center" style="height:50px;">
+                <div class="center">
                     <div class="head-box3"><a class="twitter" href="https://twitter.com/login?lang=en-gb">Twitter</a>
                     </div>
                 </div>
-
+            </div>
+        </div>     
+    </div>
+    <div class="welcome-column1">
+        <div id="fade-in">
+            <!--can be deleted-->
+            <div id="welcoming-box">
+                <div class="center">
+                    <div class="head-box1">RIDE WITH US
+                    </div>
+                </div>
+                <div class="center">
+                    <div class="head-box2">Sign up now
+                    </div>
+                </div>
+                <div class="center">
+                    <div class="head-box3"><a class="twitter" href="https://twitter.com/login?lang=en-gb">Twitter</a>
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
+</div>
         
 
-        <!--Content 1: How to use our service-->
-        <div class="info2-container">
-        
-            <p class="info2-title">
-                How to use our service 
-                </p>
+<!--Content 1: About Us-->
 
-            <div class="info2-column">
-                <div class="info2-box1">
-                    <div class="info2-hover">
-                        <div class="info2-cont">
-                            <h2>Type 1 name</h2>
-                            <p class="info2-p">text</p>
-                        </div>
-                    </div>
-                </div>
-            </div>        
-
-
-
-        </div>
-
-        <div class="parallax-box1" style="height:400px;"></div>
-
-
-    <!--Content 2: types of taxi-->
-        <div class="info2-container">
-        
-            <p class="info2-title">
-                Types of taxi 
-                </p>
-
-            <div class="info2-column">
-                <div class="info2-box1">
-                    <div class="info2-hover">
-                        <div class="info2-cont">
-                            <h2>Type 1 name</h2>
-                            <p class="info2-p">text</p>
-                        </div>
-                    </div>
-                </div>
-            </div>        
-
-            <div class="info2-column">
-                <div class="info2-box2">
-                    <div class="info2-hover">
-                        <div class="info2-cont">
-                            <h2>Type 2 name</h2>
-                            <p class="info2-p">text</p>
-                        </div>
-                    </div>
+    <div class="container info1-container">
+        <div class="bd-row1 info1-row1">
+            <div class="bd-column1">
+                <div class="info1-box">
+                    <div class="info1-title">About Us</div>
+                    <div class="info1-vl"></div>
                 </div>
             </div>
-
-
-            <div class="info2-column">
-                <div class="info2-box3">
-                    <div class="info2-hover">
-                        <div class="info2-cont">
-                            <h2>Type 3 name</h2>
-                            <p class="info2-p">text</p>
-                        </div>
-                    </div>
+            <div class="bd-column2">
+                <div class="info1-content">
+                We are Alta. blah blah blah blah
+                blah blah blah blahblah blah blah blahblah blah blah blahblah blah blah blah
+                blah blah blah blahblah blah blah blahblah blah blah blahblah blah blah blah
                 </div>
             </div>
 
         </div>
+    </div>
 
 
+<!--Content 2: How to use our service-->
 
-    <!-- Customer Reviews Section -->
-        <div class="slideshow-container" style="background-color:rgb(250, 247, 240); height: 300px;">
+    <div class="info2-container container">
+        <div class="bd-row1">
+            <div class="info2-column">
+                <div class="info2-box">
+                    <div class="info2-title">How to use our <br> services</div>
+                        <div class="info2-content">
+                            <ol>
+                                <li>blah blah blahlah blah blahlah blah blahlah blah blahlah blah blah</li>
+                                <li>lah blah blahlah blah blahlah blah blahlah blah blahlah blah blah</li>
+                                <li>lah blah blahlah blah blahlah blah blahlah blah blahlah blah blahlah blah blahlah blah blahlah blah blahlah blah blah</li>
+                            </ol> 
+                        </div>
+                    </div>
+            </div>
+            <div class="info2-column">
+                <img class="info2-img" src="img/info1.jpg">
+            </div>
+        </div>
+    </div>
 
-            <div class="mySlides "style="text-align:center; background-color:rgb(250, 247, 240);">
-                <!-- <img src="image2.jpg" style="height:300px;"> -->
-                <h2 class="review-title">Customer Reviews</h2>
-                <div class="review-text">Here are some recent customer reviews after having our services!</div>
+
+<!--Content 3: How it works-->
+
+    <div class="info3-container container">
+        <div class="bd-row1">
+            <div class="info3-column">
+                <img class="info3-img" src="img/info3.jpeg">
             </div>
 
-            <div class="mySlides "style="text-align:center; background-color:rgb(250, 247, 240);">
-                <div class="numbertext">1 / 3</div>
-                <!-- <img src="image3.jpg" style="height:300px;"> -->
-                <div class="review-text">Rating 1 : </div><br>
-                <div class="review-text">Review 1</div>
+            <div class="info3-column info3-column2">
+                <div class="info3-box">
+                    <div class="info3-title">How does it work</div>
+                        <div class="info3-content">
+                        blah blah blahlah blah blahlah blah blahlah blah blahlah blah blah
+                        blah blah blahlah blah blahlah blah blahlah blah blahlah blah blah
+                        blah blah blahlah blah blahlah blah blahlah blah blahlah blah blah
+                        blah blah blahlah blah blahlah blah blahlah blah blahlah blah blah
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
+    </div>
 
-            <div class="mySlides "style="text-align:center; background-color:rgb(250, 247, 240);">
-                <div class="numbertext">2 / 3</div>
-                <!-- <img src="image4.jpg" style="height:300px;"> -->
-                <div class="review-text">Rating 2 :</div><br>
-                <div class="review-text">Review 2</div>
+
+<!--Content 4: Types of taxi-->
+
+    <div class="slideshow-container" style="background-color:#FFFFFF; height: 700px;">
+        <div class="info4-indicators">
+            <span class="info4-indict" onclick="currentSlide(1)">Type 1</span> 
+            <span class="info4-indict" onclick="currentSlide(2)">Type 2</span>
+            <span class="info4-indict" onclick="currentSlide(3)">Type 3</span>
+        <!-- <span class="info4-indict" onclick="currentSlide(4)">Type 4</span> -->
+        </div>
+        <div class="mySlides">
+            <div class="info4-container container">
+                <div class="bd-row1">
+                    <div class="info4-column">
+                        <div class="info4-box">
+                            <div class="info4-title">Types of taxi</div>
+                            <div class="info4-content1">Types 1 taxi</div>
+                            <div class="info4-content2">
+                            lah blah blahlah blah blahlah 
+                            lah blah blahlah blah blahlah <br>
+                            lah blah blahlah blah blahlah 
+                            lah blah blahlah blah blahlah <br>
+                            lah blah blahlah blah blahlah                 
+                            lah blah blahlah blah blahlah 
+                            lah blah blahlah blah blahlah <br>
+                            lah blah blahlah blah blahlah 
+                            lah blah blahlah blah blahlah <br>
+                            lah blah blahlah blah blahlah 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info4-column">
+                        <img class="info4-img" src="img/info3.jpeg">
+                    </div>
+                </div>
             </div>
-
-            <div class="mySlides "style="text-align:center; background-color:rgb(250, 247, 240);">
-                <div class="numbertext">3 / 3</div>
-                <!-- <img src="image4.jpg" style="height:300px;"> -->
-                <div class="review-text">Rating 3 :</div><br>
-                <div class="review-text">Review 3</div>
-            </div>
-
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
-
         </div>
 
-        <div style="text-align:center; background-color:rgb(250, 247, 240);">
-          <span class="dot" onclick="currentSlide(1)"></span> 
-          <span class="dot" onclick="currentSlide(2)"></span> 
-          <span class="dot" onclick="currentSlide(3)"></span> 
-          <span class="dot" onclick="currentSlide(4)"></span>
+        <div class="mySlides">
+            <div class="info4-container container">
+                <div class="bd-row1">
+                    <div class="info4-column">
+                        <div class="info4-box">
+                            <div class="info4-title">Types of taxi</div>
+                            <div class="info4-content1">Types 2 taxi</div>
+                            <div class="info4-content2">
+                            lah blah blahlah blah blahlah 
+                            lah blah blahlah blah blahlah <br>
+                            lah blah blahlah blah blahlah 
+                            lah blah blahlah blah blahlah <br>
+                            lah blah blahlah blah blahlah                 
+                            lah blah blahlah blah blahlah 
+                            lah blah blahlah blah blahlah <br>
+                            lah blah blahlah blah blahlah 
+                            lah blah blahlah blah blahlah <br>
+                            lah blah blahlah blah blahlah 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info4-column">
+                        <img class="info4-img" src="img/info3.jpeg">
+                    </div>
+                </div>
+            </div>
         </div>
 
-      <div class="parallax-bottom" style="height:400px;"></div>
+        <div class="mySlides">
+            <div class="info4-container container">
+                <div class="bd-row1">
+                    <div class="info4-column">
+                        <div class="info4-box">
+                            <div class="info4-title">Types of taxi</div>
+                            <div class="info4-content1">Types 3 taxi</div>
+                            <div class="info4-content2">
+                            lah blah blahlah blah blahlah 
+                            lah blah blahlah blah blahlah <br>
+                            lah blah blahlah blah blahlah 
+                            lah blah blahlah blah blahlah <br>
+                            lah blah blahlah blah blahlah                 
+                            lah blah blahlah blah blahlah 
+                            lah blah blahlah blah blahlah <br>
+                            lah blah blahlah blah blahlah 
+                            lah blah blahlah blah blahlah <br>
+                            lah blah blahlah blah blahlah 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info4-column">
+                        <img class="info4-img" src="img/info3.jpeg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<!-- Content 5: Customer Reviews-->
+
+    <div class="info5-container">        
+        <p class="info5-title">
+            What do people say
+        </p>
+
+        <div class="info5-column">
+            <div class="info5-box">
+                <div class="info5-cont">
+                <p class="info5-name">Customer name1
+                        <span class="fa fa-star info5-checked"></span>
+                        <span class="fa fa-star info5-checked"></span>
+                        <span class="fa fa-star info5-checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        </p>
+                    <p class="info5-date">Date</p>
+
+                    <p class="info5-reviews">
+                        Customer reiewsreiewsreiews reiewsreiewsreiewsreiewsreiews
+                        reiews reiewsreiews reiewsreiews reiewsreiewsreiews
+                        reiews reiewsreiew sreiewsreie wsreiewsreiewsreiews
+                        </p>
+                </div>
+            </div>
+        </div>        
+
+        <div class="info5-column">
+            <div class="info5-box">
+                <div class="info5-cont">
+                <p class="info5-name">Customer name1
+                        <span class="fa fa-star info5-checked"></span>
+                        <span class="fa fa-star info5-checked"></span>
+                        <span class="fa fa-star info5-checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        </p>
+                    <p class="info5-date">Date</p>
+
+                    <p class="info5-reviews">
+                        Customer reiewsreiewsreiews reiewsreiewsreiewsreiewsreiews
+                        reiews reiewsreiews reiewsreiews reiewsreiewsreiews
+                        reiews reiewsreiew sreiewsreie wsreiewsreiewsreiews
+                        </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="info5-column">
+            <div class="info5-box">
+                <div class="info5-cont">
+                <p class="info5-name">Customer name1
+                        <span class="fa fa-star info5-checked"></span>
+                        <span class="fa fa-star info5-checked"></span>
+                        <span class="fa fa-star info5-checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        </p>
+                    <p class="info5-date">Date</p>
+
+                    <p class="info5-reviews">
+                        Customer reiewsreiewsreiews reiewsreiewsreiewsreiewsreiews
+                        reiews reiewsreiews reiewsreiews reiewsreiewsreiews
+                        reiews reiewsreiew sreiewsreie wsreiewsreiewsreiews
+                        </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+<!-- Content 6: Contact us and banner -->
+    <div class="info6-container">        
+
+        <div class="info6-column">
+            <div class="info6-box">
+                <div class="info6-cont">
+                </div>
+            </div>
+        </div>        
+
+        <div class="info6-maincolumn">
+            <div class="info6-box">
+                <div class="info6-cont">
+                    <p class="info6-title">Get in Touch</p>
+                    <p class="info6-content1">
+                        For any questions or latest news, find us on Twitter, @altasheffiedl.
+                        </p>
+                    <p class="info6-content2">
+                        Don't Forget to sgin up for deals and offers!
+                        </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="info6-column">
+            <div class="info6-box">
+                <div class="info6-cont">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <!--footer-->
         <%= erb :user_footer %>

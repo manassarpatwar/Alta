@@ -18,18 +18,28 @@ body {
   background-size: cover;  
 }
 
-/*header design*/
-#fade-in{
-  box-sizing: border-box;
-  min-height: 100vh;
-  padding: 30vw 0 5vw;
-  position: relative;
-  transform-style: inherit;
-  white-space: nowrap;
+/*Welcoming/Sign up design*/
+.welcome-column1 {
+  float: left;
+  width: 50%;
 }
-#fade-in *{
-  margin: 0;
-  padding: 1.5em 0;
+.welcome-column2 {
+  float: left;
+  width: 40%;
+}
+.welcome-row:after {
+  content: "";
+  display: table;
+  clear: both;
+  height: 60vh;
+}
+@media screen and (max-width: 800px) {
+  .welcome-column1 {
+    width: 100%;
+  }
+}
+#fade-in{
+  white-space: nowrap;
   font-family: gotham,"Helvetica Neue",sans-serif;
   font-weight: 100;
   text-transform: uppercase;
@@ -37,19 +47,13 @@ body {
   line-height: 1.4;
 }
 .center{
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  margin-top: 3%;
+  text-align:center;
   color:#FFFFFF;
 }
 .head-box1{
-  height: 420px;
   font-size:70px;
 }
 .head-box2{
-  height: 160px;
   font-size:50px;
 }
 .head-box3{
@@ -67,166 +71,184 @@ body {
 }
 
 
-/*parallax effects*/
-.parallax-box1 {
-  display: block;
-  height: 750px;
-}
-
-
 /*Content*/
-
-/*Information2 : types of taxi*/
-.info2-title{
-  font-size:100px;
-  background-color:#FFFFFF;
-  padding:100px;
-  height: 200px;
-  text-align:center;
-  font-family: "GT America","Helvetica Neue","Helvetica",sans-serif;
-  font-size: 3rem;
-  line-height: 1.7;
-  font-weight: 200;
+.container{
+  height:150px;
+  width: 100%;
+  background-color: #FFFFFF;
 }
+
+/*Information1: about us*/
+.info1-container{
+  height: 130%;
+  padding:6% 0 6% 0;
+}
+.info1-title{
+  font-size: 350%;
+}
+.info1-vl {
+  margin:5% 80% 0 0;
+  border-top: 3px solid rgb(175, 175, 173);
+  position: relative;
+}
+.info1-box{
+  margin:12% 20% 20% 27%;
+}
+.info1-content{
+  margin-top: 12%;
+  font-size: 150%;
+  color:rgb(175, 175, 173);
+  width:135%;
+
+}
+
+.break1{
+  background-color: white;
+}
+.separation{
+  border-top: 1px solid rgb(175, 175, 173);
+  margin:0 40% 0 40%;
+  position: relative;
+  padding-bottom: 10%;
+}
+
+
+
+
+/*Inforamtion2 : how to use our service*/
 .info2-container{
-  height:650px;
-  background-color:white;
+  height: 10%;
+  padding-bottom:5%;
 }
-.info2-column {
+.info2-column{
   float: left;
-  width: 33.3%;
-  margin-bottom: 100px;
-  padding: 0 50px;
+  width: 50%;
+  padding:0;
 }
-.info2-box1 {
-  background-image: url("../img/info2.jpg");
+.info2-box{
+  padding: 35% 0 0 15%;
+}
+.info2-title{
+  font-size:300%;
+  text-align: center;
+  margin-right: 45%;
+}
+.info2-content{
+  padding:8% 8% 0 27%;
+}
+.info2-content ol {
+  line-height:2;
+  padding-left:5%;
+}
+.info2-img{
   background-size: cover;
-  height:330px;
-  opacity:0.8;
+  width:100%; 
+  padding-right:3%;
 }
-.info2-box2 {
-  background-image: url("../img/info2.jpg");
+
+
+
+
+/*Information3: How it works*/
+.info3-container{
+  height: 10%;
+  padding-bottom:5%;
+}
+.info3-column{
+  float: left;
+  width: 60%;
+  padding:0;
+}
+.info3-column2{
+  width:40%;
+}
+
+.info3-title{
+  font-size:300%;
+  text-align: center;
+  padding:8% 8% 0 40%;
+
+}
+.info3-content{
+  padding:8% 8% 0 15%;
+  margin-right:25%;
+
+}
+.info3-img{
   background-size: cover;
-  height:330px;
-  opacity:0.8;
+  width:100%; 
+  padding-left:3%;
 }
-.info2-box3 {
-  background-image: url("../img/info3.jpeg");
-  background-size: cover;
-  height:330px;
-  opacity:0.8;
+
+/* Creating two colummns*/
+.bd-column1 {
+  float: left;
+  width: 35%;
+  padding: 10px;
 }
-.info2-cont{
-  padding: 30px;
-  color:white;
-  height:330px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  text-align:center;
+.bd-column2 {
+  float: left;
+  width: 40%;
+  padding: 10px;
 }
-.info2-p{
-  display:none;
-}
-.info2-cont::after, .info2-row::after {
+.bd-row1:after {
   content: "";
-  clear: both;
   display: table;
+  clear: both;
 }
-h2{
-  font-family: "GT America","Helvetica Neue","Helvetica",sans-serif;
-  font-weight: 300;
-  font-style: normal;
-  letter-spacing: 0.05rem;
-  font-size: 4rem;
-  display: block;
-  padding-top:80px;
-}
-p{
-  font-family: "GT America","Helvetica Neue","Helvetica",sans-serif;
-  font-weight: 300;
-  font-style: normal;
-  text-align:left;
-  text-rendering: optimizeLegibility;
-  padding-left:50px;
-  margin:3px;
-}
-.info2-box1:hover {
-  transition: 1.5s ease;
-  background-color: rgb(255, 255, 255);
-  background-image: none;
-}
-.info2-box2:hover {
-  transition: 1.5s ease;
-  background-color:rgb(255, 255, 255);
-  background-image: none;
-}
-.info2-box3:hover {
-  transition: 1.5s ease;
-  background-color:rgb(255, 255, 255);
-  background-image: none;
-}
-.info2-cont:hover h2 {
-  transition: 1s ease;
-  font-size: 3rem;
-  padding-top: 15px;
-  padding-bottom:40px;
-  margin:0;
-  color: #000000;
-  text-decoration: underline;
-  opacity: 1;
-}
-.info2-cont:hover p {
-  transition: 1s ease;
-  font-size: 2rem;
-  color: #272727;
-  opacity: 1;
-}
-.info2-cont:hover .info2-p{
-  transition: 1s ease;
-  display:block;
+@media screen and (max-width: 600px) {
+  .bd-column1 {
+    width: 100%;
+  }
 }
 
 
-
-/*Customer Reviews*/
+/*Information4: Types of Taxi*/
+.info4-container{
+  height: 10%;
+  padding-bottom:10%;
+}
+.info4-column{
+  float: left;
+  width: 50%;
+  padding:0;
+}
+.info4-box{
+  padding: 0 0 0 15%;
+  height:200%;
+  border-right: 1px solid rgb(175, 175, 173);
+  text-align: right;
+}
+.info4-title{
+  padding:0 0 10% 0;
+  font-size:300%;
+  margin-right: 5%;
+}
+.info4-content1{
+  font-size:20px;
+  margin-right: 5%;
+  line-height: 2;
+}
+.info4-content2 {
+  font-size:15px;
+  margin: 0 5% 0 25%;
+  line-height: 2;
+  padding-bottom:50%;
+}
+.info4-img{
+  background-size: cover;
+  width:15%; 
+  margin: 30% 0 0 5%;
+  transition: transform 1s;
+}
+.info4-img:hover{
+    -ms-transform: scale(5); /* IE 9 */
+    -webkit-transform: scale(5); /* Safari 3-8 */
+    transform: scale(5); 
+}
 .slideshow-container {
   max-width: 3000px;
   position: relative;
-}
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  margin-left:50px;
-  padding: 10px;
-  color: rgb(53, 52, 52);
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-}
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-  margin-right:50px;
-
-}
-.prev:hover, .next:hover {
-  background-color: rgba(0, 0, 0, 0.514);
-  text-decoration: none;
-  color: white;
-}
-h2.review-title{
-  margin:0;
-  padding-top: 120px;
-}
-.review-text {
-  font-size: 15px;
-  position: absolute;
-  padding: 10px;
-  width: 100%;
-  text-align: center;
 }
 .numbertext {
   color: #000000;
@@ -235,20 +257,166 @@ h2.review-title{
   position: absolute;
   top: 0;
 }
-.dot {
+.info4-indicators{
+  text-align:center;
+}
+.info4-indict {
   cursor: pointer;
   height: 10px;
-  width: 10px;
-  margin: 0 2px;
-  margin:10px 3px 10px 3px;
-  background-color: #bbb;
-  border-radius: 50%;
+  margin:1%;
+  padding:5% 3% 3% 3%;
+  color: #bbb;
   display: inline-block;
   transition: background-color 0.6s ease; 
 }
-.active, .dot:hover {
-  background-color: #717171;
+.active, .info4-indict:hover {
+  color: #717171;
 }
+
+
+
+
+/*Information 5: Customer Reviews*/
+.info5-container{
+  height:750px;
+  background-color:rgba(0, 0, 0, 0.575);
+}
+.info5-title{
+  padding:18% 0 3% 0;
+  font-size:350%;
+  text-align:center;
+  font-family: "GT America","Helvetica Neue","Helvetica",sans-serif;
+  font-size: 3rem;
+  line-height: 1.7;
+  font-weight: 200;
+  margin:100px 0 0 0;
+  color:white;
+}
+.info5-column {
+  float: left;
+  width: 33.3%;
+  padding: 0 3%;
+}
+.info5-box {
+  background-size: cover;
+  height:330px;
+}
+.info5-cont{
+  padding: 30px;
+  color:white;
+  height:330px;
+  text-align:center;
+}
+.info5-cont::after, .info5-row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.info5-checked {
+  color: orange;
+}
+p.info5-reviews, .info5-name, .info5-date{
+  line-height:2;
+  text-align: left;
+  font-weight:100;
+  letter-spacing: 3px;
+  margin:0;
+}
+.info5-name{
+  font-size: 17px;
+  font-weight:200;
+  text-transform: uppercase;
+}
+.info5-date{
+  font-size:15px;
+  margin-bottom:4%;
+}
+
+
+
+/*Information6 : Contact us and banner*/
+.info6-container{
+  height:600px;
+  background-color:rgb(255, 255, 255);
+  padding:5%;
+}
+.info6-title{
+  padding:18% 0 3% 0;
+  font-size:350%;
+  text-align:center;
+  font-family: "GT America","Helvetica Neue","Helvetica",sans-serif;
+  font-size: 3rem;
+  line-height: 1.7;
+  font-weight: 200;
+  color:rgb(27, 26, 26);
+  border-style: solid;
+  border-width: 1.4px;
+}
+.info6-column {
+  float: left;
+  width: 30%;
+  padding: 0 3%;
+}
+.info6-content1{
+  border-style: solid;
+  border-width: 1.4px;
+  float:left;
+}
+.info6-content2{
+  border-style: solid;
+  border-width: 1.4px;
+  float:right;
+}
+
+.info6-maincolumn{
+  float: left;
+  width: 40%;
+  padding: 0 3%;
+  border-style: solid;
+  border-width: 1.4px;
+}
+.info6-box {
+  background-size: cover;
+  height:450px;
+}
+
+.info6-cont{
+  padding: 30px;
+  color:rgb(19, 18, 18);
+  height:100%;
+  width:100%;
+  text-align:center;
+}
+
+.info6-cont::after, .info5-row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+p.info6-reviews, .info6-name, .info6-date{
+  line-height:2;
+  text-align: left;
+  font-weight:100;
+  letter-spacing: 3px;
+  margin:0;
+}
+.info6-name{
+  font-size: 17px;
+  font-weight:200;
+  text-transform: uppercase;
+}
+.info6-date{
+  font-size:15px;
+  margin-bottom:4%;
+}
+
+
+
+
+
+
+
 
 
 /*fade in animation*/

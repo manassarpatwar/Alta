@@ -6,59 +6,58 @@ footer{
   letter-spacing: 2.5px;
   font-size: 11px;
   padding: 10px;
-  background-color: #FFFFFF;
+  background-color: #fafafa;
   }
   
 
 /* Column maker*/
-.footer-column {
+.ft-column {
   float: left;
   width: 33.33%;
   padding: 30px;
   height: 100px;
   text-align: center;
   }
-.footer-row:after {
+.ft-row:after {
   content: "";
   display: table;
   clear: both;
   height:10px;
   }
 
-
 /*Content* details*/
-.column1, .column3{
+.ft-column1, .ft-column3{
   padding-top:40px;
 }
-.column1 p, .column2 p, .column3 p{
+.ft-column1 p, .ft-column2 p, .ft-column3 p{
   text-align: center;
   padding:0;
 }
-.column2 p{
+.ft-column2 p{
   font-weight: 300;
   font-size: 13px;
   line-height: 2;
 }
-.footer-tw{  
+.ft-tw{  
   padding:10px; 
 }
-.vl {
-  margin:10px 30% 0 30%;
+.ft-vl {
+  margin:2% 35% 0 35%;
   border-top: 1px solid rgb(175, 175, 173);
   position: relative;
 }
-.footer_contact{
+.ft_contact{
   height:25px;
   padding-top:5px;
 }
 
 /*Content links*/
-a.tw-link{
+a.ft-tw-link{
   border: 1px solid #5f5a50;
   padding: 4px 11px 3px 11px;
   font-weight: 400;
 }
-a.tw-link:hover, .tw-link:hover *{
+a.ft-tw-link:hover, .ft-tw-link:hover *{
   transition: 0.5s ease;
   background-color:#5f5a50;
   color:white;
@@ -71,17 +70,17 @@ color: #5f5a50;
 
 
 /*Last Row*/
-.footer-row2{
+.ft-row2{
   height:100px;
   text-align: center;
   padding-top:30px; 
   margin-bottom:15px;
   }
-img.row2-img{
+img.ft-row2-img{
   height:26px;
   padding-bottom:10px;
   }
-.row2-cont{
+.ft-row2-cont{
   color:#a8a7a7;
   letter-spacing: 1px;
   font-weight: normal;
@@ -90,7 +89,7 @@ img.row2-img{
 }
  
 @media screen and (max-width: 600px) {
-    .footer-column {
+    .ft-column {
       width: 100%;
     }
   }
