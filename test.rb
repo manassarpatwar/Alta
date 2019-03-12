@@ -2,11 +2,18 @@ require 'erb'
 require 'sinatra'
 require 'twitter'
 require "sinatra/cookies"
+require 'rufus-scheduler'
 
 
 set :bind, '0.0.0.0' # needed if you're running from Codio
 
 include ERB::Util
+scheduler = Rufus::Scheduler.new
+time = 0
+scheduler.every "1s" do
+  time = time + 1
+  puts time
+end
 
 before do
   config = {
@@ -16,16 +23,14 @@ before do
     :access_token_secret => 'UkK1okCoI1kFUKeofvh5Y5QQHkJyVOQxeIQGQfyCjIFQP'
   }
   @client = Twitter::REST::Client.new(config)
-   def fetch_tweets
   @tweets = @client.search("to:uber", result_type: "recent", lang: "en", geocode: "53.3,-1.5,1000km").take(2)
-  end
 end
 
 get '/dashboard' do
-    fetch_tweets
   response.set_cookie 'tweets_cookie',
   {:fetchedTweets => @tweets, :isUsed => false}
   puts(request.cookies['tweets_cookie'])
+
   erb :dashboard
 end
 
@@ -35,11 +40,8 @@ get '/index' do
 end
 
 post '/replyToTweet' do
-
   puts("lol #{params[:tweetid]} #{params[:screen_name]}" )
-
   @client.update("@#{params[:screen_name]} #{params[:reply]}", :in_reply_to_status_id => params[:tweetid].to_i)
-  
   redirect '/dashboard'
 end
 
