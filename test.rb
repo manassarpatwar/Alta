@@ -33,7 +33,7 @@ end
 post '/replyToTweet' do
 
   puts("lol #{params[:tweetid]} #{params[:screen_name]}" )
-  @client.update("@#{params[:screen_name]} #{params[:reply]}", in_reply_to_status_id: @params[:tweetid])
+  @client.update("@#{params[:screen_name]} #{params[:reply]}", :in_reply_to_status_id => params[:tweetid].to_i)
   
   redirect '/dashboard'
 end
