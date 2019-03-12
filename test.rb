@@ -1,6 +1,7 @@
 require 'erb'
 require 'sinatra'
 require 'twitter'
+require "sinatra/cookies"
 
 
 set :bind, '0.0.0.0' # needed if you're running from Codio
@@ -15,13 +16,16 @@ before do
     :access_token_secret => 'UkK1okCoI1kFUKeofvh5Y5QQHkJyVOQxeIQGQfyCjIFQP'
   }
   @client = Twitter::REST::Client.new(config)
-  def fetch_tweets
-    @tweets = @client.search("to:lyft", result_type: "recent", lang: "en", geocode: "53.3,-1.5,1000km").take(2)
+   def fetch_tweets
+  @tweets = @client.search("to:uber", result_type: "recent", lang: "en", geocode: "53.3,-1.5,1000km").take(2)
   end
 end
 
 get '/dashboard' do
-  fetch_tweets
+    fetch_tweets
+  response.set_cookie 'tweets_cookie',
+  {:fetchedTweets => @tweets, :isUsed => false}
+  puts(request.cookies['tweets_cookie'])
   erb :dashboard
 end
 
@@ -39,7 +43,8 @@ post '/replyToTweet' do
   redirect '/dashboard'
 end
 
-post '/fetch_tweets' do 
+post '/fetch_tweets' do
+ 
   redirect '/dashboard'
 end
 
