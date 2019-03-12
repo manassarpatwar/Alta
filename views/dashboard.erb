@@ -45,7 +45,8 @@
                                       <input type="submit" name="button" value="reply" />
                                     </form>
                                   </div>
-                                   <blockquote class="twitter-tweet" data-conversation="none" data-lang="en" data-theme="dark"><p lang="en" dir="ltr"><a href="https://twitter.com/Uber?ref_src=twsrc%5Etfw">@uber</a> <%= tweet.full_text %></p>&mdash;<a href="<%= tweet.uri %>"></a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                                  <%= @client.oembed(tweet, hide_media: "true", hide_thread: "true").html%>
+                                  <br>
                                 </td>
                               </tr>
                     <% end %>
@@ -58,7 +59,6 @@
     <script>
       $('.check').click(function() {
           $($(this).parent().parent()).toggleClass("displayreply");
-          //$(".inprogress_table").append($(this).parent().parent().parent());
       });
       $('.delete').click(function() {
           $(this).parent().parent().parent().remove();

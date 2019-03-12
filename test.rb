@@ -16,7 +16,7 @@ before do
   }
   @client = Twitter::REST::Client.new(config)
   def fetch_tweets
-    @tweets = @client.search("to:uber", result_type: "recent", lang: "en", geocode: "53.3,-1.5,1000km").take(20)
+    @tweets = @client.search("to:lyft", result_type: "recent", lang: "en", geocode: "53.3,-1.5,1000km").take(2)
   end
 end
 
@@ -33,8 +33,12 @@ end
 post '/replyToTweet' do
 
   puts("lol #{params[:tweetid]} #{params[:screen_name]}" )
+<<<<<<< HEAD
   @client.update("@#{params[:screen_name]} #{params[:reply]}", :in_reply_to_status_id => params[:tweetid].to_i)
   
+=======
+  @client.update("@#{params[:screen_name]} #{params[:reply]}", in_reply_to_status_id: @params[:tweetid])
+>>>>>>> b85a1ec7be0fe31e4fd00e8a3cb2737302a5e216
   redirect '/dashboard'
 end
 
