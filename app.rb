@@ -33,7 +33,7 @@ before do
     	:access_token_secret => 'UkK1okCoI1kFUKeofvh5Y5QQHkJyVOQxeIQGQfyCjIFQP'
   	}
   	@client = Twitter::REST::Client.new(config)
-  	@tweets = @client.search("to:uber", result_type: "recent", lang: "en", geocode: "53.3,-1.5,1000km").take(2)
+    @tweets = @client.search("to:uber", result_type: "recent", lang: "en", geocode: "53.3,-1.5,10000km").take(10)
   	@db = SQLite3::Database.new './taxi_database.sqlite'
 end
 
@@ -61,13 +61,23 @@ get '/' do
 end
 
 get '/dashboard' do
-	redirect '/' unless admin?
+    #redirect '/' unless admin?
 
 	response.set_cookie 'tweets_cookie',
 	{:fetchedTweets => @tweets, :isUsed => false}
 	puts(request.cookies['tweets_cookie'])
 
 	erb :dashboard
+end
+
+fetch = false
+get '/fetch_tweets' do
+  if fetch then 
+    since_id = @tweets[0].id
+    @tweets = @client.search("to:uber", result_type: "recent", lang: "en", geocode: "53.3,-1.5,10000km", since_id: "#{since_id}").take(10)
+  end
+  fetch = true
+  erb :fetch_tweets
 end
 
 get '/index' do
@@ -96,37 +106,27 @@ end
 
 #When autherisation for twitter is called
 get '/auth/twitter/callback' do
-	@found = false #Boolean to see if user is already in database
-
 	session[:loggedin] = true #User now logged in
-	
-    @usersTable = @db.execute %{SELECT * FROM users} #Gather all user data
 
-    @usersTable.each do |record| #Go through each user record
-        if env['omniauth.auth']['uid'] == record[0] #If uid = id then:
-            @found = true #Boolean found is true (record is already there)
-        end
-    end
-	
-	#Gather user information from twitter	
 	id = env['omniauth.auth']['uid'].to_s
-	name = env['omniauth.auth']['info']['name'].to_s
+	name = env['omniauth.auth']['info']['nickname'].to_s
 	dateTime = Time.now.strftime("%d/%m/%Y %H:%M").to_s
 	
-	#Add to database if user is not found already
-	if @found == false		
+    @user = @db.execute("SELECT * FROM users WHERE id = ?", id) #Get user data
+
+	if @user == []
 		@db.execute("INSERT INTO users VALUES (?, ?, ?, 0, 0)", id, name, dateTime)
-	end 	
+		@user = @db.execute("SELECT * FROM users WHERE id = ?", id) #Get user data
+	end 
 	
 	#Set global variables of user information to user logged in 
-	@userInfo = @db.execute("SELECT * FROM users WHERE id = ?", id)
-	@id = @userInfo[0][0]
-	@name = @userInfo[0][1]
-	@dateTime = @userInfo[0][2]
-	if @userInfo[0][3] == 1
+	@id = @user[0][0]
+	@name = @user[0][1]
+	@dateTime = @user[0][2]
+	if @user[0][3] == 1
 		session[:admin] = true 
 	end	
-	@freeRides = @userInfo[0][4]
+	@freeRides = @user[0][4]
 
 	redirect '/'
 end
@@ -141,11 +141,6 @@ end
 post '/replyToTweet' do
   puts("lol #{params[:tweetid]} #{params[:screen_name]}" )
   @client.update("@#{params[:screen_name]} #{params[:reply]}", :in_reply_to_status_id => params[:tweetid].to_i)
-  redirect '/dashboard'
-end
-
-post '/fetch_tweets' do
- 
   redirect '/dashboard'
 end
 
