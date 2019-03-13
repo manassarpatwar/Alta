@@ -12,7 +12,7 @@ scheduler = Rufus::Scheduler.new
 time = 0
 scheduler.every "1s" do
   time = time + 1
-  puts time
+  #puts time
 end
 
 before do
@@ -24,12 +24,12 @@ before do
   }
   @client = Twitter::REST::Client.new(config)
   @tweets = @client.search("to:uber", result_type: "recent", lang: "en", geocode: "53.3,-1.5,1000km").take(2)
+  response.set_cookie(:id, :value => @tweets, :domain => "XX.XXX.XXX.XXX", :path => "/", :expires => Time.now + 86400000)
 end
 
 get '/dashboard' do
-  response.set_cookie 'tweets_cookie',
-  {:fetchedTweets => @tweets, :isUsed => false}
-  puts(request.cookies['tweets_cookie'])
+
+  puts(request.cookies["my_cookie"])
 
   erb :dashboard
 end

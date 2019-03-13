@@ -20,7 +20,7 @@ configure do
 	enable :sessions
 end
 
-#Setting up priviages to different parts of the website
+#Setting up privilages to different parts of the website
 helpers do
 	def admin?
     	session[:admin]
