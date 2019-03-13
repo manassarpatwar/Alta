@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>ALTA Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script async src="js/user_orders.js"></script>
+    <link rel="stylesheet" href="css/user_header.css" />
+    <link rel="stylesheet" href="css/user_footer.css" />
+    <link rel="stylesheet" href="css/user_orders.css" />
+  </head>
+
+  <body>
+
+  <!--Welcoming sign-->
+    <div class="container user-header">
+      <p class="user-gretting">
+        <div class="user-hi"> Hi </div>
+        <div class="user-name"> <!--extract from database--> </div>
+        </p> <br>
+      <p class="user-header-p"> Here you can view your past transactions.</p>
+    </div>
+  
+  <!--Deals message-->
+
+  <!--Filtable Search bar-->
+  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search" title=" ">
+
+    <div class="container user-searching">
+      <div class="user-searching">
+        <div class="user-searchBar-filterdropdown"></div>
+        <div class="user-searchBar-input"><div>
+        <div class="user-searchBarButton"></div>
+      </div>
+    </div>
+
+    <!--Table-->
+    <table id="table-container">
+
+      <!--Table column-eliminate?
+          <button><summary>
+            </summary></button>
+          <table id="user-table">
+      -->
+        <tr class="user-table-header">
+          <th>head1</th>
+          <th>head2</th>
+          <th>head3</th>
+        ......
+        </tr>
+
+        <tr>
+          <td>fields1</td>
+          <td>fields2</td>
+        .....
+        </tr>
+
+        </table>
+      </div>
+
+
+
+
+  </body>
