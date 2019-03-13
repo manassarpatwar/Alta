@@ -18,51 +18,22 @@
     <div id = "page-content-wrapper">
       <nav>
         <h1 id = "alta">Alta</h1>
-        <form method="post" action = "fetch_tweets"> 
-          <input type="submit" name="button" value="Fetch tweets">
-        </form>
+        <input type="submit" name="button" value="Fetch tweets" id = "fetch_tweets">
       </nav>
       <div id = "requests">
-        <div id = "incoming_tweets">
-          <h2>Tweets</h2>
-          <div class = "displaytweets">
-            <table>
-                <% unless @tweets.nil? %>
-                    <% @tweets.reverse_each do |tweet| %>
-                              <tr>
-                                <td class = "tweets">
-                                  <div class = "tweet_actions">
-                                    <img src = "img/check.png" class= "check" alt = "reply tweet" width = "50">
-                                    <img src = "img/cross.png" class = "delete" alt = "delete tweet" width = "50">
-                                  </div>
-                                  <div class = "reply">
-                                    <form method="post" action = "replyToTweet"> 
-                                      Reply to Tweet: <input type="text" name="reply" value="<%=h params[:reply] %>"/>
-                                      <% params[:tweetid] = tweet.id %>
-                                      <% params[:screen_name] = tweet.user.screen_name %>
-                                      <input type = "hidden" name = "tweetid" value = "<%=h params[:tweetid]%>" />
-                                      <input type = "hidden" name = "screen_name" value = "<%=h params[:screen_name]%>" />
-                                      <input type="submit" name="button" value="reply" />
-                                    </form>
-                                  </div>
-                                  <%= @client.oembed(tweet, hide_media: "true", hide_thread: "true").html%>
-                                  <br>
-                                </td>
-                              </tr>
-                    <% end %>
-                <% end %>
-              </table>
-          </div>
-        </div>
+        <div id = "incoming_tweets"> </div>
       </div>
     </div>
     <script>
-      $('.check').click(function() {
-          $($(this).parent().parent()).toggleClass("displayreply");
+      $("#incoming_tweets").load("/fetch_tweets");
+      $("#fetch_tweets").click(function(){
+        $("#incoming_tweets").load("/fetch_tweets");
       });
-      $('.delete').click(function() {
-          $(this).parent().parent().parent().remove();
-      });
+      /*$(fetchTweets);
+      function fetchTweets(){
+        $("#incoming_tweets").load("/fetch_tweets");
+        setTimeout(fetchTweets, 60*1000);
+      }*/
     </script>
     <script src="js/admin_nav.js"></script>
   </div>

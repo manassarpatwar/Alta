@@ -33,7 +33,7 @@ before do
     	:access_token_secret => 'UkK1okCoI1kFUKeofvh5Y5QQHkJyVOQxeIQGQfyCjIFQP'
   	}
   	@client = Twitter::REST::Client.new(config)
-  	@tweets = @client.search("to:uber", result_type: "recent", lang: "en", geocode: "53.3,-1.5,1000km").take(2)
+    @tweets = @client.search("to:uber", result_type: "recent", lang: "en", geocode: "53.3,-1.5,10000km").take(10)
   	@db = SQLite3::Database.new './taxi_database.sqlite'
 end
 
@@ -61,13 +61,23 @@ get '/' do
 end
 
 get '/dashboard' do
-	redirect '/' unless admin?
+    #redirect '/' unless admin?
 
 	response.set_cookie 'tweets_cookie',
 	{:fetchedTweets => @tweets, :isUsed => false}
 	puts(request.cookies['tweets_cookie'])
 
 	erb :dashboard
+end
+
+fetch = false
+get '/fetch_tweets' do
+  if fetch then 
+    since_id = @tweets[0].id
+    @tweets = @client.search("to:uber", result_type: "recent", lang: "en", geocode: "53.3,-1.5,10000km", since_id: "#{since_id}").take(10)
+  end
+  fetch = true
+  erb :fetch_tweets
 end
 
 get '/index' do
@@ -141,11 +151,6 @@ end
 post '/replyToTweet' do
   puts("lol #{params[:tweetid]} #{params[:screen_name]}" )
   @client.update("@#{params[:screen_name]} #{params[:reply]}", :in_reply_to_status_id => params[:tweetid].to_i)
-  redirect '/dashboard'
-end
-
-post '/fetch_tweets' do
- 
   redirect '/dashboard'
 end
 
