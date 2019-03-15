@@ -36,6 +36,10 @@
   left:100%;
 }
 
+#delete_icon{
+  width: 50px;
+}
+
 .tweet_actions{
   display: flex;
   flex-direction: column;

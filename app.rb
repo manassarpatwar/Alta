@@ -14,7 +14,7 @@ include ERB::Util #Ensure ERB is enabled
 
 #scheduler = Rufus::Scheduler.new
 #time = 0
-#scheduler.every "1s" do
+#scheduler.every "10m" do
 #  time = time + 1
 #  puts time
 #end
@@ -26,20 +26,20 @@ end
 
 #Before running load these configurations:
 before do
-  	config = {
-		:consumer_key => 'wVzUO14M25jvS3vmmtfDAtmh6',
-    	:consumer_secret => 'x1hieq7QNwhbUM8wjqgl5HujELyyqmZiJUzpaWi1tQEnG8cQrX',
-    	:access_token => '1092444312430919681-k6yytElynjt9A1ziskr28eHKLg580X',
-    	:access_token_secret => 'UkK1okCoI1kFUKeofvh5Y5QQHkJyVOQxeIQGQfyCjIFQP'
-  	}
-  	@client = Twitter::REST::Client.new(config)
-  	@tweets = @client.search("to:ise19team29", result_type: "recent", lang: "en").take(2)
   	@db = SQLite3::Database.new './taxi_database.sqlite'
 end
 
 #Configure sessions
 configure do
 	enable :sessions
+    TWITTER_CLIENT = Twitter::REST::Client.new do |config|
+        config.consumer_key        = 'wVzUO14M25jvS3vmmtfDAtmh6'
+        config.consumer_secret     = 'x1hieq7QNwhbUM8wjqgl5HujELyyqmZiJUzpaWi1tQEnG8cQrX'
+        config.access_token        = '1092444312430919681-k6yytElynjt9A1ziskr28eHKLg580X'
+        config.access_token_secret = 'UkK1okCoI1kFUKeofvh5Y5QQHkJyVOQxeIQGQfyCjIFQP'
+    end
+    $tweets = TWITTER_CLIENT.search("to:ise19team29", result_type: "recent", lang: "en").take(5)
+    puts "fetched tweets"
 end
 
 #Setting up privilages to different parts of the website
@@ -47,7 +47,7 @@ helpers do
 	def admin?
     	session[:admin]
   	end
-
+  
 	def loggedin?
 		session[:loggedin]
 	end
@@ -62,28 +62,21 @@ end
 
 get '/dashboard' do
 	 #redirect '/' unless admin?
-
-	puts(@tweets)
-
+    @tweets = $tweets.dup
 	erb :dashboard
 end
 
-fetch = false
-get '/fetch_tweets' do
-    puts(@tweets)
-  if fetch then 
-    since_id = @tweets[0].id
-    @tweets = @client.search("to:ise19team29", result_type: "recent", lang: "en", since_id: "#{since_id}").take(2)
-  end
-  fetch = true
-  erb :fetch_tweets
+get '/dashboard/fetch_tweets' do
+    since_id = $tweets[0].id
+    puts $tweets[0].user.screen_name
+    $tweets =  TWITTER_CLIENT.search("to:ise19team29", result_type: "recent", lang: "en", since_id: "#{since_id}").take(5) + $tweets
+    redirect '/dashboard'
 end
 
 
 get '/index' do
 	redirect '/' unless loggedin?
 	erb :index
-	@test = "hello"
 end
 
 get '/cont' do
@@ -150,12 +143,13 @@ end
 
 post '/replyToTweet' do
   puts("lol #{params[:tweetid]} #{params[:screen_name]}" )
-  @client.update("@#{params[:screen_name]} #{params[:reply]}", :in_reply_to_status_id => params[:tweetid].to_i)
+  TWITTER_CLIENT.update("@#{params[:screen_name]} #{params[:reply]}", :in_reply_to_status_id => params[:tweetid].to_i)
   redirect '/dashboard'
 end
 
-post '/fetch_tweets' do
- 
+post '/delete_tweet' do
+  index = (params[:tweetindex]).to_i
+  $tweets.delete($tweets[index])
   redirect '/dashboard'
 end
 
