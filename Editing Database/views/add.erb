@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add a User</title>
+</head>
+<body>
+<h1>Add a User</h1>
+
+<% if @submitted && @all_ok %>
+	<p>User Added.</p>
+<% else %>
+
+<% if @submitted && !@all_ok %>
+	<p style="color:red">There were errors in your form submission, please correct them below.</p>
+<% end %>
+
+<form method="post" action="add">
+
+	<% if @submitted && !@unique %>
+    	<p style="color:red">Please enter a unique city/country pair</p>
+    <% end %>
+
+    <% if @submitted && !@city_ok %>
+      	<p style="color:red">Please enter a city</p>
+    <% end %>
+
+    <p>ID:
+      	<input type="text" name="city" value="<%=h @city if @submitted %>"/>
+    </p>
+
+    <p>Name:
+      	<input type="text" name="country" value="<%=h @country if @submitted %>"/>
+    </p>
+
+    <% if @submitted && !@population_ok %>
+      	<p style="color:red">Please enter a population value that is a number</p>
+    <% end %>
+
+    <p>Date/Time:
+      	<input type="text" name="country" value="<%=h @country if @submitted %>"/>
+    </p>
+
+	<p>User Type:
+      	<input type="text" name="country" value="<%=h @country if @submitted %>"/>
+    </p>
+
+	<p>Free Rides Left:
+      	<input type="text" name="country" value="<%=h @country if @submitted %>"/>
+    </p>
+
+    <input type="submit" value="Submit" />
+</form>
+
+<% end %>
+
+</body>
+</html>
