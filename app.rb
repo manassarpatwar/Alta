@@ -61,15 +61,18 @@ get '/' do
 end
 
 get '/dashboard' do
-	 #redirect '/' unless admin?
+    redirect '/' unless admin?
     @tweets = $tweets.dup
 	erb :dashboard
 end
 
 get '/dashboard/fetch_tweets' do
-    since_id = $tweets[0].id
-    puts $tweets[0].user.screen_name
-    $tweets =  TWITTER_CLIENT.search("to:ise19team29", result_type: "recent", lang: "en", since_id: "#{since_id}").take(5) + $tweets
+    if $tweets.length > 0
+      $since_id = $tweets[0].id
+      puts $tweets[0].user.screen_name
+    end
+    $tweets =  TWITTER_CLIENT.search("to:ise19team29", result_type: "recent", lang: "en", since_id: "#{$since_id}").take(5) + $tweets
+    @taxiTable =  @db.execute %{SELECT * FROM taxis} #Gather all taxis 
     redirect '/dashboard'
 end
 
@@ -148,8 +151,11 @@ post '/replyToTweet' do
 end
 
 post '/delete_tweet' do
+  $since_id = $tweets[0].id
+  puts $tweets[0].user.screen_name
   index = (params[:tweetindex]).to_i
   $tweets.delete($tweets[index])
+  $tweets =  TWITTER_CLIENT.search("to:ise19team29", result_type: "recent", lang: "en", since_id: "#{$since_id}").take(1) + $tweets
   redirect '/dashboard'
 end
 
