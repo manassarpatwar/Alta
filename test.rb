@@ -1,19 +1,13 @@
 require 'erb'
 require 'sinatra'
 require 'twitter'
-require "sinatra/cookies"
-require 'rufus-scheduler'
+
 
 
 set :bind, '0.0.0.0' # needed if you're running from Codio
 
 include ERB::Util
-scheduler = Rufus::Scheduler.new
-time = 0
-scheduler.every "1s" do
-  time = time + 1
-  #puts time
-end
+
 
 before do
   config = {
@@ -52,4 +46,8 @@ end
 
 get '/cont' do
   erb :homepage_cont
+end
+
+get '/order' do
+  erb :user_orders
 end

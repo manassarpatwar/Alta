@@ -7,45 +7,26 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script async src="js/content.js"></script>
-    <link rel="stylesheet" href="css/homepage_cont.css" />
+    <script async src="js/user_header.js"></script>
     <link rel="stylesheet" href="css/user_header.css" />
+    <link rel="stylesheet" href="css/homepage_cont.css" />
     <link rel="stylesheet" href="css/user_footer.css" />
   </head>
     
 
-  <body id="bg">    
+  <body id="bg">  
+  <!--navigation bar-->
+    <header class="stick">
+        <%= erb :user_header %>
+    </header> 
+     
     <div id = "wrapper">
       <div id = "page-content-wrapper">
 
-<!--navigation bar-->
-        <header>
-            <%= erb :user_header %>
-        </header>
-
 <!--Welcoming Sign up-->
-<div class="welcome-row">
-    <div class="welcome-column1">
-        <div id="fade-in">
-            <!--can be deleted-->
-            <div id="welcoming-box">
-
-                <div class="center">
-                    <div class="head-box1">RIDE WITH US
-                    </div>
-                </div>
-                <div class="center">
-                    <div class="head-box2">Sign up now
-                    </div>
-                </div>
-                <div class="center">
-                    <div class="head-box3"><a class="twitter" href="https://twitter.com/login?lang=en-gb">Twitter</a>
-                    </div>
-                </div>
-            </div>
-        </div>     
-    </div>
-    <div class="welcome-column1">
+<div class="welcome-row" id="section1">
         <div id="fade-in">
             <!--can be deleted-->
             <div id="welcoming-box">
@@ -54,7 +35,7 @@
                     </div>
                 </div>
                 <div class="center">
-                    <div class="head-box2">Sign up now
+                    <div class="head-box2">Sign up now for the Greatest DEAL and FREE RIDES
                     </div>
                 </div>
                 <div class="center">
@@ -69,7 +50,7 @@
 
 <!--Content 1: About Us-->
 
-    <div class="container info1-container">
+    <div class="container info1-container" id="section2">
         <div class="bd-row1 info1-row1">
             <div class="bd-column1">
                 <div class="info1-box">
@@ -91,7 +72,7 @@
 
 <!--Content 2: How to use our service-->
 
-    <div class="info2-container container">
+    <div class="info2-container container" id="section3">
         <div class="bd-row1">
             <div class="info2-column">
                 <div class="info2-box">
@@ -114,7 +95,7 @@
 
 <!--Content 3: How it works-->
 
-    <div class="info3-container container">
+    <div class="info3-container container" id="section4">
         <div class="bd-row1">
             <div class="info3-column">
                 <img class="info3-img" src="img/info3.jpeg">
@@ -138,7 +119,7 @@
 
 <!--Content 4: Types of taxi-->
 
-    <div class="slideshow-container" style="background-color:#FFFFFF; height: 700px;">
+    <div class="slideshow-container" id="section5" style="background-color:#FFFFFF; height: 700px;">
         <div class="info4-indicators">
             <span class="info4-indict" onclick="currentSlide(1)">Type 1</span> 
             <span class="info4-indict" onclick="currentSlide(2)">Type 2</span>
@@ -233,7 +214,7 @@
 
 <!-- Content 5: Customer Reviews-->
 
-    <div class="info5-container">        
+    <div class="info5-container" id="section6">        
         <p class="info5-title">
             What do people say
         </p>
@@ -304,7 +285,7 @@
     
 
 <!-- Content 6: Contact us and banner -->
-    <div class="info6-container">        
+    <div class="info6-container" id="section7">        
 
         <div class="info6-column">
             <div class="info6-box">
@@ -336,35 +317,11 @@
     </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <!--footer-->
         <%= erb :user_footer %>
 
       </div>
     </div>
   </body>
+  
 </html>
