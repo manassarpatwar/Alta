@@ -15,37 +15,47 @@
 <% end %>
 
 <form method="post" action="add">
-
-	<% if @submitted && !@unique %>
-    	<p style="color:red">Please enter a unique city/country pair</p>
+	<!-- Error Validation -->
+    <% if @submitted && !@id_ok %>
+      	<p style="color:red">Please enter a valid ID</p>
     <% end %>
 
-    <% if @submitted && !@city_ok %>
-      	<p style="color:red">Please enter a city</p>
+	<% if @submitted && !@name_ok %>
+      	<p style="color:red">Please enter a valid name</p>
     <% end %>
+
+	<% if @submitted && !@dateTime_ok %>
+      	<p style="color:red">Please enter a valid date/time</p>
+    <% end %>
+
+	<% if @submitted && !@userType_ok %>
+      	<p style="color:red">Please enter a valid user type (0 or 1)</p>
+    <% end %>
+
+	<% if @submitted && !@freeRide_ok %>
+      	<p style="color:red">Please enter a valid free ride value (0 or more)</p>
+    <% end %>
+
+
 
     <p>ID:
-      	<input type="text" name="city" value="<%=h @city if @submitted %>"/>
+      	<input type="text" name="id" value="<%=h @id if @submitted %>"/>
     </p>
 
     <p>Name:
-      	<input type="text" name="country" value="<%=h @country if @submitted %>"/>
+      	<input type="text" name="name" value="<%=h @name if @submitted %>"/>
     </p>
 
-    <% if @submitted && !@population_ok %>
-      	<p style="color:red">Please enter a population value that is a number</p>
-    <% end %>
-
     <p>Date/Time:
-      	<input type="text" name="country" value="<%=h @country if @submitted %>"/>
+      	<input type="text" name="dateTime" value="<%=h @dateTime if @submitted %>"/>
     </p>
 
 	<p>User Type:
-      	<input type="text" name="country" value="<%=h @country if @submitted %>"/>
+      	<input type="text" name="userType" value="<%=h @userType if @submitted %>"/>
     </p>
 
 	<p>Free Rides Left:
-      	<input type="text" name="country" value="<%=h @country if @submitted %>"/>
+      	<input type="text" name="freeRide" value="<%=h @freeRide if @submitted %>"/>
     </p>
 
     <input type="submit" value="Submit" />

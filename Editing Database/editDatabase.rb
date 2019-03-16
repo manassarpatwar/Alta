@@ -21,7 +21,7 @@ post '/add' do
 	# sanitize values
 	@id = params[:id].strip
 	@name = params[:name].strip
-	@dateTime = params[:dateTime].strip
+	@dateTime = params[:dateTime]
 	@userType = params[:userType].strip
 	@freeRide = params[:freeRide].strip
 
@@ -35,7 +35,7 @@ post '/add' do
 	#count = @db.get_first_value('SELECT COUNT(*) FROM cities WHERE city = ? AND country = ?', [@city, @country])
 	#@unique = (count == 0)
 	
-	@all_ok = @city_ok && @name_ok && @dateTime_ok && @userType_ok && @freeRide_ok
+	@all_ok = @id_ok && @name_ok && @dateTime_ok && @userType_ok && @freeRide_ok
 
   	# add data to the database
 	if @all_ok
@@ -46,13 +46,17 @@ post '/add' do
 end
 
 def isPositiveNumber? string
-	if Integer(string) rescue false
-		if string.to_i >= 0
+	begin
+		Float(string)
+		int = string.to_i 
+		puts "Not fail"
+		if int >= 0
 			return true
 		else
 			return false
 		end
-	else
+	rescue 
+		puts "fail"
 		return false
 	end
 end
