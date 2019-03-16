@@ -12,7 +12,7 @@ end
 
 get '/add' do
 	@submitted = false
-	erb :add
+	erb :addUser
 end
 
 post '/add' do
@@ -29,7 +29,11 @@ post '/add' do
 	@id_ok = !@id.nil? && @id != ""
 	@name_ok = !@name.nil? && @name != ""
 	@dateTime_ok = !@dateTime.nil? && @dateTime != ""
-	@userType_ok = @userType = "1" || @userType = "0"
+	if @userType = "1" || @userType = "0"
+		@userType_ok = true
+	else
+		@userType_ok = false
+	end
 	@freeRide_ok = isPositiveNumber?(@freeRide)
 
 	#count = @db.get_first_value('SELECT COUNT(*) FROM cities WHERE city = ? AND country = ?', [@city, @country])
@@ -42,7 +46,7 @@ post '/add' do
     	# do the insert
 		@db.execute('INSERT INTO users VALUES (?, ?, ?, ?, ?)', [@id, @name, @dateTime, @userType.to_i, @freeRide.to_i])
   	end
-	erb :add
+	erb :addUser
 end
 
 def isPositiveNumber? string
