@@ -23,9 +23,12 @@ before do
   	@db = SQLite3::Database.new './taxi_database.sqlite'
     @taxiTable = @db.execute("SELECT * FROM taxis")
     $tweets.each do |deletedTweet|
-      if deletedTweet.equal? Twitter::Streaming::DeletedTweet then
-        $tweets.delete(deletedTweet)
-      end
+        begin
+            
+        rescue Twitter::Error::NotFound => err
+            $tweets.delete(deletedTweet)
+        end 
+
     end
 end
 
