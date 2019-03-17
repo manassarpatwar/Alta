@@ -1,26 +1,303 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>test</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="js/jquery.min.js"></script>
-  <link rel = "stylesheet" href = "css/user_header.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-</head>
-<body>
+
+  <head>
+    <title>ALTA Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script async src="js/content.js"></script>
+    <script async src="js/home_header.js"></script>
+    <link rel="stylesheet" href="css/home_header.css" />
+    <link rel="stylesheet" href="css/home_content.css" />
+    <link rel="stylesheet" href="css/home_footer.css" />
+  </head>
+    
+
+  <body id="bg">  
+  <!--navigation bar-->
+    <header class="stick">
+        <%= erb :home_header %>
+    </header> 
+     
     <div id = "wrapper">
-       <%= erb :user_header %>
       <div id = "page-content-wrapper">
-      </div>
+
+<!--Welcoming Sign up-->
+<div class="welcome-row" id="section1">
+        <div id="fade-in">
+            <!--can be deleted-->
+            <div id="welcoming-box">
+                <div class="center">
+                    <div class="head-box1">RIDE WITH US
+                    </div>
+                </div>
+                <div class="center">
+                    <div class="head-box2">Sign up now for the Greatest DEAL and FREE RIDES
+                    </div>
+                </div>
+                <div class="center">
+                    <div class="head-box3"><a class="twitter" href="https://twitter.com/login?lang=en-gb">Twitter</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        
+
+<!--Content 1: About Us-->
+
+    <div class="container info1-container" id="section2">
+        <div class="bd-row1 info1-row1">
+            <div class="bd-column1">
+                <div class="info1-box">
+                    <div class="info1-title">About Us</div>
+                    <div class="info1-vl"></div>
+                </div>
+            </div>
+            <div class="bd-column2">
+                <div class="info1-content">
+                    We are Alta. We are here to help you get a taxi throught twitter,so you no need to bother with credit card infomartion.
+                </div>
+            </div>
+
+        </div>
     </div>
 
-	<p>
-		You logged into index page
-	</p>
 
-	<p><a href="/logout">Logout</a></p>
+<!--Content 2: How to use our service-->
 
-</body>
+    <div class="info2-container container" id="section3">
+        <div class="bd-row1">
+            <div class="info2-column">
+                <div class="info2-box">
+                    <div class="info2-title">How to use our <br> services</div>
+                        <div class="info2-content">
+                            <ol>
+                                <li>Login to Twitter,tweet us by using @altataxi,which taxi type you want (S,M or L) and where you want to go.</li>
+                                <li>Our employee will reply or dm you for more information about the taxi.</li>
+                                <li>Get in the car and relax till you reach your desired destination.Pay the taxi driver with cash when you reach the destination.</li>
+                            </ol> 
+                        </div>
+                    </div>
+            </div>
+            <div class="info2-column">
+                <img class="info2-img" src="img/info1.jpg">
+            </div>
+        </div>
+    </div>
+
+
+<!--Content 3: How it works-->
+
+    <div class="info3-container container" id="section4">
+        <div class="bd-row1">
+            <div class="info3-column">
+                <img class="info3-img" src="img/info3.jpeg">
+            </div>
+
+            <div class="info3-column info3-column2">
+                <div class="info3-box">
+                    <div class="info3-title">How does it work</div>
+                        <div class="info3-content">
+                          The employee would see your tweet and he/she would search the nearest taxi near you.If you do not have location service on in twitter,he/she will reply or dm you to ask for your location.
+                          Then he/she would tell you about the taxi information(the taxi's plate and contact number).The taxi driver would ask what's your tweeter name and you could confirm it by saying it.
+                          Pay the driver when you have reached the destination.  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<!--Content 4: Types of taxi-->
+
+    <div class="slideshow-container" id="section5" style="background-color:#FFFFFF; height: 700px;">
+        <div class="info4-indicators">
+            <span class="info4-indict" onclick="currentSlide(1)">Type S</span> 
+            <span class="info4-indict" onclick="currentSlide(2)">Type M</span>
+            <span class="info4-indict" onclick="currentSlide(3)">Type L</span>
+        <!-- <span class="info4-indict" onclick="currentSlide(4)">Type 4</span> -->
+        </div>
+        <div class="mySlides">
+            <div class="info4-container container">
+                <div class="bd-row1">
+                    <div class="info4-column">
+                        <div class="info4-box">
+                            <div class="info4-title">Types of taxi</div>
+                            <div class="info4-content1">Small (S) taxi</div>
+                            <div class="info4-content2">
+                            This is a 1-4 seated taxi.<br>
+                            The cheapest taxi type you find here.<br>
+                            <br>
+                            This would be great for a low budget ride<br>
+                            Price range would be vary based on distance but cheapest rate.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info4-column">
+                        <img class="info4-img" src="img/info3.jpeg">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mySlides">
+            <div class="info4-container container">
+                <div class="bd-row1">
+                    <div class="info4-column">
+                        <div class="info4-box">
+                            <div class="info4-title">Types of taxi</div>
+                            <div class="info4-content1">Medium (M) taxi</div>
+                            <div class="info4-content2">
+                            This is a 1-6 seated taxi <br>
+                            This would be a great deal if you are going out as a group.<br>
+                            Or you went out to shop and wwant to bring back a giant screen TV.<br>
+                            If you a larger person compare to the others<br>
+                            This is fine if you want to ride it alone since it would have a larger breathing room.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info4-column">
+                        <img class="info4-img" src="img/info3.jpeg">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mySlides">
+            <div class="info4-container container">
+                <div class="bd-row1">
+                    <div class="info4-column">
+                        <div class="info4-box">
+                            <div class="info4-title">Types of taxi</div>
+                            <div class="info4-content1">Luxury (L) taxi</div>
+                            <div class="info4-content2">
+                            This will be a 1-4 seated taxi. <br>
+                            This will be the most expensive taxi in this service.<br>
+                            You will get to sleep in the most fashionable way.Used it to snap other how glamorous you are. <br>
+                            This service would allow you to use the pillow and the blanket in the taxi.<br>
+                            Don't worry about the car since it would be BMW, Lexus, Mercedes etc with professional driver.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info4-column">
+                        <img class="info4-img" src="img/info3.jpeg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<!-- Content 5: Customer Reviews-->
+
+    <div class="info5-container" id="section6">        
+        <p class="info5-title">
+            What do people say
+        </p>
+
+        <div class="info5-column">
+            <div class="info5-box">
+                <div class="info5-cont">
+                <p class="info5-name">Michael
+                    <span class="fa fa-star info5-checked"></span>
+                    <span class="fa fa-star info5-checked"></span>
+                    <span class="fa fa-star info5-checked"></span>
+                    <span class="fa fa-star info5-checked"></span>
+                    <span class="fa fa-star info5-checked"></span>
+                </p>
+                <p class="info5-date">28/02/2019</p>
+                <p class="info5-reviews">
+                    This is one of the great services that I have used.Would higly recommend the L type taxi.Special compare to other services.
+                </p>
+                </div>
+            </div>
+        </div>        
+
+        <div class="info5-column">
+            <div class="info5-box">
+                <div class="info5-cont">
+                <p class="info5-name">Kassandra
+                        <span class="fa fa-star info5-checked"></span>
+                        <span class="fa fa-star info5-checked"></span>
+                        <span class="fa fa-star info5-checked"></span>
+                        <span class="fa fa-star info5-checked"></span>
+                        <span class="fa fa-star"></span>
+                        </p>
+                    <p class="info5-date">04/03/2019</p>
+
+                    <p class="info5-reviews">
+                            This is my lifesaver service,there was one time I was in a rush.Just tweeted it to have the fastest taxi nearby, it took about 5 minute only.
+                        </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="info5-column">
+            <div class="info5-box">
+                <div class="info5-cont">
+                <p class="info5-name">Simonas
+                        <span class="fa fa-star info5-checked"></span>
+                        <span class="fa fa-star info5-checked"></span>
+                        <span class="fa fa-star info5-checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        </p>
+                    <p class="info5-date">11/03/2019</p>
+
+                    <p class="info5-reviews">
+                        There's not much trouble using these services.Just tweeted it and the employee is fast in replying.
+                        Taxi wise is the same as others.So I will rate these 3 star.
+                        </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+<!-- Content 6: Contact us and banner -->
+    <div class="info6-container" id="section7">        
+
+        <div class="info6-column">
+            <div class="info6-box">
+                <div class="info6-cont">
+                </div>
+            </div>
+        </div>        
+
+        <div class="info6-maincolumn">
+            <div class="info6-box">
+                <div class="info6-cont">
+                    <p class="info6-title">Get in Touch</p>
+                    <p class="info6-content1">
+                        For any questions or latest news, find us on Twitter, @altasheffiedl.
+                        </p>
+                    <p class="info6-content2">
+                        Don't Forget to sgin up for deals and offers!
+                        </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="info6-column">
+            <div class="info6-box">
+                <div class="info6-cont">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--footer-->
+        <%= erb :home_footer %>
+
+      </div>
+    </div>
+  </body>
+  
 </html>
