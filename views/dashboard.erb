@@ -9,6 +9,7 @@
   <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>s
 </head>
 <body>
   <div id = "wrapper">
@@ -31,14 +32,17 @@
                     <% @tweets.reverse_each do |tweet| %>
                         <tr>
                           <td class = "tweets">
-                            <h1><%= @tweets.index(tweet) %></h1>
                             <div>
-                              <%=  TWITTER_CLIENT.oembed(tweet, hide_media: "true", hide_thread: "true").html%>
+                              <% unless tweet.nil? %>
+                                <%=  TWITTER_CLIENT.oembed(tweet, hide_media: "true", hide_thread: "true").html%>
+                              <% end %>
                               <div class = "reply">
                                 <form method="post" action = "replyToTweet"> 
                                   Reply to Tweet: <input type="text" name="reply" value="<%=h params[:reply] %>"/>
+                                  <% params[:tweetindex] = @tweets.index(tweet) %>
                                   <% params[:tweetid] = tweet.id %>
                                   <% params[:screen_name] = tweet.user.screen_name %>
+                                  <input type = "hidden" name = "tweetindex" value = "<%=h params[:tweetindex]%>" />
                                   <input type = "hidden" name = "tweetid" value = "<%=h params[:tweetid]%>" />
                                   <input type = "hidden" name = "screen_name" value = "<%=h params[:screen_name]%>" />
                                   <input type="submit" name="button" value="reply" />
@@ -49,10 +53,10 @@
                               <img src = "img/check.png" class= "check" alt = "reply tweet" width = "50">
                               <form method="post" action = "delete_tweet"> 
                                 <% params[:tweetindex] = @tweets.index(tweet) %>
-                                <!-- <img src = "img/cross.png" class = "delete" alt = "delete tweet" width = "50"> -->
                                 <input type = "hidden" name = "tweetindex" value = "<%=h params[:tweetindex]%>" />
                                 <input type="image" src = "img/cross.png" name="button" value="delete" class = "delete" id = "delete_icon">
                               </form>
+                              <a href = "<%= tweet.uri %>"  target="_blank"><img src = "img/more_info.png" class= "moreinfo" alt = "get more info" width = "50"></a>
                             </div>
                           </td>
                         </tr>
@@ -61,24 +65,11 @@
                <% end %>
               </table>
           </div>
-          <h2>Taxis</h2>
-          <div>
-            <table>
-              <tr>
-                <td>
-                
-                    <% @taxiTable.each do |taxi| %>
-                      <%=h taxi[0] %>
-                    <% end %>
-                  
-                </td>
-              </tr>
-            </table>
-          </div>
         </div>
+        <%= erb :addJourney %>
       </div>
     </div>
-    <script>
+    <script>    
       $('.check').click(function() {
           $($(this).parent().prev()).toggleClass("displayreply");
       });

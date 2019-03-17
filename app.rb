@@ -7,6 +7,7 @@ require 'twitter'
 require 'rufus-scheduler'
 require 'omniauth-twitter'
 require 'sqlite3'
+require_relative 'addJourney.rb'
 
 set :bind, '0.0.0.0' # Needed when running from Codio
 
@@ -27,7 +28,7 @@ end
 #Before running load these configurations:
 before do
   	@db = SQLite3::Database.new './taxi_database.sqlite'
-	@taxiTable = @db.execute("SELECT * FROM taxis")
+    @taxiTable = @db.execute("SELECT * FROM taxis")
 end
 
 #Configure sessions
@@ -39,7 +40,7 @@ configure do
         config.access_token        = '1092444312430919681-k6yytElynjt9A1ziskr28eHKLg580X'
         config.access_token_secret = 'UkK1okCoI1kFUKeofvh5Y5QQHkJyVOQxeIQGQfyCjIFQP'
     end
-    $tweets = TWITTER_CLIENT.search("to:ise19team29", result_type: "recent", lang: "en").take(5)
+    $tweets = TWITTER_CLIENT.mentions_timeline(count: "5")
     puts "fetched tweets"
 end
 
@@ -64,6 +65,8 @@ end
 get '/dashboard' do
     redirect '/' unless admin?
     @tweets = $tweets.dup
+    @submitted = false
+	erb :addJourney
 	erb :dashboard
 end
 
@@ -72,11 +75,9 @@ get '/dashboard/fetch_tweets' do
       $since_id = $tweets[0].id
       puts $tweets[0].user.screen_name
     end
-    $tweets =  TWITTER_CLIENT.search("to:ise19team29", result_type: "recent", lang: "en", since_id: "#{$since_id}").take(5) + $tweets
-    @taxiTable =  @db.execute %{SELECT * FROM taxis} #Gather all taxis 
+    $tweets =  TWITTER_CLIENT.mentions_timeline(count: "5", since_id: "#{$since_id}") + $tweets
     redirect '/dashboard'
 end
-
 
 get '/index' do
 	redirect '/' unless loggedin?
@@ -146,17 +147,15 @@ end
 #--------------------Post Methods--------------------#
 
 post '/replyToTweet' do
-  puts("lol #{params[:tweetid]} #{params[:screen_name]}" )
-  TWITTER_CLIENT.update("@#{params[:screen_name]} #{params[:reply]}", :in_reply_to_status_id => params[:tweetid].to_i)
+  replytweet = TWITTER_CLIENT.update("@#{params[:screen_name]} #{params[:reply]}", :in_reply_to_status_id => params[:tweetid].to_i)
   redirect '/dashboard'
 end
 
 post '/delete_tweet' do
   $since_id = $tweets[0].id
-  puts $tweets[0].user.screen_name
   index = (params[:tweetindex]).to_i
   $tweets.delete($tweets[index])
-  $tweets =  TWITTER_CLIENT.search("to:ise19team29", result_type: "recent", lang: "en", since_id: "#{$since_id}").take(1) + $tweets
+  $tweets =  TWITTER_CLIENT.mentions_timeline(count: "1", since_id: "#{$since_id}") + $tweets
   redirect '/dashboard'
 end
 
