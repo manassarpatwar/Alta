@@ -24,7 +24,7 @@ before do
     @taxiTable = @db.execute("SELECT * FROM taxis")
     $tweets.each do |deletedTweet|
         begin
-            
+            TWITTER_CLIENT.status(deletedTweet.uri) == deletedTweet
         rescue Twitter::Error::NotFound => err
             $tweets.delete(deletedTweet)
         end 
