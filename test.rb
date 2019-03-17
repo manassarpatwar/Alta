@@ -4,7 +4,7 @@ require 'twitter'
 
 
 
-set :bind, '0.0.0.0' # needed if you're running from Codio
+set :bind, '0.0.0.0' # nmeeded if you're running from Codio
 
 include ERB::Util
 
