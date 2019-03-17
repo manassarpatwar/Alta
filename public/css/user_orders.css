@@ -1,0 +1,224 @@
+#ordersBG{
+    background-color: #f6f1ea;
+}
+.container{
+    width: 75%;
+    background-color: #ffffff;
+    padding-left:30px;
+    padding-right:30px;
+}
+.container2{
+    width: 50%;
+    background-color: #ffffff;
+    padding-left:30px;
+    padding-right:30px;
+    margin-left:12.5%;
+}
+.inline{
+    display:inline-block;
+}
+/* Welcoming sign */
+.user-greeting{
+    font-size: 50px;
+    padding-top:8%;
+    padding-bottom:5%;
+    text-align:center;
+}
+
+/* table title and table types */
+.table-title{
+    padding-top:10%;
+    padding-bottom:2%;
+}
+.title-button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+
+  /* Search bar */
+  #myInput{
+    width: 25%;
+
+}
+
+
+
+/* Sorting dropdown list */
+
+.dropbtn {
+    background-color: #FFFFFF;
+    color: rgb(0, 0, 0);
+    padding: 5% 0 5% 0;
+    border: none;
+    cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    color:rgb(68, 68, 68);
+}
+
+.sortDropdown {
+    position: relative;
+    display: inline-block;
+    float:right;
+    border-style: solid;
+    padding-left:5px;
+    padding-right:5px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 130px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.sortDropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+
+
+/* Ride indicators */
+.ride-types{
+    padding-top:2.5%;
+    padding-bottom:0.5%;
+    border-bottom:1px solid rgb(117, 117, 117);
+}
+.ride-types a{
+    padding-right:3%;
+}
+.icon-ind{
+    padding-bottom:50px;
+    display:none;
+}  
+
+
+
+
+/* Ride History Style 1: Table View */
+
+.userTable1{
+    background-color:#f2f2f2;
+    margin-bottom:0;
+    border-bottom:none;
+
+}
+.userTable2{
+    background-color:#ffffff;
+    margin-top:0;
+    border-top:none
+}
+.field1-regNum::before{
+    content:"#";
+}
+.field2-rate::before{
+    content:"";
+    float:right;
+}
+.field3-date::before{
+    content:"On";
+}
+.field4-time::before{
+    content:"at";
+}
+.field5-startLoc::before{
+    content:"Start";
+}
+.field6-endLoc::before{
+    content:"End";
+}
+.field7-taxi-type::before{
+    content:"Type of Taxi";
+}
+.field8-free::before{
+    content:"Free Ride";
+    padding-bottom:0;
+}
+.field9-cancelled::before{
+    content:"Cancelled";
+}
+.style1-regNum{
+    font-size: 30px;
+}
+.rate-checked {
+    color: orange;
+}
+td.col-date{
+    margin:0;
+}
+.col-date, .col-time, .taxi-type{
+    padding-top:0;
+}
+.col-free, .col-reg-num, .col-date, .col-time, .col-cancelled{
+    padding-bottom:0;
+}
+
+a.convo-link{
+    color:#0189c9;
+    float:right
+}
+.col-rate{
+    text-align:right;
+}
+td.col-date, td.col-time{
+    padding-bottom:0;
+}
+.col-reg-num, .col-startLoc{
+    padding-top:3%;
+}
+.field8-icon, .field9-icon{
+    background-image: url("../img/bkground.jpeg");
+    background-size:cover;
+    background-repeat: no-repeat;
+    height:15px;
+    width:15px;
+}
+
+
+
+/* Ride History Style 2: Database VIew */
+table {
+    margin-top:3%;
+    border-spacing: 0;
+    width: 100%;
+    border-top: 5px solid rgb(75, 75, 75);
+    border-bottom:5px solid rgb(66, 66, 66);
+    margin-bottom:100px;
+  }
+  .scrollable{
+      height:300px;
+      overflow:scroll;
+      overflow-y: scroll;
+  }
+  th {
+    cursor: pointer;
+  }
+  
+  th, td {
+    text-align: left;
+    padding:15px 30px 15px 30px;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+
+  }
+ 

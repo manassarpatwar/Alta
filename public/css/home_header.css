@@ -1,0 +1,95 @@
+
+.navbar-fixed-top{
+  position: absolute;
+  height:5vw;
+  background-color:rgba(0, 0, 0, 0.315) !important;
+}
+/* can be deleted */
+.navbar-fixed-top.scrolled{
+  height:5vw;
+  background-color:rgba(32, 18, 228, 0.726) !important;
+}
+.nav-column {
+  float: left;
+  width: 25%;
+  padding: 0 3%;
+}
+.nav-column2 {
+  width: 50%;
+}
+.nav-cont{
+  color:rgba(85, 83, 83, 0.788);
+}
+.nav-cont::after{
+  content: "";
+  clear: both;
+  display: table;
+  text-align:center;
+}
+a.nav-buttons{
+  text-decoration:none;
+}
+a.nav-buttons:hover{
+  color:black;
+  font-weight:300;
+}
+
+/* Left Column*/
+img.nav-logo{
+  margin-top:2px;
+  height:65px;
+}
+.nav-logo, .nav-name{
+  float:left;
+}
+.nav-logo{
+  padding:5%;
+}
+div.nav-name{
+  padding:2.5%;
+  font-size: 40px;
+  font-style: normal;
+  white-space: nowrap;
+  font-family: Verdana,Arial,sans-serif;
+  font-weight: 100;
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+  line-height: 1.4;
+}
+
+
+
+/* Center Column */
+.nav-inline{
+  margin-top:1.7%;
+}
+a.nav-buttons, .nav-signin, .nav-vl, .nav-login{
+  line-height:2;
+  text-align: left;
+  font-weight:100;
+  letter-spacing: 3px;
+  display: inline-block;
+  padding:10px;
+  color:white;
+  text-transform: uppercase;
+
+}
+.nav-center{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.nav-inline{
+  display: inline-block;
+
+}
+
+
+/* Right column */
+.nav-signin, .nav-vl, .nav-login{
+  float: left;
+}
+.nav-inline2{
+  margin-top:3%;
+}

@@ -7,61 +7,301 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script async src="js/user_orders.js"></script>
     <link rel="stylesheet" href="css/user_header.css" />
     <link rel="stylesheet" href="css/user_footer.css" />
     <link rel="stylesheet" href="css/user_orders.css" />
   </head>
 
-  <body>
-
-  <!--Welcoming sign-->
-    <div class="container user-header">
-      <p class="user-gretting">
-        <div class="user-hi"> Hi </div>
-        <div class="user-name"> <!--extract from database--> </div>
-        </p> <br>
-      <p class="user-header-p"> Here you can view your past transactions.</p>
-    </div>
-  
-  <!--Deals message-->
-
-  <!--Filtable Search bar-->
-  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search" title=" ">
-
-    <div class="container user-searching">
-      <div class="user-searching">
-        <div class="user-searchBar-filterdropdown"></div>
-        <div class="user-searchBar-input"><div>
-        <div class="user-searchBarButton"></div>
-      </div>
-    </div>
-
-    <!--Table-->
-    <table id="table-container">
-
-      <!--Table column-eliminate?
-          <button><summary>
-            </summary></button>
-          <table id="user-table">
-      -->
-        <tr class="user-table-header">
-          <th>head1</th>
-          <th>head2</th>
-          <th>head3</th>
-        ......
-        </tr>
-
-        <tr>
-          <td>fields1</td>
-          <td>fields2</td>
-        .....
-        </tr>
-
-        </table>
+  <body id="ordersBG">
+    <!--navigation bar-->
+      <header class="stick">
+          <%= erb :user_header %>
+      </header> 
+    
+    <!--Small navigators-->
+    
+    <!--Table title and table types-->
+      <div class="container table-title">
+        <p class="table-titleName inline"> My Rides </p>
+        <p class="table-titleView inline"> View As: </p>
+        <a href="#" class="title-button type1-button inline">Table</a>
+        <a href="#" class="title-button type1-button inline">Database</a>
       </div>
 
 
+    <!--Filtable Search bar-->
+      <div class="search-bar container">
+      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search" title=" " class="inline">
 
+        <!--Sorting dropdown list-->
+        <div class="sortDropdown">
+          <div class="dropdown-title inline"> Sort by : </div>
+          <button onclick="myFunction()" class="dropbtn inline">All</button>
+          <div id="myDropdown" class="dropdown-content">
+            <a href="#home">Newest</a>
+            <a href="#about">Oldest</a>
+            <a href="#contact">Highest Rating</a>
+            <a href="#contact">Lowest Rating</a>
+          </div>
+      </div>
+      </div>
+
+    <!--Ride indicators-->
+    <div class="container ride-types">
+      <a href="#home" >All</a>
+      <a href="#about">Paid</a>
+      <a href="#contact">Free</a>
+      <a href="#contact">Cancelled</a>
+    </div>
+
+
+    <!--Icon indicators-->
+      <!-- this is only shown for style Table-->
+    <div class="icon-ind container">
+      <img src="" class="table-icon"> <div class="indicators">This is a free ride</div>
+      <img src="" class="table-icon"> <div class="indicators">This is a cancelled ride</div>
+    </div>
+
+
+
+
+
+    <!--Rides History-->
+
+    <!--Rides History Style 1: Table View-->
+    <div class="tablestyle1">
+      <table id="userTable"  class="container container2 userTable1">
+
+        <tr class="userTable1">
+          <td class="col-reg-num">
+            <div class="field1-regNum inline"></div>
+            <div id="regNum" class="style1-regNum inline">AK12347890
+            </div>
+          </td>
+          <td></td>
+          <td></td>
+          <td class="col-rate">
+            <div class="field2-rate inline"></div>
+            <div id="rating" class="inline">
+              <span class="fa fa-star rate-checked"></span>
+              <span class="fa fa-star rate-checked"></span>
+              <span class="fa fa-star rate-checked"></span>
+              <span class="fa fa-star rate-checked"></span>
+              <span class="fa fa-star"></span>
+            </div>
+          </td>
+        </tr>
+      </table>
+      
+      <table id="userTable"  class="container container2 userTable2">
+      <tr class="userTable1">
+          <td class="col-date">
+            <div class="field3-date inline"></div>
+            <div id="date" class="inline"> 18/01/2019 <div>
+          </td>
+          <td class="col-time">
+            <div class="field4-time inline"></div>
+            <div id="time" class="inline"> 09:22 PM </div>
+          </td>
+          <td></td><td></td>
+        </tr>
+
+        <tr class="userTable2">
+          <td class="col-startLoc userTable2">
+            <div class="field5-startLoc inline"></div>
+          </td>
+            <td class="col-startLoc userTable2">
+            <div class="field6-endLoc inline"></div>
+          </td>
+          <td class="col-startLoc userTable2">
+            <div class="field7-taxi-type inline"></div>
+          </td>
+          <td class="userTable2"></td>
+        </tr>  
+
+        <tr class="userTable2">
+          <td class="userTable2 taxi-type">
+            <div id="taxiType" class="inline">Luxury</div>
+          </td>
+          <td class="col-startLoc userTable2">
+            <div id="startLoc" class="inline">City Center</div>
+          </td>
+          <td class="col-startLoc userTable2">
+            <div id="endLoc" class="inline">Tesco</div>
+          </td>
+          <td class="userTable2"></td>
+        </tr>      
+        
+        <tr class="userTable2">
+          <td class="userTable2 col-free">
+            <div id="free" class="field8-icon inline"></div>
+            <div class="field8-free inline"></div>
+          </td>
+          <td class="userTable2 col-cancelled">
+            <div class="inline">|</div>
+          </td>
+          <td class="userTable2 col-cancelled">
+            <div id="cancelled" class="field9-icon inline"></div>
+            <div class="field9-cancelled inline"></div>
+          </td>
+          <td class="userTable2">
+            <a href="" id="convoLink" class="convo-link">
+            Conversation link
+            </a>
+          </td>
+        </tr> 
+                  
+      </table>
+    </div>
+
+
+
+
+
+
+    <!--Rides History Style 2: Database View-->
+    <div class="tablestyle2 scrollable contianer">
+    <table id="userTable"  class="container userDatabase">
+      <tr>
+        <th onclick="sortTable(0)">Reg-num</th>
+        <th onclick="sortTable(1)">Date</th>
+        <th onclick="sortTable(2)">Time</th>
+        <th onclick="sortTable(3)">Start Location</th>
+        <th onclick="sortTable(4)">End Location</th>
+        <th onclick="sortTable(5)">Types of Taxi</th>
+        <th onclick="sortTable(6)">Free</th>
+        <th onclick="sortTable(7)">Cancelled</th>
+        <th onclick="sortTable(8)">Rating</th>
+      </tr>
+      <tr>
+        <td class="col-reg-num">1234567890</td>
+        <td class="col-date">11/12/2019</td>
+        <td class="col-time">09:20 PM</td>
+        <td class="col-startLoc">Diamond</td>
+        <td class="col-endLoc">Meadowhall</td>
+        <th class="taxi-type">Luxury</td>
+        <td class="col-free">No</td>
+        <td class="col-cancelled">No</td>
+        <td class="col-rate">1/5</td>
+      </tr>
+      <tr>
+        <td class="col-reg-num">4567890123</td>
+        <td class="col-date">18/01/2019</td>
+        <td class="col-time">09:22 PM</td>
+        <td class="col-startLoc">Allen Court</td>
+        <td class="col-endLoc">Broad Lane Court</td>
+        <th class="taxi-type">Luxury</td>
+        <td class="col-free">Yes</td>
+        <td class="col-cancelled">No</td>
+        <td class="col-rate">4/5</td>
+      </tr>
+      <tr>
+        <td class="col-reg-num">9012345678</td>
+        <td class="col-date">11/12/2018</td>
+        <td class="col-time">12:20 PM</td>
+        <td class="col-startLoc">City Center</td>
+        <td class="col-endLoc">Tesco</td>
+        <th class="taxi-type">Luxury</td>
+        <td class="col-free">No</td>
+        <td class="col-cancelled">Yes</td>
+        <td class="col-rate">5/5</td>
+      </tr>
+      <tr>
+        <td class="col-reg-num">901000678</td>
+        <td class="col-date">11/05/2018</td>
+        <td class="col-time">12:20 AM</td>
+        <td class="col-startLoc">City Center</td>
+        <td class="col-endLoc">Sainsbury</td>
+        <td class="col-free">No</td>
+        <td class="col-cancelled">No</td>
+        <td class="col-rate">5/5</td>
+      </tr>          
+      <tr>
+        <td class="col-reg-num">901000678</td>
+        <td class="col-date">11/05/2018</td>
+        <td class="col-time">12:20 AM</td>
+        <td class="col-startLoc">City Center</td>
+        <td class="col-endLoc">Sainsbury</td>
+        <th class="taxi-type">Luxury</td>
+        <td class="col-free">No</td>
+        <td class="col-cancelled">No</td>
+        <td class="col-rate">5/5</td>
+      </tr>          
+      <tr>
+        <td class="col-reg-num">901000678</td>
+        <td class="col-date">11/05/2018</td>
+        <td class="col-time">12:20 AM</td>
+        <td class="col-startLoc">City Center</td>
+        <td class="col-endLoc">Sainsbury</td>
+        <th class="taxi-type">Luxury</td>
+        <td class="col-free">No</td>
+        <td class="col-cancelled">No</td>
+        <td class="col-rate">5/5</td>
+      </tr>          
+      <tr>
+        <td class="col-reg-num">901000678</td>
+        <td class="col-date">11/05/2018</td>
+        <td class="col-time">12:20 AM</td>
+        <td class="col-startLoc">City Center</td>
+        <td class="col-endLoc">Sainsbury</td>
+        <th class="taxi-type">Luxury</td>
+        <td class="col-free">No</td>
+        <td class="col-cancelled">No</td>
+        <td class="col-rate">5/5</td>
+      </tr>          
+      <tr>
+        <td class="col-reg-num">901000678</td>
+        <td class="col-date">11/05/2018</td>
+        <td class="col-time">12:20 AM</td>
+        <td class="col-startLoc">City Center</td>
+        <td class="col-endLoc">Sainsbury</td>
+        <th class="taxi-type">Luxury</td>
+        <td class="col-free">No</td>
+        <td class="col-cancelled">No</td>
+        <td class="col-rate">5/5</td>
+      </tr>          
+      <tr>
+        <td class="col-reg-num">901000678</td>
+        <td class="col-date">11/05/2018</td>
+        <td class="col-time">12:20 AM</td>
+        <td class="col-startLoc">City Center</td>
+        <td class="col-endLoc">Sainsbury</td>
+        <th class="taxi-type">Luxury</td>
+        <td class="col-free">No</td>
+        <td class="col-cancelled">No</td>
+        <td class="col-rate">5/5</td>
+      </tr>      
+      <tr>
+        <td class="col-reg-num">901000678</td>
+        <td class="col-date">11/05/2018</td>
+        <td class="col-time">12:20 AM</td>
+        <td class="col-startLoc">City Center</td>
+        <td class="col-endLoc">Sainsbury</td>
+        <th class="taxi-type">Luxury</td>
+        <td class="col-free">No</td>
+        <td class="col-cancelled">No</td>
+        <td class="col-rate">5/5</td>
+      </tr>      
+      <tr>
+        <td class="col-reg-num">901000678</td>
+        <td class="col-date">11/05/2018</td>
+        <td class="col-time">12:20 AM</td>
+        <td class="col-startLoc">City Center</td>
+        <td class="col-endLoc">Sainsbury</td>
+        <th class="taxi-type">Luxury</td>
+        <td class="col-free">No</td>
+        <td class="col-cancelled">No</td>
+        <td class="col-rate">5/5</td>
+      </tr>  
+
+    </table>
+    </div>
+
+    <div class="separation" style="height:50px;"></div>
+
+  <!--footer-->
+          <%= erb :user_footer %>
 
   </body>
