@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>test</title>
+  <title>Admin Dashboard</title>
   <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="css/admin_nav.css">
   <link rel="stylesheet" type="text/css" href="css/dashboard.css">
@@ -18,16 +18,15 @@
     <div id = "page-content-wrapper">
       <nav>
         <h1 id = "alta">Alta</h1>
-        <a href = "/dashboard/fetch_tweets"><input type="submit" name="button" value="Fetch tweets"></a>
       </nav>
       <div id = "requests">
         <div id = "incoming_tweets">
-          <h2>Tweets</h2>
+          <h2>Tweets <a href = "/dashboard/fetch_tweets"><img src = "img/cloud.png" alt = "fetch_tweets" width = "35" id = "fetch_tweets"></a></h2>
           <div class = "displaytweets">
             <table>
                 <% unless @tweets.nil? %>
                   <% if @tweets.length == 0 %>
-                    <h1>Please click fetch tweets to fetch the tweets</h1>
+                    <h3>Please click fetch tweets to fetch the tweets</h3>
                   <% else %>
                     <% @tweets.reverse_each do |tweet| %>
                         <tr>
@@ -39,6 +38,9 @@
                               <div class = "reply">
                                 <form method="post" action = "replyToTweet"> 
                                   Reply to Tweet: <input type="text" name="reply" value="<%=h params[:reply] %>"/>
+                                  <% if params[:reply] == "" %>
+                                      <p style="color:red">Please enter a valid tweet</p>
+                                  <% end %>
                                   <% params[:tweetindex] = @tweets.index(tweet) %>
                                   <% params[:tweetid] = tweet.id %>
                                   <% params[:screen_name] = tweet.user.screen_name %>
@@ -50,13 +52,13 @@
                               </div>
                             </div>
                             <div class = "tweet_actions">
-                              <img src = "img/check.png" class= "check" alt = "reply tweet" width = "50">
+                              <img src = "img/check.png" class= "check tweet_actions_icons" alt = "reply tweet" width = "50">
                               <form method="post" action = "delete_tweet"> 
                                 <% params[:tweetindex] = @tweets.index(tweet) %>
                                 <input type = "hidden" name = "tweetindex" value = "<%=h params[:tweetindex]%>" />
-                                <input type="image" src = "img/cross.png" name="button" value="delete" class = "delete" id = "delete_icon">
+                                <input type="image" src = "img/cross.png" name="button" value="delete" class = "delete tweet_actions_icons" id = "delete_icon" >
                               </form>
-                              <a href = "<%= tweet.uri %>"  target="_blank"><img src = "img/more_info.png" class= "moreinfo" alt = "get more info" width = "50"></a>
+                              <a href = "<%= tweet.uri %>"  target="_blank"><img src = "img/more_info.png" class= "moreinfo tweet_actions_icons" alt = "get more info" width = "50"></a>
                             </div>
                           </td>
                         </tr>

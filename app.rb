@@ -13,13 +13,6 @@ set :bind, '0.0.0.0' # Needed when running from Codio
 
 include ERB::Util #Ensure ERB is enabled
 
-#scheduler = Rufus::Scheduler.new
-#time = 0
-#scheduler.every "10m" do
-#  time = time + 1
-#  puts time
-#end
-
 #Setting up OmnuAuth-Twitter for our Twitter App
 use OmniAuth::Builder do
   	provider :twitter, 'wVzUO14M25jvS3vmmtfDAtmh6', 'x1hieq7QNwhbUM8wjqgl5HujELyyqmZiJUzpaWi1tQEnG8cQrX'
@@ -29,6 +22,11 @@ end
 before do
   	@db = SQLite3::Database.new './taxi_database.sqlite'
     @taxiTable = @db.execute("SELECT * FROM taxis")
+    $tweets.each do |deletedTweet|
+      if deletedTweet.equal? Twitter::Streaming::DeletedTweet then
+        $tweets.delete(deletedTweet)
+      end
+    end
 end
 
 #Configure sessions

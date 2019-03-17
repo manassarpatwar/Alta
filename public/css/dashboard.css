@@ -1,3 +1,7 @@
+body{
+  height: 100vh;
+}
+
 #requests{
   display: flex;
   flex-direction: row;
@@ -58,6 +62,15 @@
   cursor: pointer;
 }
 
+.tweet_actions_icons{
+  transform:scale(1);
+  transition: transform 0.1s ease;
+}
+
+.tweet_actions_icons:hover{
+  transform:scale(1.2);
+}
+
 .reply{
   display: none;
 }
@@ -70,3 +83,20 @@
   flex-direction: column;
 }
 
+#page-content-wrapper #add_journey .inputbox{
+  display: inline-block;
+  float: right;
+}
+
+#page-content-wrapper #add_journey .input_label{
+  line-height: 35px;
+}
+
+#fetch_tweets{
+  transform:scale(1);
+  transition: transform 0.1s ease;
+}
+
+#fetch_tweets:hover{
+  transform: scale(1.2)
+}
