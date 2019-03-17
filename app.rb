@@ -27,6 +27,7 @@ end
 #Before running load these configurations:
 before do
   	@db = SQLite3::Database.new './taxi_database.sqlite'
+	@taxiTable = @db.execute("SELECT * FROM taxis")
 end
 
 #Configure sessions
