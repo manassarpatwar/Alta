@@ -49,5 +49,6 @@ get '/cont' do
 end
 
 get '/order' do
+  @name = "hoho"
   erb :user_orders
 end

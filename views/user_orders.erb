@@ -162,142 +162,89 @@
 
 
     <!--Rides History Style 2: Database View-->
-    <div class="tablestyle2 scrollable contianer">
-    <table id="userTable"  class="container userDatabase">
-      <tr>
-        <th onclick="sortTable(0)">Reg-num</th>
-        <th onclick="sortTable(1)">Date</th>
-        <th onclick="sortTable(2)">Time</th>
-        <th onclick="sortTable(3)">Start Location</th>
-        <th onclick="sortTable(4)">End Location</th>
-        <th onclick="sortTable(5)">Types of Taxi</th>
-        <th onclick="sortTable(6)">Free</th>
-        <th onclick="sortTable(7)">Cancelled</th>
-        <th onclick="sortTable(8)">Rating</th>
-      </tr>
-      <tr>
-        <td class="col-reg-num">1234567890</td>
-        <td class="col-date">11/12/2019</td>
-        <td class="col-time">09:20 PM</td>
-        <td class="col-startLoc">Diamond</td>
-        <td class="col-endLoc">Meadowhall</td>
-        <th class="taxi-type">Luxury</td>
-        <td class="col-free">No</td>
-        <td class="col-cancelled">No</td>
-        <td class="col-rate">1/5</td>
-      </tr>
-      <tr>
-        <td class="col-reg-num">4567890123</td>
-        <td class="col-date">18/01/2019</td>
-        <td class="col-time">09:22 PM</td>
-        <td class="col-startLoc">Allen Court</td>
-        <td class="col-endLoc">Broad Lane Court</td>
-        <th class="taxi-type">Luxury</td>
-        <td class="col-free">Yes</td>
-        <td class="col-cancelled">No</td>
-        <td class="col-rate">4/5</td>
-      </tr>
-      <tr>
-        <td class="col-reg-num">9012345678</td>
-        <td class="col-date">11/12/2018</td>
-        <td class="col-time">12:20 PM</td>
-        <td class="col-startLoc">City Center</td>
-        <td class="col-endLoc">Tesco</td>
-        <th class="taxi-type">Luxury</td>
-        <td class="col-free">No</td>
-        <td class="col-cancelled">Yes</td>
-        <td class="col-rate">5/5</td>
-      </tr>
-      <tr>
-        <td class="col-reg-num">901000678</td>
-        <td class="col-date">11/05/2018</td>
-        <td class="col-time">12:20 AM</td>
-        <td class="col-startLoc">City Center</td>
-        <td class="col-endLoc">Sainsbury</td>
-        <td class="col-free">No</td>
-        <td class="col-cancelled">No</td>
-        <td class="col-rate">5/5</td>
-      </tr>          
-      <tr>
-        <td class="col-reg-num">901000678</td>
-        <td class="col-date">11/05/2018</td>
-        <td class="col-time">12:20 AM</td>
-        <td class="col-startLoc">City Center</td>
-        <td class="col-endLoc">Sainsbury</td>
-        <th class="taxi-type">Luxury</td>
-        <td class="col-free">No</td>
-        <td class="col-cancelled">No</td>
-        <td class="col-rate">5/5</td>
-      </tr>          
-      <tr>
-        <td class="col-reg-num">901000678</td>
-        <td class="col-date">11/05/2018</td>
-        <td class="col-time">12:20 AM</td>
-        <td class="col-startLoc">City Center</td>
-        <td class="col-endLoc">Sainsbury</td>
-        <th class="taxi-type">Luxury</td>
-        <td class="col-free">No</td>
-        <td class="col-cancelled">No</td>
-        <td class="col-rate">5/5</td>
-      </tr>          
-      <tr>
-        <td class="col-reg-num">901000678</td>
-        <td class="col-date">11/05/2018</td>
-        <td class="col-time">12:20 AM</td>
-        <td class="col-startLoc">City Center</td>
-        <td class="col-endLoc">Sainsbury</td>
-        <th class="taxi-type">Luxury</td>
-        <td class="col-free">No</td>
-        <td class="col-cancelled">No</td>
-        <td class="col-rate">5/5</td>
-      </tr>          
-      <tr>
-        <td class="col-reg-num">901000678</td>
-        <td class="col-date">11/05/2018</td>
-        <td class="col-time">12:20 AM</td>
-        <td class="col-startLoc">City Center</td>
-        <td class="col-endLoc">Sainsbury</td>
-        <th class="taxi-type">Luxury</td>
-        <td class="col-free">No</td>
-        <td class="col-cancelled">No</td>
-        <td class="col-rate">5/5</td>
-      </tr>          
-      <tr>
-        <td class="col-reg-num">901000678</td>
-        <td class="col-date">11/05/2018</td>
-        <td class="col-time">12:20 AM</td>
-        <td class="col-startLoc">City Center</td>
-        <td class="col-endLoc">Sainsbury</td>
-        <th class="taxi-type">Luxury</td>
-        <td class="col-free">No</td>
-        <td class="col-cancelled">No</td>
-        <td class="col-rate">5/5</td>
-      </tr>      
-      <tr>
-        <td class="col-reg-num">901000678</td>
-        <td class="col-date">11/05/2018</td>
-        <td class="col-time">12:20 AM</td>
-        <td class="col-startLoc">City Center</td>
-        <td class="col-endLoc">Sainsbury</td>
-        <th class="taxi-type">Luxury</td>
-        <td class="col-free">No</td>
-        <td class="col-cancelled">No</td>
-        <td class="col-rate">5/5</td>
-      </tr>      
-      <tr>
-        <td class="col-reg-num">901000678</td>
-        <td class="col-date">11/05/2018</td>
-        <td class="col-time">12:20 AM</td>
-        <td class="col-startLoc">City Center</td>
-        <td class="col-endLoc">Sainsbury</td>
-        <th class="taxi-type">Luxury</td>
-        <td class="col-free">No</td>
-        <td class="col-cancelled">No</td>
-        <td class="col-rate">5/5</td>
-      </tr>  
-
+    <table class="js-sort-table container" id="demo1">
+        <thead class="tableStyle2-head">
+        <tr>
+            <th class="js-sort-number databaseCell">Registration Number</th>
+            <th class="js-sort-date databaseCell">Date</th>
+            <th class="js-sort-date databaseCell">Time</th>
+            <th class="databaseCell">Start Location</th>
+            <th class="databaseCell">End Location</th>
+            <th class="databaseCell">Type of Taxi</th>
+            <th class="databaseCell">Free</th>
+            <th class="databaseCell">Cancelled</th>
+            <th class="js-sort-number databaseCell">Rating</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="col-reg-num databaseCell">123456</td>
+            <td class="col-date databaseCell">11/12/2019</td>
+            <td class="col-time databaseCell">09:20 PM</td>
+            <td class="col-startLoc databaseCell">Diamond</td>
+            <td class="col-endLoc databaseCell">Meadowhall</td>
+            <td class="taxi-type databaseCell">Luxury</td>
+            <td class="col-free databaseCell">No</td>
+            <td class="col-cancelled databaseCell">No</td>
+            <td class="col-rate databaseCell">1/5</td>
+        </tr>
+        <tr>
+            <td class="col-reg-num databaseCell">235467</td>
+            <td class="col-date databaseCell">01/18/2019</td>
+            <td class="col-time databaseCell">09:22 PM</td>
+            <td class="col-startLoc databaseCell">Allen Court</td>
+            <td class="col-endLoc databaseCell">Broad Lane Court</td>
+            <td class="taxi-type databaseCell">Luxury</td>
+            <td class="col-free databaseCell">Yes</td>
+            <td class="col-cancelled databaseCell">No</td>
+            <td class="col-rate databaseCell">4/5</td>
+        </tr>
+        <tr>
+            <td class="col-reg-num databaseCell">234789</td>
+            <td class="col-date databaseCell">11/12/2018</td>
+            <td class="col-time databaseCell">12:20 PM</td>
+            <td class="col-startLoc databaseCell">City Center</td>
+            <td class="col-endLoc databaseCell">Tesco</td>
+            <td class="taxi-type databaseCell">Luxury</td>
+            <td class="col-free databaseCell">No</td>
+            <td class="col-cancelled databaseCell">Yes</td>
+            <td class="col-rate databaseCell">5/5</td>
+        </tr>
+        <tr>
+            <td class="col-reg-num databaseCell">234890</td>
+            <td class="col-date databaseCell">12/05/2018</td>
+            <td class="col-time databaseCell">12:20 AM</td>
+            <td class="col-startLoc databaseCell">City Center</td>
+            <td class="col-endLoc databaseCell">Sainsbury</td>
+            <td class="taxi-type databaseCell">Luxury</td>
+            <td class="col-free databaseCell">No</td>
+            <td class="col-cancelled databaseCell">No</td>
+            <td class="col-rate databaseCell">5/5</td>
+        </tr>
+        <tr>
+            <td class="col-reg-num databaseCell">567123</td>
+            <td class="col-date databaseCell">11/06/2018</td>
+            <td class="col-time databaseCell">12:20 AM</td>
+            <td class="col-startLoc databaseCell">City Center</td>
+            <td class="col-endLoc databaseCell">Sainsbury</td>
+            <td class="taxi-type databaseCell">Luxury</td>
+            <td class="col-free databaseCell">No</td>
+            <td class="col-cancelled databaseCell">No</td>
+            <td class="col-rate databaseCell">5/5</td>
+        </tr>
+        <tr>
+            <td class="col-reg-num databaseCell">890234</td>
+            <td class="col-date databaseCell">11/05/2018</td>
+            <td class="col-time databaseCell">12:20 AM</td>
+            <td class="col-startLoc databaseCell">City Center</td>
+            <td class="col-endLoc databaseCell">Sainsbury</td>
+            <td class="taxi-type databaseCell">Luxury</td>
+            <td class="col-free databaseCell">No</td>
+            <td class="col-cancelled databaseCell">No</td>
+            <td class="col-rate databaseCell">5/5</td>
+        </tr>
+        </tbody>
     </table>
-    </div>
 
     <div class="separation" style="height:50px;"></div>
 

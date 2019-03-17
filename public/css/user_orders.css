@@ -1,3 +1,4 @@
+
 #ordersBG{
     background-color: #f6f1ea;
 }
@@ -175,9 +176,7 @@ a.convo-link{
     color:#0189c9;
     float:right
 }
-.col-rate{
-    text-align:right;
-}
+
 td.col-date, td.col-time{
     padding-bottom:0;
 }
@@ -195,30 +194,41 @@ td.col-date, td.col-time{
 
 
 /* Ride History Style 2: Database VIew */
-table {
+.tableStyle2-head{
+    background-color: rgb(194, 194, 194);
+}
+table{
     margin-top:3%;
     border-spacing: 0;
-    width: 100%;
     border-top: 5px solid rgb(75, 75, 75);
     border-bottom:5px solid rgb(66, 66, 66);
     margin-bottom:100px;
-  }
-  .scrollable{
-      height:300px;
-      overflow:scroll;
-      overflow-y: scroll;
-  }
-  th {
+}
+th {
     cursor: pointer;
-  }
-  
-  th, td {
+}
+th, td {
     text-align: left;
-    padding:15px 30px 15px 30px;
-  }
+    /* padding:15px 35px 15px 35px; */
+    /* border:10px solid yellow; */
 
-  tr:nth-child(even) {
+}
+tr:nth-child(even) {
     background-color: #f2f2f2;
+}
+.userDatabase tbody{
+    display:block;
+    overflow: auto;
+    height: 300px;
+}
+.userDatabase thead{
+    display: block;
+}
 
-  }
- 
+.userDatabase thead tr th, .userDatabase tbody tr td{
+    width:10%;
+    text-align:left;
+}
+.databaseCell{
+    padding:10px;
+}
