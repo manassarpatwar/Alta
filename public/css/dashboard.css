@@ -49,6 +49,7 @@ body{
 
 #delete_icon{
   width: 50px;
+  outline:none;
 }
 
 #check_icon{
