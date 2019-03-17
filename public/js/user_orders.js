@@ -43,6 +43,69 @@ window.onclick = function(event) {
 }
 
 
+
+
+//Switching between two views: Table and Database
+var x = document.getElementById("view2");
+var y = document.getElementById("view1");
+var z = document.getElementById("sorting");
+
+function myView2() {
+    x.style.display = "table";
+    y.style.display = "none";
+    z.style.display = "none";
+}
+function myView1() {
+  // var a = $("view2");
+    x.style.display = "none";
+    y.style.display = "block";
+    z.style.display = "block";
+}
+
+
+//rating starts
+var a = document.getElementById("rate1");
+var b = document.getElementById("rate2");
+var c = document.getElementById("rate3");
+var d = document.getElementById("rate4");
+var e = document.getElementById("rate5");
+function myRating1(){
+  a.style.color = "orange";
+  b.style.color = "#333333";
+  c.style.color = "#333333";
+  d.style.color = "#333333";
+  e.style.color = "#333333";
+}
+function myRating2(){
+  a.style.color = "orange";
+  b.style.color = "orange";
+  c.style.color = "#333333";
+  d.style.color = "#333333";
+  e.style.color = "#333333";
+}
+function myRating3(){
+  a.style.color = "orange";
+  b.style.color = "orange";
+  c.style.color = "orange";
+  d.style.color = "#333333";
+  e.style.color = "#333333";
+}
+function myRating4(){
+  a.style.color = "orange";
+  b.style.color = "orange";
+  c.style.color = "orange";
+  d.style.color = "orange";
+  e.style.color = "#333333";
+}
+function myRating5(){
+  a.style.color = "orange";
+  b.style.color = "orange";
+  c.style.color = "orange";
+  d.style.color = "orange";
+  e.style.color = "orange";
+}
+
+
 //Sorting database table
 function sortTable(n) {
   var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
@@ -50,7 +113,6 @@ function sortTable(n) {
   switching = true;
   dir = "asc"; 
 
-  
   while (switching) {
 
     switching = false;
@@ -87,21 +149,7 @@ function sortTable(n) {
   }
 }
 
-// var twitterhandle =["Jess1234"]
-// var regNum = ["123", "345", "190", "987"];
-// var date = ["123", "345", "190", "987"];
-// var time = ["123", "345", "190", "987"];
-// var startLoc = ["123", "345", "190", "987"];
-// var endLoc = ["123", "345", "190", "987"];
-// var free = ["123", "345", "190", "987"];
-// var cancelled = ["123", "345", "190", "987"];
-// var rating = ["123", "345", "190", "987"];
-
-
-// document.getElementById('row-regNum').innerHTML = cars[0]
-
-
-//Sorting databse 
+//Sorting View 1: Database 
 function sortTable(Table, col, dir) {
 	var sortClass, i;
 
@@ -161,7 +209,7 @@ function sortTable(Table, col, dir) {
 		Node.className += ' js-sort-active';
 	});
 
-	// sort!
+	// sort
 	var rows = [],
 		TBody = Table.tBodies[0];
 
@@ -177,8 +225,6 @@ function sortTable(Table, col, dir) {
 		TBody.appendChild(rows[i]);
 	}
 }
-
-
 
 /**
  * Compare two table rows based on current settings
@@ -197,9 +243,6 @@ sortTable.compareRow = function (RowA, RowB) {
 
 	return valA == valB ? 0 : sortTable.sortDir * (valA > valB ? 1 : -1);
 };
-
-
-
 
 /**
  * Strip all HTML, no exceptions

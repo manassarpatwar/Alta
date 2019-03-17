@@ -8,6 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
     <script async src="js/user_orders.js"></script>
     <link rel="stylesheet" href="css/user_header.css" />
     <link rel="stylesheet" href="css/user_footer.css" />
@@ -24,10 +25,12 @@
     
     <!--Table title and table types-->
       <div class="container table-title">
-        <p class="table-titleName inline"> My Rides </p>
-        <p class="table-titleView inline"> View As: </p>
-        <a href="#" class="title-button type1-button inline">Table</a>
-        <a href="#" class="title-button type1-button inline">Database</a>
+       <!-- <%=h @name %>-->
+        <i class='fas fa-taxi' style='font-size:40px; color:#FEDE3B'></i>
+        <p class="table-titleName inline" style='font-size:40px'> My Rides &nbsp</p>
+        <p class="table-titleView inline" style='font-size:17px'> View As: </p>
+        <span onclick="myView1()" class="title-button type1-button inline">Table</span>
+        <span onclick="myView2()" class="title-button type1-button inline">Databse</span>
       </div>
 
 
@@ -36,9 +39,11 @@
       <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search" title=" " class="inline">
 
         <!--Sorting dropdown list-->
-        <div class="sortDropdown">
-          <div class="dropdown-title inline"> Sort by : </div>
-          <button onclick="myFunction()" class="dropbtn inline">All</button>
+        <div id ="sorting" class="sortDropdown">
+          <div class="dropdown-title inline"> Sort by :&nbsp</div>
+          <button onclick="myFunction()" id="sortButtonText" class="dropbtn inline" style='font-size:15px'>
+            <i class='fas fa-caret-down' style='font-size:17px'></i>
+          </button>
           <div id="myDropdown" class="dropdown-content">
             <a href="#home">Newest</a>
             <a href="#about">Oldest</a>
@@ -57,21 +62,11 @@
     </div>
 
 
-    <!--Icon indicators-->
-      <!-- this is only shown for style Table-->
-    <div class="icon-ind container">
-      <img src="" class="table-icon"> <div class="indicators">This is a free ride</div>
-      <img src="" class="table-icon"> <div class="indicators">This is a cancelled ride</div>
-    </div>
-
-
-
-
 
     <!--Rides History-->
 
     <!--Rides History Style 1: Table View-->
-    <div class="tablestyle1">
+    <div id="view1" class="tablestyle1">
       <table id="userTable"  class="container container2 userTable1">
 
         <tr class="userTable1">
@@ -84,12 +79,12 @@
           <td></td>
           <td class="col-rate">
             <div class="field2-rate inline"></div>
-            <div id="rating" class="inline">
-              <span class="fa fa-star rate-checked"></span>
-              <span class="fa fa-star rate-checked"></span>
-              <span class="fa fa-star rate-checked"></span>
-              <span class="fa fa-star rate-checked"></span>
-              <span class="fa fa-star"></span>
+            <div id="ratings" class="inline">
+              <span onclick="myRating1()" id="rate1" class="fa fa-star"></span>
+              <span onclick="myRating2()" id="rate2" class="fa fa-star"></span>
+              <span onclick="myRating3()" id="rate3" class="fa fa-star"></span>
+              <span onclick="myRating4()" id="rate4" class="fa fa-star"></span>
+              <span onclick="myRating5()" id="rate5" class="fa fa-star "></span>
             </div>
           </td>
         </tr>
@@ -97,58 +92,55 @@
       
       <table id="userTable"  class="container container2 userTable2">
       <tr class="userTable1">
-          <td class="col-date">
+          <td class="col-date col-width">
             <div class="field3-date inline"></div>
-            <div id="date" class="inline"> 18/01/2019 <div>
+            <div id="date" class="inline tableCell firstCol" style="margin-left:20px; margin-bottom:10px;"> 18/01/2019 <div>
           </td>
-          <td class="col-time">
-            <div class="field4-time inline"></div>
-            <div id="time" class="inline"> 09:22 PM </div>
+          <td class="col-time col-width2">
+            <div class="field4-time inline tableCell"></div>
+            <div id="time" class="inline tableCell" style="margin-left:15px; margin-bottom:10px;"> 09:22 PM </div>
           </td>
           <td></td><td></td>
         </tr>
 
-        <tr class="userTable2">
+        <tr>
           <td class="col-startLoc userTable2">
-            <div class="field5-startLoc inline"></div>
+            <div class="field5-startLoc inline" style="margin-top: 60px; padding-left:10px;"></div>
           </td>
             <td class="col-startLoc userTable2">
-            <div class="field6-endLoc inline"></div>
+            <div class="field6-endLoc inline" style="margin-top: 60px;"></div>
           </td>
           <td class="col-startLoc userTable2">
-            <div class="field7-taxi-type inline"></div>
+            <div class="field7-taxi-type inline" style="margin-top: 60px;"></div>
           </td>
           <td class="userTable2"></td>
         </tr>  
 
-        <tr class="userTable2">
-          <td class="userTable2 taxi-type">
-            <div id="taxiType" class="inline">Luxury</div>
-          </td>
+        <tr>
+
           <td class="col-startLoc userTable2">
-            <div id="startLoc" class="inline">City Center</div>
+            <div id="startLoc" class="inline firstCol" style="margin-bottom: 20px;">City Center</div>
           </td>
-          <td class="col-startLoc userTable2">
-            <div id="endLoc" class="inline">Tesco</div>
+          <td class="col-endLoc userTable2">
+            <div id="endLoc" class="inline" style="margin-bottom: 20px;">Tesco</div>
+          </td>
+          <td class="taxi-type userTable2">
+            <div id="taxiType" class="inline" style="margin-bottom: 20px;">Luxury</div>
           </td>
           <td class="userTable2"></td>
         </tr>      
-        
-        <tr class="userTable2">
+        <tr>
           <td class="userTable2 col-free">
-            <div id="free" class="field8-icon inline"></div>
-            <div class="field8-free inline"></div>
+            <i id ="freeNot" class="field8-icon far fa-check-square inline" style='font-size:15px '></i>
+            <div class="field8-free inline" style="margin-top: 20px; margin-bottom:20px;">Free Rides</div>
+            <div class="inline" style="margin-top: 20px;">&nbsp &nbsp|</div>
           </td>
           <td class="userTable2 col-cancelled">
-            <div class="inline">|</div>
-          </td>
-          <td class="userTable2 col-cancelled">
-            <div id="cancelled" class="field9-icon inline"></div>
-            <div class="field9-cancelled inline"></div>
+            <i id ="cancelledNot" class="field9-icon far fa-square inline" style='font-size:15px; margin-left:0px'></i>
+            <div class="field9-cancelled inline" style="margin-top: 20px; margin-bottom:20px;">Cancelled</div>
           </td>
           <td class="userTable2">
-            <a href="" id="convoLink" class="convo-link">
-            Conversation link
+            <a href="" id="convoLink" class="convo-link" style="margin-right:20px;">Conversation link
             </a>
           </td>
         </tr> 
@@ -162,10 +154,10 @@
 
 
     <!--Rides History Style 2: Database View-->
-    <table class="js-sort-table container" id="demo1">
+    <table id="view2" class="js-sort-table container" id="demo1">
         <thead class="tableStyle2-head">
         <tr>
-            <th class="js-sort-number databaseCell">Registration Number</th>
+            <th class="js-sort-number databaseCell">Reference no.</th>
             <th class="js-sort-date databaseCell">Date</th>
             <th class="js-sort-date databaseCell">Time</th>
             <th class="databaseCell">Start Location</th>

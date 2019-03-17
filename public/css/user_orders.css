@@ -32,15 +32,19 @@
     padding-bottom:2%;
 }
 .title-button {
-    background-color: #4CAF50;
+    background-color: #f8f0e5;
     border: none;
-    color: white;
+    color: rgb(43, 30, 20);
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 12px;
     margin: 4px 2px;
+    padding: 3px 7px 3px 7px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
     cursor: pointer;
+    border-radius: 25px;
   }
 
 
@@ -60,6 +64,7 @@
     padding: 5% 0 5% 0;
     border: none;
     cursor: pointer;
+    text-decoration: underline;
 }
 
 .dropbtn:hover, .dropbtn:focus {
@@ -70,7 +75,6 @@
     position: relative;
     display: inline-block;
     float:right;
-    border-style: solid;
     padding-left:5px;
     padding-right:5px;
 }
@@ -96,6 +100,12 @@
 
 .show {display: block;}
 
+#sortButtonText::before{
+    content: "All";
+}
+
+
+
 
 /* Ride indicators */
 .ride-types{
@@ -115,7 +125,6 @@
 
 
 /* Ride History Style 1: Table View */
-
 .userTable1{
     background-color:#f2f2f2;
     margin-bottom:0;
@@ -127,43 +136,65 @@
     margin-top:0;
     border-top:none
 }
+.userTable2-lastrow{
+    padding-top:10px;
+}
+.firstCol{
+    padding-left:30px;
+}
 .field1-regNum::before{
     content:"#";
+    padding-left:20px;
 }
 .field2-rate::before{
     content:"";
     float:right;
 }
 .field3-date::before{
-    content:"On";
+    content:"ON";
+    padding-left:30px;
+    font-size:12px;
 }
 .field4-time::before{
-    content:"at";
+    content:"AT";
+    padding-left:5px;
+    font-size:12px;
 }
 .field5-startLoc::before{
-    content:"Start";
+    content:"START";
+    padding-left:20px;
+    font-size:12px;
 }
 .field6-endLoc::before{
-    content:"End";
+    content:"END";
+    font-size:12px;
 }
 .field7-taxi-type::before{
-    content:"Type of Taxi";
+    content:"TAXI TYPE";
+    font-size:12px;
 }
 .field8-free::before{
-    content:"Free Ride";
     padding-bottom:0;
 }
 .field9-cancelled::before{
-    content:"Cancelled";
+    padding-bottom:0;
 }
 .style1-regNum{
     font-size: 30px;
 }
-.rate-checked {
-    color: orange;
+#ratings{
+    cursor:pointer;
+    float:right;
+    margin-right:20px;
 }
-td.col-date{
-    margin:0;
+#rate1, #rate2, #rate3, #rate4, #rate5 {
+    color: #333333;
+}
+.col-width{
+    width:23%;
+}
+.col-width2{
+    width:15%;
 }
 .col-date, .col-time, .taxi-type{
     padding-top:0;
@@ -176,32 +207,40 @@ a.convo-link{
     color:#0189c9;
     float:right
 }
-
 td.col-date, td.col-time{
     padding-bottom:0;
 }
-.col-reg-num, .col-startLoc{
+.col-reg-num{
     padding-top:3%;
 }
-.field8-icon, .field9-icon{
-    background-image: url("../img/bkground.jpeg");
-    background-size:cover;
-    background-repeat: no-repeat;
+.field8-icon{
+    margin-left:30px;
     height:15px;
     width:15px;
+}
+.tableCell{
+    width:100%;
+}
+#startLoc, #endLoc, #taxiType{
+    font-size:18px;
+    font-weight:600;
 }
 
 
 
 /* Ride History Style 2: Database VIew */
+#view1{
+    display:inital;
+}
+#view2{
+    display:none;
+}
 .tableStyle2-head{
     background-color: rgb(194, 194, 194);
 }
 table{
     margin-top:3%;
-    border-spacing: 0;
-    border-top: 5px solid rgb(75, 75, 75);
-    border-bottom:5px solid rgb(66, 66, 66);
+    border: 0.5px solid rgb(206, 204, 204);
     margin-bottom:100px;
 }
 th {
@@ -211,7 +250,6 @@ th, td {
     text-align: left;
     /* padding:15px 35px 15px 35px; */
     /* border:10px solid yellow; */
-
 }
 tr:nth-child(even) {
     background-color: #f2f2f2;
