@@ -37,6 +37,9 @@
                               <% end %>
                               <div class = "reply">
                                 <form method="post" action = "replyToTweet"> 
+                                  <% if @submitted && !@userId_ok %>
+                                  <p style="color:red">Please enter a valid User ID</p>
+                                  <% end %>
                                   Reply to Tweet: <input type="text" name="reply" value="<%=h params[:reply] %>"/>
                                   <% if params[:reply] == "" %>
                                       <p style="color:red">Please enter a valid tweet</p>
