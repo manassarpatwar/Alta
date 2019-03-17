@@ -63,7 +63,7 @@ get '/' do
 end
 
 get '/dashboard' do
-    redirect '/' unless admin?
+  #  redirect '/' unless admin?
     @tweets = $tweets.dup
     @submitted = false
 	erb :addJourney
@@ -147,8 +147,10 @@ end
 #--------------------Post Methods--------------------#
 
 post '/replyToTweet' do
-  replytweet = TWITTER_CLIENT.update("@#{params[:screen_name]} #{params[:reply]}", :in_reply_to_status_id => params[:tweetid].to_i)
-  redirect '/dashboard'
+    if(params[:reply] != "")
+        replytweet = TWITTER_CLIENT.update("@#{params[:screen_name]} #{params[:reply]}", :in_reply_to_status_id => params[:tweetid].to_i)
+    end    
+    redirect '/dashboard'
 end
 
 post '/delete_tweet' do

@@ -6,16 +6,17 @@
 <body>
 <h1>Custom Twitter Marketing</h1>
 
-<form method="get">
+<form method="post" action = "followPeopleUsingKeyword">
   Keyword follow: <input type="text" name="follow" value="<%=h params[:follow] %>"/>
   <input type="submit" name="submit" value="submit" />
 </form>
-  
-  <% unless @marketing_tweets.nil? %>
-  <% if @follow_state %>
+
+  <% unless (request.cookies['following'] == "true") %>
+  <% if (request.cookies['follow_state'] == "true") %>
+    <% puts(" lol #{request.cookies['follow_state']}") %>
     <p>You followed 5 people that used this keyword recently.</p>
   <% else %>
-    <p>You already reached your follow limits today. Please come back tomorrow.</p>
+    <p>You already reached your follow limits today. Please come back tomorrow or try 15 minutes later..</p>
   <% end %>
   <% end %>
 
@@ -23,42 +24,12 @@
   Tweet: <input type="text" name="tweet" value="<%=h params[:tweet] %>"/>
   <input type="submit" name="post tweet" value="submit" />
 </form>
-  
-<form method="post" action = "followIfMention">
-  Follow most recent people: <input type="submit" name="button" value="follow mention" />
-</form>
-  
-<!-- <% unless @marketing_tweets.nil? %>
-    <% if @marketing_tweets.length == 0 %>
-        <p>No search results found!</p>
-    <% else %>
-        <br />
-        <table border="1">
-            <tr>
-              <th>ID</th>
-              <th>User</th>
-              <th>Text</th>
-            </tr>
-            <% @marketing_tweets.each do |tweet| %>
-                <tr>
-                  <td>
-                    <a href="<%=h tweet.uri %>">
-                      <%=h tweet.id %>
-                    </a>
-                  </td>
-                  <td>
-                    <a href="<%=h tweet.user.uri %>">
-                      <%=h tweet.user.screen_name %>
-                    </a>
-                  </td>
-                  <td>
-                    <%=h tweet.text %>
-                  </td>
-                </tr>
-            <% end %>
-        </table>
-    <% end %>
-<% end %> --->
-
+     <% unless (request.cookies['tweeting'] == "true") %>
+    <% if (request.cookies['tweet_state'] == "true")%>
+    <p>Your tweet has been posted.</p>
+      <% else %>
+    <p>You already reached your tweeting limit from the app today. Please come back tomorrow or try 15 minutes later.</p>
+  <% end %>
+  <% end %>
 </body>
 </html>
