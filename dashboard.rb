@@ -15,6 +15,10 @@ get '/dashboard/fetch_tweets' do
     redirect '/dashboard'
 end
 
+get '/settings' do
+  @submitted = false
+  erb :settings
+end
 #--------------------Post Methods--------------------#
 
 post '/replyToTweet' do

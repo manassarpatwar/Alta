@@ -1,9 +1,4 @@
-get '/add' do
-	@submitted = false
-	erb :addTaxi
-end
-
-post '/add' do
+post '/addTaxi' do
 	@submitted = true
 
 	# sanitize values

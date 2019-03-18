@@ -10,7 +10,7 @@
           <p style="color:red">There were errors in your form submission, please correct them below.</p>
       <% end %>
 
-     <form id="searchForm">
+     <form id="journeyForm">
           <!-- Error Validation -->
           <% if @submitted && !@taxiId_ok %>
               <p style="color:red">Please enter a valid taxi ID number</p>
@@ -99,7 +99,7 @@
   <% end %>
 </div>
 <script>
-  $( "#searchForm" ).submit(function( event ) {
+  $( "#journeyForm" ).submit(function( event ) {
  
     // Stop form from submitting normally
     event.preventDefault();
@@ -119,7 +119,7 @@
     term[10] = $form.find( "input[name='convoLink']" ).val();
     for(var i = 1; i <= 10; i++){
       if (term[i] == undefined){
-        term[i] = ""
+        term[i] = "";
       }
       console.log(term[i]);
     }
