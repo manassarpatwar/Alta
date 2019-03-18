@@ -1,6 +1,6 @@
 #--------------------Get Methods--------------------#
 get '/dashboard' do
-    #redirect '/' unless admin?
+    redirect '/index' unless admin?
     @tweets = $tweets.dup
     @submitted = false
 	erb :dashboard

@@ -27,12 +27,12 @@
 }
 
 #page-content-wrapper{
-  padding-left: 90px;
+  padding-left: 100px;
   transition: padding-left 1s ease;
 }
 
 #wrapper.menuDisplayed #sidebar-wrapper{
-  width: 130px;
+  width: 140px;
 }
 
 #wrapper.menuDisplayed .nav-info{
@@ -40,7 +40,7 @@
 }
 
 #wrapper.menuDisplayed #menu-toggle{
-  margin-left: 80px;
+  margin-left: 90px;
 }
 
 #wrapper.menuDisplayed #nav_arrow{
@@ -48,7 +48,7 @@
 }
 
 #wrapper.menuDisplayed #page-content-wrapper{
-  padding-left: 150px;
+  padding-left: 170px;
 }
 
 .sidebar-nav{
@@ -72,7 +72,7 @@
 }
 
 .sidebar-nav li a:hover{
-  transform: scale(1.288);
+  transform: scale(1.2);
 }
 .dashboard-icons{
   width: 40px;

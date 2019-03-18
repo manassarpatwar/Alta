@@ -9,7 +9,7 @@ get '/logout' do
 	redirect '/' unless loggedin?
 
   	session[:loggedin] = nil
-  	redirect '/'
+  	redirect '/index'
 end
 
 #When autherisation for twitter is called
@@ -46,7 +46,7 @@ get '/auth/twitter/callback' do
 	end	
 	session[:freeRides] = @userInfo[0][4]
 
-	redirect '/'
+	redirect '/index'
 end
 
 #When autherisation fails

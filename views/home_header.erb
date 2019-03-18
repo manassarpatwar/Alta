@@ -44,15 +44,19 @@
 
 <div class="nav-column">
   <div class="nav-cont">
-    <div class=" nav-inline2 nav-signin">
-      Sign in
-    </div>
-    <div class="nav-inline2 nav-vl">
-    |
-    </div>
-    <div class="nav-inline2 nav-login">
-    Login
-    </div>
+    <%if !@loggedin %>
+      <div class=" nav-inline2 nav-signin">
+          <a href="/login">Log In</a>
+      </div>
+    <% elsif !@admin %>
+     <div class=" nav-inline2 nav-signin">
+      <a href="/userAccount">My Account</a>
+      </div>
+    <% elsif @admin %>
+     <div class=" nav-inline2 nav-signin">
+      <a href="/dashboard">Admin Dashboard</a>
+      </div>
+    <% end %>
   </div>
 </div>
 </nav>

@@ -1,10 +1,17 @@
 #--------------------Get Methods--------------------#
 #Everyone is welcome page
 get '/' do
-  	erb :welcome
+  	redirect '/index'
 end
 
 get '/index' do
-	redirect '/' unless loggedin?
+	@loggedin = loggedin?
+    @admin = admin?
 	erb :index
+end
+
+get '/userAccount' do
+  @loggedin = loggedin?
+  @admin = admin?
+  erb :user_account
 end

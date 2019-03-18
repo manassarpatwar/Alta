@@ -1,9 +1,3 @@
-require 'erb'
-require 'sinatra'
-require 'sqlite3'
-
-set :bind, '0.0.0.0' # needed if you're running from Codio
-
 before do
 	@db = SQLite3::Database.new('./taxi_database.sqlite')
 end
