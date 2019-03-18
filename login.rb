@@ -38,13 +38,13 @@ get '/auth/twitter/callback' do
 	
 	#Set global variables of user information to user logged in 
 	@userInfo = @db.execute("SELECT * FROM users WHERE id = ?", id)
-	@id = @userInfo[0][0]
-	@name = @userInfo[0][1]
-	@dateTime = @userInfo[0][2]
+	session[:id] = @userInfo[0][0]
+	session[:name] = @userInfo[0][1]
+	session[:dateTime] = @userInfo[0][2]
 	if @userInfo[0][3] == 1
 		session[:admin] = true 
 	end	
-	@freeRides = @userInfo[0][4]
+	session[:freeRides] = @userInfo[0][4]
 
 	redirect '/'
 end
