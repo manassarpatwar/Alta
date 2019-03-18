@@ -1,3 +1,15 @@
+require 'erb'
+require 'sinatra'
+require 'sqlite3'
+
+set :bind, '0.0.0.0' # Only needed if you're running from Codio
+
+include ERB::Util
+
+before do
+	@db = SQLite3::Database.new('./taxi_database.sqlite')
+end
+
 get '/add' do
 	@submitted = false
 	erb :addJourney
@@ -20,8 +32,8 @@ post '/add' do
 
 	# perform validation
 	#taxiID and userID and twitterHandle needs better validation!!!!!
-	@taxiId_ok = isPositiveNumber?[@taxiId]
-	@userId_ok = !@userID.nil? && @userID != ""
+	@taxiId_ok = isPositiveNumber?(@taxiId)
+	@userId_ok = !@userId.nil? && @userId != ""
 	@twitterHandle_ok = !@twitterHandle.nil? && @twitterHandle != ""
 	@dateTime_ok = !@dateTime.nil? && @dateTime != ""
 	@startLocation_ok = !@startLocation.nil? && @startLocation != ""
@@ -30,7 +42,7 @@ post '/add' do
  	@cancelled_ok = @cancelled = '0' || @cancelled = '1'
 	@convoLink_ok =	!@convoLink.nil? && @convoLink != ""
 	
-	@all_ok = @taxiId_ok && @userId_ok && @twitterHandle_ok && dateTime_ok && startLocation_ok && endLocation_ok && freeRide_ok && cancelled_ok && convoLink_ok	
+	@all_ok = @taxiId_ok && @userId_ok && @twitterHandle_ok && @dateTime_ok && @startLocation_ok && @endLocation_ok && @freeRide_ok && @cancelled_ok && @convoLink_ok	
 
 	count = @db.get_first_value('SELECT COUNT(*) FROM journeys')
 	@id = count + 1
