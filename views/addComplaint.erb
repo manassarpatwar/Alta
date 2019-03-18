@@ -14,7 +14,7 @@
 		<p style="color:red">There were errors in your form submission, please correct them below.</p>
 	<% end %>
 
-	<form method="post" action="add">
+	<form method="post" action="addComplaint">
 		<!-- Error Validation -->
 		<% if @submitted && !@journey_id_ok %>
 		  	<p style="color:red">Please enter a journey ID</p>

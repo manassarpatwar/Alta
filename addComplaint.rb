@@ -8,12 +8,12 @@ before do
 	@db = SQLite3::Database.new('./taxi_database.sqlite')
 end
 
-get '/' do
+get '/addComplaint' do
 	@submitted = false
 	erb :addComplaint
 end
 
-post '/add' do
+post '/addComplaint' do
 	@submitted = true
 
 	# sanitize values
