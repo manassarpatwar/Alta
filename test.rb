@@ -72,3 +72,7 @@ end
 get '/order' do
   erb :user_orders
 end
+
+get'/account' do
+  erb :user_account
+end
