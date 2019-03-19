@@ -31,19 +31,3 @@ post '/addUser' do
   	end
 	erb :addUser
 end
-
-def isPositiveNumber? string
-	begin
-		Float(string)
-		int = string.to_i 
-		puts "Not fail"
-		if int >= 0
-			return true
-		else
-			return false
-		end
-	rescue 
-		puts "fail"
-		return false
-	end
-end

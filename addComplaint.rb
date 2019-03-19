@@ -34,20 +34,4 @@ post '/addComplaint' do
 	erb :addComplaint
 end
 
-def isPositiveNumber? string
-	begin
-		Float(string)
-		int = string.to_i 
-		puts "Not fail"
-		if int >= 0
-			return true
-		else
-			return false
-		end
-	rescue 
-		puts "fail"
-		return false
-	end
-end
-
 

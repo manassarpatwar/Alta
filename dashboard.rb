@@ -38,7 +38,6 @@ end
 
 post '/addJourney' do
 	@submitted = true
-    puts "I Am IN POST ADD JOURNEY!!!!"
 	# sanitize values
 	@taxiId = params[:taxiId].strip
 	@userId = params[:userId].strip
@@ -74,20 +73,4 @@ post '/addJourney' do
 		@db.execute('INSERT INTO journeys VALUES (?, ?, ?, ?, ?, ? ,?, ?, ?, ?, ?)', [@id, @taxiId, @userId, @twitterHandle, @dateTime, @startLocation, @endLocation, @freeRide, @cancelled, @rating, @convoLink])
   	end
     erb :addJourney
-end
-
-def isPositiveNumber? string
-	begin
-		Float(string)
-		int = string.to_i 
-		puts "Not fail"
-		if int >= 0
-			return true
-		else
-			return false
-		end
-	rescue 
-		puts "fail"
-		return false
-	end
 end
