@@ -1,0 +1,89 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    addressable (2.6.0)
+      public_suffix (>= 2.0.2, < 4.0)
+    buftok (0.2.0)
+    concurrent-ruby (1.1.5)
+    domain_name (0.5.20180417)
+      unf (>= 0.0.5, < 1.0.0)
+    equalizer (0.0.11)
+    et-orbi (1.1.7)
+      tzinfo
+    fugit (1.1.8)
+      et-orbi (~> 1.1, >= 1.1.7)
+      raabro (~> 1.1)
+    hashie (3.6.0)
+    http (3.3.0)
+      addressable (~> 2.3)
+      http-cookie (~> 1.0)
+      http-form_data (~> 2.0)
+      http_parser.rb (~> 0.6.0)
+    http-cookie (1.0.3)
+      domain_name (~> 0.5)
+    http-form_data (2.1.1)
+    http_parser.rb (0.6.0)
+    memoizable (0.4.2)
+      thread_safe (~> 0.3, >= 0.3.1)
+    minitest (5.11.3)
+    multipart-post (2.0.0)
+    mustermann (1.0.3)
+    naught (1.1.0)
+    oauth (0.5.4)
+    omniauth (1.9.0)
+      hashie (>= 3.4.6, < 3.7.0)
+      rack (>= 1.6.2, < 3)
+    omniauth-oauth (1.1.0)
+      oauth
+      omniauth (~> 1.0)
+    omniauth-twitter (1.4.0)
+      omniauth-oauth (~> 1.1)
+      rack
+    phonelib (0.6.30)
+    public_suffix (3.0.3)
+    raabro (1.1.6)
+    rack (2.0.6)
+    rack-protection (2.0.5)
+      rack
+    rufus-scheduler (3.5.2)
+      fugit (~> 1.1, >= 1.1.5)
+    simple_oauth (0.3.1)
+    sinatra (2.0.5)
+      mustermann (~> 1.0)
+      rack (~> 2.0)
+      rack-protection (= 2.0.5)
+      tilt (~> 2.0)
+    sqlite3 (1.4.0)
+    thread_safe (0.3.6)
+    tilt (2.0.9)
+    twitter (6.2.0)
+      addressable (~> 2.3)
+      buftok (~> 0.2.0)
+      equalizer (~> 0.0.11)
+      http (~> 3.0)
+      http-form_data (~> 2.0)
+      http_parser.rb (~> 0.6.0)
+      memoizable (~> 0.4.0)
+      multipart-post (~> 2.0)
+      naught (~> 1.0)
+      simple_oauth (~> 0.3.0)
+    tzinfo (2.0.0)
+      concurrent-ruby (~> 1.0)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.5)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  minitest!
+  omniauth-twitter!
+  phonelib!
+  rufus-scheduler!
+  sinatra!
+  sqlite3!
+  twitter!
+
+BUNDLED WITH
+   1.17.2
