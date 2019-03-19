@@ -44,15 +44,15 @@
 
 <div class="nav-column">
   <div class="nav-cont">
-    <%if !@loggedin %>
+    <%if !session[:loggedin] %>
       <div class=" nav-inline2 nav-signin">
           <a href="/login">Log In</a>
       </div>
-    <% elsif !@admin %>
+    <% elsif !session[:admin] %>
      <div class=" nav-inline2 nav-signin">
       <a href="/userAccount">My Account</a>
       </div>
-    <% elsif @admin %>
+    <% else %>
      <div class=" nav-inline2 nav-signin">
       <a href="/dashboard">Admin Dashboard</a>
       </div>
