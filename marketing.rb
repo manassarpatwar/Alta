@@ -28,14 +28,14 @@ before do
     @client = Twitter::REST::Client.new(config)
     @clientAutomaticFollowing = Twitter::REST::Client.new(autoConfig)
     @scheduler = Rufus::Scheduler.new
-    @scheduler.every "30m" do
+    #@scheduler.every "30m" do
     
-        mentions = @clientAutomaticFollowing.mentions_timeline()
-        most_recent = mentions.take(5)
-        most_recent.each do |tweet|
-            @clientAutomaticFollowing.follow(tweet.user.screen_name)  
-        end
-    end
+    #    mentions = @clientAutomaticFollowing.mentions_timeline()
+    #    most_recent = mentions.take(5)
+    #    most_recent.each do |tweet|
+    #        @clientAutomaticFollowing.follow(tweet.user.screen_name)  
+    #    end
+    #end
 end
 
 get '/marketing' do
