@@ -29,7 +29,7 @@ function showSlides(n) {
 }
 
 //smoothscrolling
-$('a[href*="#"]')
+/*$('a[href*="#"]')
   // Remove links that don't actually link to anything
   .not('[href="#"]')
   .not('[href="#0"]')
@@ -63,5 +63,14 @@ $('a[href*="#"]')
         });
       }
     }
-  });
+  });*/
+//smooth scrolling
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
 
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
