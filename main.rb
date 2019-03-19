@@ -15,3 +15,7 @@ get '/userAccount' do
   @admin = admin?
   erb :user_account
 end
+
+not_found do
+  erb :not_found404
+end
