@@ -31,7 +31,6 @@ a.nav-buttons{
 }
 a.nav-buttons:hover{
   color:black;
-  font-weight:300;
 }
 
 /* Left Column*/
@@ -45,8 +44,14 @@ img.nav-logo{
 .nav-logo{
   padding:5%;
 }
+
+.nav-name:hover{
+  color:#5f5a50;
+}
+
 div.nav-name{
   padding:2.5%;
+  color:#5f5a50;
   font-size: 40px;
   font-style: normal;
   white-space: nowrap;
