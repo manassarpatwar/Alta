@@ -5,10 +5,10 @@ post '/addTaxi' do
 	@regNum = params[:regNum].strip
 	@contact = params[:contact].strip
 	@taxiType = params[:taxiType].strip.upcase
-
+    phone = Phonelib.parse(@contact)
 	# perform validation
 	@regNum_ok = !@regNum.nil? && @regNum != ""
-	@contact_ok = !@contact.nil? && @contact != ""
+	@contact_ok = !@contact.nil? && @contact != "" && phone.valid?
 	if @taxiType == "S" || @taxiType == "M" || @taxiType == "L"
 		@taxiType_ok = true
 	else

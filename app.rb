@@ -7,6 +7,7 @@ require 'twitter'
 require 'rufus-scheduler'
 require 'omniauth-twitter'
 require 'sqlite3'
+require 'phonelib'
 require_relative 'addTaxi.rb'
 require_relative 'addUser.rb'
 require_relative 'dashboard.rb'
@@ -56,6 +57,22 @@ helpers do
 	def admin?
     	session[:admin]
   	end
+  
+    def isPositiveNumber? string
+      begin
+          Float(string)
+          int = string.to_i 
+          puts "Not fail"
+          if int >= 0
+              return true
+          else
+              return false
+          end
+      rescue 
+          puts "fail"
+          return false
+      end
+    end
   
 	def loggedin?
 		session[:loggedin]
