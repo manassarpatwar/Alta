@@ -3,6 +3,7 @@
 #All gem requirements
 require 'erb'
 require 'sinatra'
+require 'sinatra/cookies'
 require 'twitter'
 require 'rufus-scheduler'
 require 'omniauth-twitter'
@@ -29,6 +30,12 @@ end
 before do
   	@db = SQLite3::Database.new './taxi_database.sqlite'
     @taxiTable = @db.execute("SELECT * FROM taxis")
+    
+    response.set_cookie(:tweeting, :value => "true")
+    response.set_cookie(:following, :value => "true")
+    response.set_cookie(:follow_state, :value => "true")
+    response.set_cookie(:tweet_state, :value => "true")
+    
     $tweets.each do |deletedTweet|
         begin
             TWITTER_CLIENT.status(deletedTweet.uri) == deletedTweet
