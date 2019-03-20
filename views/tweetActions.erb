@@ -14,7 +14,7 @@
               <tr>
                 <td class = "tweets">
                   <div>
-                    <%=  TWITTER_CLIENT.oembed(tweet, hide_media: "true", hide_thread: "true").html%>
+                    <%=  TWITTER_CLIENT.oembed(tweet, hide_media: "true", hide_thread: "true", omit_script: "true").html%>
                     <div class = "reply">
                       <form class = "replyToTweet"> 
                         Reply to Tweet: <input type="text" name="reply" value="<%=h params[:reply] %>"/>
@@ -49,6 +49,14 @@
 </div>
 
 <script>
+  $( document ).ajaxError(function() {
+    console.log("Triggered ajaxError handler.");
+    var posting = $.post("handleDeletedTweet");
+    posting.done(function( data ) {
+      var content = $(data);
+      $( "#incoming_tweets").empty().append( content );
+    });
+  });
   $('.check').click(function() {
       $($(this).parent().prev()).toggleClass("displayreply");
   });
@@ -105,3 +113,4 @@
     });
   });
 </script>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>

@@ -9,7 +9,7 @@
   <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="js/jquery.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>s
+  <script src="js/bootstrap.min.js"></script>
 </head>
 <body>
   <div id = "wrapper">
@@ -23,13 +23,15 @@
         <div id = "incoming_tweets">
           <%= erb :tweetActions %>
         </div>
-        <%= erb :addJourney %>
+        <div id = "add_journey">
+          <%= erb :addJourney %>
+        </div>
         <div id = "taxis">
           <%= erb :displayTaxis %>
         </div>
       </div>
     </div>
-    <script src="js/admin_nav.js"></script>
   </div>
+  <script src="js/admin_nav.js"></script>
 </body>
 </html>

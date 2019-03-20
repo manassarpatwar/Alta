@@ -26,6 +26,7 @@ post '/fetchTweets' do
     if $tweets.length > 0
       $since_id = $tweets[0].id
       puts $tweets[0].user.screen_name
+      puts $since_id
     end
     $tweets =  TWITTER_CLIENT.mentions_timeline(count: "5", since_id: "#{$since_id}") + $tweets
     @tweets = $tweets.dup
@@ -97,4 +98,16 @@ post '/addToUnavailable' do
     @availableTaxis = $avTaxis.dup
     @unavailableTaxis = $unavTaxis.dup
    erb :displayTaxis
+end
+
+post '/handleDeletedTweet' do
+  $tweets.each do |deletedTweet|
+      begin
+          TWITTER_CLIENT.status(deletedTweet.uri) == deletedTweet
+      rescue Twitter::Error::NotFound => err
+          $tweets.delete(deletedTweet)
+      end
+    end
+    @tweets = $tweets.dup
+    erb :tweetActions
 end

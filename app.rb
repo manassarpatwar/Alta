@@ -32,14 +32,6 @@ before do
     response.set_cookie(:following, :value => "true")
     response.set_cookie(:follow_state, :value => "true")
     response.set_cookie(:tweet_state, :value => "true")
-
-    $tweets.each do |deletedTweet|
-        begin
-            TWITTER_CLIENT.status(deletedTweet.uri) == deletedTweet
-        rescue Twitter::Error::NotFound => err
-            $tweets.delete(deletedTweet)
-        end
-    end
 end
 
 #Configure sessions
@@ -79,7 +71,7 @@ helpers do
           return false
       end
     end
-
+    
 	def loggedin?
 		session[:loggedin]
 	end
