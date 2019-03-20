@@ -137,10 +137,11 @@ header.stick{
 .info2-title{
   font-size:300%;
   text-align: center;
-  margin-right: 45%;
+  margin: auto;
 }
 .info2-content{
-  padding:8% 8% 0 27%;
+  margin: auto 5%;
+  text-align: justify;
 }
 .info2-content ol {
   line-height:2;
@@ -172,13 +173,11 @@ header.stick{
 .info3-title{
   font-size:300%;
   text-align: center;
-  padding:8% 8% 0 40%;
-
+  margin: 5% auto 0;
 }
 .info3-content{
-  padding:8% 8% 0 15%;
-  margin-right:25%;
-
+  text-align: justify;
+  margin: auto 10%;
 }
 .info3-img{
   background-size: cover;
@@ -365,12 +364,10 @@ p.info5-reviews, .info5-name, .info5-date{
 .info6-content1{
   border-style: solid;
   border-width: 1.4px;
-  float:left;
 }
 .info6-content2{
   border-style: solid;
   border-width: 1.4px;
-  float:right;
 }
 
 .info6-maincolumn{
