@@ -1,0 +1,107 @@
+<div id = "fetch_tweets_header">
+  <h2>Tweets </h2>
+  <form id = "fetchTweet"> 
+      <input type="image" src = "img/cloud.png" alt = "fetch_tweets" id = "fetch_tweets" name="button" value="reply" />
+  </form>
+</div>
+<div class = "displaytweets">
+  <table>
+      <% unless @tweets.nil? %>
+        <% if @tweets.length == 0 %>
+          <h3>Please click fetch tweets to fetch the tweets</h3>
+        <% else %>
+          <% @tweets.reverse_each do |tweet| %>
+              <tr>
+                <td class = "tweets">
+                  <div>
+                    <%=  TWITTER_CLIENT.oembed(tweet, hide_media: "true", hide_thread: "true").html%>
+                    <div class = "reply">
+                      <form class = "replyToTweet"> 
+                        Reply to Tweet: <input type="text" name="reply" value="<%=h params[:reply] %>"/>
+                        <% if params[:reply] == "" %>
+                            <p style="color:red">Please enter a valid tweet</p>
+                        <% end %>
+                        <% params[:tweetindex] = @tweets.index(tweet) %>
+                        <% params[:tweetid] = tweet.id %>
+                        <% params[:screen_name] = tweet.user.screen_name %>
+                        <input type = "hidden" name = "tweetindex" value = "<%=h params[:tweetindex]%>" />
+                        <input type = "hidden" name = "tweetid" value = "<%=h params[:tweetid]%>" />
+                        <input type = "hidden" name = "screen_name" value = "<%=h params[:screen_name]%>" />
+                        <input type="submit" name="button" value="reply" />
+                      </form>
+                    </div>
+                  </div>
+                  <div class = "tweet_actions">
+                    <img src = "img/check.png" class= "check tweet_actions_icons" alt = "reply tweet" width = "50">
+                    <form class = "deleteTweet"> 
+                      <% params[:tweetindex] = @tweets.index(tweet) %>
+                      <input type = "hidden" name = "tweetindex" value = "<%=h params[:tweetindex]%>" />
+                      <input type="image" src = "img/cross.png" name="button" value="delete" class = "delete tweet_actions_icons" id = "delete_icon" >
+                    </form>
+                    <a href = "<%= tweet.uri %>"  target="_blank"><img src = "img/more_info.png" class= "moreinfo tweet_actions_icons" alt = "get more info" width = "50"></a>
+                  </div>
+                </td>
+              </tr>
+          <% end %>
+        <% end %>
+     <% end %>
+    </table>
+</div>
+
+<script>
+  $('.check').click(function() {
+      $($(this).parent().prev()).toggleClass("displayreply");
+  });
+  $( ".replyToTweet").submit(function( event ) {
+ 
+    // Stop form from submitting normally
+    event.preventDefault();
+
+    // Get some values from elements on the page:
+    var term = []
+    var $form = $( this );
+    term[1] = $form.find( "input[name='tweetindex']" ).val();
+    term[2] = $form.find( "input[name='tweetid']" ).val();
+    term[3] = $form.find( "input[name='screen_name']" ).val();
+    term[4] = $form.find( "input[name='reply']" ).val();
+    // Send the data using post
+   var posting = $.post("replyToTweet", { tweetindex: term[1], tweetid: term[2], screen_name: term[3], reply: term[4]});
+    
+   posting.done(function( data ) {
+      var content = $(data);
+      $( "#incoming_tweets").empty().append( content );
+    });
+  });
+  $( ".deleteTweet").submit(function( event ) {
+ 
+    // Stop form from submitting normally
+    event.preventDefault();
+
+    // Get some values from elements on the page:
+    var term = []
+    var $form = $( this );
+    term[1] = $form.find( "input[name='tweetindex']" ).val();
+    // Send the data using post
+   var posting = $.post("deleteTweet", { tweetindex: term[1]});
+    
+   posting.done(function( data ) {
+      var content = $(data);
+      $( "#incoming_tweets").empty().append( content );
+    });
+  });
+  $( "#fetchTweet").submit(function( event ) {
+ 
+    // Stop form from submitting normally
+    event.preventDefault();
+
+    // Get some values from elements on the page:
+    var term = []
+    var $form = $( this );
+    // Send the data using post
+   var posting = $.post("fetchTweets");
+   posting.done(function( data ) {
+      var content = $(data);
+      $( "#incoming_tweets").empty().append( content );
+    });
+  });
+</script>

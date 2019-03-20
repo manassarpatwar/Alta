@@ -1,20 +1,11 @@
 #--------------------Get Methods--------------------#
 get '/dashboard' do
     redirect '/index' unless admin?
-    @tweets = $tweets.dup
     @submitted = false
+    @tweets = $tweets.dup
     @availableTaxis = $avTaxis.dup
     @unavailableTaxis = $unavTaxis.dup
 	erb :dashboard
-end
-
-get '/dashboard/fetch_tweets' do
-    if $tweets.length > 0
-      $since_id = $tweets[0].id
-      puts $tweets[0].user.screen_name
-    end
-    $tweets =  TWITTER_CLIENT.mentions_timeline(count: "5", since_id: "#{$since_id}") + $tweets
-    redirect '/dashboard'
 end
 
 get '/settings' do
@@ -27,15 +18,28 @@ post '/replyToTweet' do
     if(params[:reply] != "")
         replytweet = TWITTER_CLIENT.update("@#{params[:screen_name]} #{params[:reply]}", :in_reply_to_status_id => params[:tweetid].to_i)
     end    
-    redirect '/dashboard'
+    @tweets = $tweets.dup
+    erb :tweetActions
 end
 
-post '/delete_tweet' do
+post '/fetchTweets' do
+    if $tweets.length > 0
+      $since_id = $tweets[0].id
+      puts $tweets[0].user.screen_name
+    end
+    $tweets =  TWITTER_CLIENT.mentions_timeline(count: "5", since_id: "#{$since_id}") + $tweets
+    @tweets = $tweets.dup
+    erb :tweetActions
+end
+
+
+post '/deleteTweet' do
   $since_id = $tweets[0].id
   index = (params[:tweetindex]).to_i
   $tweets.delete($tweets[index])
   $tweets =  TWITTER_CLIENT.mentions_timeline(count: "1", since_id: "#{$since_id}") + $tweets
-  redirect '/dashboard'
+  @tweets = $tweets.dup
+  erb :tweetActions
 end
 
 post '/addJourney' do
