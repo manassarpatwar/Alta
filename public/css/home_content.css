@@ -53,6 +53,8 @@ header.stick{
 }
 .center{
   text-align:left;
+  white-space: normal;
+  width: 90vw;
   color:#FFFFFF;
 }
 .head-box1{

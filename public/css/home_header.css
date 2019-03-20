@@ -1,18 +1,21 @@
 
 .navbar-fixed-top{
   position: absolute;
-  height:5vw;
+  display: flex;
+  flex-direction: row;
+  white-space: nowrap; 
+  height:70px;
   background-color:rgba(0, 0, 0, 0.315) !important;
 }
 /* can be deleted */
 .navbar-fixed-top.scrolled{
-  height:5vw;
+  height:70px;
   background-color:rgba(32, 18, 228, 0.726) !important;
 }
 .nav-column {
-  float: left;
+  white-space: nowrap; 
   width: 25%;
-  padding: 0 3%;
+  padding: 0 5px;
 }
 .nav-column2 {
   width: 50%;
@@ -35,14 +38,14 @@ a.nav-buttons:hover{
 
 /* Left Column*/
 img.nav-logo{
-  margin-top:2px;
-  height:65px;
+  margin-top:-20px;
+  width:50px;
 }
-.nav-logo, .nav-name{
-  float:left;
+.nav-name{
+  display: inline-block;
 }
 .nav-logo{
-  padding:5%;
+  padding:0;
 }
 
 .nav-name:hover{
@@ -96,5 +99,5 @@ a.nav-buttons, .nav-signin, .nav-vl, .nav-login{
   float: left;
 }
 .nav-inline2{
-  margin-top:3%;
+  margin-top:5px;
 }
