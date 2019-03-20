@@ -28,7 +28,7 @@ before do
     @clientMarketing = Twitter::REST::Client.new(marketingConfig)
     @clientAutomaticFollowing = Twitter::REST::Client.new(autoConfig)
     @scheduler = Rufus::Scheduler.new
-    @scheduler.every "5m" do
+    @scheduler.every "30m" do
         begin
             mentions = @clientAutomaticFollowing.mentions_timeline()
             most_recent = mentions.take(5)
