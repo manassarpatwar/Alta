@@ -118,6 +118,25 @@ a.nav-buttons, .nav-signin, .nav-vl, .nav-login{
   }
   div.nav-name{
     font-size: 35px;
+    padding-top: 10px;
+  }
+  .nav-signin, .nav-vl, .nav-login{
+    padding-right: 70px;
+  }
+}
+
+@media only screen and (max-width: 940px) {
+  .nav-column2 {
+    width: 80%;
+  }
+  img.nav-logo{
+    width: 50px;
+    padding-left: 20px;
+    margin-top: -10px;
+  }
+  div.nav-name{
+    font-size: 25px;
+    padding-top: 15.5px;
   }
   .nav-signin, .nav-vl, .nav-login{
     padding-right: 70px;
