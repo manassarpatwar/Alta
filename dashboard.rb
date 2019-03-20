@@ -15,9 +15,14 @@ end
 #--------------------Post Methods--------------------#
 
 post '/replyToTweet' do
-    if(params[:reply] != "")
-        replytweet = TWITTER_CLIENT.update("@#{params[:screen_name]} #{params[:reply]}", :in_reply_to_status_id => params[:tweetid].to_i)
-    end    
+    begin
+      if(params[:reply] != "")
+          replytweet = TWITTER_CLIENT.update("@#{params[:screen_name]} #{params[:reply]}", :in_reply_to_status_id => params[:tweetid].to_i)
+      end    
+    rescue Twitter::Error::TooManyRequests => error
+      sleep error.rate_limit.reset_in
+      puts "Too many requests. Try again in #{error.rate_limit.reset_in} seconds"
+    end
     @tweets = $tweets.dup
     erb :tweetActions
 end
@@ -25,10 +30,13 @@ end
 post '/fetchTweets' do
     if $tweets.length > 0
       $since_id = $tweets[0].id
-      puts $tweets[0].user.screen_name
-      puts $since_id
     end
-    $tweets =  TWITTER_CLIENT.mentions_timeline(count: "5", since_id: "#{$since_id}") + $tweets
+    begin
+      $tweets =  TWITTER_CLIENT.mentions_timeline(count: "5", since_id: "#{$since_id}") + $tweets
+    rescue Twitter::Error::TooManyRequests => error
+      sleep error.rate_limit.reset_in
+      puts "Too many requests. Try again in #{error.rate_limit.reset_in} seconds"
+    end
     @tweets = $tweets.dup
     erb :tweetActions
 end
@@ -38,7 +46,12 @@ post '/deleteTweet' do
   $since_id = $tweets[0].id
   index = (params[:tweetindex]).to_i
   $tweets.delete($tweets[index])
-  $tweets =  TWITTER_CLIENT.mentions_timeline(count: "1", since_id: "#{$since_id}") + $tweets
+  begin
+    $tweets =  TWITTER_CLIENT.mentions_timeline(count: "1", since_id: "#{$since_id}") + $tweets
+  rescue Twitter::Error::TooManyRequests => error
+    sleep error.rate_limit.reset_in
+    puts "Too many requests. Try again in #{error.rate_limit.reset_in} seconds"
+  end
   @tweets = $tweets.dup
   erb :tweetActions
 end
@@ -106,8 +119,11 @@ post '/handleDeletedTweet' do
           TWITTER_CLIENT.status(deletedTweet.uri) == deletedTweet
       rescue Twitter::Error::NotFound => err
           $tweets.delete(deletedTweet)
+      rescue Twitter::Error::TooManyRequests => error
+        sleep error.rate_limit.reset_in
+        puts "Too many requests. Try again in #{error.rate_limit.reset_in} seconds"
       end
-    end
+  end
     @tweets = $tweets.dup
     erb :tweetActions
 end

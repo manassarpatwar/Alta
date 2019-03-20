@@ -34,8 +34,8 @@ before do
                 @clientAutomaticFollowing.follow(tweet.user.screen_name)  
             end
             puts ("Automated following initiated")
-        rescue Twitter::Error::TooManyRequests => err
-        
+        rescue Twitter::Error::TooManyRequests => error
+            sleep error.rate_limit.reset_in
             puts ("To many requests to twitter API Marketing.rb line 37 before do")
         end
     end
