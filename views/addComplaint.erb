@@ -1,20 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Add a Complaint</title>
-</head>
-<body>
-<h1>Add a Complaint</h1>
+<div id = "add_complaint">
+    <h1>Add a Complaint</h1>
 
-<% if @submitted && @all_ok %>
-	<p>Complaint Added.</p>
-<% else %>
+    <% if @submitted && @all_ok %>
+        <p>Complaint Added.</p>
+    <% else %>
 
 	<% if @submitted && !@all_ok %>
 		<p style="color:red">There were errors in your form submission, please correct them below.</p>
 	<% end %>
 
-	<form method="post" action="addComplaint">
+	<form id = "complaintForm">
 		<!-- Error Validation -->
 		<% if @submitted && !@journey_id_ok %>
 		  	<p style="color:red">Please enter a journey ID</p>
@@ -41,6 +36,31 @@
 	</form>
 
 <% end %>
+    </div>
+<script>
+  $( "#complaintForm" ).submit(function( event ) {
+ 
+    // Stop form from submitting normally
+    event.preventDefault();
 
-</body>
-</html>
+    // Get some values from elements on the page:
+    var term = []
+    var $form = $( this );
+    term[1] = $form.find( "input[name='journey_id']" ).val();
+    term[2] = $form.find( "input[name='user_id']" ).val();
+    term[3] = $form.find( "input[name='complaint']" ).val();
+    for(var i = 1; i <= 5; i++){
+      if (term[i] == undefined){
+        term[i] = "";
+      }
+      console.log(term[i]);
+    }
+    // Send the data using post
+   var posting = $.post("addComplaint", { journey_id: term[1], user_id: term[2], complaint: term[3]});
+    
+   posting.done(function( data ) {
+      var content = $(data);
+      $( "#add_complaint").empty().append( content );
+    });
+  });
+</script>

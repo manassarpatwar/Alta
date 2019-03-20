@@ -1,12 +1,3 @@
-before do
-	@db = SQLite3::Database.new('./taxi_database.sqlite')
-end
-
-get '/addComplaint' do
-	@submitted = false
-	erb :addComplaint
-end
-
 post '/addComplaint' do
 	@submitted = true
 

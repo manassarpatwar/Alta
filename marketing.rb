@@ -1,6 +1,3 @@
-# check cookie boolean google
-# 
-
 require 'erb'
 require 'sinatra'
 require 'twitter'
@@ -37,7 +34,7 @@ before do
             end
         rescue Twitter::Error::TooManyRequests => err
         
-            puts ("To many requests to twitter API Marketing.rb line 40")
+            puts ("To many requests to twitter API Marketing.rb line 37 before do")
         end
     end
 end
@@ -47,14 +44,12 @@ get '/marketing' do
     response.set_cookie(:following, :value => "true")
     response.set_cookie(:follow_state, :value => "true")
     response.set_cookie(:tweet_state, :value => "true")
-
     
     erb :marketing
 end
 
 post '/followPeopleUsingKeyword' do
     
-  # if to many request give error to the user
     response.set_cookie(:follow_state, :value => "true")
   
     # Follows 5 people at the time that use the certain keyword most recently
@@ -75,7 +70,7 @@ post '/followPeopleUsingKeyword' do
     rescue Twitter::Error::TooManyRequests => err
         
         response.set_cookie(:follow_state, :value => "false")
-        puts ("To many requests to twitter API Marketing.rb line 78")
+        puts ("To many requests to twitter API Marketing.rb line 73, followPeopleUsingKeyword")
     end
 
     redirect '/marketing'
@@ -95,8 +90,10 @@ post '/tweetToTimeline' do
             end
         end
     rescue Twitter::Error::TooManyRequests => err
-       response.set_cookie(:tweet_state, :value => "false")
-       puts ("To many requests to twitter API Marketing.rb line 99")
+        
+        response.set_cookie(:tweet_state, :value => "false")
+        puts ("To many requests to twitter API Marketing.rb line 95 tweetToTimeline")
     end    
+    
     redirect '/marketing'
 end

@@ -14,7 +14,7 @@ require_relative 'addUser.rb'
 require_relative 'dashboard.rb'
 require_relative 'main.rb'
 require_relative 'login.rb'
-require_relative 'complaint.rb'
+require_relative 'addComplaint.rb'
 require_relative 'marketing.rb'
 
 set :bind, '0.0.0.0' # Needed when running from Codio

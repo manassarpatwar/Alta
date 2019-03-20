@@ -24,7 +24,6 @@
 
         <% unless (request.cookies['following'] == "true") %>
         <% if (request.cookies['follow_state'] == "true") %>
-          <% puts(" lol #{request.cookies['follow_state']}") %>
           <p>You followed 5 people that used this keyword recently.</p>
         <% else %>
           <p>You already reached your follow limits today. Please come back tomorrow or try 15 minutes later..</p>
