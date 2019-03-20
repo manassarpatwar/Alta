@@ -19,7 +19,7 @@ header.stick{
   display:block;
 }
 #bg{
-  background-image: url("../img/bkground.jpeg");
+  background-image: url("../img/background.jpg");
   background-repeat: no-repeat;
   background-size: cover;  
 }
