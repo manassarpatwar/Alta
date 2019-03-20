@@ -6,5 +6,5 @@ source 'https://rubygems.org' do
   gem 'omniauth-twitter'
   gem 'sqlite3'
   gem 'phonelib'
-  gem 'minitest'
+  gem 'sinatra-contrib'
 end
