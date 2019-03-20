@@ -17,7 +17,7 @@
   width: 25%;
   padding: 0 5px;
 }
-.nav-column2{
+.nav-column2 {
   width: 50%;
 }
 .nav-cont{
@@ -97,8 +97,8 @@ a.nav-buttons, .nav-signin, .nav-vl, .nav-login{
 
 /* Right column */
 .nav-signin, .nav-vl, .nav-login{
-  float: left;
-  padding-left: 100px;
+  float: right;
+  padding-right: 100px;
   padding-top: 15px;
 }
 .nav-inline2{
@@ -108,8 +108,37 @@ a.nav-buttons, .nav-signin, .nav-vl, .nav-login{
 
 
 /* Responsive  */
-@media only screen and (max-width: 600px) {
-  body {
-    background-color: lightblue;
+@media only screen and (max-width: 1180px) {
+  .nav-column2 {
+    width: 80%;
+  }
+  img.nav-logo{
+    width:80px;
+    padding-left: 40px;
+  }
+  div.nav-name{
+    font-size: 35px;
+    padding-top: 10px;
+  }
+  .nav-signin, .nav-vl, .nav-login{
+    padding-right: 70px;
+  }
+}
+
+@media only screen and (max-width: 940px) {
+  .nav-column2 {
+    width: 80%;
+  }
+  img.nav-logo{
+    width: 50px;
+    padding-left: 20px;
+    margin-top: -10px;
+  }
+  div.nav-name{
+    font-size: 25px;
+    padding-top: 15.5px;
+  }
+  .nav-signin, .nav-vl, .nav-login{
+    padding-right: 70px;
   }
 }

@@ -16,6 +16,13 @@ get '/userAccount' do
   erb :user_account
 end
 
-not_found do
-  erb :not_found404
+get '/userOrders' do
+  @loggedin = loggedin?
+  @admin = admin?
+  erb :user_orders
+end
+
+
+not_found do 
+    erb :not_found404
 end
