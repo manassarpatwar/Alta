@@ -9,6 +9,7 @@ get '/dashboard' do
 end
 
 get '/settings' do
+  redirect '/index' unless admin?
   @submitted = false
   erb :settings
 end

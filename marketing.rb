@@ -42,6 +42,9 @@ before do
 end
 
 get '/marketing' do
+    
+    redirect '/index' unless admin?
+    
     response.set_cookie(:tweeting, :value => "true")
     response.set_cookie(:following, :value => "true")
     response.set_cookie(:follow_state, :value => "true")
