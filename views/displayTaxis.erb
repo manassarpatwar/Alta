@@ -1,0 +1,111 @@
+
+<h2>Available Taxis</h2>
+<div id = "availableTaxis" class = "displayTaxis">
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Reg No.</th> 
+      <th>Contact No.</th>
+      <th>Type</th>
+    </tr>
+     <% unless @availableTaxis.nil? %>
+       <% @availableTaxis.each do |taxi| %>
+          <tr>
+            <td>
+              <%=h taxi[0] %>
+            </td>
+            <td>
+              <%=h taxi[1] %>
+            </td>
+            <td>
+              <%=h taxi[2] %>
+            </td>
+            <td>
+              <%=h taxi[3] %>
+            </td>
+            <td>
+              <form class = "add_to_unavailable"> 
+                <% params[:taxiIndex] = @availableTaxis.index(taxi) %>
+                <input type = "hidden" name = "taxiIndex" value = "<%=h params[:taxiIndex]%>" />
+                <input type="image" src = "img/check.png" name="button" value="delete" class = "delete tweet_actions_icons" id = "delete_icon" width = "50" >
+              </form>
+            </td>
+          </tr>
+       <% end %>
+     <% end %>
+  </table>
+</div>
+
+<h2>Unavailable Taxis</h2>
+<div id = "unavailableTaxis" class = "displayTaxis">
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Reg No.</th> 
+      <th>Contact No.</th>
+      <th>Type</th>
+    </tr>
+     <% unless @unavailableTaxis.nil? %>
+       <% @unavailableTaxis.each do |taxi| %>
+          <tr>
+            <td>
+              <%=h taxi[0] %>
+            </td>
+            <td>
+              <%=h taxi[1] %>
+            </td>
+            <td>
+              <%=h taxi[2] %>
+            </td>
+            <td>
+              <%=h taxi[3] %>
+            </td>
+            <td>
+              <form class = "add_to_available"> 
+                <% params[:taxiIndex] = @unavailableTaxis.index(taxi) %>
+                <input type = "hidden" name = "taxiIndex" value = "<%=h params[:taxiIndex]%>" />
+                <input type="image" src = "img/cross.png" name="button" value="delete" class = "delete tweet_actions_icons" id = "delete_icon" width = "50" >
+              </form>
+            </td>
+          </tr>
+       <% end %>
+    <% end %>
+  </table>
+</div>
+
+<script>
+  $( ".add_to_unavailable" ).submit(function( event ) {
+ 
+    // Stop form from submitting normally
+    event.preventDefault();
+
+    // Get some values from elements on the page:
+    var term = []
+    var $form = $( this );
+    term[1] = $form.find( "input[name='taxiIndex']" ).val();
+    // Send the data using post
+   var posting = $.post("addToUnavailable", { taxiIndex: term[1]});
+    
+   posting.done(function( data ) {
+      var content = $(data);
+      $( "#taxis" ).empty().append( content );
+    });
+  });
+  $( ".add_to_available").submit(function( event ) {
+ 
+    // Stop form from submitting normally
+    event.preventDefault();
+
+    // Get some values from elements on the page:
+    var term = []
+    var $form = $( this );
+    term[1] = $form.find( "input[name='taxiIndex']" ).val();
+    // Send the data using post
+   var posting = $.post("addToAvailable", { taxiIndex: term[1]});
+    
+   posting.done(function( data ) {
+      var content = $(data);
+      $( "#taxis" ).empty().append( content );
+    });
+  });
+</script>

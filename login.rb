@@ -18,7 +18,7 @@ get '/auth/twitter/callback' do
 
 	session[:loggedin] = true #User now logged in
 	
-    @usersTable = @db.execute %{SELECT * FROM users} #Gather all user data
+    @usersTable = $db.execute %{SELECT * FROM users} #Gather all user data
 
     @usersTable.each do |record| #Go through each user record
         if env['omniauth.auth']['uid'] == record[0] #If uid = id then:
@@ -33,11 +33,11 @@ get '/auth/twitter/callback' do
 	
 	#Add to database if user is not found already
 	if @found == false		
-		@db.execute("INSERT INTO users VALUES (?, ?, ?, 0, 0)", id, name, dateTime)
+		$db.execute("INSERT INTO users VALUES (?, ?, ?, 0, 0)", id, name, dateTime)
 	end 	
 	
 	#Set global variables of user information to user logged in 
-	@userInfo = @db.execute("SELECT * FROM users WHERE id = ?", id)
+	@userInfo = $db.execute("SELECT * FROM users WHERE id = ?", id)
 	session[:id] = @userInfo[0][0]
 	session[:name] = @userInfo[0][1]
 	session[:dateTime] = @userInfo[0][2]
@@ -51,5 +51,5 @@ end
 
 #When autherisation fails
 get '/auth/failure' do
-  	params[:message]
+  	erb :not_found404
 end

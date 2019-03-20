@@ -14,13 +14,13 @@ post '/addComplaint' do
 	
 	@all_ok = @journey_id_ok && @complaint_ok	
 
-	count = @db.get_first_value('SELECT COUNT(*) FROM complaints')
+	count = $db.get_first_value('SELECT COUNT(*) FROM complaints')
 	@id = count
 
   	# add data to the database
 	if @all_ok
     	# do the insert
-		@db.execute('INSERT INTO complaints VALUES (?, ?, ?, ?, ?)', [@id, @journey_id, @user_id, @date_time, @complaint])
+		$db.execute('INSERT INTO complaints VALUES (?, ?, ?, ?, ?)', [@id, @journey_id, @user_id, @date_time, @complaint])
   	end
 	erb :addComplaint
 end

@@ -3,6 +3,8 @@ get '/dashboard' do
     redirect '/index' unless admin?
     @tweets = $tweets.dup
     @submitted = false
+    @availableTaxis = $avTaxis.dup
+    @unavailableTaxis = $unavTaxis.dup
 	erb :dashboard
 end
 
@@ -64,13 +66,31 @@ post '/addJourney' do
 	
 	@all_ok = @taxiId_ok && @userId_ok && @twitterHandle_ok && @dateTime_ok && @startLocation_ok && @endLocation_ok && @freeRide_ok && @cancelled_ok && @convoLink_ok	
 
-	count = @db.get_first_value('SELECT COUNT(*) FROM journeys')
+	count = $db.get_first_value('SELECT COUNT(*) FROM journeys')
 	@id = count + 1
 
   	# add data to the database
 	if @all_ok
     	# do the insert
-		@db.execute('INSERT INTO journeys VALUES (?, ?, ?, ?, ?, ? ,?, ?, ?, ?, ?)', [@id, @taxiId, @userId, @twitterHandle, @dateTime, @startLocation, @endLocation, @freeRide, @cancelled, @rating, @convoLink])
+		$db.execute('INSERT INTO journeys VALUES (?, ?, ?, ?, ?, ? ,?, ?, ?, ?, ?)', [@id, @taxiId, @userId, @twitterHandle, @dateTime, @startLocation, @endLocation, @freeRide, @cancelled, @rating, @convoLink])
   	end
     erb :addJourney
+end
+
+post '/addToAvailable' do
+    taxiIndex = params[:taxiIndex].to_i
+    $avTaxis.push($unavTaxis[taxiIndex])
+    $unavTaxis.delete($unavTaxis[taxiIndex])
+    @availableTaxis = $avTaxis.dup
+    @unavailableTaxis = $unavTaxis.dup
+    erb :displayTaxis
+end
+
+post '/addToUnavailable' do
+    taxiIndex = params[:taxiIndex].to_i
+    $unavTaxis.push($avTaxis[taxiIndex])
+    $avTaxis.delete($avTaxis[taxiIndex])
+    @availableTaxis = $avTaxis.dup
+    @unavailableTaxis = $unavTaxis.dup
+   erb :displayTaxis
 end

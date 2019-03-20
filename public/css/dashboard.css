@@ -101,3 +101,19 @@ body{
 #fetch_tweets:hover{
   transform: scale(1.2)
 }
+
+#taxis{
+  padding-left: 50px;
+}
+
+.displayTaxis{
+  width: 300px;
+  padding: 0 80px 0 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 40vh;
+}
+.displayTaxis td{
+  width: 50px;
+  margin: 0 20px;
+}
