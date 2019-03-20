@@ -9,4 +9,7 @@ source 'https://rubygems.org' do
   gem 'sqlite3'
   gem 'phonelib'
   gem 'sinatra-contrib'
+  gem 'capybara'
+  gem 'rspec'
+  gem 'simplecov'
 end
