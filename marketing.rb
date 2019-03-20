@@ -27,11 +27,13 @@ before do
     @scheduler = Rufus::Scheduler.new
     @scheduler.every "30m" do
         begin
+            
             mentions = @clientAutomaticFollowing.mentions_timeline()
             most_recent = mentions.take(5)
             most_recent.each do |tweet|
                 @clientAutomaticFollowing.follow(tweet.user.screen_name)  
             end
+            puts ("Automated following initiated")
         rescue Twitter::Error::TooManyRequests => err
         
             puts ("To many requests to twitter API Marketing.rb line 37 before do")
