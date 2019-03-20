@@ -15,6 +15,12 @@ get '/userAccount' do
   @admin = admin?
   erb :user_account
 end
+get '/useOrders' do
+  @loggedin = loggedin?
+  @admin = admin?
+  erb :user_orders
+end
+
 
 not_found do
   erb :not_found404
