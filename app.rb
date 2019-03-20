@@ -30,18 +30,18 @@ end
 before do
   	@db = SQLite3::Database.new './taxi_database.sqlite'
     @taxiTable = @db.execute("SELECT * FROM taxis")
-    
+
     response.set_cookie(:tweeting, :value => "true")
     response.set_cookie(:following, :value => "true")
     response.set_cookie(:follow_state, :value => "true")
     response.set_cookie(:tweet_state, :value => "true")
-    
+
     $tweets.each do |deletedTweet|
         begin
             TWITTER_CLIENT.status(deletedTweet.uri) == deletedTweet
         rescue Twitter::Error::NotFound => err
             $tweets.delete(deletedTweet)
-        end 
+        end
 
     end
 end
@@ -64,23 +64,23 @@ helpers do
 	def admin?
     	session[:admin]
   	end
-  
+
     def isPositiveNumber? string
       begin
           Float(string)
-          int = string.to_i 
+          int = string.to_i
           puts "Not fail"
           if int >= 0
               return true
           else
               return false
           end
-      rescue 
+      rescue
           puts "fail"
           return false
       end
     end
-  
+
 	def loggedin?
 		session[:loggedin]
 	end
