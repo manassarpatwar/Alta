@@ -174,9 +174,6 @@ header.stick{
   float: left;
   width: 50%;
 }
-.info3-container{
-  background-color:white;
-}
 
 
 
@@ -289,7 +286,7 @@ b{
   font-size: 3rem;
   font-weight: 200; */
   /* margin:100px 0 0 0; */
-  color:rgb(255, 255, 255);
+  color:rgb(82, 80, 80);
   background-color:rgba(255, 255, 255, 0);
   /* letter-spacing:5px; */
 }
