@@ -19,24 +19,37 @@ header.stick{
   display:block;
 }
 #bg{
-  background-image: url("../img/background.jpg");
+  background-image: url("../img/BG.png");
   background-repeat: no-repeat;
   background-size: cover;  
 }
-
+.uppercaseT{
+  text-transform:uppercase;
+}
+.titles{
+  text-align:center;
+  font-family: sans-serif;
+  font-size: 3rem;
+  font-weight: 400;
+  letter-spacing:5px;
+}
 /*Welcoming/Sign up design*/
 
 .welcome-row:after {
   content: "";
   display: table;
   clear: both;
-  height: 100vh;
+  height: 30vh;
 }
-#welcoming-box{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+
+.welcome-left{
+  padding-right: 10px;
+  padding-top:35%;
+  color:white;
+}
+#welcome-left-box{
+  padding:20px;
+  background-color:rgba(0, 0, 0, 0.24);
 }
 @media screen and (max-width: 800px) {
   .welcome-column1 {
@@ -51,30 +64,27 @@ header.stick{
   line-height: 1.4;
   float:left;
 }
-.center{
-  text-align:left;
-  white-space: normal;
-  width: 90vw;
-  color:#FFFFFF;
-}
 .head-box1{
-  font-size:60px;
+  font-size:50px;
+  font-weight: 500;
+  text-transform:uppercase;
+  text-align:center;
 }
 .head-box2{
-  font-size:40px;
-}
-.head-box3{
-  font-size:35px;
+  font-size:30px;
+  text-transform:uppercase;
+  text-align:center;
 }
 .twitter{
-  color: rgb(92, 192, 255);
+  color: rgb(76, 166, 221);
+  font-weight: 300;
 }
 
 .twitter:hover{
   transition: 0.5s ease;
-  color: rgb(42, 173, 255);
+  color: rgb(8, 62, 95);
   cursor: pointer;
-  font-size: 50px;
+  text-decoration:none;
 }
 
 
@@ -86,106 +96,86 @@ header.stick{
   padding: 50px;
 }
 
-/*Information1: about us*/
+/*Inforamtion2 : how to use our service*/
+.info1-box{
+  margin:12% 20% 20% 25%;
+}
 .info1-container{
-  height: 130%;
-  padding:6% 0 6% 0;
+  height: 900%;
+  background-color:white;
+  padding-bottom:0;
 }
 .info1-title{
-  font-size: 350%;
+  padding-top:80px;
+  padding-bottom:40px;
+  font-size: 30px;
+  margin-bottom:0;
 }
-.info1-vl {
-  margin:5% 80% 0 0;
-  border-top: 3px solid rgb(175, 175, 173);
-  position: relative;
-}
-.info1-box{
-  margin:12% 20% 20% 27%;
-}
-.info1-content{
-  margin-top: 12%;
-  font-size: 150%;
-  color:rgb(175, 175, 173);
-  width:135%;
-
-}
-
-.break1{
-  background-color: white;
-}
-.separation{
-  border-top: 1px solid rgb(175, 175, 173);
-  margin:0 40% 0 40%;
-  position: relative;
-  padding-bottom: 10%;
-}
-
-
-
-
-/*Inforamtion2 : how to use our service*/
-.info2-container{
-  height: 10%;
-  padding-bottom:5%;
-}
-.info2-column{
-  float: left;
-  width: 50%;
-  padding:0;
-}
-.info2-box{
-  padding: 35% 0 0 15%;
-}
-.info2-title{
-  font-size:300%;
-  text-align: center;
-  margin: auto;
-}
-.info2-content{
-  margin: auto 5%;
-  text-align: justify;
-}
-.info2-content ol {
-  line-height:2;
-  padding-left:5%;
-}
-.info2-img{
+.info1-img{
   background-size: cover;
   width:100%; 
-  padding-right:3%;
+}
+.info1-content1, .info1-content1 ol li{
+  line-height: 2;
+  text-align: left;
+  font-weight: 200;
+  letter-spacing: 2.7px;
+  font-size: 22px;
+  font-family:sans-serif;
+  color:#333333;
+}
+.info1-content2{
+  color:#333333;
+  font-size:15px;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+.info1-column {
+  float: left;
+  width: 33.3%;
+  /* padding: 0 3%; */
+}
+.info1-lists{
+  line-height: 1.8;
+  padding-bottom:20px;
+  color:#333333;
+  font-size:15px;
+  font-weight: 400;
+  letter-spacing: 1px;
 }
 
 
 
 
-/*Information3: How it works*/
+
+
 .info3-container{
-  height: 10%;
-  padding-bottom:5%;
+  height:1000px;
+}
+/*Information3: Deals*/
+.info3-dealcolumn {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 300px;
+}
+.info3-dealrow:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.info3-img1{
+  background-image:url(../img/background.jpg)
+}
+.info3-img2{
+  background-image:url(../img/background2.jpg)
 }
 .info3-column{
   float: left;
-  width: 60%;
-  padding:0;
-}
-.info3-column2{
-  width:40%;
+  width: 50%;
 }
 
-.info3-title{
-  font-size:300%;
-  text-align: center;
-  margin: 5% auto 0;
-}
-.info3-content{
-  text-align: justify;
-  margin: auto 10%;
-}
-.info3-img{
-  background-size: cover;
-  width:100%; 
-  padding-left:3%;
-}
+
 
 /* Creating two colummns*/
 .bd-column1 {
@@ -212,8 +202,8 @@ header.stick{
 
 /*Information4: Types of Taxi*/
 .info4-container{
-  height: 10%;
-  padding-bottom:10%;
+  height: 1%;
+  padding-top:1%;
 }
 .info4-column{
   float: left;
@@ -221,7 +211,7 @@ header.stick{
   padding:0;
 }
 .info4-box{
-  padding: 0 0 0 15%;
+  padding: 26.5% 0 0 15%;
   height:200%;
   border-right: 1px solid rgb(175, 175, 173);
   text-align: right;
@@ -245,7 +235,7 @@ header.stick{
 .info4-img{
   background-size: cover;
   width:15%; 
-  margin: 30% 0 0 5%;
+  margin: 13.5% 0 100% 5%;
   transition: transform 1s;
 }
 .info4-img:hover{
@@ -265,38 +255,40 @@ header.stick{
   top: 0;
 }
 .info4-indicators{
-  text-align:center;
+  text-align:left;
 }
 .info4-indict {
   cursor: pointer;
-  height: 10px;
-  margin:1%;
-  padding:5% 3% 3% 3%;
-  color: #bbb;
+  padding:30% 3% 0 3%;
+  color:rgb(87, 87, 87);
   display: inline-block;
   transition: background-color 0.6s ease; 
+  font-size:13px;
 }
+
 .active, .info4-indict:hover {
   color: #717171;
 }
-
-
+b{
+  font-weight: 300;
+}
 
 
 /*Information 5: Customer Reviews*/
 .info5-container{
   height:750px;
+  background-color:rgba(0, 0, 0, 0.507);
 }
 .info5-title{
-  padding:18% 0 3% 0;
-  font-size:350%;
-  text-align:center;
+  padding:15% 0 3% 0;
+  /* text-align:center;
   font-family: "GT America","Helvetica Neue","Helvetica",sans-serif;
   font-size: 3rem;
-  line-height: 1.7;
-  font-weight: 200;
-  margin:100px 0 0 0;
-  color:white;
+  font-weight: 200; */
+  /* margin:100px 0 0 0; */
+  color:rgb(82, 80, 80);
+  background-color:rgba(255, 255, 255, 0);
+  /* letter-spacing:5px; */
 }
 .info5-column {
   float: left;
@@ -547,6 +539,72 @@ p.info6-reviews, .info6-name, .info6-date{
     height:400px;
   }
 }
+@media only screen and (max-width: 860px) {
+  #fade-in{
+    width:75%;
+    white-space:normal;
+  }
+  #welcome-left-box{
+    margin-left:19%;
+  }
+  .head-box1{
+    font-size:35px;
+    padding:9%;
+    padding-bottom:15px;
+  }
+  .head-box2{
+    font-size:22px;
+    padding-bottom:15px;
+  }
+  .welcome-left{
+    width:115%;
+  }
+}
+@media only screen and (max-width: 550px) {
+  #fade-in{
+    width:75%;
+    white-space:normal;
+  }
+  #welcome-left-box{
+    margin-left:19%;
+  }
+  .head-box1{
+    font-size:25px;
+    padding:1%;
+    padding-bottom:10px;
+  }
+  .head-box2{
+    font-size:17px;
+    padding-bottom:15px;
+  }
+  .welcome-left{
+    width:115%;
+    padding-top:150px;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .welcome-left{
+    padding-top:150px;
+  }
+  .head-box1{
+    font-size:20px;
+    padding:1%;
+    padding-bottom:7px;
+    overflow:hidden;
+  }
+  .head-box2{
+    font-size:15px;
+    padding-bottom:15px;
+  }
+  .welcome-left{
+    width:140%;
+  }
+  #welcome-left-box{
+    margin-left:0;
+  }
+}
+
+
 
 
 
