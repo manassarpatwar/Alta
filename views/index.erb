@@ -13,14 +13,14 @@
     <link rel="stylesheet" href="css/home_content.css" />
     <link rel="stylesheet" href="css/home_footer.css" />
   </head>
+    
 
-
-  <body id="bg">
+  <body id="bg">  
   <!--navigation bar-->
     <header class="stick">
         <%= erb :home_header %>
-    </header>
-
+    </header> 
+     
     <div id = "wrapper">
       <div id = "page-content-wrapper">
 
@@ -46,7 +46,7 @@
         </div>
     </div>
 </div>
-
+        
 
 
 <!--Content 1: How to use our service-->
@@ -61,7 +61,7 @@
                                 <li>Login to your Twitter, tweet to us by using @ise19team29 with your location, preferred taxi type (S, M or L) and your end location.</li>
                                 <li>Our employee will reply or direct message to you for more information if it is necessary.</li>
                                 <li>Get in the car and relax till you reach your desired destination. Pay the taxi driver with cash or credit card when you reach the destination.</li>
-                            </ol>
+                            </ol> 
                         </div>
                     </div>
             </div>
@@ -86,7 +86,7 @@
                         <div class="info3-content">
                           The employee sees your tweet and he/she will assign the nearest taxi to you. If you do not have location services turned on in Twitter, he/she will reply or direct message to you to inquire about your location.
                           After that he/she will tell you the taxi’s information (plate and contact number). When the taxi driver arrives, the driver will ask for your Twitter name for safety and confirmation reason.
-                          Pay the driver by either cash, NFC or credit/debit card when you have reached the destination.
+                          Pay the driver by either cash, NFC or credit/debit card when you have reached the destination.  
                         </div>
                     </div>
                 </div>
@@ -99,7 +99,7 @@
 
     <div class="slideshow-container" id="section3" style="background-color:#FFFFFF; height: 700px;">
         <div class="info4-indicators">
-            <span class="info4-indict" onclick="currentSlide(1)"><b>Type S</b></span>
+            <span class="info4-indict" onclick="currentSlide(1)"><b>Type S</b></span> 
             <span class="info4-indict" onclick="currentSlide(2)"><b>Type M</b></span>
             <span class="info4-indict" onclick="currentSlide(3)"><b>Type L</b></span>
         <!-- <span class="info4-indict" onclick="currentSlide(4)">Type 4</span> -->
@@ -174,7 +174,7 @@
 
 <!-- Content 4: Customer Reviews-->
 
-    <div class="info5-container" id="section4">
+    <div class="info5-container" id="section4">        
         <p class="info5-title">
             What do People Say
         </p>
@@ -195,7 +195,7 @@
                 </p>
                 </div>
             </div>
-        </div>
+        </div>        
 
         <div class="info5-column">
             <div class="info5-box">
@@ -236,7 +236,7 @@
             </div>
         </div>
     </div>
-
+    
 
     <!--Content 5: About Us-->
 
@@ -259,35 +259,32 @@
 
 
     <!-- Content 6: Contact us and banner -->
-    <div class="info6-container" id="section6">
+    <div class="info6-container" id="section6">        
 
         <div class="info6-column">
             <div class="info6-box">
                 <div class="info6-cont">
                 </div>
             </div>
-        </div>
+        </div>        
 
         <div class="info6-maincolumn">
             <div class="info6-box">
                 <div class="info6-cont">
-                    <p class="info6-title">Get in Touch</p>
-                    <p class="info6-content1">
-                        For any questions or latest news, find us on Twitter,
-                        <a href = "https://twitter.com/ise19team29">@ise19team29</a>
-                        </p>
-                    <p class="info6-content2">
+                    <div class="info6-title">Get in Touch</div>
+                    <div class="info6-content1">
+                        For any questions or latest news, <br> please contact us on Twitter, <br>
+                        <a href = "https://twitter.com/ise19team29" class="ourTwitter">@ise19team29</a>
+                    </div>
+                    <div class="info6-content2">
                         Don't Forget to sign up to our services to get the newest deals and offers!
-                        </p>
-                    <div class="info6-content3" >
+                    </div>
+                    <div class="info6-content3">
                         <p>RIDE WITH US TODAY </p>
                         <div class="ft-tw">
-                            <p>
-                                <a href = "/login" class="ft-tw-link">SIGN UP NOW</a>
-                            </p>
+                            <a href = "/login" class="ft-tw-link">SIGN UP NOW</a>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -299,5 +296,6 @@
 
 
   </body>
-
+  
 </html>
+

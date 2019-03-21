@@ -342,17 +342,17 @@ p.info5-reviews, .info5-name, .info5-date{
 
 /*Information6 : Contact us and banner*/
 .info6-container{
-  height:100%;
   background-image:url("../img/background3.jpg");
   background-size: cover;
   padding:5%;
   padding-bottom:1%;
   padding-top: 3%;
+  position:relative;
 }
 .info6-title{
-  padding: 15% 0 3% 0;
+  padding: 6% 0 3% 0;
   font-family: "GT America","Helvetica Neue","Helvetica",sans-serif;
-  font-size: 3rem;
+  font-size: 4rem;
   line-height: 1.7;
   font-weight: 700;
   color: rgb(255, 255, 255);
@@ -363,25 +363,28 @@ p.info5-reviews, .info5-name, .info5-date{
   width: 30%;
   padding: 0 3%;
 }
-.info6-content1{
-  padding:10px;
-  font-size: 1 rem;
-}
-.info6-content2{
-  padding:10px;
-  font-size: 1 rem;
-}
-.info6-content3 p{
-  margin-bottom:20px;
+.info6-content1, .info6-content2, p.info6-content3{
+  /* padding-bottom:25px;   */
+  font-size: 1.5rem;
+  line-height: 200%;
+  letter-spacing:2px;
+  font-weight:200;
 }
 .info6-maincolumn{
   width: 75%;
 }
 .info6-box {
   background-size: cover;
-  height:400px;
+  height:550px;
 }
-
+.ourTwitter{
+  font-size: 3erm;
+  padding:30px;
+  color: rgb(70, 149, 253);
+}
+a.outTwitter:hover{
+  color: rgb(30, 110, 214);
+}
 .info6-cont{
   padding: 30px;
   color:rgb(255, 255, 255);
@@ -415,25 +418,18 @@ p.info6-reviews, .info6-name, .info6-date{
   margin-bottom:4%;
 }
 a.ft-tw-link{
-  background-color: white;
-  padding: 4px 11px 3px 11px;
+  background-color: rgba(255, 255, 255, 0.884);
+  padding: 7px 11px 7px 11px;
   font-weight: 400;
-  color:rgb(59, 160, 219);
+  color:rgb(4, 152, 238);
+  margin-bottom:23px;
 }
 a.ft-tw-link:hover, .ft-tw-link:hover *{
   transition: 0.5s ease;
-  background-color:#3483c4a1;
+  background-color:#3a92daa1;
   color:white;
   text-decoration: none;
   }
-
-
-
-
-
-
-
-
 
 /*fade in animation*/
 #fade-in {
@@ -489,41 +485,6 @@ p.info6-reviews, .info6-name, .info6-date{
 
 
 
-
-
-
-/*fade in animation*/
-#fade-in {
-  -webkit-animation: fadein 3s; /* Safari, Chrome and Opera > 12.1 */
-     -moz-animation: fadein 3s; /* Firefox < 16 */
-      -ms-animation: fadein 3s; /* Internet Explorer */
-       -o-animation: fadein 3s; /* Opera < 12.1 */
-          animation: fadein 3s;
-}
-@keyframes fadein {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-/* Firefox < 16 */
-@-moz-keyframes fadein {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-/* Safari, Chrome and Opera > 12.1 */
-@-webkit-keyframes fadein {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-/* Internet Explorer */
-@-ms-keyframes fadein {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-/* Opera < 12.1 */
-@-o-keyframes fadein {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
 
 
 

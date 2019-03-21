@@ -1,4 +1,3 @@
-
 .navbar-fixed-top{
   position: absolute;
   display: flex;
@@ -201,39 +200,9 @@ a .nav-respIcon{
       padding-top:0;
     }
 }
-/* Hamburger Header */
-@media only screen and (max-width: 985) {
-  .nav-column2.responsive {
-    position: absolute;
-    float: none;
-    display: block;
-    background-color:rgba(0, 0, 0, 0.425);
-    margin-top:70px;
-    width:100%;
-    padding-left:45%;
-  }  
-  .nav-column2.responsive .nav-cont .nav-center .nav-inline{
-    display: block;
-  }
-}
-@media only screen and (max-width:550px){
-  .nav-column2.responsive {
-    padding-left: 40%;
-  }
-}
-@media only screen and (max-width:380px){
-  .nav-column2.responsive {
-    padding-left: 38%;
-  }
-}
-
 @media only screen and (max-width: 550px) {
   .nav-column{
     width:30%;
-  }
-  .nav-name{
-    /* font-size: 22px;
-    padding-top: 20px; */
   }
   div.nav-name{
     display: none;
@@ -284,3 +253,30 @@ a .nav-respIcon{
     height:60px;
   }
 }
+/* Hamburger Header */
+@media only screen and (max-width: 985) {
+  .nav-column2.responsive {
+    position: absolute;
+    float: none;
+    display: block;
+    background-color:rgba(0, 0, 0, 0.425);
+    margin-top:70px;
+    width:100%;
+    padding-left:45%;
+  }  
+  .nav-column2.responsive .nav-cont .nav-center .nav-inline{
+    display: block;
+  }
+}
+@media only screen and (max-width:550px){
+  .nav-column2.responsive {
+    padding-left: 40%;
+  }
+}
+@media only screen and (max-width:380px){
+  .nav-column2.responsive {
+    padding-left: 38%;
+  }
+}
+
+
