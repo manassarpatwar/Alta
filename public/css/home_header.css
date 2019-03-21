@@ -33,6 +33,7 @@
 }
 a.nav-buttons{
   text-decoration:none;
+  font-size:13px;
 }
 a.nav-buttons:hover{
   color:black;
@@ -56,6 +57,7 @@ img.nav-logo{
 
 div.nav-name{
   padding:2.5%;
+  padding-top:1.5%;
   color:#5f5a50;
   font-size: 40px;
   font-style: normal;
@@ -123,12 +125,12 @@ a .nav-respIcon{
   }
   img.nav-logo{
     transition-duration: 1s;
-    width:80px;
-    padding-left: 40px;
+    width:70px;
+    padding-left: 30px;
     margin-top:-20px;
   }
   div.nav-name{
-    font-size: 35px;
+    font-size: 33px;
     padding-top: 10px;
   }
   .nav-signin, .nav-vl, .nav-login{
@@ -194,7 +196,7 @@ a .nav-respIcon{
     }
 }
 /* Responsive Header */
-@media only screen and (max-width: 860px) {
+@media only screen and (max-width: 985) {
   .nav-column2.responsive {
     position: absolute;
     float: none;
@@ -221,7 +223,7 @@ a .nav-respIcon{
 
 @media only screen and (max-width: 550px) {
   .nav-column{
-    width:35%;
+    width:30%;
   }
   .nav-name{
     /* font-size: 22px;
@@ -244,7 +246,10 @@ a .nav-respIcon{
     padding-left: 15%
   }
   a.nav-buttons{
-    font-size:12px;
+    font-size:11px;
+  }
+  a.nav-Icon{
+    padding-left: 30%;
   }
 }
 @media only screen and (max-width: 380px) {
@@ -263,7 +268,7 @@ a .nav-respIcon{
     margin-top: 15px;
   }
   a.nav-buttons{
-    font-size:11px;
+    font-size:10px;
     line-height:1;
   }
   div.nav-respIcon{

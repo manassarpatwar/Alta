@@ -7,6 +7,7 @@ footer{
   font-size: 11px;
   padding: 10px;
   background-color: #fafafa;
+  font-weight: 200;
   }
   
 
@@ -53,7 +54,7 @@ footer{
 
 /*Content links*/
 a.ft-tw-link{
-  border: 1px solid #5f5a50;
+  background-color: white;
   padding: 4px 11px 3px 11px;
   font-weight: 400;
 }
