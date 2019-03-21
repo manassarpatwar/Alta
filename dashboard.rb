@@ -1,6 +1,6 @@
 #--------------------Get Methods--------------------#
 get '/dashboard' do
-    redirect '/index' unless admin?
+    redirect '/index' unless session[:admin]
     @submitted = false
     @tweets = $tweets.dup
     @availableTaxis = $avTaxis.dup
@@ -9,7 +9,7 @@ get '/dashboard' do
 end
 
 get '/settings' do
-  redirect '/index' unless admin?
+  redirect '/index' unless session[:admin]
   @submitted = false
   erb :settings
 end
@@ -19,7 +19,7 @@ post '/replyToTweet' do
     begin
       if(params[:reply] != "")
           replytweet = TWITTER_CLIENT.update("@#{params[:screen_name]} #{params[:reply]}", :in_reply_to_status_id => params[:tweetid].to_i)
-      end    
+      end
     rescue Twitter::Error::TooManyRequests => error
       sleep error.rate_limit.reset_in
       puts "Too many requests. Try again in #{error.rate_limit.reset_in} seconds"
@@ -82,8 +82,8 @@ post '/addJourney' do
 	@freeRide_ok = @freeRide = '0' || @freeRide = '1'
  	@cancelled_ok = @cancelled = '0' || @cancelled = '1'
 	@convoLink_ok =	!@convoLink.nil? && @convoLink != ""
-	
-	@all_ok = @taxiId_ok && @userId_ok && @twitterHandle_ok && @dateTime_ok && @startLocation_ok && @endLocation_ok && @freeRide_ok && @cancelled_ok && @convoLink_ok	
+
+	@all_ok = @taxiId_ok && @userId_ok && @twitterHandle_ok && @dateTime_ok && @startLocation_ok && @endLocation_ok && @freeRide_ok && @cancelled_ok && @convoLink_ok
 
 	count = $db.get_first_value('SELECT COUNT(*) FROM journeys')
 	@id = count + 1
