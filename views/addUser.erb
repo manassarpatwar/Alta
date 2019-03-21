@@ -1,63 +1,62 @@
-<div id = "add_user">
-  <h1>Add a User</h1>
+<h1>Add a User</h1>
 
-  <% if @submitted && @all_ok %>
-      <p>User Added.</p>
-  <% else %>
+<% if @submitted && @all_ok %>
+    <p>User Added.</p>
+<% else %>
 
-      <% if @submitted && !@all_ok %>
-          <p style="color:red">There were errors in your form submission, please correct them below.</p>
-      <% end %>
+    <% if @submitted && !@all_ok %>
+        <p style="color:red">There were errors in your form submission, please correct them below.</p>
+    <% end %>
 
-      <form id = "userForm">
-          <!-- Error Validation -->
-          <% if @submitted && !@id_ok %>
-              <p style="color:red">Please enter a valid ID</p>
-          <% end %>
+    <form id = "userForm">
+        <!-- Error Validation -->
+        <% if @submitted && !@id_ok %>
+            <p style="color:red">Please enter a valid ID</p>
+        <% end %>
 
-          <% if @submitted && !@name_ok %>
-              <p style="color:red">Please enter a valid name</p>
-          <% end %>
+        <% if @submitted && !@name_ok %>
+            <p style="color:red">Please enter a valid name</p>
+        <% end %>
 
-          <% if @submitted && !@dateTime_ok %>
-              <p style="color:red">Please enter a valid date/time</p>
-          <% end %>
+        <% if @submitted && !@dateTime_ok %>
+            <p style="color:red">Please enter a valid date/time</p>
+        <% end %>
 
-          <% if @submitted && !@userType_ok %>
-              <p style="color:red">Please enter a valid user type (0 or 1)</p>
-          <% end %>
+        <% if @submitted && !@userType_ok %>
+            <p style="color:red">Please enter a valid user type (0 or 1)</p>
+        <% end %>
 
-          <% if @submitted && !@freeRide_ok %>
-              <p style="color:red">Please enter a valid free ride value (0 or more)</p>
-          <% end %>
-
+        <% if @submitted && !@freeRide_ok %>
+            <p style="color:red">Please enter a valid free ride value (0 or more)</p>
+        <% end %>
 
 
-          <p>ID:
-              <input type="text" name="id" value="<%=h @id if @submitted %>"/>
-          </p>
 
-          <p>Name:
-              <input type="text" name="name" value="<%=h @name if @submitted %>"/>
-          </p>
+        <p>ID:
+            <input type="text" name="id" value="<%=h @id if @submitted %>"/>
+        </p>
 
-          <p>Date/Time:
-              <input type="text" name="dateTime" value="<%=h @dateTime if @submitted %>"/>
-          </p>
+        <p>Name:
+            <input type="text" name="name" value="<%=h @name if @submitted %>"/>
+        </p>
 
-          <p>User Type:
-              <input type="text" name="userType" value="<%=h @userType if @submitted %>"/>
-          </p>
+        <p>Date/Time:
+            <input type="text" name="dateTime" value="<%=h @dateTime if @submitted %>"/>
+        </p>
 
-          <p>Free Rides Left:
-              <input type="text" name="freeRide" value="<%=h @freeRide if @submitted %>"/>
-          </p>
+        <p>User Type:
+            <input type="text" name="userType" value="<%=h @userType if @submitted %>"/>
+        </p>
 
-          <input type="submit" value="Submit" />
-      </form>
+        <p>Free Rides Left:
+            <input type="text" name="freeRide" value="<%=h @freeRide if @submitted %>"/>
+        </p>
 
-  <% end %>
-</div>
+        <input type="submit" value="Submit" />
+    </form>
+
+<% end %>
+<script src="js/jquery.min.js"></script>
 <script>
   $( "#userForm" ).submit(function( event ) {
  
@@ -87,4 +86,3 @@
     });
   });
 </script>
-
