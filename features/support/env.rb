@@ -1,8 +1,6 @@
 require 'capybara'
 require 'rspec'
 require 'capybara/cucumber'
-require 'capybara-screenshot/cucumber'
-
 
 ## Uncomment to enable SimpleCov
 #require 'simplecov'

@@ -26,13 +26,6 @@ When /^I wait for (\d+) seconds?$/ do |secs|
   sleep secs.to_i
 end
 
-When /^I wait for the ajax request to finish$/ do
-  start_time = Time.now
-  page.evaluate_script('jQuery.isReady&&jQuery.active==0').class.should_not eql(String) until page.evaluate_script('jQuery.isReady&&jQuery.active==0') or (start_time + 5.seconds) < Time.now do
-    sleep 1
-  end
-end
-
 When /^(?:|I )press "([^\"]*)"(?: within "([^\"]*)")?$/ do |button, selector|
   with_scope(selector) do
     click_button(button)
@@ -54,6 +47,12 @@ end
 When /^(?:|I )fill in "([^\"]*)" for "([^\"]*)"(?: within "([^\"]*)")?$/ do |value, field, selector|
   with_scope(selector) do
     fill_in(field, :with => value)
+  end
+end
+
+When /^(?:|I )fill in "([^\"]*)" with randomid(?: within "([^\"]*)")?$/ do |field, selector|
+  with_scope(selector) do
+    fill_in(field, :with => rand.to_s[2..11])
   end
 end
 
