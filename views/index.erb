@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/home_header.css" />
     <link rel="stylesheet" href="css/home_content.css" />
     <link rel="stylesheet" href="css/home_footer.css" />
+    
   </head>
     
 
@@ -25,6 +26,7 @@
       <div id = "page-content-wrapper">
 
 <!--Welcoming Sign up-->
+
 <div class="welcome-row" id="section1">
         <div id="fade-in">
             <!--can be deleted-->
@@ -34,7 +36,7 @@
                     </div>
                 </div>
                 <div class="center">
-                  <%if session[:loggedin] %>
+        <%if session[:loggedin] %>
                   <div class="head-box2">Tweet at us<a class="twitter" href="https://twitter.com/ise19team29">@ise19team29</a> to get a taxi
                     </div>
                   <% else %>
