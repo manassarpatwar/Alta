@@ -1,4 +1,4 @@
-<nav class="navbar-fixed-top nav-container-scrolled" id="navigation">        
+<nav class="navbar-fixed-top">        
 
 <div class="nav-column logo" style="text-align: center;">
   <div class="nav-cont">
@@ -11,13 +11,13 @@
   </div>
 </div>        
 
-<div class="nav-column nav-column2">
+<div class="nav-column2 nav-column" id="RespHeader">
   <div class="nav-cont">
       <ul class="nav-center">
         
       
         <li class="nav-inline">
-          <a href="#section2" class="nav-buttons">about</a>
+          <a href="#section2" class="nav-buttons">deals</a>
         </li>
 
         <li class="nav-inline">
@@ -47,7 +47,7 @@
 <div class="nav-column">
   <div class="nav-cont">
     <%if !session[:loggedin] %>
-      <div class=" nav-inline2 nav-signin">
+      <div class=" nav-signin nav-inline2 ">
           <a href="/login">Log In</a>
       </div>
     <% elsif !session[:admin] %>
@@ -55,12 +55,14 @@
       <a href="/userAccount">My Account</a>
       </div>
     <% else %>
-     <div class=" nav-inline2 nav-signin">
-      <a href="/dashboard">Admin Dashboard</a>
-      </div>
+     <div class=" nav-inline2 nav-signin" style="float: right; margin-left:0;">
+      <a href="/dashboard">Dashboard</a>
+    </div>
     <% end %>
   </div>
 </div>
+<a href="javascript:void(0);" class="nav-Icon" onclick="myResponsiveHeader()">
+  <div class="nav-respIcon"> &#9776; </div> </a>
 </nav>
 
 

@@ -74,3 +74,14 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         });
     });
 });
+
+
+//Responsive navigation bar
+function myResponsiveHeader() {
+  var x = document.getElementById("RespHeader");
+  if (x.className === "nav-column2") {
+    x.className += " responsive";
+  } else {
+    x.className = "nav-column2";
+  }
+}
