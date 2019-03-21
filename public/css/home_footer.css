@@ -10,7 +10,7 @@ footer{
   margin-bottom:0;
   padding-bottom:0;
   }
-  
+
 
 /* Column maker*/
 .ft-column {
@@ -23,7 +23,7 @@ footer{
 .ft-row:after {
   content: "";
   display: table;
-  clear: both; 
+  clear: both;
   height:10px;
   }
 
@@ -61,7 +61,7 @@ footer{
 .ft-row2{
   height:100px;
   text-align: center;
-  padding-top:30px; 
+  padding-top:30px;
   margin-bottom:15px;
   }
 img.ft-row2-img{
@@ -75,7 +75,12 @@ img.ft-row2-img{
   font-size: 9px;
   text-transform: uppercase;
 }
- 
+
+.logout{
+    text-align: center;
+    font-size: 2em;
+}
+
 @media screen and (max-width: 600px) {
     .ft-column {
       width: 100%;

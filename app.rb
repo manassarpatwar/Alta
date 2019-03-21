@@ -27,7 +27,7 @@ use OmniAuth::Builder do
 end
 
 #Before running load these configurations:
-before do    
+before do
     response.set_cookie(:tweeting, :value => "true")
     response.set_cookie(:following, :value => "true")
     response.set_cookie(:follow_state, :value => "true")
@@ -36,7 +36,7 @@ end
 
 #Configure sessions
 configure do
-	enable :sessions
+	  enable :sessions
     $db = SQLite3::Database.new './taxi_database.sqlite'
     TWITTER_CLIENT = Twitter::REST::Client.new do |config|
         config.consumer_key        = 'wVzUO14M25jvS3vmmtfDAtmh6'
@@ -45,7 +45,7 @@ configure do
         config.access_token_secret = 'UkK1okCoI1kFUKeofvh5Y5QQHkJyVOQxeIQGQfyCjIFQP'
     end
     $tweets = TWITTER_CLIENT.mentions_timeline(count: "5")
-    $avTaxis = $db.execute %{SELECT * FROM taxis} #Gather all taxis 
+    $avTaxis = $db.execute %{SELECT * FROM taxis} #Gather all taxis
     $unavTaxis = []
     puts "fetched tweets"
 end
@@ -71,7 +71,7 @@ helpers do
           return false
       end
     end
-    
+
 	def loggedin?
 		session[:loggedin]
 	end

@@ -9,7 +9,7 @@ footer{
   background-color: #fafafa;
   font-weight: 200;
   }
-  
+
 
 /* Column maker*/
 .ft-column {
@@ -39,8 +39,8 @@ footer{
   font-size: 13px;
   line-height: 2;
 }
-.ft-tw{  
-  padding:10px; 
+.ft-tw{
+  padding:10px;
 }
 .ft-vl {
   margin:2% 35% 0 35%;
@@ -70,7 +70,7 @@ a.ft-tw-link:hover, .ft-tw-link:hover *{
 .ft-row2{
   height:100px;
   text-align: center;
-  padding-top:30px; 
+  padding-top:30px;
   margin-bottom:15px;
   }
 img.ft-row2-img{
@@ -84,7 +84,12 @@ img.ft-row2-img{
   font-size: 9px;
   text-transform: uppercase;
 }
- 
+
+.logout{
+    text-align: center;
+    font-size: 2em;
+}
+
 @media screen and (max-width: 600px) {
     .ft-column {
       width: 100%;
