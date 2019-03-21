@@ -1,5 +1,5 @@
 Feature: Adding data
-        
+            
         @javascript
         Scenario: Correct Date/Time entered
             Given I am on the settings page

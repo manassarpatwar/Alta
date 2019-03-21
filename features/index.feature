@@ -1,4 +1,4 @@
-Feature: Testing Navigation of Home page
+Feature: Testing Navigation of Home page         
        Scenario: Testing go home navigation link
             Given I am on the home page
             When I follow "alta" within "nav"
