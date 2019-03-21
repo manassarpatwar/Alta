@@ -1,6 +1,11 @@
 require 'uri'
 require 'cgi'
+require 'sinatra'
 require_relative '../support/paths'
+
+configure do
+	enable :sessions
+end
 
 module WithinHelpers
   def with_scope(locator)
@@ -15,6 +20,10 @@ end
 
 When /^(?:|I )go to (.+)$/ do |page_name|
   visit path_to(page_name)
+end
+
+When /^I wait for (\d+) seconds?$/ do |secs|
+  sleep secs.to_i
 end
 
 When /^(?:|I )press "([^\"]*)"(?: within "([^\"]*)")?$/ do |button, selector|
@@ -38,6 +47,12 @@ end
 When /^(?:|I )fill in "([^\"]*)" for "([^\"]*)"(?: within "([^\"]*)")?$/ do |value, field, selector|
   with_scope(selector) do
     fill_in(field, :with => value)
+  end
+end
+
+When /^(?:|I )fill in "([^\"]*)" with randomid(?: within "([^\"]*)")?$/ do |field, selector|
+  with_scope(selector) do
+    fill_in(field, :with => rand.to_s[2..11])
   end
 end
 

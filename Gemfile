@@ -12,4 +12,7 @@ source 'https://rubygems.org' do
   gem 'capybara'
   gem 'rspec'
   gem 'simplecov'
+  gem 'capybara-screenshot'
+  gem 'selenium-webdriver'
+  gem 'puma'
 end

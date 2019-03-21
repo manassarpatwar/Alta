@@ -17,9 +17,7 @@ module NavigationHelpers
     when /the addJourney\s?page/
       '/add'
     when /the login \s?page/
-      '/login'
-    when /the dashboard \s?page/
-      '/dashboard'
+      '/logins'
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

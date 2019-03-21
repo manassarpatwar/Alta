@@ -6,9 +6,10 @@ end
 
 #Logs user out
 get '/logout' do
-	redirect '/' unless loggedin?
+	redirect '/index' unless session[:loggedin]
 
   	session[:loggedin] = nil
+    session[:admin] = nil
   	redirect '/index'
 end
 
