@@ -350,7 +350,7 @@ p.info5-reviews, .info5-name, .info5-date{
   position:relative;
 }
 .info6-title{
-  padding: 6% 0 3% 0;
+  padding: 7.5% 0 3% 0;
   font-family: "GT America","Helvetica Neue","Helvetica",sans-serif;
   font-size: 4rem;
   line-height: 1.7;
@@ -370,30 +370,30 @@ p.info5-reviews, .info5-name, .info5-date{
   letter-spacing:2px;
   font-weight:200;
 }
+.info6-content2{
+padding-top:5%;
+padding-bottom:5%;
+}
 .info6-maincolumn{
-  width: 75%;
+  width: 72.5%;
 }
 .info6-box {
   background-size: cover;
   height:550px;
 }
 .ourTwitter{
-  font-size: 3erm;
-  padding:30px;
-  color: rgb(70, 149, 253);
+  font-size: 20px;
+  color: rgb(55, 128, 224);
 }
-a.outTwitter:hover{
+a.ourTwitter:hover{
   color: rgb(30, 110, 214);
 }
 .info6-cont{
   padding: 30px;
-  color:rgb(255, 255, 255);
+  color:rgba(255, 255, 255, 0.774);
   height:100%;
   width:100%;
   text-align:center;
-}
-.ourTwitter{
-font-size:25px;
 }
 .info6-cont::after, .info5-row::after {
   content: "";
@@ -421,7 +421,7 @@ a.ft-tw-link{
   background-color: rgba(255, 255, 255, 0.884);
   padding: 7px 11px 7px 11px;
   font-weight: 400;
-  color:rgb(4, 152, 238);
+  color:rgb(119, 119, 119);
   margin-bottom:23px;
 }
 a.ft-tw-link:hover, .ft-tw-link:hover *{
@@ -480,6 +480,73 @@ p.info6-reviews, .info6-name, .info6-date{
   margin-bottom:4%;
 }
 
+@media only screen and (max-width: 1110px){
+
+  .info6-column{
+    width:31.5%;
+  }
+}
+
+@media only screen and (max-width: 875px) {
+  .info6-title{
+    font-size: 3.5rem;
+    padding-bottom: 40px;
+  }
+  .info6-content2{
+    padding-bottom:10%;
+  }
+  .ourTwitter{
+    font-size: 19px;
+  }
+  .info6-box{
+    height:530px;
+  }
+  .info6-maincolumn{
+    width:98%;
+  }
+  .info6-column{
+    width:0;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .info6-content1, .info6-content2{
+    font-size: 1.4rem;
+    line-height: 170%;
+  }
+  .info6-content2{
+    padding-bottom:13%;
+  }
+  .ourTwitter{
+    font-size: 19px;
+  }
+  .info6-box{
+    height:440px;
+  }
+  .ft-vl {
+    margin:2% 10% 0 10%;
+    border-top: 1px solid rgba(184, 184, 184, 0.514);
+    position: relative;
+  }
+}
+@media (max-width: 460px) {
+  .info6-title{
+    font-size: 3rem;
+    padding-bottom: 40px;
+  }
+  .info6-content1, .info6-content2{
+    font-size: 1.3rem;
+    line-height: 170%;
+  }
+  .info6-content2{
+    padding-bottom:13%;
+  }
+  .ourTwitter{
+    font-size: 16px;
+  }
+  .info6-box{
+    height:400px;
+  }
+}
 
 
 

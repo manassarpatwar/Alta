@@ -254,7 +254,7 @@ a .nav-respIcon{
   }
 }
 /* Hamburger Header */
-@media only screen and (max-width: 985) {
+@media only screen and (max-width: 985px) {
   .nav-column2.responsive {
     position: absolute;
     float: none;
