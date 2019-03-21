@@ -9,8 +9,15 @@ module NavigationHelpers
     case page_name
 
     when /the home\s?page/
-      '/'
-
+      '/index'
+    when /the settings\s?page/
+      '/settings'
+    when /the addUser\s?page/
+      '/settings'
+    when /the addJourney\s?page/
+      '/add'
+    when /the login \s?page/
+      '/logins'
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

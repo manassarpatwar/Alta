@@ -2,6 +2,7 @@ require 'capybara'
 require 'rspec'
 require 'capybara/cucumber'
 
+
 ## Uncomment to enable SimpleCov
 #require 'simplecov'
 
@@ -9,12 +10,11 @@ require 'capybara/cucumber'
 #  add_filter 'features/'
 #end
 
-require_relative '../../addUser.rb'
+require_relative '../../app.rb'
 
 ENV['RACK_ENV'] = 'test'
 
 Capybara.app = Sinatra::Application
-
 class Sinatra::ApplicationWorld
   include RSpec::Expectations
   include RSpec::Matchers
