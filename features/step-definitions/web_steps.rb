@@ -32,6 +32,12 @@ When /^(?:|I )press "([^\"]*)"(?: within "([^\"]*)")?$/ do |button, selector|
   end
 end
 
+When /^(?:|I )click "([^\"]*)"(?: within "([^\"]*)")?$/ do |click, selector|
+  with_scope(selector) do
+    find(click).click
+  end
+end
+
 When /^(?:|I )follow "([^\"]*)"(?: within "([^\"]*)")?$/ do |link, selector|
   with_scope(selector) do
     click_link(link)
@@ -51,6 +57,12 @@ When /^(?:|I )fill in "([^\"]*)" for "([^\"]*)"(?: within "([^\"]*)")?$/ do |val
 end
 
 When /^(?:|I )fill in "([^\"]*)" with randomid(?: within "([^\"]*)")?$/ do |field, selector|
+  with_scope(selector) do
+    fill_in(field, :with => rand.to_s[2..11])
+  end
+end
+
+When /^(?:|I )fill in "([^\"]*)" with invalid randomid(?: within "([^\"]*)")?$/ do |field, selector|
   with_scope(selector) do
     fill_in(field, :with => rand.to_s[2..11])
   end

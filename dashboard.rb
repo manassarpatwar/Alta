@@ -1,6 +1,16 @@
 #--------------------Get Methods--------------------#
 get '/dashboard' do
     redirect '/index' unless session[:admin]
+   $tweets.each do |deletedTweet|
+      begin
+          TWITTER_CLIENT.status(deletedTweet.uri) == deletedTweet
+      rescue Twitter::Error::NotFound => err
+          $tweets.delete(deletedTweet)
+      rescue Twitter::Error::TooManyRequests => error
+        sleep error.rate_limit.reset_in
+        puts "Too many requests. Try again in #{error.rate_limit.reset_in} seconds"
+      end
+    end
     @submitted = false
     @tweets = $tweets.dup
     @availableTaxis = $avTaxis.dup
@@ -16,9 +26,10 @@ end
 #--------------------Post Methods--------------------#
 
 post '/replyToTweet' do
+    index = (params[:tweetindex]).to_i
     begin
       if(params[:reply] != "")
-          replytweet = TWITTER_CLIENT.update("@#{params[:screen_name]} #{params[:reply]}", :in_reply_to_status_id => params[:tweetid].to_i)
+          $tweets[index] = TWITTER_CLIENT.update("@#{params[:screen_name]} #{params[:reply]}", :in_reply_to_status_id => params[:tweetid].to_i)
       end
     rescue Twitter::Error::TooManyRequests => error
       sleep error.rate_limit.reset_in

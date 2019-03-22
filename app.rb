@@ -8,7 +8,6 @@ require 'twitter'
 require 'rufus-scheduler'
 require 'omniauth-twitter'
 require 'sqlite3'
-require 'phonelib'
 require_relative 'addTaxi.rb'
 require_relative 'addUser.rb'
 require_relative 'dashboard.rb'
@@ -32,6 +31,7 @@ before do
     response.set_cookie(:following, :value => "true")
     response.set_cookie(:follow_state, :value => "true")
     response.set_cookie(:tweet_state, :value => "true")
+    #session[:admin] = true <=== UNCOMMENT WHEN TESTING WITH CUCUMBER TO GIVE ADMIN ACCESS TO DASHBOARD
 end
 
 #Configure sessions
@@ -45,6 +45,7 @@ configure do
         config.access_token_secret = 'UkK1okCoI1kFUKeofvh5Y5QQHkJyVOQxeIQGQfyCjIFQP'
     end
     $tweets = TWITTER_CLIENT.mentions_timeline(count: "5")
+    $replyTweets = []
     $avTaxis = $db.execute %{SELECT * FROM taxis} #Gather all taxis
     $unavTaxis = []
     puts "fetched tweets"

@@ -14,7 +14,7 @@
               <tr>
                 <td class = "tweets">
                   <div>
-                    <%=  TWITTER_CLIENT.oembed(tweet, hide_media: "true", hide_thread: "true", omit_script: "true").html%>
+                    <%=  TWITTER_CLIENT.oembed(tweet, hide_media: "true").html%>
                     <div class = "reply">
                       <form class = "replyToTweet"> 
                         Reply to Tweet: <input type="text" name="reply" value="<%=h params[:reply] %>"/>
@@ -27,12 +27,12 @@
                         <input type = "hidden" name = "tweetindex" value = "<%=h params[:tweetindex]%>" />
                         <input type = "hidden" name = "tweetid" value = "<%=h params[:tweetid]%>" />
                         <input type = "hidden" name = "screen_name" value = "<%=h params[:screen_name]%>" />
-                        <input type="submit" name="button" value="reply" />
+                        <input type="submit" name="button" value="REPLY" />
                       </form>
                     </div>
                   </div>
                   <div class = "tweet_actions">
-                    <img src = "img/check.png" class= "check tweet_actions_icons" alt = "reply tweet" width = "50">
+                    <img src = "img/check.png" class= "check tweet_actions_icons" alt = "reply tweet" width = "50" id = "reply_tweet_icon<%=h@tweets.index(tweet)%>">
                     <form class = "deleteTweet"> 
                       <% params[:tweetindex] = @tweets.index(tweet) %>
                       <input type = "hidden" name = "tweetindex" value = "<%=h params[:tweetindex]%>" />
@@ -113,4 +113,3 @@
     });
   });
 </script>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
