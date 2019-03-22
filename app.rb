@@ -31,9 +31,7 @@ before do
     response.set_cookie(:following, :value => "true")
     response.set_cookie(:follow_state, :value => "true")
     response.set_cookie(:tweet_state, :value => "true")
-  
-    #IMPORTANT! FOR TESTS
-    #session[:admin] = true #<=== UNCOMMENT WHEN TESTING WITH CUCUMBER TO GIVE ADMIN ACCESS TO DASHBOARD
+    #session[:admin] = true <=== UNCOMMENT WHEN TESTING WITH CUCUMBER TO GIVE ADMIN ACCESS TO DASHBOARD
 end
 
 #Configure sessions

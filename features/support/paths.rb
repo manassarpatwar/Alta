@@ -20,8 +20,6 @@ module NavigationHelpers
       '/login'
     when /the dashboard \s?page/
       '/dashboard'
-    when /the marketing \s?page/
-      '/marketing'
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

@@ -116,17 +116,6 @@ body{
   overflow-x: hidden;
   height: 30vh;
 }
-
-.displayTaxis .delete{
-  outline:none;
-  width: 50px;
-}
-
-.displayTaxis .add{
-  outline:none;
-  width: 50px;
-}
-
 .displayTaxis td{
   width: 100px;
   margin: 0 20px;
