@@ -1,16 +1,26 @@
-.navbar-fixed-top{
-  position: absolute;
+#accSnav{
+  overflow:hidden;
+  width:100%;
+}
+.acc-nav-sticky{
+  width:100%;
+  position:fixed;
+  top:0;
+}
+.acc-nav-sticky + .acc-container2{
+  padding:150px;
+  padding-bottom:70px;
+  -webkit-transition: padding-top 1s; /* Safari */
+  transition: padding-top 1s;
+}
+.accnavbar-top{
+  width:100%;
   display: flex;
   flex-direction: row;
   white-space: nowrap; 
   font-size:14px;
   height:60px;
-  background-color:rgba(0, 0, 0, 0.315) !important;
-}
-/* can be deleted */
-.navbar-fixed-top.scrolled{
-  height:70px;
-  background-color:rgba(32, 18, 228, 0.726) !important;
+  background-color:rgba(255, 255, 255, 0.521) !important;
 }
 .nav-column {
   white-space: nowrap; 
@@ -171,7 +181,7 @@ a .nav-respIcon{
   .nav-center{
     margin-top:5px;
   }
-  .navbar-fixed-top{
+  .accnavbar-top{
     transition-duration: 1s;
     font-size: 13px;
   }

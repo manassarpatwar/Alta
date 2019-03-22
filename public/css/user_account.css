@@ -1,0 +1,85 @@
+
+
+.accUpcase{
+    text-transform: uppercase;
+}
+.acc-container{
+    width: 100%;
+    padding:30px;
+    text-align:center;
+    font-size: 30px;
+}
+.welcome-back-container{
+    padding-top:40px;
+    font-weight: 100;
+    letter-spacing: 2px;
+}
+/* .acc-container2{
+    padding-top:90px;
+} */
+.deals-container{
+    background-image:url(../img/background.jpg);
+    background-size: cover;
+}
+.acc-dealsshown{
+    padding:100px;
+    color:white;
+    letter-spacing: 2px;
+    font-weight: 200;
+}
+.page-indict{
+    font-size:40px;
+    font-weight:510;
+    font-family:sans-serif;
+}
+
+/* Buttons */
+.acc-butt-column {
+    float: left;
+    width: 33.33%;
+    padding: 10px;
+    height: 400px;
+  }
+.acc-butt-row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.acc-button {
+    background-color: #ffffff;
+    border: none;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    font-size: 20px;
+    font-weight:200;
+    letter-spacing:2px;
+    padding: 15px;
+    width: 200px;
+    height:100px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+    margin:28%;
+}
+
+.acc-button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+.acc-button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+.acc-button:hover span {
+    padding-right: 25px;
+}
+.acc-button:hover span:after {
+    opacity: 1;
+    right: 0;
+}

@@ -10,48 +10,57 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
     <script async src="js/user_orders.js"></script>
-    <link rel="stylesheet" href="css/user_header.css" />
+    <script async src="js/user_header.js"></script>
     <link rel="stylesheet" href="css/user_footer.css" />
     <link rel="stylesheet" href="css/user_orders.css" />
+    <link rel="stylesheet" href="css/user_account.css" />
+    <link rel="stylesheet" href="css/user_header.css" />
   </head>
 
   <body id="ordersBG">
-    <!--navigation bar-->
-      <header class="stick">
+    
+  <!--greeitngs-->
+      <div class="acc-container welcome-back-container">
+        <p class="welcome-back"> Welcome Back,
+          <%=h session[:name] %>
+          !
+        </p>
+      </div>
+
+  <!--navigation bar-->
           <%= erb :user_header %>
-      </header> 
+
+  <!-- page name-->
+    <div class="acc-container acc-container2">
+      <p class="page-indict accUpcase"> 
+      <i class='fas fa-taxi' style='font-size:40px; color:#FEDE3B'></i>
+        My Account
+      </p>
+    </div>
     
-    <!--Small navigators-->
-    
-    <!--Table title and table types-->
-      <div class="container table-title">
-        <%=h session[:name] %>
-        <i class='fas fa-taxi' style='font-size:40px; color:#FEDE3B'></i>
-        <p class="table-titleName inline" style='font-size:40px'> My Account &nbsp</p>
-        <p class="table-titleView inline" style='font-size:17px'> View As: </p>
-        <span onclick="myView1()" class="title-button type1-button inline">Table</span>
-        <span onclick="myView2()" class="title-button type1-button inline">Databse</span>
+  <!--Deals Display-->
+      <div class="acc-container deals-container">
+        <p class="acc-dealsshown  accUpcase"> your deals display here</div>
       </div>
 
-
-    <!--Filtable Search bar-->
-      <div class="search-bar container">
-      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search" title=" " class="inline">
-
-        <!--Sorting dropdown list-->
-        <div id ="sorting" class="sortDropdown">
-          <div class="dropdown-title inline"> Sort by :&nbsp</div>
-          <button onclick="myFunction()" id="sortButtonText" class="dropbtn inline" style='font-size:15px'>
-            <i class='fas fa-caret-down' style='font-size:17px'></i>
-          </button>
-          <div style="height:100px;">
-            <a href="/userOrders">ORDER</a>
-          </div>
-      </div>
-      </div>
-
-
-    <div class="separation" style="height:50px;"></div>
+<!--Buttons-->
+  <div class="acc-butt-row">
+    <div class="acc-butt-column">
+      <button class="acc-button">
+        <span>My Past Orders </span>
+      </button>
+    </div>
+    <div class="acc-butt-column">
+      <button class="acc-button">
+        <span>Complains </span>
+      </button>
+    </div>
+    <div class="acc-butt-column">
+      <button class="acc-button acc-button3">
+        <span>Edit Account </span>
+      </button>
+    </div>
+  </div>
 
   <!--footer-->
           <%= erb :user_footer %>
