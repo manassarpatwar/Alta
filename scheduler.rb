@@ -12,6 +12,7 @@ configure do
     @clientAutomaticFollowing = Twitter::REST::Client.new(autoConfig)
 end
 
+# trying to make scheduler running once per server run, not working yet.
 def following_scheduler()
     scheduler = Rufus::Scheduler.new(:frequency => '30s')
 
