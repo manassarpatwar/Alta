@@ -138,6 +138,7 @@ header.stick{
   float: left;
   width: 33.3%;
   /* padding: 0 3%; */
+  background-color:white;
 }
 .info1-lists{
   line-height: 1.8;
