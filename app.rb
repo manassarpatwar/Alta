@@ -36,7 +36,7 @@ end
 
 #Configure sessions
 configure do
-	  enable :sessions
+	enable :sessions
     $db = SQLite3::Database.new './taxi_database.sqlite'
     TWITTER_CLIENT = Twitter::REST::Client.new do |config|
         config.consumer_key        = 'wVzUO14M25jvS3vmmtfDAtmh6'

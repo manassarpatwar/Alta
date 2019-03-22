@@ -17,8 +17,8 @@ end
 get '/auth/twitter/callback' do
 	@found = false #Boolean to see if user is already in database
 
-	session[:loggedin] = true #User now logged in
-  session[:admin] = false #User is not an admin until confirmed
+    session[:loggedin] = true #User now logged in
+    session[:admin] = false #User is not an admin until confirmed
 
     @usersTable = $db.execute %{SELECT * FROM users} #Gather all user data
 

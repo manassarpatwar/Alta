@@ -10,12 +10,12 @@ end
 
 get '/userAccount' do
     redirect '/index' unless session[:loggedin]
-  erb :user_account
+    erb :user_account
 end
 
 get '/userOrders' do
     redirect '/index' unless session[:loggedin]
-  erb :user_orders
+    erb :user_orders
 end
 
 
