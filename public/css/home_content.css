@@ -112,8 +112,8 @@ header.stick{
   padding-bottom:0;
 }
 .info1-title{
-  padding-top:9%;
-  padding-bottom:3%;
+  padding-top:100px;
+  padding-bottom:20px;
   font-size: 30px;
   margin-bottom:0;
 }
@@ -142,7 +142,6 @@ header.stick{
   width: 33.3%;
   /* padding: 0 3%; */
   background-color:white;
-  height:700px;
 }
 .info1-lists{
   line-height: 1.8;
@@ -165,19 +164,41 @@ header.stick{
   clear: both;
 }
 .info3-img1{
-  background-image:url(../img/background.jpg)
+  background-image:url(../img/deals3.jpg)
 }
 .info3-img2{
-  background-image:url(../img/background2.jpg)
+  background-image:url(../img/deals4.jpg)
 }
 .info3-column{
   float: left;
   width: 50%;
 }
+.info3-textbox0{
+  padding:5%;
+}
 .info3-textbox1{
 background-color:white;
-padding:7%;
+padding:3%;
 margin-bottom:0;
+}
+.info3-textbox2{
+  background-color:white;
+  padding:70px;
+  padding-top:0;
+  margin-bottom:0;
+  text-align:center;
+  font-size: 15px;
+  line-height: 2;
+  padding-bottom: 0%;
+  font-weight: 200;
+}
+.info3-text1{
+  color: #333333;
+  font-size: 15px;
+  font-weight: 200;
+  letter-spacing: 1px;
+  line-height: 2;
+  text-align:center;
 }
 
 
@@ -207,20 +228,30 @@ margin-bottom:0;
 
 
 /*Information4: Types of Taxi*/
+.section22{
+  background-color:#FFFFFF; 
+  height: 300px; 
+  margin-top:46%;
+}
+.section33{
+  margin-top:37.5%;
+}
 .info4-container{
   height: 1%;
-  padding-top:1%;
+  padding-top:0;
+  padding-bottom:0;
 }
 .info4-column{
   float: left;
   width: 50%;
   padding:0;
-  height: 780px;
+  height: 770px;
 }
 .info4-box{
-  padding: 41% 0 0 15%;
+  padding: 35% 0 0 15%;
   border-right: 1px solid rgb(175, 175, 173);
   text-align: right;
+  border-top:
 }
 .info4-title{
   padding:0 0 10% 0;
@@ -237,6 +268,7 @@ margin-bottom:0;
   margin: 0 5% 0 25%;
   line-height: 2;
   padding-bottom:50%;
+  font-weight:200;
 }
 .info4-img{
   background-size: cover;
@@ -265,7 +297,7 @@ margin-bottom:0;
 }
 .info4-indict {
   cursor: pointer;
-  padding:45% 3% 0 3%;
+  padding:39% 3% 0 3%;
   color:rgb(87, 87, 87);
   display: inline-block;
   transition: background-color 0.6s ease; 
@@ -281,6 +313,9 @@ b{
 
 
 /*Information 4: Customer Reviews*/
+.info5-container{
+  background-color: transparent;
+}
 .info4-CRrow{
   background-color:rgba(0, 0, 0, 0.568);
   height:500px;
@@ -331,6 +366,46 @@ p.info5-reviews, .info5-name, .info5-date{
   font-size:15px;
   margin-bottom:4%;
 }
+
+
+
+
+
+/* about us */
+.info5-AboutUscontent{
+  line-height: 2;
+  text-align: left;
+  font-weight: 200;
+  letter-spacing: 2.5px;
+  font-size: 20px;
+  font-family:sans-serif;
+  color:#333333;
+  padding-top:35px;
+}
+.info5-AboutusTitle{
+    padding-top:85px;
+    font-size: 30px;
+    margin-bottom:0;
+    float:right;
+}
+.bd5-column2 {
+  float: left;
+  width: 60%;
+  padding: 10px;
+  margin-top: 8%
+}
+.bd5-column1 {
+  float: left;
+  width: 30%;
+  padding: 10px;
+}
+.info3-box {
+  background-size: cover;
+  height:300px;
+}
+
+
+
 
 
 
@@ -482,6 +557,7 @@ p.info6-reviews, .info6-name, .info6-date{
   }
 }
 
+
 @media only screen and (max-width: 875px) {
   .info6-title{
     font-size: 3.5rem;
@@ -607,7 +683,7 @@ p.info6-reviews, .info6-name, .info6-date{
   }
 }
 
-/* Responsive Info2:types of taxi/services we provide */
+/* Responsive content */
 @media only screen and (max-width:1220px) {
   .bd-row1{
     content: "";
@@ -623,14 +699,53 @@ p.info6-reviews, .info6-name, .info6-date{
     height:550px;
     overflow:hidden;
   }
-@media only screen and (max-width:1021px) {
+}
+@media only screen and (max-width:1160px) {
+  .info5-column{
+    padding:0 1%;
+  }
+  .info5-name{
+    font-size:16px;
+  }
+}
+
+@media only screen and (max-width: 1020px){
   .info1-column{
     transition-duration: 1s;
     height:450px;
     overflow:hidden;
   }
+  .info4-title{
+    font-size:250%;
+  }
+  .info4-CRrow{
+    height:400px;
+  }
+  .info5-name{
+    font-size:16px;
+  }
+  .info5-date{
+    font-size:14px;
+  }
+  .info5-reviews{
+    font-size: 13px;
+  }
+  .info5-cont{
+    padding-left:5px;
+    padding-right:0;
+  }
+  .info5-AboutUscontent{
+    font-size:15px;
+  }
+  .info5-AboutusTitle{
+    padding-top:70px;
+  }
+  .info5-column{
+    padding:0 3%;
+  }
+}
 
-@media only screen and (max-width:1150) {
+@media only screen and (max-width:1150px) {
   .info1-lists{
     font-size:13.5px;
   }
@@ -641,13 +756,14 @@ p.info6-reviews, .info6-name, .info6-date{
     height:450px;
     overflow:hidden;
   }
-}
+}  
+
 @media only screen and (max-width:987px) {
   .info1-lists{
-    font-size:13px;
+    font-size:14px;
   }
   .info1-content2{
-    font-size:13px;
+    font-size:14px;
   }
   .info1-column{
     height:420px;
@@ -661,6 +777,15 @@ p.info6-reviews, .info6-name, .info6-date{
     line-height: 1.3;
 
   }
+  .info4-indict{
+    padding: 41% 3% 0 3%;
+  }
+  .info4-content2{
+    margin-left:0;
+  }
+  .info4-box{
+    padding:35% 0 0 0;
+  }
 }
 @media only screen and (max-width:887px) {
   .info1-column{
@@ -670,7 +795,115 @@ p.info6-reviews, .info6-name, .info6-date{
 li.info1-lists{
     padding-bottom:10px;
   }
+.info4-content2{
+    margin-left:0;
+  }
 }
+@media only screen and (max-width:870px) {
+  .info5-AboutUscontent{
+    font-size:14px;
+  }
+  .info5-column{
+    width:100%;
+  }
+  .info5-container{
+    height:650px;
+    background-color:rgba(0, 0, 0, 0.568);
+  }
+  .info5-box{
+    height:100%;
+  }
+  .info5-cont{
+    padding:15px;
+    height:100%;
+  }
+  .info5-date{
+    margin-bottom:0;
+  }
+  .info5-title{
+    padding-top:10%;
+    background-color: rgba(0, 0, 0, 0);
+  }
+}
+@media only screen and (max-width:871px) {
+  .info1-title{
+    padding-bottom:0;
+  }
+  .info1-column{
+    height: 250px;
+    width:100%;
+  }
+  .info1-column2{
+    height:200px;
+  }
+  .info1-box{
+    margin:40px;
+    text-align:center;
+  }
+  .info1-content1{
+    text-align:center;
+  }
+  .info1-title, .info4-title, .titles, .info5-AboutusTitle{
+    font-size: 2.7rem;
+  }
+  .info4-CRrow{
+    height:70%;
+    background-color: rgba(0, 0, 0, 0);
+  }
+  .info3-contianer{
+    margin-top:75%;
+  }
+  #section2{
+    margin-top:80%;
+  }
+  .section22{
+    margin-top:80%;
+  }
+  .section33{
+    margin-top:30%;
+  }
+  .info4-box{
+    padding-top:25%;
+  }
+  .info4-indict{
+    padding-top:28%;
+  }
+}
+@media only screen and (max-width:750px) {
+  .info4-box{
+    padding-top:18%;
+  }
+  .info4-indict{
+    padding-top:20%;
+  }
+  .section33{
+    margin-top:40%;
+  }
+}
+@media only screen and (max-width:650px) {
+  .info4-box{
+    padding-top:20%;
+  }
+  .info4-indict{
+    padding-top:23%;
+  }
+  .section33{
+    margin-top:60%;
+  }
+}
+@media only screen and (max-width:600px) {
+  .info4-box{
+    padding-top:20%;
+  }
+  .info4-indict{
+    padding-top:23%;
+  }
+  .section33{
+    margin-top:60%;
+  }
+}
+
+
 
 
 
