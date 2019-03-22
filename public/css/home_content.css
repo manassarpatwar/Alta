@@ -13,6 +13,9 @@ body {
   background-color: #FFFFFF;
   scroll-behavior: smooth;
 }
+.content-wrapper{
+  background-color:white;
+}
 header.stick{
   top: 0;
   position:sticky;
@@ -139,6 +142,7 @@ header.stick{
   width: 33.3%;
   /* padding: 0 3%; */
   background-color:white;
+  height:700px;
 }
 .info1-lists{
   line-height: 1.8;
@@ -473,7 +477,6 @@ p.info6-reviews, .info6-name, .info6-date{
 }
 
 @media only screen and (max-width: 1110px){
-
   .info6-column{
     width:31.5%;
   }
