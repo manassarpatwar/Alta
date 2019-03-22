@@ -611,9 +611,9 @@ p.info6-reviews, .info6-name, .info6-date{
     clear: both;
     width: 100%;
   }
-  .info3-container{
+  /* .info3-container{
     padding-top:50%;
-  }
+  } */
   .info1-column{
     transition-duration: 1s;
     height:550px;
