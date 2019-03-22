@@ -18,7 +18,9 @@ before do
 end
 
 get '/marketing' do
+    # if not admin redirect to homepage
     redirect '/index' unless session[:admin]
+    # set cookies for feedback when one submits any marketing form
     response.set_cookie(:tweeting, :value => "true")
     response.set_cookie(:following, :value => "true")
     response.set_cookie(:follow_state, :value => "true")
@@ -27,11 +29,14 @@ get '/marketing' do
     erb :marketing
 end
 
+# follows 5 people that uses entered keyword
 post '/followPeopleUsingKeyword' do
-
+    
+    # set cookie that shows that form has been submitted and feedback should be displayed
     response.set_cookie(:follow_state, :value => "true")
+    
     # Follows 5 people at the time that use the certain keyword most recently
-    # also catches any errors
+    # also catches twitter limit error
     begin
         if(params[:follow] != "")
             unless params[:follow].nil?
@@ -47,13 +52,15 @@ post '/followPeopleUsingKeyword' do
     rescue Twitter::Error::TooManyRequests => err
 
         response.set_cookie(:follow_state, :value => "false")
-        puts ("To many requests to twitter API Marketing.rb line 73, followPeopleUsingKeyword")
+        puts ("To many requests to twitter API Marketing.rb line 55, followPeopleUsingKeyword")
     end
     redirect '/marketing'
 end
 
+# tweets anything to the timeline
 post '/tweetToTimeline' do
 
+    # set cookie that shows that form has been submitted and feedback should be displayed
     response.set_cookie(:tweet_state, :value => "true")
     # Tweets a message from the dashboard to the Twitter and catches an error if not allowed
     begin
@@ -66,7 +73,7 @@ post '/tweetToTimeline' do
         end
     rescue Twitter::Error::TooManyRequests => err
         response.set_cookie(:tweet_state, :value => "false")
-        puts ("To many requests to twitter API Marketing.rb line 95 tweetToTimeline")
+        puts ("To many requests to twitter API Marketing.rb line 76 tweetToTimeline")
     end
     redirect '/marketing'
 end
