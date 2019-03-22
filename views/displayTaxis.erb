@@ -27,7 +27,7 @@
               <form class = "add_to_unavailable"> 
                 <% params[:taxiIndex] = @availableTaxis.index(taxi) %>
                 <input type = "hidden" name = "taxiIndex" value = "<%=h params[:taxiIndex]%>" />
-                <input type="image" src = "img/check.png" name="button" value="delete" class = "delete tweet_actions_icons" id = "delete_icon" width = "50" >
+                <input type="image" src = "img/check.png" name="button" value="add" class = "add tweet_actions_icons" id = "add_icon<%=h @availableTaxis.index(taxi)%>" width = "50" >
               </form>
             </td>
           </tr>
@@ -64,7 +64,7 @@
               <form class = "add_to_available"> 
                 <% params[:taxiIndex] = @unavailableTaxis.index(taxi) %>
                 <input type = "hidden" name = "taxiIndex" value = "<%=h params[:taxiIndex]%>" />
-                <input type="image" src = "img/cross.png" name="button" value="delete" class = "delete tweet_actions_icons" id = "delete_icon" width = "50" >
+                <input type="image" src = "img/cross.png" name="button" value="add" class = "delete tweet_actions_icons" id = "delete_icon<%=h @unavailableTaxis.index(taxi)%>" width = "50" >
               </form>
             </td>
           </tr>

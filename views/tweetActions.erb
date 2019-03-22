@@ -17,7 +17,7 @@
                     <%=  TWITTER_CLIENT.oembed(tweet, hide_media: "true").html%>
                     <div class = "reply">
                       <form class = "replyToTweet"> 
-                        Reply to Tweet: <input type="text" name="reply" value="<%=h params[:reply] %>"/>
+                        Reply to Tweet: <input type="text" name="reply" id = "replyInput<%=h @tweets.index(tweet)%>" value="<%=h params[:reply] %>"/>
                         <% if params[:reply] == "" %>
                             <p style="color:red">Please enter a valid tweet</p>
                         <% end %>
@@ -27,7 +27,7 @@
                         <input type = "hidden" name = "tweetindex" value = "<%=h params[:tweetindex]%>" />
                         <input type = "hidden" name = "tweetid" value = "<%=h params[:tweetid]%>" />
                         <input type = "hidden" name = "screen_name" value = "<%=h params[:screen_name]%>" />
-                        <input type="submit" name="button" value="REPLY" />
+                        <input type="submit" name="button" value="REPLY" id = "replyBtn<%=h @tweets.index(tweet)%>"/>
                       </form>
                     </div>
                   </div>
