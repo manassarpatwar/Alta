@@ -11,8 +11,9 @@ post '/addComplaint' do
 	# perform validation
 	@journey_id_ok = isPositiveNumber?(@journey_id)
     @complaint_ok = !@complaint.nil? && @complaint != ""
+	 @user_id_ok = !@user_id.nil? && @user_id != ""
 	
-	@all_ok = @journey_id_ok && @complaint_ok	
+	@all_ok = @journey_id_ok && @complaint_ok && @user_id_ok	
 
 	count = $db.get_first_value('SELECT COUNT(*) FROM complaints')
 	@id = count

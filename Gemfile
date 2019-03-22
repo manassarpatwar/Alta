@@ -7,7 +7,6 @@ source 'https://rubygems.org' do
   gem 'rufus-scheduler'
   gem 'omniauth-twitter'
   gem 'sqlite3'
-  gem 'phonelib'
   gem 'sinatra-contrib'
   gem 'capybara'
   gem 'rspec'
