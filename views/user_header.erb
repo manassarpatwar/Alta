@@ -14,9 +14,11 @@
 <div class="nav-column2 nav-column" id="RespHeader">
   <div class="nav-cont">
       <ul class="nav-center">
-        
       
-        <!--<li class="nav-inline">
+        <i class='fas fa-taxi nav-myrides inline' style='font-size:40px; color:#FEDE3B'></i>
+        <div class="nav-myrides inline">&nbspmy rides</div>      
+        
+        <!--<li class="nav-inline nav-buttons">
           <a href="#section1" class="nav-buttons">how to?</a>
         </li>
 
@@ -52,12 +54,15 @@
       </div>
     <% elsif !session[:admin] %>
      <div class=" nav-inline2 nav-signin">
-      <a href="/userAccount">My Account</a>
+      <a href="/user_editAccount">EDIT ACCOUNT |</a>
+      <a href="/logout"> <i class="fa fa-sign-out" style="font-size:13px; color:grey"></i></a>
       </div>
     <% else %>
      <div class=" nav-inline2 nav-signin" style="float: right; margin-right:20px; margin-left: 0;">
-      <a href="/dashboard" style="font-size:11px;">Dashboard | </a>
-      <i class="fa fa-sign-out" style="font-size:13px; color:grey"></i>
+      <!--<a href="/dashboard" style="font-size:11px;">MY ORDERS | </a> -->
+
+      <a href="/editAccount" style="font-size:11px; text-transform: uppcase">edit account | </a>
+     <a href="/logout"> <i class="fa fa-sign-out" style="font-size:13px; color:grey"></i></a>
       </div>
     <% end %>
   </div>

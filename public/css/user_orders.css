@@ -1,6 +1,27 @@
 
 #ordersBG{
-    background-color: #f6f1ea;
+    background-image: url(../img/userorderBG.jpg);
+    background-repeat: no-repeat;
+    background-size: cover; 
+}
+.separation{
+    height:30px;
+}
+.deals-cont{
+    width: 100%;
+    background-color:rgba(0, 0, 0, 0.151);
+    padding-left:30px;
+    padding-right:30px;
+    background-repeat: no-repeat;
+    background-size: cover; 
+}
+.deals-display{
+    height:300px;
+    text-align:center;
+    text-transform: uppercase;
+    font-size: 30px;
+    color:white;
+    padding-top: 55px;
 }
 .container{
     width: 75%;
@@ -9,11 +30,28 @@
     padding-right:30px;
 }
 .container2{
-    width: 50%;
+    width: 55%;
     background-color: #ffffff;
     padding-left:30px;
     padding-right:30px;
     margin-left:12.5%;
+}
+.ordertable-row:before{
+    content: "";
+    display: table;
+    clear: both;
+}
+.ordertable-column{
+    float:left;
+    width: 30%;
+}
+.ordertable-column2{
+    float:left;
+    width: 50%;
+}
+.ordertable-column3{
+    float:left;
+    width: 20%;
 }
 .inline{
     display:inline-block;
@@ -27,10 +65,10 @@
 }
 
 /* table title and table types */
-.table-title{
+/* .table-title{
     padding-top:10%;
     padding-bottom:2%;
-}
+} */
 .title-button {
     background-color: #f8f0e5;
     border: none;
@@ -46,7 +84,9 @@
     cursor: pointer;
     border-radius: 25px;
   }
-
+.tableTopPad{
+    padding-top:15px;
+}
 
   /* Search bar */
   #myInput{
@@ -54,6 +94,13 @@
 
 }
 
+/* Border */
+.orderborder-top{
+    border-radius: 5px 5px 0 0;
+}
+.orderborder-bottom{
+    border-radius: 0 0 5px 5px;
+}
 
 
 /* Sorting dropdown list */
@@ -70,13 +117,15 @@
 .dropbtn:hover, .dropbtn:focus {
     color:rgb(68, 68, 68);
 }
-
+.tablecenter{
+    text-align: center;
+}
 .sortDropdown {
     position: relative;
     display: inline-block;
-    float:right;
     padding-left:5px;
     padding-right:5px;
+    text-align: right;
 }
 
 .dropdown-content {
@@ -109,7 +158,6 @@
 
 /* Ride indicators */
 .ride-types{
-    padding-top:2.5%;
     padding-bottom:0.5%;
     border-bottom:1px solid rgb(117, 117, 117);
 }
@@ -144,7 +192,7 @@
 }
 .field1-regNum::before{
     content:"#";
-    padding-left:20px;
+    padding-left:30px;
 }
 .field2-rate::before{
     content:"";
@@ -209,6 +257,7 @@ a.convo-link{
 }
 td.col-date, td.col-time{
     padding-bottom:0;
+    font-size: 11px;
 }
 .col-reg-num{
     padding-top:3%;
@@ -224,6 +273,11 @@ td.col-date, td.col-time{
 #startLoc, #endLoc, #taxiType{
     font-size:18px;
     font-weight:600;
+}
+.order-comment{
+    margin-left:30px;
+    width:550px;
+    position: absolute;    
 }
 
 

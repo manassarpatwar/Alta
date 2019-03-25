@@ -21,9 +21,21 @@
           <%= erb :user_header %>
       </header> 
     
-    <!--Small navigators-->
+    <!--Deals Display-->
+      <div class="deals-cont">
+        <div class="deals-display"> 
+          Hi <%=h session[:name] %> <br><br>
+          You are 
+          <span style="color:yellow;font-size: 35px"> 2 </span>
+          rides <br> away from your 
+          <span style="font-weight:600;">free rides!</span>
+        </div>
+      </div>
     
+    <div class="separation"></div>
+
     <!--Table title and table types-->
+    <!--
       <div class="container table-title">
         <%=h session[:name] %>
         <i class='fas fa-taxi' style='font-size:40px; color:#FEDE3B'></i>
@@ -32,14 +44,26 @@
         <span onclick="myView1()" class="title-button type1-button inline">Table</span>
         <span onclick="myView2()" class="title-button type1-button inline">Databse</span>
       </div>
+      -->
 
 
-    <!--Filtable Search bar-->
-      <div class="search-bar container">
-      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search" title=" " class="inline">
+    <!-- Tbale BAR-->
+      <div class="ordertable-row container orderborder-top">
+      <!--Table type-->
+        <div class="ordertable-column tableTopPad">
+          <p class="table-titleView inline" style='font-size:15px'> View As: </p>
+          <span onclick="myView1()" class="title-button type1-button inline">Table</span>
+          <span onclick="myView2()" class="title-button type1-button inline">Databse</span>
+        </div>
 
+        <!-- Filtable Search bar -->
+        <div class="ordertable-column2 tablecenter tableTopPad">
+          <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search" title=" " class="inline" style="width:100%;">
+        </div>
+        
         <!--Sorting dropdown list-->
-        <div id ="sorting" class="sortDropdown">
+      
+        <div id ="sorting" class="ordertable-column3 sortDropdown center">
           <div class="dropdown-title inline"> Sort by :&nbsp</div>
           <button onclick="myFunction()" id="sortButtonText" class="dropbtn inline" style='font-size:15px'>
             <i class='fas fa-caret-down' style='font-size:17px'></i>
@@ -51,10 +75,11 @@
             <a href="#contact">Lowest Rating</a>
           </div>
       </div>
-      </div>
+
+    </div>
 
     <!--Ride indicators-->
-    <div class="container ride-types">
+    <div class="container ride-types orderborder-bottom">
       <a href="#home" >All</a>
       <a href="#about">Paid</a>
       <a href="#contact">Free</a>
@@ -67,7 +92,7 @@
 
     <!--Rides History Style 1: Table View-->
     <div id="view1" class="tablestyle1">
-      <table id="userTable"  class="container container2 userTable1">
+      <table id="userTable"  class="container container2 userTable1 orderborder-top">
 
         <tr class="userTable1">
           <td class="col-reg-num">
@@ -94,24 +119,24 @@
       <tr class="userTable1">
           <td class="col-date col-width">
             <div class="field3-date inline"></div>
-            <div id="date" class="inline tableCell firstCol" style="margin-left:20px; margin-bottom:10px;"> 18/01/2019 <div>
+            <div id="date" class="inline tableCell firstCol" style=" margin-bottom:10px;"> 18/01/2019 <div>
           </td>
           <td class="col-time col-width2">
             <div class="field4-time inline tableCell"></div>
-            <div id="time" class="inline tableCell" style="margin-left:15px; margin-bottom:10px;"> 09:22 PM </div>
+            <div id="time" class="inline tableCell" style=" margin-bottom:10px;"> 09:22 PM </div>
           </td>
           <td></td><td></td>
         </tr>
 
         <tr>
           <td class="col-startLoc userTable2">
-            <div class="field5-startLoc inline" style="margin-top: 60px; padding-left:10px;"></div>
+            <div class="field5-startLoc inline" style="margin-top: 20px; padding-left:10px;"></div>
           </td>
             <td class="col-startLoc userTable2">
-            <div class="field6-endLoc inline" style="margin-top: 60px;"></div>
+            <div class="field6-endLoc inline" style="margin-top: 20px"></div>
           </td>
           <td class="col-startLoc userTable2">
-            <div class="field7-taxi-type inline" style="margin-top: 60px;"></div>
+            <div class="field7-taxi-type inline" style="margin-top: 20px;></div>
           </td>
           <td class="userTable2"></td>
         </tr>  
@@ -119,28 +144,33 @@
         <tr>
 
           <td class="col-startLoc userTable2">
-            <div id="startLoc" class="inline firstCol" style="margin-bottom: 20px;">City Center</div>
+            <div id="startLoc" class="inline firstCol" style="margin-bottom: 50px;">City Center</div>
           </td>
           <td class="col-endLoc userTable2">
-            <div id="endLoc" class="inline" style="margin-bottom: 20px;">Tesco</div>
+            <div id="endLoc" class="inline" style="margin-bottom: 50px;">Tesco</div>
           </td>
           <td class="taxi-type userTable2">
-            <div id="taxiType" class="inline" style="margin-bottom: 20px;">Luxury</div>
+            <div id="taxiType" class="inline" style="margin-bottom: 50px;">Luxury</div>
           </td>
           <td class="userTable2"></td>
-        </tr>      
+        </tr>   
+        <tr>
+        <td class="userTable2 col-free">
+          <input type="text" onkeyup="myFunction()" placeholder="Tell us what do you think about our services !" title=" " class="inline order-comment">
+        </td>
+      </tr>    
         <tr>
           <td class="userTable2 col-free">
             <i id ="freeNot" class="field8-icon far fa-check-square inline" style='font-size:15px '></i>
-            <div class="field8-free inline" style="margin-top: 20px; margin-bottom:20px;">Free Rides</div>
+            <div class="field8-free inline" style="margin-top: 50px; margin-bottom:20px;">Free Rides</div>
             <div class="inline" style="margin-top: 20px;">&nbsp &nbsp|</div>
           </td>
           <td class="userTable2 col-cancelled">
             <i id ="cancelledNot" class="field9-icon far fa-square inline" style='font-size:15px; margin-left:0px'></i>
-            <div class="field9-cancelled inline" style="margin-top: 20px; margin-bottom:20px;">Cancelled</div>
+            <div class="field9-cancelled inline" style="margin-top: 50px; margin-bottom:20px;">Cancelled</div>
           </td>
           <td class="userTable2">
-            <a href="" id="convoLink" class="convo-link" style="margin-right:20px;">Conversation link
+            <a href="" id="convoLink" class="convo-link" style="margin-top:50px; margin-right:20px;">Conversation link
             </a>
           </td>
         </tr> 
