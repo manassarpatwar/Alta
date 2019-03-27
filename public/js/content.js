@@ -1,5 +1,10 @@
 // document.getElementById('date').innerHTML = new Date().toDateString();
 
+function types(1){
+  document.getElemtnid
+
+}
+
 //Slide Show//
 var slideIndex = 1;
 showSlides(slideIndex);
