@@ -14,13 +14,25 @@
         <% if @submitted && !@regNum_ok %>
             <p style="color:red">Please enter a valid reg number</p>
         <% end %>
+      
+        <% if @submitted && !@regNum_unique %>
+            <p style="color:red">That reg number is already taken</p>
+        <% end %>
 
         <% if @submitted && !@contact_ok %>
             <p style="color:red">Please enter a valid contact number</p>
         <% end %>
+      
+        <% if @submitted && !@contact_unique %>
+            <p style="color:red">That contact number is already taken</p>
+        <% end %>
 
         <% if @submitted && !@taxiType_ok %>
             <p style="color:red">Please enter a valid taxi type (S, M or L)</p>
+        <% end %>
+      
+        <% if @submitted && !@city_ok %>
+            <p style="color:red">Please enter a valid cirty (SHEFFIELD or MANCHESTER)</p>
         <% end %>
 
 
@@ -34,6 +46,10 @@
 
         <p>Taxi Type:
             <input type="text" name="taxiType" value="<%=h @taxiType if @submitted %>"/>
+        </p>
+      
+        <p>City:
+            <input type="text" name="city" value="<%=h @city if @submitted %>"/>
         </p>
 
         <input type="submit" value="Submit" />
@@ -53,14 +69,15 @@
     term[1] = $form.find( "input[name='regNum']" ).val();
     term[2] = $form.find( "input[name='contact']" ).val();
     term[3] = $form.find( "input[name='taxiType']" ).val();
-    for(var i = 1; i <= 5; i++){
+    term[4] = $form.find( "input[name='city']" ).val()
+    for(var i = 1; i <= 4; i++){
       if (term[i] == undefined){
         term[i] = "";
       }
       console.log(term[i]);
     }
     // Send the data using post
-   var posting = $.post("addTaxi", { regNum: term[1], contact: term[2], taxiType: term[3]});
+   var posting = $.post("addTaxi", { regNum: term[1], contact: term[2], taxiType: term[3], city: term[4]});
     
    posting.done(function( data ) {
       var content = $(data);

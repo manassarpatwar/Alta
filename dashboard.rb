@@ -11,10 +11,9 @@ get '/dashboard' do
             puts "Too many requests. Try again in #{error.rate_limit.reset_in} seconds"
         end
     end
+    gather_taxis
     @submitted = false
     @tweets = $tweets.dup
-    @availableTaxis = $avTaxis.dup
-    @unavailableTaxis = $unavTaxis.dup
     erb :dashboard
 end
 
@@ -108,20 +107,16 @@ post '/addJourney' do
 end
 
 post '/addToAvailable' do
-    taxiIndex = params[:taxiIndex].to_i
-    $avTaxis.push($unavTaxis[taxiIndex])
-    $unavTaxis.delete($unavTaxis[taxiIndex])
-    @availableTaxis = $avTaxis.dup
-    @unavailableTaxis = $unavTaxis.dup
+    taxiId = params[:taxiId].to_i 
+    $db.execute("UPDATE taxis SET available = 1 WHERE id='#{taxiId}'")
+    gather_taxis
     erb :displayTaxis
 end
 
 post '/addToUnavailable' do
-    taxiIndex = params[:taxiIndex].to_i
-    $unavTaxis.push($avTaxis[taxiIndex])
-    $avTaxis.delete($avTaxis[taxiIndex])
-    @availableTaxis = $avTaxis.dup
-    @unavailableTaxis = $unavTaxis.dup
+    taxiId = params[:taxiId].to_i 
+    $db.execute("UPDATE taxis SET available = 0 WHERE id='#{taxiId}'")
+    gather_taxis
     erb :displayTaxis
 end
 

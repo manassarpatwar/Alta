@@ -6,6 +6,7 @@ Feature: Adding data
             When I fill in "regNum" with randomid
             When I fill in "contact" with randomid
             When I fill in "taxiType" with "L"
+            When I fill in "city" with "SHEFFIELD"
             When I press "Submit" within "#add_taxi"
             Then I should see "Taxi Added"
         

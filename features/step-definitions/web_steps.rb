@@ -68,6 +68,12 @@ When /^(?:|I )fill in "([^\"]*)" with invalid randomid(?: within "([^\"]*)")?$/ 
   end
 end
 
+When /^(?:|I )fill in "([^\"]*)" with random text(?: within "([^\"]*)")?$/ do |field, selector|
+  with_scope(selector) do
+    fill_in(field, :with => (0...20).map { ('a'..'z').to_a[rand(26)] }.join)
+  end
+end
+
 # Use this to fill in an entire form with data from a table. Example:
 #
 #   When I fill in the following:

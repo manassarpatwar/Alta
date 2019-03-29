@@ -31,9 +31,9 @@ before do
     response.set_cookie(:following, :value => "true")
     response.set_cookie(:follow_state, :value => "true")
     response.set_cookie(:tweet_state, :value => "true")
-  
     #IMPORTANT! FOR TESTS
     #session[:admin] = true #<=== UNCOMMENT WHEN TESTING WITH CUCUMBER TO GIVE ADMIN ACCESS TO DASHBOARD
+    #session[:admin_sheffield] = true #<=== UNCOMMENT WHEN TESTING WITH CUCUMBER TO GIVE ADMIN ACCESS TO DASHBOARD
 end
 
 #Configure sessions
@@ -47,9 +47,6 @@ configure do
         config.access_token_secret = 'UkK1okCoI1kFUKeofvh5Y5QQHkJyVOQxeIQGQfyCjIFQP'
     end
     $tweets = TWITTER_CLIENT.mentions_timeline(count: "5")
-    $replyTweets = []
-    $avTaxis = $db.execute %{SELECT * FROM taxis} #Gather all taxis
-    $unavTaxis = []
     puts "fetched tweets"
 end
 
@@ -58,6 +55,24 @@ helpers do
 	def admin?
     	session[:admin]
   	end
+  
+    def admin_sheffield?
+    	session[:admin_sheffield]
+  	end
+  
+    def admin_manchester?
+    	session[:admin_manchester]
+  	end
+  
+    def gather_taxis
+      if session[:admin_sheffield] then
+         @availableTaxis = $db.execute %{SELECT * FROM taxis WHERE city IS "SHEFFIELD" AND available IS "1"} #Gather all taxis
+         @unavailableTaxis = $db.execute %{SELECT * FROM taxis WHERE city IS "SHEFFIELD" AND available IS "0"} #Gather all taxis
+      elsif session[:admin_manchester] then 
+         @availableTaxis = $db.execute %{SELECT * FROM taxis WHERE city IS "MANCHESTER" AND available IS "1"} #Gather all taxis
+         @unavailableTaxis = $db.execute %{SELECT * FROM taxis WHERE city IS "MANCHESTER" AND available IS "0"} #Gather all taxis
+      end
+    end
 
     def isPositiveNumber? string
       begin

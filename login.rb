@@ -45,6 +45,11 @@ get '/auth/twitter/callback' do
 	session[:dateTime] = @userInfo[0][2]
 	if @userInfo[0][3] == 1
 		session[:admin] = true
+        session[:admin_sheffield] = true
+	end
+    if @userInfo[0][3] == 2
+		session[:admin] = true
+        session[:admin_manchester] = true
 	end
 	session[:freeRides] = @userInfo[0][4]
 

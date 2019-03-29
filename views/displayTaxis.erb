@@ -7,6 +7,7 @@
       <th>Reg No.</th> 
       <th>Contact No.</th>
       <th>Type</th>
+      <th>City</th>
     </tr>
      <% unless @availableTaxis.nil? %>
        <% @availableTaxis.each do |taxi| %>
@@ -24,9 +25,12 @@
               <%=h taxi[3] %>
             </td>
             <td>
+              <%=h taxi[4] %>
+            </td>
+            <td>
               <form class = "add_to_unavailable"> 
-                <% params[:taxiIndex] = @availableTaxis.index(taxi) %>
-                <input type = "hidden" name = "taxiIndex" value = "<%=h params[:taxiIndex]%>" />
+                <% params[:taxiId] = taxi[0] %>
+                <input type = "hidden" name = "taxiId" value = "<%=h params[:taxiId]%>" />
                 <input type="image" src = "img/check.png" name="button" value="add" class = "add tweet_actions_icons" id = "add_icon<%=h @availableTaxis.index(taxi)%>" width = "50" >
               </form>
             </td>
@@ -44,6 +48,7 @@
       <th>Reg No.</th> 
       <th>Contact No.</th>
       <th>Type</th>
+      <th>City</th>
     </tr>
      <% unless @unavailableTaxis.nil? %>
        <% @unavailableTaxis.each do |taxi| %>
@@ -61,9 +66,12 @@
               <%=h taxi[3] %>
             </td>
             <td>
+              <%=h taxi[4] %>
+            </td>
+            <td>
               <form class = "add_to_available"> 
-                <% params[:taxiIndex] = @unavailableTaxis.index(taxi) %>
-                <input type = "hidden" name = "taxiIndex" value = "<%=h params[:taxiIndex]%>" />
+                <% params[:taxiId] = taxi[0] %>
+                <input type = "hidden" name = "taxiId" value = "<%=h params[:taxiId]%>" />
                 <input type="image" src = "img/cross.png" name="button" value="add" class = "delete tweet_actions_icons" id = "delete_icon<%=h @unavailableTaxis.index(taxi)%>" width = "50" >
               </form>
             </td>
@@ -82,9 +90,10 @@
     // Get some values from elements on the page:
     var term = []
     var $form = $( this );
-    term[1] = $form.find( "input[name='taxiIndex']" ).val();
+    term[1] = $form.find( "input[name='taxiId']" ).val();
+    console.log(term[1])
     // Send the data using post
-   var posting = $.post("addToUnavailable", { taxiIndex: term[1]});
+   var posting = $.post("addToUnavailable", { taxiId: term[1]});
     
    posting.done(function( data ) {
       var content = $(data);
@@ -99,9 +108,10 @@
     // Get some values from elements on the page:
     var term = []
     var $form = $( this );
-    term[1] = $form.find( "input[name='taxiIndex']" ).val();
+    term[1] = $form.find( "input[name='taxiId']" ).val();
+    console.log(term[1])
     // Send the data using post
-   var posting = $.post("addToAvailable", { taxiIndex: term[1]});
+   var posting = $.post("addToAvailable", { taxiId: term[1]});
     
    posting.done(function( data ) {
       var content = $(data);
