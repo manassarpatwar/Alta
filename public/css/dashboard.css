@@ -29,6 +29,8 @@ body{
 #page-content-wrapper .tweets .check{
   margin: 0;
   position: absolute;
+  width: 50px;
+  outline:none;
   top: 0%;
   left:100%;
 }
@@ -36,6 +38,8 @@ body{
 #page-content-wrapper .tweets .delete{
   margin: 0;
   position: absolute;
+  width: 50px;
+  outline:none;
   top: 50px;
   left:100%;
 }
@@ -46,16 +50,6 @@ body{
   top: 100px;
   left:100%;
 }
-
-#delete_icon{
-  width: 50px;
-  outline:none;
-}
-
-#check_icon{
-  width: 50px;
-}
-
 
 .tweet_actions{
   display: flex;

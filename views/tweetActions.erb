@@ -15,9 +15,11 @@
                 <td class = "tweets">
                   <div>
                     <%=  TWITTER_CLIENT.oembed(tweet, hide_media: "true").html%>
+                    <% tweet.user.geo_enabled? %>
+                    <% tweet.place.name %><% tweet.place.full_name %>
                     <div class = "reply">
                       <form class = "replyToTweet"> 
-                        Reply to Tweet: <input type="text" name="reply" id = "replyInput<%=h @tweets.index(tweet)%>" value="<%=h params[:reply] %>"/>
+                        Reply to Tweet: <input type="text" name="reply" id = "replyInput<%=h@tweets.index(tweet)%>" value="<%=h params[:reply] %>"/>
                         <% if params[:reply] == "" %>
                             <p style="color:red">Please enter a valid tweet</p>
                         <% end %>
@@ -32,11 +34,16 @@
                     </div>
                   </div>
                   <div class = "tweet_actions">
-                    <img src = "img/check.png" class= "check tweet_actions_icons" alt = "reply tweet" width = "50" id = "reply_tweet_icon<%=h@tweets.index(tweet)%>">
+                    <form class = "fillInfoInJourney">
+                      <input type = "hidden" name = "userId" value = "<%=h tweet.user.id %>" />
+                      <input type = "hidden" name = "twitterHandle" value = "<%=h tweet.user.screen_name%>" />
+                      <input type = "hidden" name = "convoLink" value = "<%=h tweet.uri %>" />
+                      <input type="image" src = "img/check.png" name="button" alt = "reply tweet" value="check" class= "check tweet_actions_icons" id = "reply_tweet_icon<%=h@tweets.index(tweet)%>">
+                    </form>
                     <form class = "deleteTweet"> 
                       <% params[:tweetindex] = @tweets.index(tweet) %>
                       <input type = "hidden" name = "tweetindex" value = "<%=h params[:tweetindex]%>" />
-                      <input type="image" src = "img/cross.png" name="button" value="delete" class = "delete tweet_actions_icons" id = "delete_icon" >
+                      <input type="image" src = "img/cross.png" name="button" value="delete" class = "delete tweet_actions_icons">
                     </form>
                     <a href = "<%= tweet.uri %>"  target="_blank"><img src = "img/more_info.png" class= "moreinfo tweet_actions_icons" alt = "get more info" width = "50"></a>
                   </div>
@@ -57,8 +64,22 @@
       $( "#incoming_tweets").empty().append( content );
     });
   });
-  $('.check').click(function() {
+  $( ".fillInfoInJourney").submit(function( event ){
+      event.preventDefault();
       $($(this).parent().prev()).toggleClass("displayreply");
+      var term = []
+      var $form = $( this );
+      term[1] = $form.find( "input[name='userId']" ).val();
+      term[2] = $form.find( "input[name='twitterHandle']" ).val();
+      term[3] = $form.find( "input[name='convoLink']" ).val();
+    // Send the data using post
+   var posting = $.post("fillInfoInJourney", { userId: term[1], twitterHandle: term[2], convoLink: term[3] });
+    
+   posting.done(function( data ) {
+      var content = $(data);
+      $( "#add_journey" ).empty().append( content );
+    });
+      
   });
   $( ".replyToTweet").submit(function( event ) {
  

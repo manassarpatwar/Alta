@@ -1,14 +1,30 @@
 
 <h2>Available Taxis</h2>
+<table>
+    <thead>
+      <tr class = "header_taxi_table">
+        <th class = "table_id">ID</th>
+        <th class = "table_reg">Reg No.</th> 
+        <th class = "table_contact">Contact No.</th>
+        <th class = "table_type">Type</th>
+        <th class = "table_city">City</th>
+        <th class = "table_actions"></th>
+      </tr>
+    </thead>
+</table>
 <div id = "availableTaxis" class = "displayTaxis">
   <table>
-    <tr class = "header_taxi_table">
-      <th>ID</th>
-      <th>Reg No.</th> 
-      <th>Contact No.</th>
-      <th>Type</th>
-      <th>City</th>
-    </tr>
+     <thead style="height:0px;">
+      <tr>
+        <th class = "table_id"></th>
+        <th class = "table_reg"></th> 
+        <th class = "table_contact"></th>
+        <th class = "table_type"></th>
+        <th class = "table_city"></th>
+        <th class = "table_actions"></th>
+      </tr>
+    </thead>
+    <tbody>
      <% unless @availableTaxis.nil? %>
        <% @availableTaxis.each do |taxi| %>
           <tr>
@@ -37,47 +53,65 @@
           </tr>
        <% end %>
      <% end %>
+    </tbody>
   </table>
 </div>
 
 <h2>Unavailable Taxis</h2>
+<table>
+    <thead>
+      <tr class = "header_taxi_table">
+        <th class = "table_id">ID</th>
+        <th class = "table_reg">Reg No.</th> 
+        <th class = "table_contact">Contact No.</th>
+        <th class = "table_type">Type</th>
+        <th class = "table_city">City</th>
+        <th class = "table_actions"></th>
+      </tr>
+    </thead>
+</table>
 <div id = "unavailableTaxis" class = "displayTaxis">
   <table>
-    <tr class = "header_taxi_table">
-      <th>ID</th>
-      <th>Reg No.</th> 
-      <th>Contact No.</th>
-      <th>Type</th>
-      <th>City</th>
-    </tr>
-     <% unless @unavailableTaxis.nil? %>
-       <% @unavailableTaxis.each do |taxi| %>
-          <tr>
-            <td>
-              <%=h taxi[0] %>
-            </td>
-            <td>
-              <%=h taxi[1] %>
-            </td>
-            <td>
-              <%=h taxi[2] %>
-            </td>
-            <td>
-              <%=h taxi[3] %>
-            </td>
-            <td>
-              <%=h taxi[4] %>
-            </td>
-            <td>
-              <form class = "add_to_available"> 
-                <% params[:taxiId] = taxi[0] %>
-                <input type = "hidden" name = "taxiId" value = "<%=h params[:taxiId]%>" />
-                <input type="image" src = "img/cross.png" name="button" value="add" class = "delete tweet_actions_icons" id = "delete_icon<%=h @unavailableTaxis.index(taxi)%>" width = "50" >
-              </form>
-            </td>
-          </tr>
-       <% end %>
-    <% end %>
+    <thead style="height:0px;">
+      <tr>
+        <th class = "table_id"></th>
+        <th class = "table_reg"></th> 
+        <th class = "table_contact"></th>
+        <th class = "table_type"></th>
+        <th class = "table_city"></th>
+        <th class = "table_actions"></th>
+      </tr>
+    </thead>
+    <tbody>
+       <% unless @unavailableTaxis.nil? %>
+         <% @unavailableTaxis.each do |taxi| %>
+            <tr>
+              <td>
+                <%=h taxi[0] %>
+              </td>
+              <td>
+                <%=h taxi[1] %>
+              </td>
+              <td>
+                <%=h taxi[2] %>
+              </td>
+              <td>
+                <%=h taxi[3] %>
+              </td>
+              <td>
+                <%=h taxi[4] %>
+              </td>
+              <td>
+                <form class = "add_to_available"> 
+                  <% params[:taxiId] = taxi[0] %>
+                  <input type = "hidden" name = "taxiId" value = "<%=h params[:taxiId]%>" />
+                  <input type="image" src = "img/cross.png" name="button" value="add" class = "delete tweet_actions_icons" id = "delete_icon<%=h @unavailableTaxis.index(taxi)%>" width = "50" >
+                </form>
+              </td>
+            </tr>
+         <% end %>
+      <% end %>
+    </tbody>
   </table>
 </div>
 

@@ -134,3 +134,31 @@ post '/handleDeletedTweet' do
     @tweets = $tweets.dup
     erb :tweetActions
 end
+
+post '/fillInfoInJourney' do
+    gather_taxis
+    @noAvailableTaxis = false
+    if !@availableTaxis[0].nil? 
+	 @taxiId = @availableTaxis[0][0]
+    else
+     @noAvailableTaxis = true
+    end
+	@userId = params[:userId]
+	@twitterHandle = params[:twitterHandle]
+    @convoLink = params[:convoLink]
+    @dateTime = Time.now
+    @usersTable = $db.execute %{SELECT * FROM users} #Gather all user data
+    @usersTable.each do |record| #Go through each user record
+        if @userId == record[0] #If uid = id then:
+           @userInfo = $db.execute("SELECT * FROM users WHERE id = ?", @userId)
+           if @userInfo[0][4] != 0 then
+             @freeRide = 1
+           else 
+             @freeRide = 0
+           end
+        end
+    end
+    @cancelled = 0  
+	@convoLink = params[:convoLink].strip
+    erb :addJourney
+end

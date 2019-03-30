@@ -1,101 +1,107 @@
 <h2>Add a Journey</h2>
-
-<% if @submitted && @all_ok %>
-    <p>Journey Added.</p>
-<% else %>
-
-    <% if @submitted && !@all_ok %>
-        <p style="color:red">There were errors in your form submission,<br> please correct them below.</p>
-    <% end %>
-
-   <form id="journeyForm">
-        <!-- Error Validation -->
-        <% if @submitted && !@taxiId_ok %>
-            <p style="color:red">Please enter a valid taxi ID number</p>
-        <% end %>
-
-        <% if @submitted && !@userId_ok %>
-            <p style="color:red">Please enter a valid User ID</p>
-        <% end %>
-
-        <% if @submitted && !@twitterHandle_ok %>
-            <p style="color:red">Please enter a valid twitter handle</p>
-        <% end %>
-
-        <% if @submitted && !@dateTime_ok %>
-            <p style="color:red">Please enter a valid date/time</p>
-        <% end %>
-
-        <% if @submitted && !@startLocation_ok %>
-            <p style="color:red">Please enter a valid start location</p>
-        <% end %>
-
-        <% if @submitted && !@endLocation_ok %>
-            <p style="color:red">Please enter a valid end location </p>
-        <% end %>
-
-        <% if @submitted && !@freeRide_ok %>
-            <p style="color:red">Please enter a valid free ride</p>
-        <% end %>
-
-        <% if @submitted && !@cancelled_ok %>
-            <p style="color:red">Please enter a 0 or 1 for cancelled?</p>
-        <% end %>
-
-        <% if @submitted && !@convoLink_ok %>
-            <p style="color:red">Please enter a valid conversation link</p>
-        <% end %>
-
-
-        <label class = "input_label">Taxi ID:
-            <input type="text" name="taxiId" value="<%=h @taxiId if @submitted %>" class = "inputbox"/>
-        </label>
-
-        <label class = "input_label">User ID:
-            <input type="text" name="userId" value="<%=h @userId if @submitted %>" class = "inputbox"/>
-        </label>
-
-        <label class = "input_label">Twitter Handle:
-            <input type="text" name="twitterHandle" value="<%=h @twitterHandle if @submitted %>" class = "inputbox"/>
-        </label>
-
-        <label class = "input_label">Date/Time:
-            <input type="text" name="dateTime" value="<%=h @dateTime if @submitted %>" class = "inputbox"/>
-        </label>
-
-        <label class = "input_label">Start Location:
-            <input type="text" name="startLocation" value="<%=h @startLocation if @submitted %>" class = "inputbox"/>
-        </label>
-
-
-        <label class = "input_label">End Location:
-            <input type="text" name="endLocation" value="<%=h @endLocation if @submitted %>" class = "inputbox"/>
-        </label>
-
-
-        <label class = "input_label">Free Ride?:
-            <input type="text" name="freeRide" value="<%=h @freeRide if @submitted %>" class = "inputbox"/>
-        </label>
-
-
-        <label class = "input_label">Cancelled:
-            <input type="text" name="cancelled" value="<%=h @cancelled if @submitted %>" class = "inputbox"/>
-        </label>
-
-
-        <label class = "input_label">rating:
-            <input type="text" name="rating" value="<%=h @rating if @submitted %>" class = "inputbox"/>
-        </label>
-
-        <label class = "input_label">Conversation Link:
-            <input type="text" name="convoLink" value="<%=h @convoLink if @submitted %>" class = "inputbox"/>
-        </label>
-
-
-        <input type="submit" value="Submit" id = "add_journey_submit"/>
-    </form>
+<% if @noAvailableTaxis %>
+            <p style="color:red">No taxi available. Please wait till a taxi becomes available.</p>
 <% end %>
+
+  <% if @submitted && @all_ok %>
+    <p id = "journeyAddedMsg">Journey Added.</p>
+    <% @taxiId = "" %><% @userId = "" %><% @twitterHandle= "" %> <% @dateTime = "" %><% @startLocation = "" %><% @endLocation = "" %> <% @freeRide = "" %><% @cancelled = "" %><% @convoLink = "" %><% @rating = "" %>
+  <% end %>
+  <% if @submitted && !@all_ok %>
+      <p style="color:red">There were errors in your form submission,<br> please correct them below.</p>
+  <% end %>
+
+ <form id="journeyForm">
+      <!-- Error Validation -->
+      <% if @submitted && !@taxiId_ok %>
+          <p style="color:red">Please enter a valid taxi ID number</p>
+      <% end %>
+
+      <% if @submitted && !@userId_ok %>
+          <p style="color:red">Please enter a valid User ID</p>
+      <% end %>
+
+      <% if @submitted && !@twitterHandle_ok %>
+          <p style="color:red">Please enter a valid twitter handle</p>
+      <% end %>
+
+      <% if @submitted && !@dateTime_ok %>
+          <p style="color:red">Please enter a valid date/time</p>
+      <% end %>
+
+      <% if @submitted && !@startLocation_ok %>
+          <p style="color:red">Please enter a valid start location</p>
+      <% end %>
+
+      <% if @submitted && !@endLocation_ok %>
+          <p style="color:red">Please enter a valid end location </p>
+      <% end %>
+
+      <% if @submitted && !@freeRide_ok %>
+          <p style="color:red">Please enter a valid free ride</p>
+      <% end %>
+
+      <% if @submitted && !@cancelled_ok %>
+          <p style="color:red">Please enter a 0 or 1 for cancelled?</p>
+      <% end %>
+
+      <% if @submitted && !@convoLink_ok %>
+          <p style="color:red">Please enter a valid conversation link</p>
+      <% end %>
+
+
+      <label class = "input_label">Taxi ID:
+          <input type="text" name="taxiId" value="<%=h @taxiId %>" class = "inputbox"/>
+      </label>
+
+      <label class = "input_label">User ID:
+          <input type="text" name="userId" value="<%=h @userId %>" class = "inputbox"/>
+      </label>
+
+      <label class = "input_label">Twitter Handle:
+          <input type="text" name="twitterHandle" value="<%=h @twitterHandle %>" class = "inputbox"/>
+      </label>
+
+      <label class = "input_label">Date/Time:
+          <input type="text" name="dateTime" value="<%=h @dateTime %>" class = "inputbox"/>
+      </label>
+
+      <label class = "input_label">Start Location:
+          <input type="text" name="startLocation" value="<%=h @startLocation if @submitted%>" class = "inputbox"/>
+      </label>
+
+
+      <label class = "input_label">End Location:
+          <input type="text" name="endLocation" value="<%=h @endLocation if @submitted%>" class = "inputbox"/>
+      </label>
+
+
+      <label class = "input_label">Free Ride?:
+          <input type="text" name="freeRide" value="<%=h @freeRide %>" class = "inputbox"/>
+      </label>
+
+
+      <label class = "input_label">Cancelled:
+          <input type="text" name="cancelled" value="<%=h @cancelled %>" class = "inputbox"/>
+      </label>
+
+
+      <label class = "input_label">rating:
+          <input type="text" name="rating" value="<%=h @rating if @submitted %>" class = "inputbox"/>
+      </label>
+
+      <label class = "input_label">Conversation Link:
+          <input type="text" name="convoLink" value="<%=h @convoLink %>" class = "inputbox"/>
+      </label>
+
+
+      <input type="submit" value="Submit" id = "add_journey_submit"/>
+  </form>
 <script>
+  setTimeout(fade_out, 5000);
+  function fade_out() {
+    $("#journeyAddedMsg").fadeOut().empty();
+  }
   $( "#journeyForm" ).submit(function( event ) {
  
     // Stop form from submitting normally
