@@ -73,9 +73,26 @@ body{
   display: block;
 }
 
-.displayreply{
-  display: flex;
-  flex-direction: column;
+.displayreply .replyTextArea{
+  width: 97%;
+  resize: none;
+  font-size: 1.2em;
+}
+
+.displayreply .replyButton{
+  background: #38A1F3;
+  color: white;
+  border-radius: 25px;
+  height: 30px;
+  width: 70px;
+  padding: 5px;
+  position: absolute; 
+  right: 0;
+  bottom: 0;
+}
+
+#page-content-wrapper #journeyForm{
+  width: 400px;
 }
 
 #page-content-wrapper #add_journey .inputbox{
@@ -85,6 +102,14 @@ body{
 
 #page-content-wrapper #add_journey .input_label{
   line-height: 35px;
+}
+
+#page-content-wrapper #add_journey .add_journey_submitButton{
+  background: #38A1F3;
+  color: white;
+  border-radius: 25px;
+  height: 30px;
+  width: 70px;
 }
 
 #fetch_tweets{
@@ -124,7 +149,7 @@ body{
 .displayTaxis td{
   width: 100px;
   margin: 0 20px;
-  padding-top: 10px;
+  padding-top: 20px;
 }
 .header_taxi_table{
   position: absolute;

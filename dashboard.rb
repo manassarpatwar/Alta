@@ -1,16 +1,6 @@
 #--------------------Get Methods--------------------#
 get '/dashboard' do
     redirect '/index' unless session[:admin]
-    $tweets.each do |deletedTweet|
-        begin
-            TWITTER_CLIENT.status(deletedTweet.uri) == deletedTweet
-        rescue Twitter::Error::NotFound => err
-            $tweets.delete(deletedTweet)
-        rescue Twitter::Error::TooManyRequests => error
-            sleep error.rate_limit.reset_in
-            puts "Too many requests. Try again in #{error.rate_limit.reset_in} seconds"
-        end
-    end
     gather_taxis
     @submitted = false
     @tweets = $tweets.dup
@@ -121,18 +111,8 @@ post '/addToUnavailable' do
 end
 
 post '/handleDeletedTweet' do
-    $tweets.each do |deletedTweet|
-    begin
-        TWITTER_CLIENT.status(deletedTweet.uri) == deletedTweet
-    rescue Twitter::Error::NotFound => err
-        $tweets.delete(deletedTweet)
-    rescue Twitter::Error::TooManyRequests => error
-        sleep error.rate_limit.reset_in
-        puts "Too many requests. Try again in #{error.rate_limit.reset_in} seconds"
-      end
-    end
-    @tweets = $tweets.dup
-    erb :tweetActions
+    index = (params[:tweetindex]).to_i
+    $tweets.delete($tweets[index])
 end
 
 post '/fillInfoInJourney' do
