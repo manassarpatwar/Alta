@@ -85,7 +85,6 @@ GEM
     omniauth-twitter (1.4.0)
       omniauth-oauth (~> 1.1)
       rack
-    phonelib (0.6.30)
     public_suffix (3.0.3)
     puma (3.12.1)
     raabro (1.1.6)
@@ -167,7 +166,6 @@ DEPENDENCIES
   cucumber!
   minitest!
   omniauth-twitter!
-  phonelib!
   puma!
   rspec!
   rufus-scheduler!

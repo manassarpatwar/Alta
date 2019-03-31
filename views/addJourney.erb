@@ -98,7 +98,7 @@
       <input type="submit" value="Submit" class = "add_journey_submitButton" id = "add_journey_submit"/>
   </form>
 <script>
-  setTimeout(fade_out, 5000);
+  setTimeout(fade_out, 10000);
   function fade_out() {
     $("#journeyAddedMsg").fadeOut().empty();
   }
@@ -128,10 +128,14 @@
     }
     // Send the data using post
    var posting = $.post("addJourney", { taxiId: term[1], userId: term[2], twitterHandle: term[3], dateTime: term[4], startLocation: term[5], endLocation: term[6], freeRide: term[7], cancelled: term[8], rating: term[9], convoLink: term[10] });
-    
    posting.done(function( data ) {
       var content = $(data);
       $( "#add_journey" ).empty().append( content );
+    });
+   var postingToTaxi = $.post("addToUnavailable", { taxiId: term[1]});
+   postingToTaxi.done(function( data ) {
+      var content = $(data);
+      $( "#taxis" ).empty().append( content );
     });
   });
 </script>
