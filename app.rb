@@ -40,14 +40,19 @@ end
 configure do
 	enable :sessions
     $db = SQLite3::Database.new './taxi_database.sqlite'
-    TWITTER_CLIENT = Twitter::REST::Client.new do |config|
-        config.consumer_key        = 'wVzUO14M25jvS3vmmtfDAtmh6'
-        config.consumer_secret     = 'x1hieq7QNwhbUM8wjqgl5HujELyyqmZiJUzpaWi1tQEnG8cQrX'
-        config.access_token        = '1092444312430919681-k6yytElynjt9A1ziskr28eHKLg580X'
-        config.access_token_secret = 'UkK1okCoI1kFUKeofvh5Y5QQHkJyVOQxeIQGQfyCjIFQP'
+    begin
+      TWITTER_CLIENT = Twitter::REST::Client.new do |config|
+          config.consumer_key        = 'wVzUO14M25jvS3vmmtfDAtmh6'
+          config.consumer_secret     = 'x1hieq7QNwhbUM8wjqgl5HujELyyqmZiJUzpaWi1tQEnG8cQrX'
+          config.access_token        = '1092444312430919681-k6yytElynjt9A1ziskr28eHKLg580X'
+          config.access_token_secret = 'UkK1okCoI1kFUKeofvh5Y5QQHkJyVOQxeIQGQfyCjIFQP'
+      end
+      $tweets = TWITTER_CLIENT.mentions_timeline(count: "5")
+      puts "fetched tweets"
+    rescue Twitter::Error::TooManyRequests => error
+        puts "Too many requests. Try again in #{error.rate_limit.reset_in} seconds"
+        sleep error.rate_limit.reset_in
     end
-    $tweets = TWITTER_CLIENT.mentions_timeline(count: "5")
-    puts "fetched tweets"
 end
 
 #Setting up privilages to different parts of the website
