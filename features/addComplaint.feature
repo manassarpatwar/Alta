@@ -2,7 +2,7 @@ Feature: Adding data
             
         @javascript
         Scenario: Correct Data entered
-            Given I am signed in as admin
+            Given I am signed in as admin from sheffield
             And I am on the settings page
             When I fill in "journey_id" with randomid
             When I fill in "user_id" with randomid
@@ -12,7 +12,7 @@ Feature: Adding data
         
         @javascript
         Scenario: Missing Data
-            Given I am signed in as admin
+            Given I am signed in as admin from sheffield
             And I am on the settings page
             When I fill in "journey_id" with randomid
             When I fill in "complaint" with "I am not satisfied"
