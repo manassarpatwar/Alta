@@ -35,7 +35,7 @@ get '/auth/twitter/callback' do
 
 	#Add to database if user is not found already
 	if @found == false
-		$db.execute("INSERT INTO users VALUES (?, ?, ?, 0, 0)", id, name, dateTime)
+		$db.execute("INSERT INTO users VALUES (?, ?, ?, 0, 0, 0)", id, name, dateTime)
 	end
 
 	#Set global variables of user information to user logged in

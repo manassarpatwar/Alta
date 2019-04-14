@@ -12,7 +12,7 @@ post '/addUser' do
 	@id_ok = !@id.nil? && @id != ""
 	@name_ok = !@name.nil? && @name != ""
 	@dateTime_ok = !@dateTime.nil? && @dateTime != ""
-	if @userType = "1" || @userType = "0"
+	if @userType == "2" || @userType == "1" || @userType == "0"
 		@userType_ok = true
 	else
 		@userType_ok = false
