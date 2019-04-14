@@ -4,8 +4,8 @@ Feature: Reply to tweets
             Given I am signed in as admin
             And I am on the dashboard page
             When I click "#reply_tweet_icon1" within "#incoming_tweets"
-            When I fill in "replyInput1" with random text within "#reply1"
+            When I fill in "replyInput1" with random text
             When I press "replyBtn1"
-            Then I should see "Alta" within "#incoming_tweets"
+            Then I should see "ise19team29" within "#incoming_tweets"
             
             
