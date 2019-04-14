@@ -26,9 +26,16 @@ When /^I wait for (\d+) seconds?$/ do |secs|
   sleep secs.to_i
 end
 
-When /^I am signed in as admin$/ do
+When /^I am signed in as admin from sheffield$/ do
    visit "/login"
    fill_in("Username or email", :with => "ise19team29")
+   fill_in("Password", :with => "SoftEng2019")
+   click_button("Sign In")
+end
+
+When /^I am signed in as admin from manchester$/ do
+   visit "/login"
+   fill_in("Username or email", :with => "altataxis")
    fill_in("Password", :with => "SoftEng2019")
    click_button("Sign In")
 end

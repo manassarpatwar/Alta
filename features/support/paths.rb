@@ -14,15 +14,19 @@ module NavigationHelpers
       '/settings'
     when /the addUser\s?page/
       '/settings'
-    when /the addJourney\s?page/
-      '/add'
-    when /the login \s?page/
+    when /the root\s?page/
+      '/'
+    when /the login\s?page/
       '/login'
-    when /the logout \s?page/
+    when /the logout\s?page/
       '/logout'
-    when /the dashboard \s?page/
+    when /the dashboard\s?page/
       '/dashboard'
-    when /the marketing \s?page/
+    when /the user orders\s?page/
+      '/userOrders'
+    when /the not found\s?page/
+      '/404notfound'
+    when /the marketing\s?page/
       '/marketing'
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

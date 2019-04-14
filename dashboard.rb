@@ -21,8 +21,10 @@ post '/replyToTweet' do
             $tweets[index] = TWITTER_CLIENT.update("@#{params[:screen_name]} #{params[:reply]}", :in_reply_to_status_id => params[:tweetid].to_i)
         end
     rescue Twitter::Error::TooManyRequests => error
-        puts "Too many requests. Try again in #{error.rate_limit.reset_in} seconds"
-        sleep error.rate_limit.reset_in
+        @error = "Too many requests."
+        unless error.nil?
+          sleep error.rate_limit.reset_in
+        end
     end
     @tweets = $tweets.dup
     erb :tweetActions
@@ -33,7 +35,15 @@ post '/fetchTweets' do
         $since_id = $tweets[0].id
     end
     begin
+        @noNewTweets = false
+        tweetsLenBefore = $tweets.length()
         $tweets =  TWITTER_CLIENT.mentions_timeline(count: "5", since_id: "#{$since_id}") + $tweets
+        tweetsLenAfter = $tweets.length()
+        if tweetsLenBefore == tweetsLenAfter then
+          @noNewTweets = true
+        else
+          @newTweets = tweetsLenAfter - tweetsLenBefore
+        end
     rescue Twitter::Error::TooManyRequests => error
         sleep error.rate_limit.reset_in
         puts "Too many requests. Try again in #{error.rate_limit.reset_in} seconds"

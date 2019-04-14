@@ -6,10 +6,22 @@
 </div>
 <div id = "waitmsg"></div>
 <div class = "displaytweets">
-  <table>
-    <% if @tweets.length == 0 then%>
-      <h3>Please click fetch tweets to fetch the tweets</h3>
+  <div id = "tweetUpdates">
+    <% if @error then %>
+      <h4 style = "color:red"><%=@error%></h4>
     <% end %>
+    <% if @noNewTweets then%>
+      <h4>No new tweets available</h4>
+    <% end %>
+    <% if @newTweets then%>
+      <h4><%=@newTweets%> new tweets available</h4>
+    <% end %>
+  </div>
+  
+  <% if @tweets.length == 0 then%>
+    <h3>Please click fetch tweets to fetch the tweets</h3>
+  <% end %>
+  <table>
       <% unless @tweets.nil? %>
           <% @tweets.reverse_each do |tweet| %>
               <tr>
@@ -69,7 +81,7 @@
                     <form class = "deleteTweet"> 
                       <% params[:tweetindex] = @tweets.index(tweet) %>
                       <input type = "hidden" name = "tweetindex" value = "<%=h params[:tweetindex]%>" />
-                      <input type="image" src = "img/cross.png" name="button" value="delete" class = "delete tweet_actions_icons">
+                      <input type="image" src = "img/cross.png" name="button" id = "delete_tweet_icon<%=h@tweets.index(tweet)%>" value="delete" class = "delete tweet_actions_icons">
                     </form>
                     <a href = "<%= tweet.uri %>"  target="_blank"><img src = "img/more_info.png" class= "moreinfo tweet_actions_icons" alt = "get more info" width = "50"></a>
                   </div>
@@ -137,6 +149,10 @@
       $( "#incoming_tweets").empty().append( content );
     });
   });
+  setTimeout(fade_out, 5000);
+  function fade_out() {
+    $("#tweetUpdates").fadeOut().empty();
+  }
   $( "#fetchTweet").submit(function( event ) {
     // Stop form from submitting normally
     var interval = 10;
