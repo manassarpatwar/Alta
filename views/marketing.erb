@@ -19,7 +19,7 @@
 
       <form method="post" action = "followPeopleUsingKeyword">
         Keyword follow: <input type="text" name="follow" value="<%=h params[:follow] %>"/>
-        <input type="submit" name="submit" value="submit" />
+        <input type="submit" name="submit" value="Follow" />
       </form>
 
         <% unless (request.cookies['following'] == "true") %>
@@ -32,7 +32,7 @@
 
       <form method="post" action = "tweetToTimeline" >
         Tweet: <input type="text" name="tweet" value="<%=h params[:tweet] %>"/>
-        <input type="submit" name="post tweet" value="submit" />
+        <input type="submit" name="post tweet" value="Tweet" />
       </form>
            <% unless (request.cookies['tweeting'] == "true") %>
           <% if (request.cookies['tweet_state'] == "true")%>
