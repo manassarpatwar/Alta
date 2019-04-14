@@ -1,4 +1,7 @@
-Feature: Testing Navigation of Home page         
+Feature: Testing Navigation of Home page 
+       Scenario: Testing root page
+            Given I am on the root page
+            Then I should see "JOIN.US.TODAY"  
        Scenario: Testing go home navigation link
             Given I am on the home page
             When I follow "alta" within "nav"
