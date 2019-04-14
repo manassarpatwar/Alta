@@ -8,10 +8,10 @@ get '/index' do
 	erb :index
 end
 
-get '/userAccount' do
-    redirect '/index' unless session[:loggedin]
-    erb :user_account
-end
+#get '/userAccount' do
+#    redirect '/index' unless session[:loggedin]
+#    erb :user_account
+#end
 
 get '/userOrders' do
     redirect '/index' unless session[:loggedin]
@@ -21,8 +21,4 @@ end
 
 not_found do
     erb :not_found404
-end
-
-error do
-    erb :error500
 end
