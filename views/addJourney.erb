@@ -2,11 +2,12 @@
 <% if @noAvailableTaxis %>
             <p style="color:red">No taxi available. Please wait till a taxi becomes available.</p>
 <% end %>
-
-  <% if @submitted && @all_ok %>
-    <p id = "journeyAddedMsg">Journey Added.</p>
-    <% @taxiId = "" %><% @userId = "" %><% @twitterHandle= "" %> <% @dateTime = "" %><% @startLocation = "" %><% @endLocation = "" %> <% @freeRide = "" %><% @cancelled = "" %><% @convoLink = "" %><% @rating = "" %>
-  <% end %>
+  <div id = "journeyAddedMsg">
+    <% if @submitted && @all_ok %>
+      <p>Journey Added.</p>
+      <% @taxiId = "" %><% @userId = "" %><% @twitterHandle= "" %> <% @dateTime = "" %><% @startLocation = "" %><% @endLocation = "" %> <% @freeRide = "" %><% @cancelled = "" %><% @convoLink = "" %><% @rating = "" %>
+    <% end %>
+  </div> 
   <div id = "submitErrors" ><% if @submitted && !@all_ok %><p style="color:red">There were errors in your form submission,<br> please correct them below.</p><% end %></div>
 
  <form id="journeyForm">
