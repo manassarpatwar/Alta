@@ -21,8 +21,8 @@ post '/replyToTweet' do
             $tweets[index] = TWITTER_CLIENT.update("@#{params[:screen_name]} #{params[:reply]}", :in_reply_to_status_id => params[:tweetid].to_i)
         end
     rescue Twitter::Error::TooManyRequests => error
-        sleep error.rate_limit.reset_in
         puts "Too many requests. Try again in #{error.rate_limit.reset_in} seconds"
+        sleep error.rate_limit.reset_in
     end
     @tweets = $tweets.dup
     erb :tweetActions
@@ -79,8 +79,8 @@ post '/addJourney' do
 	@dateTime_ok = !@dateTime.nil? && @dateTime != ""
 	@startLocation_ok = !@startLocation.nil? && @startLocation != ""
 	@endLocation_ok = !@endLocation.nil? && @endLocation != ""
-	@freeRide_ok = @freeRide = '0' || @freeRide = '1'
- 	@cancelled_ok = @cancelled = '0' || @cancelled = '1'
+	@freeRide_ok = @freeRide == '0' || @freeRide == '1'
+ 	@cancelled_ok = @cancelled == '0' || @cancelled == '1'
 	@convoLink_ok =	!@convoLink.nil? && @convoLink != ""
 
 	@all_ok = @taxiId_ok && @userId_ok && @twitterHandle_ok && @dateTime_ok && @startLocation_ok && @endLocation_ok && @freeRide_ok && @cancelled_ok && @convoLink_ok
@@ -90,8 +90,21 @@ post '/addJourney' do
 
   	# add data to the database
 	if @all_ok
-    	# do the insert
-		$db.execute('INSERT INTO journeys VALUES (?, ?, ?, ?, ?, ? ,?, ?, ?, ?, ?)', [@id, @taxiId, @userId, @twitterHandle, @dateTime, @startLocation, @endLocation, @freeRide, @cancelled, @rating, @convoLink])
+        $db.execute('INSERT INTO journeys VALUES (?, ?, ?, ?, ?, ? ,?, ?, ?, ?, ?)', [@id, @taxiId, @userId, @twitterHandle, @dateTime, @startLocation, @endLocation, @freeRide, @cancelled, @rating, @convoLink])
+        @usersTable = $db.execute %{SELECT * FROM users} #Gather all user data
+        @usersTable.each do |record| #Go through each user record
+            @userInfo = $db.execute("SELECT * FROM users WHERE id = ?", @userId)
+            if @userId == record[0] #If uid = id then:
+               if @freeRide == '1' then
+                 $db.execute("UPDATE users SET free_rides = #{@userInfo[0][4]-1}  WHERE id='#{@userId}'")
+               elsif (@userInfo[0][5]+1) % @rideDeal == 0 && @freeRide == '0' then
+                 $db.execute("UPDATE users SET total_rides = #{@userInfo[0][5]+1}  WHERE id='#{@userId}'")
+                 $db.execute("UPDATE users SET free_rides = #{@userInfo[0][4]+1}  WHERE id='#{@userId}'")
+               else
+                 $db.execute("UPDATE users SET total_rides = #{@userInfo[0][5]+1}  WHERE id='#{@userId}'")
+               end
+            end
+        end
   	end
     erb :addJourney
 end

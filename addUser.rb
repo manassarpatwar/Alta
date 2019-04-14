@@ -7,7 +7,7 @@ post '/addUser' do
 	@dateTime = params[:dateTime]
 	@userType = params[:userType].strip
 	@freeRide = params[:freeRide].strip
-
+    @total_rides = 0
 	# perform validation
 	@id_ok = !@id.nil? && @id != ""
 	@name_ok = !@name.nil? && @name != ""
@@ -27,7 +27,7 @@ post '/addUser' do
   	# add data to the database
 	if @all_ok
     	# do the insert
-		$db.execute('INSERT INTO users VALUES (?, ?, ?, ?, ?)', [@id, @name, @dateTime, @userType.to_i, @freeRide.to_i])
+		$db.execute('INSERT INTO users VALUES (?, ?, ?, ?, ?, ?)', [@id, @name, @dateTime, @userType.to_i, @freeRide.to_i, @total_rides.to_i])
   	end
 	erb :addUser
 end

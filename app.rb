@@ -17,7 +17,6 @@ require_relative 'addComplaint.rb'
 require_relative 'marketing.rb'
 
 set :bind, '0.0.0.0' # Needed when running from Codio
-
 include ERB::Util #Ensure ERB is enabled
 
 #Setting up OmnuAuth-Twitter for our Twitter App
@@ -31,9 +30,7 @@ before do
     response.set_cookie(:following, :value => "true")
     response.set_cookie(:follow_state, :value => "true")
     response.set_cookie(:tweet_state, :value => "true")
-    #IMPORTANT! FOR TESTS
-    #session[:admin] = true #<=== UNCOMMENT WHEN TESTING WITH CUCUMBER TO GIVE ADMIN ACCESS TO DASHBOARD
-    #session[:admin_sheffield] = true #<=== UNCOMMENT WHEN TESTING WITH CUCUMBER TO GIVE ADMIN ACCESS TO DASHBOARD
+    @rideDeal = 2
 end
 
 #Configure sessions
