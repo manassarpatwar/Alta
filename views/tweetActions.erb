@@ -42,8 +42,10 @@
                     <% tweet.user.geo_enabled? %>
                     <% tweet.place.name %><% tweet.place.full_name %>
                     <div class = "reply">
-                      <form class = "replyToTweet"> 
-                         <textarea rows = "5" cols = "60" placeholder = "Type your reply here" name="reply" id = "replyInput<%=h@tweets.index(tweet)%>" value="<%=h params[:reply] %>" class = "replyTextArea"></textarea>
+                      <form class = "replyToTweet">
+                          <div id = "reply<%=h@tweets.index(tweet)%>">
+                            <textarea rows = "5" cols = "60" placeholder = "Type your reply here" name="reply" id = "replyInput<%=h@tweets.index(tweet)%>" value="<%=h params[:reply] %>" class = "replyTextArea"></textarea>
+                          </div>
                         <% if params[:reply] == "" %>
                             <p style="color:red">Please enter a valid tweet</p>
                         <% end %>
@@ -82,18 +84,20 @@
   $( ".fillInfoInJourney").submit(function( event ){
       event.preventDefault();
       $($(this).parent().prev()).toggleClass("displayreply");
-      var term = []
-      var $form = $( this );
-      term[1] = $form.find( "input[name='userId']" ).val();
-      term[2] = $form.find( "input[name='twitterHandle']" ).val();
-      term[3] = $form.find( "input[name='convoLink']" ).val();
-    // Send the data using post
-   var posting = $.post("fillInfoInJourney", { userId: term[1], twitterHandle: term[2], convoLink: term[3] });
-    
-   posting.done(function( data ) {
-      var content = $(data);
-      $( "#add_journey" ).empty().append( content );
-    });
+      if($(this).parent().prev().hasClass("displayreply")){
+        var term = []
+        var $form = $( this );
+        term[1] = $form.find( "input[name='userId']" ).val();
+        term[2] = $form.find( "input[name='twitterHandle']" ).val();
+        term[3] = $form.find( "input[name='convoLink']" ).val();
+        // Send the data using post
+       var posting = $.post("fillInfoInJourney", { userId: term[1], twitterHandle: term[2], convoLink: term[3] });
+
+       posting.done(function( data ) {
+          var content = $(data);
+          $( "#add_journey" ).empty().append( content );
+        });
+      }
       
   });
   $( ".replyToTweet").submit(function( event ) {
@@ -135,11 +139,12 @@
   });
   $( "#fetchTweet").submit(function( event ) {
     // Stop form from submitting normally
+    var interval = 10;
     event.preventDefault();
     var timeNow = new Date().getTime();
     console.log(timeNow);
     console.log(timeNow-timePrev);
-    if(timeNow - timePrev > 60000){
+    if(timeNow - timePrev >= interval*1000){
       timePrev = timeNow;
       // Get some values from elements on the page:
       var term = []
@@ -152,11 +157,11 @@
       });
     }
     else{
-     var ctdwn = Math.floor(60 - (timeNow - timePrev)/1000)
+     var ctdwn = Math.floor(interval - (timeNow - timePrev)/1000)
      var x = setInterval(function(){
        $("#waitmsg").empty().append("<p style='color:red'>Please wait " +ctdwn+" seconds till you fetch tweets");
        ctdwn--; 
-       if(ctdwn == 0){
+       if(ctdwn <= 0){
          clearInterval(x);
          $("#waitmsg").empty()
        }

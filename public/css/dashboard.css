@@ -92,11 +92,12 @@ body{
 }
 
 #page-content-wrapper #journeyForm{
-  width: 400px;
+  width: 300px;
 }
 
 #page-content-wrapper #add_journey .inputbox{
   display: inline-block;
+  width: 160px;
   float: right;
 }
 
@@ -129,10 +130,11 @@ body{
 }
 
 .displayTaxis{
-  width: 350px;
+  width: 420px;
   padding: 0 80px 0 0;
   overflow-y: scroll;
   overflow-x: hidden;
+  border: solid 1px black;
   height: 30vh;
 }
 
@@ -146,17 +148,47 @@ body{
   width: 50px;
 }
 
-.displayTaxis td{
-  width: 100px;
-  margin: 0 20px;
-  padding-top: 20px;
+.taxisTable{
+  font-family: arial, sans-serif;
+  table-layout: fixed;
+  border-collapse: collapse;
+  width: 500px;
 }
-.header_taxi_table{
-  position: absolute;
-  background-color: white;
+
+.taxisTable td, th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  min-width: 0;
+  padding: 10px;
 }
-.header_taxi_table th{
-  padding: 0 35px 0 0;
+
+.table_id{
+  width: 7%;
+}
+
+.table_reg{
+   width: 23%;
+}
+
+.table_contact{
+  width: 23%;
+}
+
+.table_type{
+  width: 11%;
+}
+
+.table_city{
+   width:20%;
+}
+
+.table_actions{
+   width: 16%;
+}
+
+
+.taxisTable tr:nth-child(even) {
+  background-color: #dddddd;
 }
 
 
