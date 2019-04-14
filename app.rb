@@ -54,18 +54,6 @@ end
 
 #Setting up privilages to different parts of the website
 helpers do
-	def admin?
-    	session[:admin]
-  	end
-  
-    def admin_sheffield?
-    	session[:admin_sheffield]
-  	end
-  
-    def admin_manchester?
-    	session[:admin_manchester]
-  	end
-  
     def gather_taxis
       if session[:admin_sheffield] then
          @availableTaxis = $db.execute %{SELECT * FROM taxis WHERE city IS "SHEFFIELD" AND available IS "1"} #Gather all taxis
@@ -80,19 +68,13 @@ helpers do
       begin
           Float(string)
           int = string.to_i
-          puts "Not fail"
           if int >= 0
               return true
           else
               return false
           end
       rescue
-          puts "fail"
           return false
       end
     end
-
-	def loggedin?
-		session[:loggedin]
-	end
 end
