@@ -7,3 +7,4 @@ Feature: Testing logging in
               When I press "Sign In"
               And I am on the dashboard page
               Then I should see "Taxis"
+              And I am on the logout page

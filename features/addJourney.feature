@@ -1,7 +1,8 @@
 Feature: Add Journey
    @javascript
    Scenario: Correct Journey Data entered
-            Given I am on the dashboard page
+            Given I am signed in as admin
+            And I am on the dashboard page
             When I fill in "taxiId" with randomid
             When I fill in "userId" with randomid
             When I fill in "twitterHandle" with "something"
@@ -17,7 +18,8 @@ Feature: Add Journey
             
    @javascript
    Scenario: Incorrect Journey Data entered
-            Given I am on the dashboard page
+            Given I am signed in as admin
+            And I am on the dashboard page
             When I fill in "twitterHandle" with "something"
             When I fill in "dateTime" with "8/2/2019"
             When I fill in "startLocation" with "Diamond"

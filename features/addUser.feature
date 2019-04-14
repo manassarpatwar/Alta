@@ -2,7 +2,8 @@ Feature: Adding data
             
         @javascript
         Scenario: Correct Date/Time entered
-            Given I am on the settings page
+            Given I am signed in as admin
+            And I am on the settings page
             When I fill in "freeRide" with "10"
             When I fill in "userType" with "0"
             When I fill in "dateTime" with "20/03/2019 11:50"
@@ -13,7 +14,8 @@ Feature: Adding data
         
         @javascript
         Scenario: Wrong Date/Time entered
-             Given I am on the settings page
+             Given I am signed in as admin
+             And I am on the settings page
              When I fill in "freeRide" with "-1"
              When I fill in "userType" with "0"
              When I fill in "dateTime" with "20/03/2019 11:50"

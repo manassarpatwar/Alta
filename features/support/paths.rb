@@ -18,6 +18,8 @@ module NavigationHelpers
       '/add'
     when /the login \s?page/
       '/login'
+    when /the logout \s?page/
+      '/logout'
     when /the dashboard \s?page/
       '/dashboard'
     when /the marketing \s?page/
