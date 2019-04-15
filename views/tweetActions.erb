@@ -8,7 +8,7 @@
 <div class = "displaytweets">
   <div id = "tweetUpdates">
     <% if @error then %>
-      <h4 style = "color:red"><%=@error%></h4>
+      <p style = "color:red"><%=@error%></p>
     <% end %>
     <% if @noNewTweets then%>
       <h4>No new tweets available</h4>
@@ -149,7 +149,7 @@
       $( "#incoming_tweets").empty().append( content );
     });
   });
-  setTimeout(fade_out, 5000);
+  setTimeout(fade_out, 10000);
   function fade_out() {
     $("#tweetUpdates").fadeOut().empty();
   }
@@ -163,7 +163,6 @@
     if(timeNow - timePrev >= interval*1000){
       timePrev = timeNow;
       // Get some values from elements on the page:
-      var term = []
       var $form = $( this );
       // Send the data using post
      var posting = $.post("fetchTweets");

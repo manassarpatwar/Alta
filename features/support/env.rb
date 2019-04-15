@@ -1,7 +1,6 @@
 require 'capybara'
 require 'rspec'
 require 'capybara/cucumber'
-require 'capybara-screenshot/cucumber'
 require 'selenium-webdriver'
 
 #require 'simplecov'
