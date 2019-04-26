@@ -1,0 +1,32 @@
+<h2>Current Users</h2>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Twitter Handle</th>
+        <th>Sign up date</th>
+        <th>User type</th>
+        <th>Free rides remaining</th>
+    </tr>
+
+    <% unless @userData.nil? %>
+          <% @userData.each do |user| %>
+              <tr>
+                  <td>
+                      <%=h user[0] %>
+                  </td>
+                  <td>
+                      <%=h user[1] %>
+                  </td>
+                  <td>
+                      <%=h user[2] %>
+                  </td>
+                  <td>
+                      <%=h user[3] %>
+                  </td>
+                  <td>
+                      <%=h user[4] %>
+                  </td>
+              </tr>
+          <% end %>
+    <% end %>
+</table>

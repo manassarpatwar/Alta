@@ -9,6 +9,7 @@ require 'rufus-scheduler'
 require 'omniauth-twitter'
 require 'sqlite3'
 require_relative 'addTaxi.rb'
+require_relative 'viewUsers.rb'
 require_relative 'addUser.rb'
 require_relative 'dashboard.rb'
 require_relative 'main.rb'
@@ -58,7 +59,7 @@ helpers do
       if session[:admin_sheffield] then
          @availableTaxis = $db.execute %{SELECT * FROM taxis WHERE city IS "SHEFFIELD" AND available IS "1"} #Gather all taxis
          @unavailableTaxis = $db.execute %{SELECT * FROM taxis WHERE city IS "SHEFFIELD" AND available IS "0"} #Gather all taxis
-      elsif session[:admin_manchester] then 
+      elsif session[:admin_manchester] then
          @availableTaxis = $db.execute %{SELECT * FROM taxis WHERE city IS "MANCHESTER" AND available IS "1"} #Gather all taxis
          @unavailableTaxis = $db.execute %{SELECT * FROM taxis WHERE city IS "MANCHESTER" AND available IS "0"} #Gather all taxis
       end

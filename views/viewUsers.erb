@@ -1,0 +1,32 @@
+<h1>Viewing Users</h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Sign-up Date</th>
+        <th>User Type</th>
+        <th>Free Rides</th>
+        <th>Total Rides</th>
+        <th>Edit</th>
+    </tr>
+    <% unless @usersInfo.nil? %>
+        <% @usersInfo.each do |user| %>
+        <tr>
+            <% @totalJourneys = 0 %>
+            <% @journeyInfo.each do |journey| %>
+                <% if journey[2] == user[0] %>
+                    <% @totalJourneys = @totalJourneys + 1 %>
+                <% end %>
+            <% end %>
+
+            <td><%=h user[0] %></td>
+            <td><%=h user[1] %></td>
+            <td><%=h user[2] %></td>
+            <td><%=h user[3] %></td>
+            <td><%=h @totalJourneys %></td>
+            <td><%=h user[5] %></td>
+            <td><a href='editUser/<%=h user[0] %>'>Edit</a></td>
+        </tr>
+        <% end %>
+    <% end %>
+</table>
