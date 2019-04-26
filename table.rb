@@ -15,7 +15,7 @@ include ERB::Util #Ensure ERB is enabled   WHERE city LIKE '%#{params[:search]}%
 before do
     @db = SQLite3::Database.new './taxi_database.sqlite'
 end
-
+ 
 get'/userOrders' do
     
         query = %{  SELECT id, taxi_id, user_id, twitter_handle, date_time, start_location, end_location, free_ride, cancelled, rating, conversation_link
