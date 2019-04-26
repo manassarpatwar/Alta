@@ -46,6 +46,41 @@
       </div>
       -->
 
+    <form method="get">
+      Search: <input type="text" name="search" value="<%=h params[:search] %>"/>
+      <input type="submit" name="submit" value="submit" />
+    </form>
+
+    <% unless @results.nil? %>
+
+        <br />
+        <table border="1">
+          <tr>
+            <th>Reference no.</th>
+            <th>Date</th>
+            <th>Start Location</th>
+            <th>End Location</th>
+            <th>Free</th>
+            <th>Cancelled</th>
+            <th>Rating</th>
+          </tr>
+          <% @results.each do |record| %>
+            <tr>
+              <td><%=h record[0] %></td>
+              <td><%=h record[4] %></td>
+              <td><%=h record[5] %></td>
+              <td><%=h record[6] %></td>
+              <td><%=h record[7] %></td>
+              <td><%=h record[8] %></td>
+              <td><%=h record[9] %></td>
+            </tr>
+          <% end %>
+        </table>
+    <% end %>
+  
+
+
+
 
     <!-- Tbale BAR-->
       <div class="ordertable-row container orderborder-top">
