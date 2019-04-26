@@ -1,16 +1,8 @@
 #--------------------Configuration and Setup--------------------#
+# require_relative 'main.rb'
 
-#All gem requirements
-require 'erb'
-require 'sinatra'
-require 'sinatra/cookies'
-require 'twitter'
-require 'rufus-scheduler'
-require 'omniauth-twitter'
-require 'sqlite3'
-
-set :bind, '0.0.0.0' # Needed when running from Codio
-include ERB::Util #Ensure ERB is enabled   WHERE city LIKE '%#{params[:search]}%'}
+# set :bind, '0.0.0.0' # Needed when running from Codio
+# include ERB::Util #Ensure ERB is enabled   WHERE city LIKE '%#{params[:search]}%'}
 
 before do
     @db = SQLite3::Database.new './taxi_database.sqlite'
