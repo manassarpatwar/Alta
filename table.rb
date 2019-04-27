@@ -1,4 +1,4 @@
-require 'sequel'
+# require 'sequel'
 
 set :bind, '0.0.0.0' # Needed when running from Codio
 include ERB::Util #Ensure ERB is enabled   
@@ -58,10 +58,10 @@ include ERB::Util #Ensure ERB is enabled
 get'/userOrders' do
     @db = SQLite3::Database.new './taxi_database.sqlite'
 
-#         query = %{SELECT * FROM journeys WHERE id LIKE '%#{h params[:search]}%' }
-        query = %{SELECT id, date_time, start_location, end_location, free_ride, cancelled, rating
-                    FROM journeys
-                    WHERE id LIKE '%#{params[:search]}%'}
+        query = %{SELECT * FROM journeys WHERE id LIKE '%#{h params[:search]}%' }
+        # query = %{SELECT id, date_time, start_location, end_location, free_ride, cancelled, rating
+        #             FROM journeys
+        #             WHERE id LIKE '%#{params[:search]}%'}
         @results = @db.execute query
     erb :user_orders
 end

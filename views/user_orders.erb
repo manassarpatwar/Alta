@@ -59,6 +59,12 @@
     <input type='button' value='Seleted option' id='but_read'>
     <div id='result'>r</div> 
 
+ 
+    <form method="get">
+      Search: <input type="text" name="search1" value="<%=h params[:search1] %>"/>
+      <input type="submit" name="submit" value="submit" />
+    </form>
+
     <form method="get">
       Search: <input type="text" name="search" value="<%=h params[:search] %>"/>
       <input type="submit" name="submit" value="submit" />
@@ -66,6 +72,8 @@
 
 
     <% unless @results.nil? %>
+
+    
 
         <br />
         <table class="js-sort-table container" id="demo1" id="view2" >
@@ -84,12 +92,12 @@
             <tbody>
             <tr>
               <td class="col-reg-num databaseCell"><%=h record[0] %></td>
-              <td class="col-date databaseCell"><%=h record[1] %></td>
-              <td class="col-startLoc databaseCell"><%=h record[2] %></td>
-              <td class="col-endLoc databaseCell"><%=h record[3] %></td>
-              <td class="col-free databaseCell"><%=h record[4] %></td>
-              <td class="col-cancelled databaseCell"><%=h record[5] %></td>
-              <td class="col-rate databaseCell"><%=h record[6] %></td>
+              <td class="col-date databaseCell"><%=h record[4] %></td>
+              <td class="col-startLoc databaseCell"><%=h record[5] %></td>
+              <td class="col-endLoc databaseCell"><%=h record[6] %></td>
+              <td class="col-free databaseCell"><%=h record[7] %></td>
+              <td class="col-cancelled databaseCell"><%=h record[8] %></td>
+              <td class="col-rate databaseCell"><%=h record[9] %></td>
             </tr>
             </tbody>
           <% end %>
