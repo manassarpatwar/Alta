@@ -324,3 +324,36 @@ tr:nth-child(even) {
 .databaseCell{
     padding:10px;
 }
+
+/* Search bar */
+#search_bar{
+    display: inline;
+}
+#selectDisplay{
+    display: inline;
+}
+#allDisplay{
+    display:none;
+}
+#refNoDisplay{
+    display:none;
+}
+#dateDisplay{
+    display:none;
+}
+#sLocDisplay{
+    display:none;
+}
+#eLocDisplay{
+    display:none;
+}
+#canlDisplay{
+    display:none;
+}
+#freeDisplay{
+    display:none;
+}
+#rateDisplay{
+    display:none;
+}
+

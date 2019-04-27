@@ -46,35 +46,39 @@
       </div>
       -->
 
-    <select id='selUser' style='width: 200px;'>
-      <option name= "id" value='id'>id</option> 
-      <option value='1'>Reference No.</option> 
-      <option value='2'>Travel Date</option> 
-      <option value='3'>Start Location</option> 
-      <option value='4'>End Location</option> 
-      <option value='5'>Free</option> 
-      <option value='6'>Cancelled</option> 
-      <option value='7'>Rating</option> 
+<div id="search_bar">
+  <form method="get">
+    <select id='searchList' style='width: 200px;' onchange="displayMode()" name="column">
+      <option selected='selected' value='all'>Select filter to search</option> 
+      <option value='all'>All</option> 
+      <option value='id'>Reference No.</option> 
+      <option value='date_time'>Travel Date</option> 
+      <option value='start_location'>Start Location</option> 
+      <option value='end_location'>End Location</option> 
+      <option value='free_ride'>Free</option> 
+      <option value='cancelled'>Cancelled</option> 
+      <option value='rating'>Rating</option>
     </select>
-    <input type='button' value='Seleted option' id='but_read'>
-    <div id='result'>r</div> 
+    <form>
 
- 
-    <form method="get">
-      Search: <input type="text" name="search1" value="<%=h params[:search1] %>"/>
+    <form id="search_bar" method="get">
+      <div id="selectDisplay"><input id="selDis"type="text" name="search" value="<%=h params[:search] %>"placeholder="Select from dropdown list"/></div>
+      <div id="allDisplay"><input id="allDis" disabled="true" type="text" name="search" value="<%=h params[:search] %>"placeholder="All"/></div>
+      <div id="refNoDisplay"><input id="refDis" disabled="true" type="text" name="search" value="<%=h params[:search] %>" placeholder="Reference number"/></div>
+      <div id="dateDisplay"><input id="dateDis" disabled="true" type="text" name="search" value="<%=h params[:search] %>" placeholder="travel date"/></div>
+      <div id="sLocDisplay"><input id="aLocDis" disabled="true" type="text" name="search" value="<%=h params[:search] %>" placeholder="start location"/></div>
+      <div id="eLocDisplay"><input id="eLocDis" disabled="true" type="text" name="search" value="<%=h params[:search] %>" placeholder="end location"/></div>
+      <div id="freeDisplay"><input id="freeDis" disabled="true" type="text" name="search" value="<%=h params[:search] %>" placeholder="free ride or not"/></div>
+      <div id="canlDisplay"><input id="canlDis" disabled="true" type="text" name="search" value="<%=h params[:search] %>" placeholder="cancelled or not"/></div>
+      <div id="rateDisplay"><input id="rateDis" disabled="true" type="text" name="search" value="<%=h params[:search] %>" placeholder="rating"/></div>
       <input type="submit" name="submit" value="submit" />
     </form>
 
-    <form method="get">
-      Search: <input type="text" name="search" value="<%=h params[:search] %>"/>
-      <input type="submit" name="submit" value="submit" />
-    </form>
+    </div>
 
 
+    <!--Database Version-->
     <% unless @results.nil? %>
-
-    
-
         <br />
         <table class="js-sort-table container" id="demo1" id="view2" >
           <thead class="tableStyle2-head">
