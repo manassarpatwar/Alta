@@ -46,39 +46,66 @@
       </div>
       -->
 
+    <select id='selUser' style='width: 200px;'>
+      <option name= "id" value='id'>id</option> 
+      <option value='1'>Reference No.</option> 
+      <option value='2'>Travel Date</option> 
+      <option value='3'>Start Location</option> 
+      <option value='4'>End Location</option> 
+      <option value='5'>Free</option> 
+      <option value='6'>Cancelled</option> 
+      <option value='7'>Rating</option> 
+    </select>
+    <input type='button' value='Seleted option' id='but_read'>
+    <div id='result'>r</div> 
+
+ 
+
     <form method="get">
+
       Search: <input type="text" name="search" value="<%=h params[:search] %>"/>
       <input type="submit" name="submit" value="submit" />
     </form>
 
-    <% unless @results.nil? %>
-        <br />
-        <table border="1">
-          <tr>
-          <th>Reference no.</th>
-          <th>Date</th>
-          <th>Start Location</th>
-          <th>End Location</th>
-          <th>Free</th>
-          <th>Cancelled</th>
-          <th>Rating</th>
-          </tr>
-          <% @results.each do |record| %>
-            <tr>
-              <td><%=h record[0] %></td>
-              <td><%=h record[4] %></td>
-              <td><%=h record[5] %></td>
-              <td><%=h record[6] %></td>
-              <td><%=h record[7] %></td>
-              <td><%=h record[8] %></td>
-              <td><%=h record[9] %></td>
 
+    <% unless @results.nil? %>
+
+    
+
+        <br />
+        <table class="js-sort-table container" id="demo1" id="view2" >
+          <thead class="tableStyle2-head">
+          <tr>
+              <th class="databaseCell">Reference No.</th>
+              <th class="databaseCell">Travel Date</th>
+              <th class="databaseCell">Start Location</th>
+              <th class="databaseCell">End Location</th>
+              <th class="databaseCell">Free</th>
+              <th class="databaseCell">Cancelled</th>
+              <th class="databaseCell">Rating</th>
             </tr>
+            </thead>
+          <% @results.each do |record| %>
+            <tbody>
+            <tr>
+              <td class="col-reg-num databaseCell"><%=h record[0] %></td>
+              <td class="col-date databaseCell"><%=h record[4] %></td>
+              <td class="col-startLoc databaseCell"><%=h record[5] %></td>
+              <td class="col-endLoc databaseCell"><%=h record[6] %></td>
+              <td class="col-free databaseCell"><%=h record[7] %></td>
+              <td class="col-cancelled databaseCell"><%=h record[8] %></td>
+              <td class="col-rate databaseCell"><%=h record[9] %></td>
+            </tr>
+            </tbody>
           <% end %>
         </table>
     <% end %>
-    
-    <!-- Tbale BAR-->
+  
+
+
+
+
+    <!-- Table BAR-->
       <div class="ordertable-row container orderborder-top">
       <!--Table type-->
         <div class="ordertable-column tableTopPad">
@@ -120,7 +147,7 @@
 
 
     <!--Rides History-->
-
+    <%#
     <!--Rides History Style 1: Table View-->
     <div id="view1" class="tablestyle1">
       <table id="userTable"  class="container container2 userTable1 orderborder-top">
@@ -144,7 +171,7 @@
             </div>
           </td>
         </tr>
-      </table>
+      </table>-->
       
       <table id="userTable"  class="container container2 userTable2">
       <tr class="userTable1">
@@ -298,8 +325,9 @@
         </tr>
         </tbody>
     </table>
+    %>
 
-    <div class="separation" style="height:50px;"></div>
+    #  <div class="separation" style="height:500px;"></div>
 
   <!--footer-->
           <%= erb :user_footer %>
