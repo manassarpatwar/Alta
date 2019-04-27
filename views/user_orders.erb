@@ -20,6 +20,19 @@
       <header class="stick">
           <%= erb :user_header %>
       </header> 
+
+
+
+
+
+
+
+
+
+
+
+
+      
     
     <!--Deals Display-->
       <div class="deals-cont">
@@ -31,6 +44,19 @@
           <span style="font-weight:600;">free rides!</span>
         </div>
       </div>
+
+    <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Delete Account</button>
+    <div id="id01" class="modal">
+      <form class="modal-content animate" action="/action_page.php">
+        <div class="imgcontainer">
+          <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+        </div>
+        <div class="container">
+          <button type="submit">Delete Account</button>
+              <span class="psw">Read our <a href="#"> delete account policy</a></span>
+        </div>
+      </form>
+    </div>
     
     <div class="separation"></div>
 
@@ -194,11 +220,11 @@
   
 
 
-      <!--Rides History-->
       
-      <!--Rides History Style 1: Table View-->
-      <% unless @results.nil? %>
-      <% @results.each do |record| %>
+  <!--Rides History Style 1: Table Version-->
+
+  <% unless @results.nil? %>
+    <% @results.each do |record| %>
 
       <div id="view1" class="tablestyle1">
         <table id="userTable"  class="container container2 userTable1 orderborder-top">
@@ -206,7 +232,7 @@
           <tr class="userTable1">
             <td class="col-reg-num">
               <div class="field1-regNum inline"></div>
-              <div id="regNum" class="style1-regNum inline">AK12347890
+              <div id="regNum" class="style1-regNum inline"><%=h record[0] %>
               </div>
             </td>
             <td></td>
@@ -228,11 +254,11 @@
         <tr class="userTable1">
             <td class="col-date col-width">
               <div class="field3-date inline"></div>
-              <div id="date" class="inline tableCell firstCol" style=" margin-bottom:10px;"> 18/01/2019 <div>
+              <div id="date" class="inline tableCell firstCol" style=" margin-bottom:10px;"> <%=h record[4] %> <div>
             </td>
             <td class="col-time col-width2">
               <div class="field4-time inline tableCell"></div>
-              <div id="time" class="inline tableCell" style=" margin-bottom:10px;"> 09:22 PM </div>
+              <div id="time" class="inline tableCell" style=" margin-bottom:10px;"> (??) </div>
             </td>
             <td></td><td></td>
           </tr>
@@ -253,13 +279,13 @@
           <tr>
   
             <td class="col-startLoc userTable2">
-              <div id="startLoc" class="inline firstCol" style="margin-bottom: 50px;">City Center</div>
+              <div id="startLoc" class="inline firstCol" style="margin-bottom: 50px;"><%=h record[5] %></div>
             </td>
             <td class="col-endLoc userTable2">
-              <div id="endLoc" class="inline" style="margin-bottom: 50px;">Tesco</div>
+              <div id="endLoc" class="inline" style="margin-bottom: 50px;"><%=h record[6] %></div>
             </td>
             <td class="taxi-type userTable2">
-              <div id="taxiType" class="inline" style="margin-bottom: 50px;">Luxury</div>
+              <div id="taxiType" class="inline" style="margin-bottom: 50px;">(*code)</div>
             </td>
             <td class="userTable2"></td>
           </tr>   
@@ -271,21 +297,23 @@
           <tr>
             <td class="userTable2 col-free">
               <i id ="freeNot" class="field8-icon far fa-check-square inline" style='font-size:15px '></i>
-              <div class="field8-free inline" style="margin-top: 50px; margin-bottom:20px;">Free Rides</div>
+              <div class="field8-free inline" style="margin-top: 50px; margin-bottom:20px;">(*code)Free Rides</div>
               <div class="inline" style="margin-top: 20px;">&nbsp &nbsp|</div>
             </td>
             <td class="userTable2 col-cancelled">
               <i id ="cancelledNot" class="field9-icon far fa-square inline" style='font-size:15px; margin-left:0px'></i>
-              <div class="field9-cancelled inline" style="margin-top: 50px; margin-bottom:20px;">Cancelled</div>
+              <div class="field9-cancelled inline" style="margin-top: 50px; margin-bottom:20px;">(*code)Cancelled</div>
             </td>
             <td class="userTable2">
-              <a href="" id="convoLink" class="convo-link" style="margin-top:50px; margin-right:20px;">Conversation link
+              <a href="" id="convoLink" class="convo-link" style="margin-top:50px; margin-right:20px;">(fix in db +code)Conversation link
               </a>
             </td>
           </tr> 
                     
         </table>
       </div>
+    <% end %>
+  <% end %>
 
 
 
