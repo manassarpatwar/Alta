@@ -24,7 +24,7 @@
     <!--Deals Display-->
       <div class="deals-cont">
         <div class="deals-display"> 
-          Hi <%=h session[:name] %> <br><br>
+          Hi <%=h session[:name] %><br><br>
           You are 
           <span style="color:yellow;font-size: 35px"> 2 </span>
           rides <br> away from your 
@@ -60,9 +60,12 @@
     <div id='result'>r</div> 
 
  
+    <form method="get">
+      Search: <input type="text" name="search1" value="<%=h params[:search1] %>"/>
+      <input type="submit" name="submit" value="submit" />
+    </form>
 
     <form method="get">
-
       Search: <input type="text" name="search" value="<%=h params[:search] %>"/>
       <input type="submit" name="submit" value="submit" />
     </form>
