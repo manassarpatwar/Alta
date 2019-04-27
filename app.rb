@@ -100,19 +100,3 @@ get '/twitter_search' do
     erb :twitter_search
 end
 
-include ERB::Util
-
-before do
-    @db = SQLite3::Database.new './journeys.sqlite'
-end
-
-get'/search' do
-    unless params[:search].nil?
-        query = %{SELECT city, country, population
-                    FROM cities
-                    WHERE city LIKE '%#{params[:search]}%'}
-        @results = @db.execute query
-    end
-
-    erb :db_search
-end
