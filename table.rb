@@ -7,7 +7,10 @@ include ERB::Util #Ensure ERB is enabled
 get'/userOrders' do
     @db = SQLite3::Database.new './taxi_database.sqlite'
 
-    if params[:column] == 'all'
+    if params[:column].nil?
+        query = %{SELECT * FROM journeys}
+        @results = @db.execute query
+    elsif params[:column] == 'all'
         query = %{SELECT * FROM journeys}
         @results = @db.execute query
     elsif params[:column] == 'id'   

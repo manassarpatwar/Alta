@@ -43,15 +43,15 @@
 }
 .ordertable-column{
     float:left;
-    width: 30%;
+    width: 25%;
 }
 .ordertable-column2{
     float:left;
-    width: 50%;
+    width: 60%;
 }
 .ordertable-column3{
     float:left;
-    width: 20%;
+    width: 15%;
 }
 .inline{
     display:inline-block;
@@ -85,7 +85,7 @@
     border-radius: 25px;
   }
 .tableTopPad{
-    padding-top:15px;
+    padding-top:25px;
 }
 
   /* Search bar */
@@ -119,13 +119,14 @@
 }
 .tablecenter{
     text-align: center;
+    padding-left:15px;
 }
 .sortDropdown {
     position: relative;
     display: inline-block;
-    padding-left:5px;
-    padding-right:5px;
+    padding-top:25px;
     text-align: right;
+    float: right;
 }
 
 .dropdown-content {
@@ -325,9 +326,18 @@ tr:nth-child(even) {
     padding:10px;
 }
 
-/* Search bar */
-#search_bar{
-    display: inline;
+/* Lookup Search bar */
+/* Lookup list */
+#searchList{
+    width: 140px;
+    padding-top: 5px;
+    padding-bottom: 4px;
+}
+.separation2{
+    padding:10px;
+}
+/* Input search */
+#search_bar{    
 }
 #selectDisplay{
     display: inline;
@@ -355,5 +365,18 @@ tr:nth-child(even) {
 }
 #rateDisplay{
     display:none;
+}
+.submitB{
+    visibility: hidden;
+}
+input{
+    width:70%;
+    height:30px;
+}
+.sumbitB{
+    width : 65px;
+    background-color:whitesmoke;
+    float: right;
+    margin-top: 1px;
 }
 

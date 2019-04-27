@@ -66,19 +66,8 @@ function displayMode(){
 	var gg = document.getElementById("canlDis");
 	var hh = document.getElementById("rateDis");
 	// document.getElementById("demo").innerHTML = "You selected: " + aa;
-	if(select === "all"){
-		a0.style.display = "none";
-		a.style.display = "inline";
-		b.style.display = "none";
-		c.style.display = "none";
-		d.style.display = "none";
-		e.style.display = "none";
-		f.style.display = "none";
-		g.style.display = "none";		
-		h.style.display = "none";	
-		aa.removeAttribute("disabled");
-	}
-	else if (select === "id"){
+
+	if (select === "id"){
 		a0.style.display = "none";
 		a.style.display = "none";
 		b.style.display = "inline";
