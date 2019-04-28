@@ -22,18 +22,6 @@
       </header> 
 
 
-
-
-
-
-
-
-
-
-
-
-      
-    
     <!--Deals Display-->
       <div class="deals-cont">
         <div class="deals-display"> 
@@ -45,13 +33,14 @@
         </div>
       </div>
 
+    <!--Delete account-->
     <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Delete Account</button>
     <div id="id01" class="modal">
       <form class="modal-content animate" action="/action_page.php">
         <div class="imgcontainer">
           <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
         </div>
-        <div class="container">
+        <div class="delAccContainer">
           <button type="submit">Delete Account</button>
               <span class="psw">Read our <a href="#"> delete account policy</a></span>
         </div>
@@ -60,35 +49,16 @@
     
     <div class="separation"></div>
 
-    <!--Table title and table types-->
-    <!--
-      <div class="container table-title">
-        <%=h session[:name] %>
-        <i class='fas fa-taxi' style='font-size:40px; color:#FEDE3B'></i>
-        <p class="table-titleName inline" style='font-size:40px'> My Rides &nbsp</p>
-        <p class="table-titleView inline" style='font-size:17px'> View As: </p>
-        <span onclick="myView1()" class="title-button type1-button inline">Table</span>
-        <span onclick="myView2()" class="title-button type1-button inline">Databse</span>
-      </div>
-      -->
 
-      <!-- Table BAR-->
-      <div class="ordertable-row container orderborder-top">
-      <!--Table type-->
+    <!--Databsae Views and sort button-->
+    <div class="ordertable-row container orderborder-top">
         <div class="ordertable-column tableTopPad">
           <p class="table-titleView inline" style='font-size:15px'> View As: </p>
           <span onclick="myView1()" class="title-button type1-button inline">Table</span>
           <span onclick="myView2()" class="title-button type1-button inline">Databse</span>
         </div>
-
-        <!-- Filtable Search bar -->
-        <div class="ordertable-column2 tablecenter tableTopPad">
-          <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search" title=" " class="inline" style="width:100%;">
-        </div>
-        
-        <!--Sorting dropdown list-->
-      
-        <div id ="sorting" class="ordertable-column3 sortDropdown center">
+    
+        <div id ="sorting" class="ordertable-column3 sortDropdown inlne">
           <div class="dropdown-title inline"> Sort by :&nbsp</div>
           <button onclick="myFunction()" id="sortButtonText" class="dropbtn inline" style='font-size:15px'>
             <i class='fas fa-caret-down' style='font-size:17px'></i>
@@ -99,22 +69,13 @@
             <a href="#contact">Highest Rating</a>
             <a href="#contact">Lowest Rating</a>
           </div>
-      </div>
-
+        </div>
     </div>
-
-    <!--Ride indicators-->
-    <div class="container ride-types orderborder-bottom">
-      <a href="#home" >All</a>
-      <a href="#about">Paid</a>
-      <a href="#contact">Free</a>
-      <a href="#contact">Cancelled</a>
-    </div>
-
+    
 
 <!--Search bar-->
 
-<div class="ordertable-row container orderborder-top">
+<div class="ordertable-row container search-container">
 
   <form method="get">
     <select id='searchList' style='width: 200px;' onchange="displayMode()" name="column">
@@ -142,28 +103,17 @@
       <input type="submit" name="submit" value="enter" / class="sumbitB" >
     </form>
 </div>
-<div class="ordertable-row container orderborder-top">
 
-    <div class="ordertable-column tableTopPad">
-    <p class="table-titleView inline" style='font-size:15px'> View As: </p>
-    <span onclick="myView1()" class="title-button type1-button inline">Table</span>
-    <span onclick="myView2()" class="title-button type1-button inline">Databse</span>
-  </div>
-
-    <div id ="sorting" class="ordertable-column3 sortDropdown center">
-    <div class="dropdown-title inline"> Sort by :&nbsp</div>
-    <button onclick="myFunction()" id="sortButtonText" class="dropbtn inline" style='font-size:15px'>
-      <i class='fas fa-caret-down' style='font-size:17px'></i>
-    </button>
-    <div id="myDropdown" class="dropdown-content">
-      <a href="#home">Newest</a>
-      <a href="#about">Oldest</a>
-      <a href="#contact">Highest Rating</a>
-      <a href="#contact">Lowest Rating</a>
-    </div>
-    </div>
-  </div>
-
+<!--Ride Types Indications-->
+<div class="container ride-types" rideTyBox>
+  <form method="get">
+      <input class="rideTyIndc" type="submit" name="allAlltype" value="All">
+      <input class="rideTyIndc" type="submit" name="paidtype" value="Paid">
+      <input class="rideTyIndc" type="submit" name="freetype" value="Free">
+      <input class="rideTyIndc" type="submit" name="cancelledtype" value="Cancelled">
+  </form>
+</div>
+ 
 
     <!--Database Version-->
     <% unless @results.nil? %>
@@ -216,7 +166,7 @@
           <% end %>
         </table>
       <% end %>
-      <% end %>
+    <% end %>
   
 
 
@@ -224,6 +174,97 @@
   <!--Rides History Style 1: Table Version-->
 
   <% unless @results.nil? %>
+
+  <% if @results.length == 0 %>
+    <p> no results </p>
+    <div id="view1" class="tablestyle1">
+    <table id="userTable"  class="container container2 userTable1 orderborder-top">
+
+      <tr class="userTable1">
+        <td class="col-reg-num">
+          <div class="field1-regNum inline"></div>
+          <div id="regNum" class="style1-regNum inline">no data
+          </div>
+        </td>
+        <td></td>
+        <td></td>
+        <td class="col-rate">
+          <div class="field2-rate inline"></div>
+          <div id="ratings" class="inline">
+            <span onclick="" id="rate1" class="fa fa-star"></span>
+            <span onclick="" id="rate2" class="fa fa-star"></span>
+            <span onclick="" id="rate3" class="fa fa-star"></span>
+            <span onclick="" id="rate4" class="fa fa-star"></span>
+            <span onclick="" id="rate5" class="fa fa-star "></span>
+          </div>
+        </td>
+      </tr>
+    </table>
+    
+    <table id="userTable"  class="container container2 userTable2">
+    <tr class="userTable1">
+        <td class="col-date col-width">
+          <div class="field3-date inline"></div>
+          <div id="date" class="inline tableCell firstCol" style=" margin-bottom:10px;">no data<div>
+        </td>
+        <td class="col-time col-width2">
+          <div class="field4-time inline tableCell"></div>
+          <div id="time" class="inline tableCell" style=" margin-bottom:10px;"> no data </div>
+        </td>
+        <td></td><td></td>
+      </tr>
+
+      <tr>
+        <td class="col-startLoc userTable2">
+          <div class="field5-startLoc inline" style="margin-top: 20px; padding-left:10px;"></div>
+        </td>
+          <td class="col-startLoc userTable2">
+          <div class="field6-endLoc inline" style="margin-top: 20px"></div>
+        </td>
+        <td class="col-startLoc userTable2">
+          <div class="field7-taxi-type inline" style="margin-top: 20px;></div>
+        </td>
+        <td class="userTable2"></td>
+      </tr>  
+
+      <tr>
+
+        <td class="col-startLoc userTable2">
+          <div id="startLoc" class="inline firstCol" style="margin-bottom: 50px;">no data</div>
+        </td>
+        <td class="col-endLoc userTable2">
+          <div id="endLoc" class="inline" style="margin-bottom: 50px;">no data</div>
+        </td>
+        <td class="taxi-type userTable2">
+          <div id="taxiType" class="inline" style="margin-bottom: 50px;">no data</div>
+        </td>
+        <td class="userTable2"></td>
+      </tr>   
+      <tr>
+      <td class="userTable2 col-free">
+        <input disabled type="text" onkeyup="myFunction()" placeholder="Tell us what do you think about our services !" title=" " class="inline order-comment">
+      </td>
+    </tr>    
+      <tr>
+        <td class="userTable2 col-free">
+          <i id ="freeNot" class="field8-icon far fa-check-square inline" style='font-size:15px '></i>
+          <div class="field8-free inline" style="margin-top: 50px; margin-bottom:20px;">(*code)Free Rides</div>
+          <div class="inline" style="margin-top: 20px;">&nbsp &nbsp|</div>
+        </td>
+        <td class="userTable2 col-cancelled">
+          <i id ="cancelledNot" class="field9-icon far fa-square inline" style='font-size:15px; margin-left:0px'></i>
+          <div class="field9-cancelled inline" style="margin-top: 50px; margin-bottom:20px;">(*code)Cancelled</div>
+        </td>
+        <td class="userTable2">
+          <a href="" id="convoLink" class="convo-link" style="margin-top:50px; margin-right:20px;">(fix in db +code)Conversation link
+          </a>
+        </td>
+      </tr> 
+                
+    </table>
+  </div>
+    
+  <% else %>
     <% @results.each do |record| %>
 
       <div id="view1" class="tablestyle1">
@@ -313,24 +354,11 @@
         </table>
       </div>
     <% end %>
+    <% end %>
   <% end %>
 
 
-
-
-
-
-
-
-
-
-
-
-     <div class="separation" style="height:500px;"></div>
-
-    
-
-    
+     <div class="separation" style="height:200px;"></div>  
 
   <!--footer-->
           <%= erb :user_footer %>

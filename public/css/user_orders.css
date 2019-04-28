@@ -26,14 +26,14 @@
 .container{
     width: 75%;
     background-color: #ffffff;
-    padding-left:30px;
-    padding-right:30px;
+    padding-left:40px;
+    padding-right:40px;
 }
 .container2{
     width: 55%;
     background-color: #ffffff;
-    padding-left:30px;
-    padding-right:30px;
+    padding-left:40px;
+    padding-right:40px;
     margin-left:12.5%;
 }
 .ordertable-row:before{
@@ -43,15 +43,14 @@
 }
 .ordertable-column{
     float:left;
-    width: 25%;
+    width: 50%;
 }
-.ordertable-column2{
+/* .ordertable-column2{
     float:left;
-    width: 60%;
-}
+    width: 55%;
+} */
 .ordertable-column3{
-    float:left;
-    width: 15%;
+    width: 50%;
 }
 .inline{
     display:inline-block;
@@ -91,7 +90,9 @@
   /* Search bar */
   #myInput{
     width: 25%;
-
+}
+.search-container{
+    height:50px;
 }
 
 /* Border */
@@ -108,10 +109,12 @@
 .dropbtn {
     background-color: #FFFFFF;
     color: rgb(0, 0, 0);
-    padding: 5% 0 5% 0;
+    padding: 5% 0 0 0;
     border: none;
     cursor: pointer;
     text-decoration: underline;
+    width: 40px;
+    text-align: right;
 }
 
 .dropbtn:hover, .dropbtn:focus {
@@ -124,9 +127,9 @@
 .sortDropdown {
     position: relative;
     display: inline-block;
-    padding-top:25px;
     text-align: right;
     float: right;
+    height: 70px;
 }
 
 .dropdown-content {
@@ -159,16 +162,19 @@
 
 /* Ride indicators */
 .ride-types{
-    padding-bottom:0.5%;
-    border-bottom:1px solid rgb(117, 117, 117);
+    border-bottom:5px solid rgb(117, 117, 117);
+    padding-bottom: 10px;
+} 
+.rideTyIndc{
+    width:10%;
+    border: none;
+    color:rgb(136, 136, 136);
+    background-color:white;
+    font-style: underline;
 }
-.ride-types a{
-    padding-right:3%;
+.rideTyIndc:hover{
+    color:rgb(66, 66, 66);
 }
-.icon-ind{
-    padding-bottom:50px;
-    display:none;
-}  
 
 
 
@@ -415,7 +421,7 @@ button {
     border-radius: 50%;
   }
   
-  .container {
+  .delAccContainer {
     padding: 16px;
   }
   
