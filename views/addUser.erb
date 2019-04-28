@@ -1,53 +1,54 @@
 <h1>Add a User</h1>
 
-<% if @submitted && @all_ok %>
+<p>Return to <a href="/viewUsers">viewing the users</a>. </p>
+
+<h2>Add new user values:</h2>
+
+<% if @submitted && @all_ok %> <!-- if validation passed: -->
     <p>User Added.</p>
 <% else %>
 
-    <% if @submitted && !@all_ok %>
+    <% if @submitted && !@all_ok %> <!-- if there was validation errors: -->
         <p style="color:red">There were errors in your form submission, please correct them below.</p>
     <% end %>
 
-    <form id = "userForm">
-        <!-- Error Validation -->
+    <form action="/addUser" method="post">
+        <!-- id -->
         <% if @submitted && !@id_ok %>
             <p style="color:red">Please enter a valid ID</p>
         <% end %>
-
-        <% if @submitted && !@name_ok %>
-            <p style="color:red">Please enter a valid name</p>
-        <% end %>
-
-        <% if @submitted && !@dateTime_ok %>
-            <p style="color:red">Please enter a valid date/time</p>
-        <% end %>
-
-        <% if @submitted && !@userType_ok %>
-            <p style="color:red">Please enter a valid user type (0 or 1)</p>
-        <% end %>
-
-        <% if @submitted && !@freeRide_ok %>
-            <p style="color:red">Please enter a valid free ride value (0 or more)</p>
-        <% end %>
-
-
-
         <p>ID:
             <input type="text" name="id" value="<%=h @id if @submitted %>"/>
         </p>
 
+        <!-- name -->
+        <% if @submitted && !@name_ok %>
+            <p style="color:red">Please enter a valid name</p>
+        <% end %>
         <p>Name:
             <input type="text" name="name" value="<%=h @name if @submitted %>"/>
         </p>
 
+        <!-- dateTime -->
+        <% if @submitted && !@dateTime_ok %>
+            <p style="color:red">Please enter a valid date/time</p>
+        <% end %>
         <p>Date/Time:
             <input type="text" name="dateTime" value="<%=h @dateTime if @submitted %>"/>
         </p>
 
+        <!-- userType -->
+        <% if @submitted && !@userType_ok %>
+            <p style="color:red">Please enter a valid user type (0 or 1)</p>
+        <% end %>
         <p>User Type:
             <input type="text" name="userType" value="<%=h @userType if @submitted %>"/>
         </p>
 
+        <!-- freeRide -->
+        <% if @submitted && !@freeRide_ok %>
+            <p style="color:red">Please enter a valid free ride value (0 or more)</p>
+        <% end %>
         <p>Free Rides Left:
             <input type="text" name="freeRide" value="<%=h @freeRide if @submitted %>"/>
         </p>
@@ -56,33 +57,3 @@
     </form>
 
 <% end %>
-<script src="js/jquery.min.js"></script>
-<script>
-  $( "#userForm" ).submit(function( event ) {
- 
-    // Stop form from submitting normally
-    event.preventDefault();
-
-    // Get some values from elements on the page:
-    var term = []
-    var $form = $( this );
-    term[1] = $form.find( "input[name='id']" ).val();
-    term[2] = $form.find( "input[name='name']" ).val();
-    term[3] = $form.find( "input[name='dateTime']" ).val();
-    term[4] = $form.find( "input[name='userType']" ).val();
-    term[5] = $form.find( "input[name='freeRide']" ).val();
-    for(var i = 1; i <= 5; i++){
-      if (term[i] == undefined){
-        term[i] = "";
-      }
-      console.log(term[i]);
-    }
-    // Send the data using post
-   var posting = $.post("addUser", { id: term[1], name: term[2], dateTime: term[3], userType: term[4], freeRide: term[5]});
-    
-   posting.done(function( data ) {
-      var content = $(data);
-      $( "#add_user").empty().append( content );
-    });
-  });
-</script>

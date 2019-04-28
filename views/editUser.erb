@@ -1,4 +1,9 @@
-<h1>Edit a User</h1>
+<h1>Edit User: <%=h @userToEdit[1] %></h1>
+
+<p>Return to <a href="/viewUsers">viewing the users</a>. </p>
+
+<h2>Current user information:</h2>
+
 <table>
     <tr>
         <th>ID</th>
@@ -24,3 +29,59 @@
         <td><%=h @userToEdit[5] %></td>
     </tr>
 </table>
+
+<h2>Change values of the user:</h2>
+
+<% if @submitted && @all_ok %>
+    <p>User Edited.</p>
+<% else %>
+
+    <% if @submitted && !@all_ok %>
+        <p style="color:red">There were errors in your form submission, please correct them below.</p>
+    <% end %>
+
+    <form action="/editUser/<%=h @id%>" method="post">
+        <!-- name -->
+        <% if @submitted && !@name_ok %>
+            <p style="color:red">Please enter a valid name</p>
+        <% end %>
+        <p>Name:
+            <input type="text" name="name" value="<%=h @name %>"/>
+        </p>
+
+        <!-- dateTime -->
+        <% if @submitted && !@dateTime_ok %>
+            <p style="color:red">Please enter a valid date/time</p>
+        <% end %>
+        <p>Date/Time:
+            <input type="text" name="dateTime" value="<%=h @dateTime %>"/>
+        </p>
+
+        <!-- userType -->
+        <% if @submitted && !@userType_ok %>
+            <p style="color:red">Please enter a valid user type (0 or 1)</p>
+        <% end %>
+        <p>User Type:
+            <input type="text" name="userType" value="<%=h @userType %>"/>
+        </p>
+
+        <!-- freeRide -->
+        <% if @submitted && !@freeRide_ok %>
+            <p style="color:red">Please enter a valid free ride value (0 or more)</p>
+        <% end %>
+        <p>Free Rides Left:
+            <input type="text" name="freeRide" value="<%=h @freeRide %>"/>
+        </p>
+
+        <!-- totalRides -->
+        <% if @submitted && !@totalRide_ok %>
+            <p style="color:red">Please enter a valid total ride value (0 or more)</p>
+        <% end %>
+        <p>Total Rides:
+            <input type="text" name="totalRides" value="<%= @totalRides %>"/>
+        </p>
+
+        <input type="submit" value="Submit" />
+    </form>
+
+<% end %>

@@ -8,14 +8,13 @@ require 'twitter'
 require 'rufus-scheduler'
 require 'omniauth-twitter'
 require 'sqlite3'
-require_relative 'addTaxi.rb'
 require_relative 'viewUsers.rb'
-require_relative 'addUser.rb'
+require_relative 'viewTaxis.rb'
+require_relative 'viewComplaints.rb'
 require_relative 'dashboard.rb'
 require_relative 'table.rb'
 require_relative 'main.rb'
 require_relative 'login.rb'
-require_relative 'addComplaint.rb'
 require_relative 'marketing.rb'
 
 set :bind, '0.0.0.0' # Needed when running from Codio
@@ -84,8 +83,8 @@ end
 before do
     config = {
         :consumer_key => '...',
-        :consumer_secret => '...', 
-        :access_token => '...', 
+        :consumer_secret => '...',
+        :access_token => '...',
         :access_token_secret => '...'
     }
     @client = Twitter::REST::Client.new(config)
@@ -99,4 +98,3 @@ get '/twitter_search' do
     end
     erb :twitter_search
 end
-

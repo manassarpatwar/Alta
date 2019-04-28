@@ -120,14 +120,14 @@ post '/addJourney' do
 end
 
 post '/addToAvailable' do
-    taxiId = params[:taxiId].to_i 
+    taxiId = params[:taxiId].to_i
     $db.execute("UPDATE taxis SET available = 1 WHERE id='#{taxiId}'")
     gather_taxis
     erb :displayTaxis
 end
 
 post '/addToUnavailable' do
-    taxiId = params[:taxiId].to_i 
+    taxiId = params[:taxiId].to_i
     $db.execute("UPDATE taxis SET available = 0 WHERE id='#{taxiId}'")
     gather_taxis
     erb :displayTaxis
@@ -141,7 +141,7 @@ end
 post '/fillInfoInJourney' do
     gather_taxis
     @noAvailableTaxis = false
-    if !@availableTaxis[0].nil? 
+    if !@availableTaxis[0].nil?
 	 @taxiId = @availableTaxis[0][0]
     else
      @noAvailableTaxis = true
@@ -156,12 +156,12 @@ post '/fillInfoInJourney' do
            @userInfo = $db.execute("SELECT * FROM users WHERE id = ?", @userId)
            if @userInfo[0][4] != 0 then
              @freeRide = 1
-           else 
+           else
              @freeRide = 0
            end
         end
     end
-    @cancelled = 0  
+    @cancelled = 0
 	@convoLink = params[:convoLink].strip
     erb :addJourney
 end

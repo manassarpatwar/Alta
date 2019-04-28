@@ -1,0 +1,29 @@
+<h1>Viewing Users</h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Registration Number</th>
+        <th>Contact Number</th>
+        <th>Taxi Type</th>
+        <th>City</th>
+        <th>Availability</th>
+        <th>Edit Record</th>
+        <th>Delete Record</th>
+    </tr>
+    <% unless @taxiInfo.nil? %>
+        <% @taxiInfo.each do |taxi| %>
+        <tr>
+            <td><%=h taxi[0] %></td>
+            <td><%=h taxi[1] %></td>
+            <td><%=h taxi[2] %></td>
+            <td><%=h taxi[3] %></td>
+            <td><%=h taxi[4] %></td>
+            <td><%=h taxi[5] %></td>
+            <td><a href='editTaxi/<%=h taxi[0] %>'>Edit</a></td>
+            <td><a href='deleteTaxi/<%=h taxi[0] %>' onclick="return confirm('Are you sure you want to delete this record?');">Delete</a></td>
+        </tr>
+        <% end %>
+    <% end %>
+</table>
+
+<p>To add a new taxi click <a href="/addTaxi">here</a>.</p>

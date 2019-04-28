@@ -1,69 +1,42 @@
-
 <h1>Add a Complaint</h1>
+
+<p>Return to <a href="/viewComplaints">viewing the complaints</a>. </p>
+
+<h2>Add new complaint values:</h2>
 
 <% if @submitted && @all_ok %>
     <p>Complaint Added.</p>
 <% else %>
+    <% if @submitted && @all_ok %> <!-- if validation passed: -->
+        <p>User Added.</p>
+    <% else %>
+        <% if @submitted && !@all_ok %> <!-- if there was validation errors: -->
+            <p style="color:red">There were errors in your form submission, please correct them below.</p>
+        <% end %>
 
-<% if @submitted && !@all_ok %>
-    <p style="color:red">There were errors in your form submission, please correct them below.</p>
+        <form action="/addComplaint" method="post">
+            <% if @submitted && !@journey_id_ok %>
+                <p style="color:red">Please enter a journey ID</p>
+            <% end %>
+            <p>Journey ID:
+                <input type="text" name="journey_id" value="<%=h @journey_id if @submitted %>"/>
+            </p>
+
+            <% if @submitted && !@user_id_ok %>
+               <p style="color:red">Please enter a user ID</p>
+           <% end %>
+            <p>User ID:
+                <input type="text" name="user_id" value="<%=h @user_id if @submitted %>"/>
+            </p>
+
+            <% if @submitted && !@complaint_ok %>
+                <p style="color:red">Please enter a valid complaint</p>
+            <% end %>
+            <p>Complaint:
+                <input type="text" name="complaint" value="<%=h @complaint if @submitted %>"/>
+            </p>
+
+            <input type="submit" value="Submit" />
+        </form>
+    <% end %>
 <% end %>
-
-<form id = "complaintForm">
-    <!-- Error Validation -->
-    <% if @submitted && !@journey_id_ok %>
-        <p style="color:red">Please enter a journey ID</p>
-    <% end %>
-  
-     <% if @submitted && !@user_id_ok %>
-        <p style="color:red">Please enter a user ID</p>
-    <% end %>
-
-    <% if @submitted && !@complaint_ok %>
-        <p style="color:red">Please enter a valid complaint</p>
-    <% end %>
-
-
-    <p>Journey ID:
-        <input type="text" name="journey_id" value="<%=h @journey_id if @submitted %>"/>
-    </p>
-
-    <p>User ID:
-        <input type="text" name="user_id" value="<%=h @user_id if @submitted %>"/>
-    </p>
-
-    <p>Complaint:
-        <input type="text" name="complaint" value="<%=h @complaint if @submitted %>"/>
-    </p>
-
-    <input type="submit" value="Submit" />
-</form>
-
-<% end %>
-<script>
-  $( "#complaintForm" ).submit(function( event ) {
- 
-    // Stop form from submitting normally
-    event.preventDefault();
-
-    // Get some values from elements on the page:
-    var term = []
-    var $form = $( this );
-    term[1] = $form.find( "input[name='journey_id']" ).val();
-    term[2] = $form.find( "input[name='user_id']" ).val();
-    term[3] = $form.find( "input[name='complaint']" ).val();
-    for(var i = 1; i <= 5; i++){
-      if (term[i] == undefined){
-        term[i] = "";
-      }
-      console.log(term[i]);
-    }
-    // Send the data using post
-   var posting = $.post("addComplaint", { journey_id: term[1], user_id: term[2], complaint: term[3]});
-    
-   posting.done(function( data ) {
-      var content = $(data);
-      $( "#add_complaint").empty().append( content );
-    });
-  });
-</script>
