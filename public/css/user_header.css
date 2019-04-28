@@ -1,7 +1,7 @@
 #accSnav{
   overflow:hidden;
   width:100%;
-  background-color:rgba(255, 255, 255, 0.671);
+  background-color:rgba(255, 255, 255, 0);
 }
 /* .acc-nav-sticky{
   width:100px;
@@ -55,8 +55,8 @@ a.nav-buttons:hover{
 
 /* Left Column*/
 img.nav-logo{
-  margin-top:-16.5px;
-  width:25px;
+  margin-top:15px;
+  width:45px;
 }
 .nav-name{
   display: inline-block;
@@ -123,15 +123,21 @@ a.nav-buttons, .nav-signin, .nav-vl, .nav-login{
 }
 .nav-signin, .nav-vl, .nav-login{
   float: right;
-  margin-right: 90px;
-  margin-top: 13px;
+  margin-top: 25px;
   padding: 2px 10px 2px 10px;
-  background-color:white;
+  background-color:rgba(255, 255, 255, 0.164);
 }
 a .nav-respIcon{
   font-size: 25px;
   padding:30% 30px 0 0;
   display: none;
+}
+.editBut{
+  color:white;
+}
+.editBut:hover{
+  color:rgb(56, 56, 56);
+  text-decoration:none;
 }
 
 

@@ -16,36 +16,121 @@
   </head>
 
   <body id="ordersBG">
-    <!--navigation bar-->
+    
+
+
+      <!--Summary-->
+    <div class="rideSummary">
+      <div class="sumcontainer" style="background-color:rgba(247, 247, 247, 0);">
+      
+      <!--navigation bar-->
       <header class="stick">
           <%= erb :user_header %>
-      </header> 
+      </header>
+    
+
+        <div class="Sumrow2">
+          <div class="Sumcolumn1">
+            <div class="sumgreet">
+              Welcome Back, <%=h session[:name] %> <br><br>
+            </div>
+          </div>
+          <div class="Sumcolumn3" >
+            <div class="sumgreet2">date</div>
+          </div>
+        </div>
+
+        <div class="separation3"></div>
+
+        <div class="sumTopBar">
+          <div class="sumNavBar">
+            <a href="#home" class="sumNavBut"> HOME</a>
+            <a href="#summary" class="sumNavBut"> SUMMARY</a>
+            <a href="#table" class="sumNavBut"> TABLES</a>
+            <a href="#deleteAcc" class="sumNavBut"> 
+              <button class="deleteAccBut" onclick="document.getElementById('id01').style.display='block'" style="width:5%;">ACCOUNT</button>
+              <div id="id01" class="modal">
+                <form class="modal-content animate" action="/action_page.php">
+                  <div class="imgcontainer">
+                    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                  </div>
+                  <div class="delAccContainer">
+                    <button type="submit">Delete Account</button>
+                        <span class="psw">Read our <a href="#"> delete account policy</a></span>
+                  </div>
+                </form>
+              </div>
+            </a>
+          </div>
+      </div>
 
 
-    <!--Deals Display-->
-      <div class="deals-cont">
-        <div class="deals-display"> 
-          Hi <%=h session[:name] %><br><br>
-          You are 
-          <span style="color:yellow;font-size: 35px"> 2 </span>
-          rides <br> away from your 
-          <span style="font-weight:600;">free rides!</span>
+        <div class="separation2"></div>
+
+        <div class="sumTweet">
+         SUMMARY <br><br>
+        </div>
+
+        <div class="separation2"></div>
+
+        <div class="Sumrow2">
+            <div class="Sumcolumn2">
+              
+              <div class="Sumcard">
+                <p><i class="fa fa-user"></i></p>
+                <p>Total Ride this month</p>
+                <h3>5</h3>
+              </div>
+
+            </div>
+            
+            <div class="Sumcolumn4">
+              
+            <div class="ridePeriod">
+            <select class="sumPeriod">
+              <optgroup label="Year">
+                <option value="2019">2019</option>
+                <option value="2018">2018</option>
+              </optgroup>
+              <optgroup label="Month">
+                <option value="Jan">January</option>
+                <option value="Feb">Febuary</option>
+                <option value="Mar">March</option>
+                <option value="Apr">April</option>
+                <option value="May">May</option>
+                <option value="June">June</option>
+                <option value="Jul">July</option>
+                <option value="Aug">August</option>
+                <option value="Sep">September</option>
+                <option value="Oct">October</option>
+                <option value="Nov">November</option>
+                <option value="Dec">December</option>
+              </optgroup>
+            </select>
+          </div>
+
+          <div class="separation2"></div>
+
+          <div class="deals-container">
+            <div class="rideNo">1 more ride for a free one!</div>
+            <div class="freeNo">
+              <i class='fas fa-taxi freeRIcon'>
+              </i>
+            </div>
+          </div>
+
+          <div class="separation2" style="margin-top:10px"></div>
+          <div class="sumtweet">Tweet us at @ise</div>
+
+
         </div>
       </div>
 
-    <!--Delete account-->
-    <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Delete Account</button>
-    <div id="id01" class="modal">
-      <form class="modal-content animate" action="/action_page.php">
-        <div class="imgcontainer">
-          <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-        </div>
-        <div class="delAccContainer">
-          <button type="submit">Delete Account</button>
-              <span class="psw">Read our <a href="#"> delete account policy</a></span>
-        </div>
-      </form>
+      </div>
     </div>
+
+
+<div style="text-align:center; padding-top:5px;"> Tables </div>
     
     <div class="separation"></div>
 
@@ -118,7 +203,7 @@
     <!--Database Version-->
     <% unless @results.nil? %>
       <% if @results.length == 0 %>
-      <p> no results </p>
+      <p style="text-align:center;"> no results </p>
         <table class="js-sort-table container" id="demo1" id="view2" >
           <thead class="tableStyle2-head">
           <tr>
@@ -176,7 +261,7 @@
   <% unless @results.nil? %>
 
   <% if @results.length == 0 %>
-    <p> no results </p>
+    <p style="text-align:center;"> no results </p>
     <div id="view1" class="tablestyle1">
     <table id="userTable"  class="container container2 userTable1 orderborder-top">
 

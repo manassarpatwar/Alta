@@ -2,47 +2,15 @@
 
 <div class="nav-column logo" style="text-align: center;">
   <div class="nav-cont">
-    <a href = "/index">
-      <img class="nav-logo" src="img/alta.png">
-    <div class="nav-name">
-      alta
-      </div>
-    </a>
   </div>
 </div>        
 
 <div class="nav-column2 nav-column" id="RespHeader">
   <div class="nav-cont">
-      <ul class="nav-center">
+    <a href = "/index">
+      <img class="nav-logo" src="img/alta.png">
       
-        <i class='fas fa-taxi nav-myrides inline' style='font-size:40px; color:#FEDE3B'></i>
-        <div class="nav-myrides inline">&nbspmy rides</div>      
-        
-        <!--<li class="nav-inline nav-buttons">
-          <a href="#section1" class="nav-buttons">how to?</a>
-        </li>
-
-        <li class="nav-inline">
-          <a href= "#section2" class="nav-buttons">services</a>
-        </li>
-
-        <li class="nav-inline">
-          <a href= "#section3" class="nav-buttons">deals</a>
-        </li>
-
-        <li class="nav-inline">
-          <a href= "#section4" class="nav-buttons">reviews</a>
-        </li>
-
-        <li class="nav-inline">
-          <a href= "#section5" class="nav-buttons">about</a>
-        </li>
-
-        <li class="nav-inline">
-          <a href= "#section6" class="nav-buttons">contact</a>
-        </li>-->
-
-      </ul>
+    </a>
   </div>
 </div>
 
@@ -54,7 +22,7 @@
       </div>
     <% elsif !session[:admin] %>
      <div class=" nav-inline2 nav-signin">
-      <a href="/user_editAccount">EDIT ACCOUNT |</a>
+      <a href="/user_editAccount" class="editBut">EDIT ACCOUNT |</a>
       <a href="/logout"> <i class="fa fa-sign-out" style="font-size:13px; color:grey"></i></a>
       </div>
     <% else %>
