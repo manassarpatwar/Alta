@@ -161,9 +161,8 @@
 <!--Search bar-->
 
 <div class="ordertable-row container search-container">
-
-  <form method="get">
-    <select id='searchList' style='width: 200px;' onchange="displayMode()" name="column">
+  <form method="get" action = "userOrders">
+    <select id='searchList' style='width: 200px;' name="column">
       <option selected='selected' value='all'>Select...</option> 
       <option value='id'>Reference Number</option> 
       <option value='date_time'>Travel Date</option> 
@@ -173,20 +172,10 @@
       <option value='cancelled'>Cancelled</option> 
       <option value='rating'>Rating</option>
     </select>
-    <form>
+    <input type="text" name="search" value="<%=h params[:search] %>">
+    <input type="submit" id = "order_table_submit" value="Submit" style= "width:100px">
+  </form>
 
-    <form id="search_bar" method="get">
-      <div id="selectDisplay"><input id="selDis" disabled="true" type="text" name="search" value="Select then search here"placeholder="Select then search here"/></div>
-      <div id="allDisplay"><input id="allDis" disabled="true" type="text" name="search" value="<%=h params[:search] %>"placeholder="All"/></div>
-      <div id="refNoDisplay"><input id="refDis" disabled="true" type="text" name="search" value="<%=h params[:search] %>" placeholder="reference number"/></div>
-      <div id="dateDisplay"><input id="dateDis" disabled="true" type="text" name="search" value="<%=h params[:search] %>" placeholder="travel date"/></div>
-      <div id="sLocDisplay"><input id="aLocDis" disabled="true" type="text" name="search" value="<%=h params[:search] %>" placeholder="start location"/></div>
-      <div id="eLocDisplay"><input id="eLocDis" disabled="true" type="text" name="search" value="<%=h params[:search] %>" placeholder="end location"/></div>
-      <div id="freeDisplay"><input id="freeDis" disabled="true" type="text" name="search" value="<%=h params[:search] %>" placeholder="free ride or not"/></div>
-      <div id="canlDisplay"><input id="canlDis" disabled="true" type="text" name="search" value="<%=h params[:search] %>" placeholder="cancelled or not"/></div>
-      <div id="rateDisplay"><input id="rateDis" disabled="true" type="text" name="search" value="<%=h params[:search] %>" placeholder="rating"/></div>
-      <input type="submit" name="submit" value="enter" / class="sumbitB" >
-    </form>
 </div>
 
 <!--Ride Types Indications-->
@@ -446,8 +435,6 @@
 
   <!--footer-->
           <%= erb :user_footer %>
-    </div>
-  </form>
     </div>
   </body>
 </html>
