@@ -361,12 +361,37 @@ post '/editJourney/:id' do
 	@cancelled = params[:cancelled].strip
 	@rating = params[:rating].strip
 	@convoLink = params[:convoLink].strip
-
+    
+    #looping to check for every id/name whether they are in the database
+    @taxiTbl = $db.execute %{SELECT * FROM taxis} 
+    @taxiIdFound = false
+    @taxiTbl.each do |record| #Go through each user record
+        if record[0] == @taxiId #If uid = id then:
+            @taxiIdFound = true #Boolean found is true (record is already there)
+        end
+    end
+    
+    @userTbl = $db.execute %{SELECT * FROM users} 
+    @userIdFound = false
+    @userTbl.each do |record| #Go through each user record
+        if record[0] == @userId #If uid = id then:
+            @userIdFound = true #Boolean found is true (record is already there)
+        end
+    end
+    
+    @twitterHandleTbl = $db.execute %{SELECT * FROM users} 
+    @twitterHandleFound = false
+    @twitterHandleTbl.each do |record| #Go through each user record
+        if record[0] == @twitterHandle #If uid = id then:
+            @twitterHandleFound = true #Boolean found is true (record is already there)
+        end
+    end
+    
 	# perform validation
 	#taxiID and userID and twitterHandle needs better validation!!!!!
-	@taxiId_ok = isPositiveNumber?(@taxiId)
-	@userId_ok = !@userId.nil? && @userId != ""
-	@twitterHandle_ok = !@twitterHandle.nil? && @twitterHandle != ""
+	@taxiId_ok = isPositiveNumber?(@taxiId) && @taxiIdFound
+	@userId_ok = !@userId.nil? && @userId != "" && @userIdFound
+	@twitterHandle_ok = !@twitterHandle.nil? && @twitterHandle != "" && @twitterHandleFound
 	@dateTime_ok = !@dateTime.nil? && @dateTime != ""
 	@startLocation_ok = !@startLocation.nil? && @startLocation != ""
 	@endLocation_ok = !@endLocation.nil? && @endLocation != ""
