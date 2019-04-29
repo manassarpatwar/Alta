@@ -43,6 +43,10 @@
       <% if @submitted && !@cancelled_ok %>
           <p style="color:red">Please enter a 0 or 1 for cancelled?</p>
       <% end %>
+   
+      <% if @submitted && !@rating_ok %>
+            <p style="color:red">Please enter a valid rating (0-5)</p>
+      <% end %>
 
       <% if @submitted && !@convoLink_ok %>
           <p style="color:red">Please enter a valid conversation link</p>

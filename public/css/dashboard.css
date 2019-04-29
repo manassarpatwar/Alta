@@ -23,32 +23,32 @@ body{
 .tweets{
   display: flex;
   flex-direction: row;
+  min-height: 200px;
   position: relative;
 }
 
-#page-content-wrapper .tweets .check{
+#page-content-wrapper .tweets .check, #page-content-wrapper .tweets .delete, #page-content-wrapper .tweets .destroy, #page-content-wrapper .tweets .moreinfo{
   margin: 0;
   position: absolute;
   width: 50px;
   outline:none;
-  top: 0%;
   left:100%;
+}
+
+#page-content-wrapper .tweets .check{
+  top: 0px;
 }
 
 #page-content-wrapper .tweets .delete{
-  margin: 0;
-  position: absolute;
-  width: 50px;
-  outline:none;
   top: 50px;
-  left:100%;
 }
 
 .moreinfo{
-  margin: 0;
-  position: absolute;
   top: 100px;
-  left:100%;
+}
+
+#page-content-wrapper .tweets .destroy{
+  top: 150px;
 }
 
 .tweet_actions{
@@ -152,14 +152,15 @@ body{
   font-family: arial, sans-serif;
   table-layout: fixed;
   border-collapse: collapse;
+  margin-top: -50px;
   width: 500px;
 }
 
 .taxisTable td, th {
   border: 1px solid #dddddd;
   text-align: center;
-  min-width: 0;
   padding: 10px;
+  padding-right: 11px;
 }
 
 .table_id{
@@ -184,6 +185,11 @@ body{
 
 .table_actions{
    width: 15%;
+}
+
+.header_taxi_table{
+  border: solid black 1px;
+  border-bottom: none;
 }
 
 
