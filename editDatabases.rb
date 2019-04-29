@@ -12,7 +12,7 @@ get '/settings' do
 end
 
 #---------------get delete---------------#
-
+# delete user
 get '/deleteUser/:id' do
 	redirect '/index' unless session[:admin]
 
@@ -24,6 +24,7 @@ get '/deleteUser/:id' do
 	redirect '/settings'
 end
 
+# delete taxi
 get '/deleteTaxi/:id' do
 	redirect '/index' unless session[:admin]
 
@@ -35,6 +36,7 @@ get '/deleteTaxi/:id' do
 	redirect '/settings'
 end
 
+# delete complaint
 get '/deleteComplaint/:id' do
 	redirect '/index' unless session[:admin]
 
@@ -46,8 +48,20 @@ get '/deleteComplaint/:id' do
 	redirect '/settings'
 end
 
-#---------------get edit---------------#
+# delete complaint
+get '/deleteJourney/:id' do
+	redirect '/index' unless session[:admin]
 
+	#set id to be deleted
+	@id = params[:id]
+	#execute the deletion
+	$db.execute("DELETE FROM journeys WHERE id='#{@id}'")
+
+	redirect '/settings'
+end
+
+#---------------get edit---------------#
+# edit user
 get '/editUser/:id' do
 	redirect '/index' unless session[:admin]
 
@@ -76,6 +90,7 @@ get '/editUser/:id' do
 	erb :editUserMain
 end
 
+# edit taxi
 get '/editTaxi/:id' do
 	redirect '/index' unless session[:admin]
 
@@ -103,6 +118,7 @@ get '/editTaxi/:id' do
 	erb :editTaxiMain
 end
 
+# edit complaint
 get '/editComplaint/:id' do
 	redirect '/index' unless session[:admin]
 
@@ -129,8 +145,41 @@ get '/editComplaint/:id' do
 	erb :editComplaintMain
 end
 
-#---------------post edit---------------#
+# edit journey
+get '/editJourney/:id' do
+	redirect '/index' unless session[:admin]
 
+	#get complaints table from the database
+	@journeyInfo = $db.execute("SELECT * FROM journeys")
+	@id = params[:id].to_i
+
+	#find user which has the ID given
+	@journeyInfo.each do |journey|
+		if journey[0] == @id
+			@journeyToEdit = journey
+		end
+	end
+
+	#submitted is false
+	@submitted = false
+
+	#sanitize values
+	@taxiId = @journeyToEdit[1]
+	@userId = @journeyToEdit[2]
+	@twitterHandle = @journeyToEdit[3]
+	@dateTime = @journeyToEdit[4]
+	@startLocation = @journeyToEdit[5]
+	@endLocation = @journeyToEdit[6]
+	@freeRide = @journeyToEdit[7]
+	@cancelled = @journeyToEdit[8]
+	@rating = @journeyToEdit[9]
+	@convoLink = @journeyToEdit[10]
+
+	erb :editJourneyMain
+end
+
+#---------------post edit---------------#
+# edit user
 post '/editUser/:id' do
 	redirect '/index' unless session[:admin]
 
@@ -182,6 +231,7 @@ post '/editUser/:id' do
 	erb :editUserMain
 end
 
+# edit taxi
 post '/editTaxi/:id' do
 	redirect '/index' unless session[:admin]
 
@@ -239,6 +289,7 @@ post '/editTaxi/:id' do
 	erb :editTaxiMain
 end
 
+# edit complaint
 post '/editComplaint/:id' do
 	redirect '/index' unless session[:admin]
 
@@ -281,29 +332,100 @@ post '/editComplaint/:id' do
 	erb :editComplaintMain
 end
 
+# edit journey
+post '/editJourney/:id' do
+	redirect '/index' unless session[:admin]
+
+	#get complaints table from the database
+	@journeyInfo = $db.execute("SELECT * FROM journeys")
+	@id = params[:id].to_i
+
+	#find user which has the ID given
+	@journeyInfo.each do |journey|
+		if journey[0] == @id
+			@journeyToEdit = journey
+		end
+	end
+
+	#submitted is false
+	@submitted = true
+
+	#sanitize values
+	@taxiId = params[:taxiId].strip
+	@userId = params[:userId].strip
+	@twitterHandle = params[:twitterHandle].strip
+	@dateTime = params[:dateTime].strip
+	@startLocation = params[:startLocation].strip
+	@endLocation = params[:endLocation].strip
+	@freeRide = params[:freeRide].strip
+	@cancelled = params[:cancelled].strip
+	@rating = params[:rating].strip
+	@convoLink = params[:convoLink].strip
+
+	# perform validation
+	#taxiID and userID and twitterHandle needs better validation!!!!!
+	@taxiId_ok = isPositiveNumber?(@taxiId)
+	@userId_ok = !@userId.nil? && @userId != ""
+	@twitterHandle_ok = !@twitterHandle.nil? && @twitterHandle != ""
+	@dateTime_ok = !@dateTime.nil? && @dateTime != ""
+	@startLocation_ok = !@startLocation.nil? && @startLocation != ""
+	@endLocation_ok = !@endLocation.nil? && @endLocation != ""
+	@freeRide_ok = @freeRide == '0' || @freeRide == '1'
+	@cancelled_ok = @cancelled == '0' || @cancelled == '1'
+	@rating_ok = @rating == '' || @rating == '0' || @rating == '1' || @rating == '2' || @rating == '3' || @rating == '4' || @rating == '5'
+	@convoLink_ok =	!@convoLink.nil? && @convoLink != ""
+
+	@all_ok = @taxiId_ok && @userId_ok && @twitterHandle_ok && @dateTime_ok && @startLocation_ok && @endLocation_ok && @freeRide_ok && @cancelled_ok && @rating_ok && @convoLink_ok
+
+    # add data to the database
+    if @all_ok# do the insert
+		$db.execute("UPDATE journeys SET taxi_id = '#{@taxiId}' WHERE id='#{@id}'")
+		$db.execute("UPDATE journeys SET user_id = '#{@userId}' WHERE id='#{@id}'")
+		$db.execute("UPDATE journeys SET twitter_handle = '#{@twitterHandle}' WHERE id='#{@id}'")
+		$db.execute("UPDATE journeys SET date_time = '#{@dateTime}' WHERE id='#{@id}'")
+		$db.execute("UPDATE journeys SET start_location = '#{@startLocation}' WHERE id='#{@id}'")
+		$db.execute("UPDATE journeys SET end_location = '#{@endLocation}' WHERE id='#{@id}'")
+		$db.execute("UPDATE journeys SET free_ride = '#{@freeRide}' WHERE id='#{@id}'")
+		$db.execute("UPDATE journeys SET cancelled = '#{@cancelled}' WHERE id='#{@id}'")
+		$db.execute("UPDATE journeys SET rating = '#{@rating}' WHERE id='#{@id}'")
+		$db.execute("UPDATE journeys SET conversation_link = '#{@convoLink}' WHERE id='#{@id}'")
+	end
+
+	erb :editJourneyMain
+end
+
 
 #---------------get add---------------#
-
+# add user
 get '/addUser' do
 	redirect '/index' unless session[:admin]
 
 	erb :addUserMain
 end
 
+# add taxi
 get '/addTaxi' do
 	redirect '/index' unless session[:admin]
 
 	erb :addTaxiMain
 end
 
+# add complaint
 get '/addComplaint' do
 	redirect '/index' unless session[:admin]
 
 	erb :addComplaintMain
 end
 
-#---------------post add---------------#
+# add journey
+get '/addJourney' do
+	redirect '/index' unless session[:admin]
 
+	erb :addJourneySettingsMain
+end
+
+#---------------post add---------------#
+# add user
 post '/addUser' do
 	redirect '/index' unless session[:admin]
 
@@ -338,6 +460,7 @@ post '/addUser' do
 	erb :addUserMain
 end
 
+# add taxi
 post '/addTaxi' do
 	redirect '/index' unless session[:admin]
 
@@ -374,10 +497,8 @@ post '/addTaxi' do
 
     @all_ok = @regNum_ok && @contact_ok && @taxiType_ok && @city_ok && @regNum_unique && @contact_unique
 
-    numberOfRecords = $db.execute('SELECT COUNT(*) FROM taxis')
-	numberOfRecords = numberOfRecords[0][0].to_i - 1
+	@id = @taxiInfo[@taxiInfo.length-1][0].to_i + 1
 
-    @id = @taxiInfo[numberOfRecords][0].to_i + 1
 
     # add data to the database
     if @all_ok
@@ -387,9 +508,10 @@ post '/addTaxi' do
     erb :addTaxiMain
 end
 
+# add complaint
 post '/addComplaint' do
 	redirect '/index' unless session[:admin]
-	
+
 	#get complaints table from the database
 	@complatintsInfo = $db.execute("SELECT * FROM complaints")
 
@@ -408,10 +530,7 @@ post '/addComplaint' do
 
     @all_ok = @journey_id_ok && @complaint_ok && @user_id_ok
 
-	numberOfRecords = $db.execute('SELECT COUNT(*) FROM complaints')
-	numberOfRecords = numberOfRecords[0][0].to_i - 1
-
-    @id = @complatintsInfo[numberOfRecords][0].to_i + 1
+	@id = @complaintsInfo[@complaintsInfo.length-1][0].to_i + 1
 
     # add data to the database
     if @all_ok
@@ -419,4 +538,50 @@ post '/addComplaint' do
         $db.execute('INSERT INTO complaints VALUES (?, ?, ?, ?, ?)', [@id, @journey_id, @user_id, @date_time, @complaint])
     end
     erb :addComplaintMain
+end
+
+# add journey
+post '/addJourney' do
+	redirect '/index' unless session[:admin]
+
+	#get journey table from the database
+	@journeyInfo = $db.execute("SELECT * FROM journeys")
+
+    @submitted = true
+
+    #sanitize values
+	@taxiId = params[:taxiId].strip
+	@userId = params[:userId].strip
+	@twitterHandle = params[:twitterHandle].strip
+	@dateTime = params[:dateTime].strip
+	@startLocation = params[:startLocation].strip
+	@endLocation = params[:endLocation].strip
+	@freeRide = params[:freeRide].strip
+	@cancelled = params[:cancelled].strip
+	@rating = params[:rating].strip
+	@convoLink = params[:convoLink].strip
+
+	# perform validation
+	#taxiID and userID and twitterHandle needs better validation!!!!!
+	@taxiId_ok = isPositiveNumber?(@taxiId)
+	@userId_ok = !@userId.nil? && @userId != ""
+	@twitterHandle_ok = !@twitterHandle.nil? && @twitterHandle != ""
+	@dateTime_ok = !@dateTime.nil? && @dateTime != ""
+	@startLocation_ok = !@startLocation.nil? && @startLocation != ""
+	@endLocation_ok = !@endLocation.nil? && @endLocation != ""
+	@freeRide_ok = @freeRide == '0' || @freeRide == '1'
+	@cancelled_ok = @cancelled == '0' || @cancelled == '1'
+	@rating_ok = @rating == '' || @rating == '0' || @rating == '1' || @rating == '2' || @rating == '3' || @rating == '4' || @rating == '5'
+	@convoLink_ok =	!@convoLink.nil? && @convoLink != ""
+
+	@all_ok = @taxiId_ok && @userId_ok && @twitterHandle_ok && @dateTime_ok && @startLocation_ok && @endLocation_ok && @freeRide_ok && @cancelled_ok && @rating_ok && @convoLink_ok
+
+	@id = @journeyInfo[@journeyInfo.length-1][0].to_i + 1
+    # add data to the database
+    if @all_ok
+		# do the insert
+		$db.execute('INSERT INTO journeys VALUES (?, ?, ?, ?, ?, ? ,?, ?, ?, ?, ?)', [@id, @taxiId, @userId, @twitterHandle, @dateTime, @startLocation, @endLocation, @freeRide, @cancelled, @rating, @convoLink])
+    end
+
+	erb :addJourneySettingsMain
 end
