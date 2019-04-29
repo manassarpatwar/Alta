@@ -12,20 +12,19 @@ get'/userOrders' do
     elsif params[:column] == 'all'
         @results = $db.execute("SELECT * FROM journeys WHERE user_id =  '#{session[:id]}'")
     elsif params[:column] == 'id'   
-        @results = $db.execute("SELECT * FROM journeys WHERE user_id = '#{session[:id]}' AND id = '#{params[:search].strip}'") 
-
+        @results = $db.execute("SELECT * FROM journeys WHERE user_id = '#{session[:id]}' AND id LIKE '%#{params[:search].strip}%'") 
     elsif params[:column] == 'date_time' 
-        @results = $db.execute("SELECT * FROM journeys WHERE user_id = '#{session[:id]}' AND date_time LIKE '#{params[:search].strip}'") 
+        @results = $db.execute("SELECT * FROM journeys WHERE user_id = '#{session[:id]}' AND date_time LIKE '%#{params[:search]}%'") 
     elsif params[:column] == 'start_location' 
-        @results = $db.execute("SELECT * FROM journeys WHERE user_id = '#{session[:id]}' AND start_location LIKE '#{params[:search].strip}'") 
+        @results = $db.execute("SELECT * FROM journeys WHERE user_id = '#{session[:id]}' AND start_location LIKE '%#{params[:search].strip}%'") 
     elsif params[:column] == 'end_location' 
-        @results = $db.execute("SELECT * FROM journeys WHERE user_id = '#{session[:id]}' AND end_location LIKE '#{params[:search].strip}'") 
+        @results = $db.execute("SELECT * FROM journeys WHERE user_id = '#{session[:id]}' AND end_location LIKE '%#{params[:search].strip}%'") 
     elsif params[:column] == 'free_ride' 
-        @results = $db.execute("SELECT * FROM journeys WHERE user_id = '#{session[:id]}' AND free_ride = '#{params[:search].strip}'") 
+        @results = $db.execute("SELECT * FROM journeys WHERE user_id = '#{session[:id]}' AND free_ride LIKE '%#{params[:search].strip}%'") 
     elsif params[:column] == 'cancelled' 
-        @results = $db.execute("SELECT * FROM journeys WHERE user_id = '#{session[:id]}' AND cancelled = '#{params[:search].strip}'") 
+        @results = $db.execute("SELECT * FROM journeys WHERE user_id = '#{session[:id]}' AND cancelled LIKE '%#{params[:search].strip}%'") 
     elsif params[:column] == 'rating' 
-        @results = $db.execute("SELECT * FROM journeys WHERE user_id = '#{session[:id]}' AND rating = '#{params[:search].strip}'") 
+        @results = $db.execute("SELECT * FROM journeys WHERE user_id = '#{session[:id]}' AND rating LIKE '%#{params[:search].strip}%'") 
     elsif params[:allAlltype]
         @results = $db.execute("SELECT * FROM journeys WHERE user_id = '#{session[:id]}'") 
     elsif params[:paidtype]
