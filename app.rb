@@ -8,6 +8,8 @@ require 'twitter'
 require 'rufus-scheduler'
 require 'omniauth-twitter'
 require 'sqlite3'
+require 'csv'
+#require_relative 'createDatabase.rb'
 require_relative 'editDatabases.rb'
 require_relative 'dashboard.rb'
 require_relative 'main.rb'
@@ -34,7 +36,7 @@ end
 #Configure sessions
 configure do
 	enable :sessions
-    $db = SQLite3::Database.new './taxi_database.sqlite'
+    #$db = SQLite3::Database.new 'taxi_database.sqlite'
     begin
       TWITTER_CLIENT = Twitter::REST::Client.new do |config|
           config.consumer_key        = 'wVzUO14M25jvS3vmmtfDAtmh6'

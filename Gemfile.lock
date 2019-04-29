@@ -17,6 +17,7 @@ GEM
     childprocess (0.9.0)
       ffi (~> 1.0, >= 1.0.11)
     concurrent-ruby (1.1.5)
+    csv (3.1.1)
     cucumber (3.1.2)
       builder (>= 2.1.2)
       cucumber-core (~> 3.2.0)
@@ -157,6 +158,7 @@ PLATFORMS
 
 DEPENDENCIES
   capybara!
+  csv!
   cucumber!
   minitest!
   omniauth-twitter!
