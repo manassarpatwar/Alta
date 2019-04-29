@@ -536,3 +536,6 @@ window.onclick = function(event) {
 
 // collapse
 
+// if statement for cancelled and free
+
+

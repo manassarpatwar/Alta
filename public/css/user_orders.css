@@ -196,9 +196,10 @@
 .Sumcolumn2 {
     float: left;
     width: 25%;
-    padding: 10px;
-    padding-left:0;
-    height: 350px; /* Should be removed. Only for demonstration */
+    padding:0px 20px 0 0;
+    height: 400px;
+    border-right: 1px solid rgb(255, 255, 255);
+
   }
   .Sumcolumn4 {
     float: left;
