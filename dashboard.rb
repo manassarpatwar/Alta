@@ -7,11 +7,6 @@ get '/dashboard' do
     erb :dashboard
 end
 
-get '/settings' do
-    redirect '/index' unless session[:admin]
-    @submitted = false
-    erb :settings
-end
 #--------------------Post Methods--------------------#
 
 post '/replyToTweet' do
