@@ -10,7 +10,6 @@ require 'omniauth-twitter'
 require 'sqlite3'
 require_relative 'editDatabases.rb'
 require_relative 'dashboard.rb'
-require_relative 'table.rb'
 require_relative 'main.rb'
 require_relative 'login.rb'
 require_relative 'marketing.rb'
@@ -76,23 +75,4 @@ helpers do
           return false
       end
     end
-end
-
-before do
-    config = {
-        :consumer_key => '...',
-        :consumer_secret => '...',
-        :access_token => '...',
-        :access_token_secret => '...'
-    }
-    @client = Twitter::REST::Client.new(config)
-end
-
-get '/twitter_search' do
-    unless params[:search].nil?
-        search_string = params[:search]
-        results = @client.search(search_string)
-        @tweets = results.take(20)
-    end
-    erb :twitter_search
 end
