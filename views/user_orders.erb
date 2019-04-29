@@ -357,11 +357,22 @@
             <td class="col-rate">
               <div class="field2-rate inline"></div>
               <div id="ratings" class="inline">
-                <span onclick="myRating1()" id="rate1" class="fa fa-star"></span>
-                <span onclick="myRating2()" id="rate2" class="fa fa-star"></span>
-                <span onclick="myRating3()" id="rate3" class="fa fa-star"></span>
-                <span onclick="myRating4()" id="rate4" class="fa fa-star"></span>
-                <span onclick="myRating5()" id="rate5" class="fa fa-star "></span>
+                <% if record[9].nil? || record[9] == 0 %>
+                  <form method="post" action="/addRating">
+                    <span onclick="myRating1()" id="rate1" class="fa fa-star" name="rating1" value="1"></span>
+                    <span onclick="myRating2()" id="rate2" class="fa fa-star" name="rating2" value="2"></span>
+                    <span onclick="myRating3()" id="rate3" class="fa fa-star" name="rating3" value="3"></span>
+                    <span onclick="myRating4()" id="rate4" class="fa fa-star" name="rating4" value="4"></span>
+                    <span onclick="myRating5()" id="rate5" class="fa fa-star" name="rating5" value="5"></span>
+                  </form>
+              <% else %>
+                <% for i in 0..record[9]-1%>
+                  <span class="fa fa-star" style="color:orange;"></span>
+                <% end %>
+                <% for i in 0..(4-record[9])%>
+                  <span  class="fa fa-star"></span>
+                <% end %>
+              <% end %>
               </div>
             </td>
           </tr>

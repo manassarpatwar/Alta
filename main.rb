@@ -41,3 +41,11 @@ end
 not_found do
     erb :not_found404
 end
+
+post'/addRating' do
+    @rating1 = params[:rating1]
+    @rating2 = params[:rating2]
+    @rating3 = params[:rating3]
+    @rating4 = params[:rating4]
+    @rating5 = params[:rating5]
+end

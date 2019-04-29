@@ -289,7 +289,7 @@
     height: 100%;
   }
   
-  .fa {font-size:50px;}
+  /* .fa {font-size:50px;} */
 
 
 
@@ -684,3 +684,7 @@ input{
     to {transform: scale(1)}
   }
   
+
+  .info5-checked {
+    color: orange;
+  }
