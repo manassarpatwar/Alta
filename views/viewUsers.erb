@@ -13,19 +13,12 @@
     <% unless @usersInfo.nil? %>
         <% @usersInfo.each do |user| %>
         <tr>
-            <% @totalJourneys = 0 %>
-            <% @journeyInfo.each do |journey| %>
-                <% if journey[2] == user[0] %>
-                    <% @totalJourneys = @totalJourneys + 1 %>
-                <% end %>
-            <% end %>
-
             <td><%=h user[0] %></td>
             <td><%=h user[1] %></td>
             <td><%=h user[2] %></td>
             <td><%=h user[3] %></td>
             <td><%=h user[4] %></td>
-            <td><%=h @totalJourneys %></td>
+            <td><%=h user[5] %></td>
             <td><a href='editUser/<%=h user[0] %>'>Edit</a></td>
             <td><a href='deleteUser/<%=h user[0] %>' onclick="return confirm('Are you sure you want to delete this record?');">Delete</a></td>
         </tr>
