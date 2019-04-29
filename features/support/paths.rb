@@ -13,7 +13,13 @@ module NavigationHelpers
     when /the settings\s?page/
       '/settings'
     when /the addUser\s?page/
-      '/settings'
+      '/addUser'
+    when /the addTaxi\s?page/
+      '/addTaxi'
+    when /the addJourney\s?page/
+      '/addUser'
+    when /the addComplaint\s?page/
+      '/addComplaint'
     when /the root\s?page/
       '/'
     when /the login\s?page/
