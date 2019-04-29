@@ -5,7 +5,7 @@ get '/settings' do
 
 	@usersInfo = $db.execute("SELECT * FROM users")
 	@journeyInfo = $db.execute("SELECT * FROM journeys")
-	@complatintsInfo = $db.execute("SELECT * FROM complaints")
+	@complaintsInfo = $db.execute("SELECT * FROM complaints")
 	@taxiInfo = $db.execute("SELECT * FROM taxis")
 
     erb :settings
@@ -538,7 +538,7 @@ post '/addComplaint' do
 	redirect '/index' unless session[:admin]
 
 	#get complaints table from the database
-	@complatintsInfo = $db.execute("SELECT * FROM complaints")
+	@complaintsInfo = $db.execute("SELECT * FROM complaints")
 
     @submitted = true
 
@@ -563,50 +563,4 @@ post '/addComplaint' do
         $db.execute('INSERT INTO complaints VALUES (?, ?, ?, ?, ?)', [@id, @journey_id, @user_id, @date_time, @complaint])
     end
     erb :addComplaintMain
-end
-
-# add journey
-post '/addJourney' do
-	redirect '/index' unless session[:admin]
-
-	#get journey table from the database
-	@journeyInfo = $db.execute("SELECT * FROM journeys")
-
-    @submitted = true
-
-    #sanitize values
-	@taxiId = params[:taxiId].strip
-	@userId = params[:userId].strip
-	@twitterHandle = params[:twitterHandle].strip
-	@dateTime = params[:dateTime].strip
-	@startLocation = params[:startLocation].strip
-	@endLocation = params[:endLocation].strip
-	@freeRide = params[:freeRide].strip
-	@cancelled = params[:cancelled].strip
-	@rating = params[:rating].strip
-	@convoLink = params[:convoLink].strip
-
-	# perform validation
-	#taxiID and userID and twitterHandle needs better validation!!!!!
-	@taxiId_ok = isPositiveNumber?(@taxiId)
-	@userId_ok = !@userId.nil? && @userId != ""
-	@twitterHandle_ok = !@twitterHandle.nil? && @twitterHandle != ""
-	@dateTime_ok = !@dateTime.nil? && @dateTime != ""
-	@startLocation_ok = !@startLocation.nil? && @startLocation != ""
-	@endLocation_ok = !@endLocation.nil? && @endLocation != ""
-	@freeRide_ok = @freeRide == '0' || @freeRide == '1'
-	@cancelled_ok = @cancelled == '0' || @cancelled == '1'
-	@rating_ok = @rating == '' || @rating == '0' || @rating == '1' || @rating == '2' || @rating == '3' || @rating == '4' || @rating == '5'
-	@convoLink_ok =	!@convoLink.nil? && @convoLink != ""
-
-	@all_ok = @taxiId_ok && @userId_ok && @twitterHandle_ok && @dateTime_ok && @startLocation_ok && @endLocation_ok && @freeRide_ok && @cancelled_ok && @rating_ok && @convoLink_ok
-
-	@id = @journeyInfo[@journeyInfo.length-1][0].to_i + 1
-    # add data to the database
-    if @all_ok
-		# do the insert
-		$db.execute('INSERT INTO journeys VALUES (?, ?, ?, ?, ?, ? ,?, ?, ?, ?, ?)', [@id, @taxiId, @userId, @twitterHandle, @dateTime, @startLocation, @endLocation, @freeRide, @cancelled, @rating, @convoLink])
-    end
-
-	erb :addJourneySettingsMain
 end

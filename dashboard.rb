@@ -7,6 +7,11 @@ get '/dashboard' do
     erb :dashboard
 end
 
+get '/settings' do
+    redirect '/index' unless session[:admin]
+    @submitted = false
+    erb :settings
+end
 #--------------------Post Methods--------------------#
 
 post '/replyToTweet' do
@@ -17,13 +22,27 @@ post '/replyToTweet' do
         end
     rescue Twitter::Error::TooManyRequests => error
         @error = "Too many requests."
-        unless error.nil?
-          sleep error.rate_limit.reset_in
-        end
+        sleep error.rate_limit.reset_in
     end
     @tweets = $tweets.dup
     erb :tweetActions
 end
+
+post '/destroyTweet' do
+    index = (params[:tweetindex]).to_i
+    begin
+        TWITTER_CLIENT.destroy_status($tweets[index].uri)
+        unless $tweets[index].in_reply_to_status_id.nil?
+          $tweets[index] = TWITTER_CLIENT.status($tweets[index].in_reply_to_status_id)
+        end
+    rescue Twitter::Error::TooManyRequests => error
+        @error = "Too many requests."
+        sleep error.rate_limit.reset_in
+    end
+    @tweets = $tweets.dup
+    erb :tweetActions
+end
+
 
 post '/fetchTweets' do
     if $tweets.length > 0
@@ -32,7 +51,7 @@ post '/fetchTweets' do
     begin
         @noNewTweets = false
         tweetsLenBefore = $tweets.length()
-        $tweets =  TWITTER_CLIENT.mentions_timeline(count: "5", since_id: "#{$since_id}") + $tweets
+        $tweets = TWITTER_CLIENT.mentions_timeline(count: "5", since_id: "#{$since_id}") + $tweets
         tweetsLenAfter = $tweets.length()
         if tweetsLenBefore == tweetsLenAfter then
           @noNewTweets = true
@@ -63,8 +82,13 @@ post '/deleteTweet' do
 end
 
 post '/addJourney' do
-	@submitted = true
-	# sanitize values
+	redirect '/index' unless session[:admin]
+
+	#get journey table from the database
+
+    @submitted = true
+
+    #sanitize values
 	@taxiId = params[:taxiId].strip
 	@userId = params[:userId].strip
 	@twitterHandle = params[:twitterHandle].strip
@@ -85,13 +109,11 @@ post '/addJourney' do
 	@startLocation_ok = !@startLocation.nil? && @startLocation != ""
 	@endLocation_ok = !@endLocation.nil? && @endLocation != ""
 	@freeRide_ok = @freeRide == '0' || @freeRide == '1'
- 	@cancelled_ok = @cancelled == '0' || @cancelled == '1'
+	@cancelled_ok = @cancelled == '0' || @cancelled == '1'
+	@rating_ok = @rating == '' || @rating == '0' || @rating == '1' || @rating == '2' || @rating == '3' || @rating == '4' || @rating == '5'
 	@convoLink_ok =	!@convoLink.nil? && @convoLink != ""
 
-	@all_ok = @taxiId_ok && @userId_ok && @twitterHandle_ok && @dateTime_ok && @startLocation_ok && @endLocation_ok && @freeRide_ok && @cancelled_ok && @convoLink_ok
-
-	count = $db.get_first_value('SELECT COUNT(*) FROM journeys')
-	@id = count + 1
+	@all_ok = @taxiId_ok && @userId_ok && @twitterHandle_ok && @dateTime_ok && @startLocation_ok && @endLocation_ok && @freeRide_ok && @cancelled_ok && @rating_ok && @convoLink_ok
 
   	# add data to the database
 	if @all_ok
@@ -115,14 +137,14 @@ post '/addJourney' do
 end
 
 post '/addToAvailable' do
-    taxiId = params[:taxiId].to_i
+    taxiId = params[:taxiId].to_i 
     $db.execute("UPDATE taxis SET available = 1 WHERE id='#{taxiId}'")
     gather_taxis
     erb :displayTaxis
 end
 
 post '/addToUnavailable' do
-    taxiId = params[:taxiId].to_i
+    taxiId = params[:taxiId].to_i 
     $db.execute("UPDATE taxis SET available = 0 WHERE id='#{taxiId}'")
     gather_taxis
     erb :displayTaxis
@@ -136,7 +158,7 @@ end
 post '/fillInfoInJourney' do
     gather_taxis
     @noAvailableTaxis = false
-    if !@availableTaxis[0].nil?
+    if !@availableTaxis[0].nil? 
 	 @taxiId = @availableTaxis[0][0]
     else
      @noAvailableTaxis = true
@@ -151,12 +173,12 @@ post '/fillInfoInJourney' do
            @userInfo = $db.execute("SELECT * FROM users WHERE id = ?", @userId)
            if @userInfo[0][4] != 0 then
              @freeRide = 1
-           else
+           else 
              @freeRide = 0
            end
         end
     end
-    @cancelled = 0
+    @cancelled = 0  
 	@convoLink = params[:convoLink].strip
     erb :addJourney
 end
