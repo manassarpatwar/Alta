@@ -30,7 +30,13 @@
             <td><%=h journey[9] %></td>
             <td><%=h journey[10] %></td>
             <td><a href='editJourney/<%=h journey[0] %>'>Edit</a></td>
-            <td><a href='deleteJourney/<%=h journey[0] %>' onclick="return confirm('Are you sure you want to delete this record?');">Delete</a></td>
+             <td>
+              <form method = "post" action = "/deleteFromTable" style = "margin:0;"> 
+                  <input type = "hidden" name = "table" value = "journeys" />
+                  <input type = "hidden" name = "id" value = "<%=h journey[0] %>" />
+                  <input type="submit" value="Delete"  onclick="return confirm('Are you sure you want to delete this record?');" style = "background:none; border:none; color:#0088cc; outline:none"/>      
+              </form>
+            </td>
         </tr>
         <% end %>
     <% end %>

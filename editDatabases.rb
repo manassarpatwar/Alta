@@ -11,51 +11,15 @@ get '/settings' do
     erb :settings
 end
 
-#---------------get delete---------------#
-# delete user
-get '/deleteUser/:id' do
+#---------------post delete---------------#
+post '/deleteFromTable' do
 	redirect '/index' unless session[:admin]
 
 	#set id to be deleted
+    @table = params[:table]
 	@id = params[:id]
 	#execute the deletion
-	$db.execute("DELETE FROM users WHERE id='#{@id}'")
-
-	redirect '/settings'
-end
-
-# delete taxi
-get '/deleteTaxi/:id' do
-	redirect '/index' unless session[:admin]
-
-	#set id to be deleted
-	@id = params[:id]
-	#execute the deletion
-	$db.execute("DELETE FROM taxis WHERE id='#{@id}'")
-
-	redirect '/settings'
-end
-
-# delete complaint
-get '/deleteComplaint/:id' do
-	redirect '/index' unless session[:admin]
-
-	#set id to be deleted
-	@id = params[:id]
-	#execute the deletion
-	$db.execute("DELETE FROM complaints WHERE id='#{@id}'")
-
-	redirect '/settings'
-end
-
-# delete complaint
-get '/deleteJourney/:id' do
-	redirect '/index' unless session[:admin]
-
-	#set id to be deleted
-	@id = params[:id]
-	#execute the deletion
-	$db.execute("DELETE FROM journeys WHERE id='#{@id}'")
+	$db.execute("DELETE FROM #{@table} WHERE id='#{@id}'")
 
 	redirect '/settings'
 end
