@@ -31,8 +31,8 @@
           <div class="greetingColumn">
             <div class="greetingContent">Welcome Back, <%=h session[:name] %></div>
           </div>
-          <div class="dateColumn">
-            <div class="dateContent" id="date">date</div>
+          <div class="dateColumn" >
+            <div class="dateContent">date</div>
           </div>
         </div>
         <div class="separation1"></div>
@@ -74,17 +74,17 @@
 
     
   <!--Section2: Types of Views Buttons-->
-    <div id="tableSection" class="container searchBarContainer">    
+    <div class="container searchBarContainer">    
       <div class="tableTypeBox">
         <p class="tableTypeTitle">View As: </p>
-        <span id="viewButton1" onclick="myView1()" class="tableTypeButton">Table</span>
-        <span id="viewButton2" onclick="myView2()" class="tableTypeButton">Databse</span>
+        <span onclick="myView1()" class="tableTypeButton">Table</span>
+        <span onclick="myView2()" class="tableTypeButton">Databse</span>
       </div>
     </div>
     
   <!--Section3: Filtable Search bar-->
     <div class="searchBarRow container searchBarContainer">
-      <form method="get" action="userOrders" id="filterForm" onsubmit="goToTable()">
+      <form method="get" action="userOrders">
         <select id='filterList' name="column" class="selectStorage">
           <option selected='selected' value="none">Select...</option> 
           <option value="all">All</option> 
@@ -103,10 +103,10 @@
   <!--Sectio4: Types of Rides Button-->
     <div class="container rideTypesContainer">
       <form method="get">
-          <input class="rideTypeButton" type="submit" name="rideType" value="All">
-          <input class="rideTypeButton" type="submit" name="rideType" value="Paid">
-          <input class="rideTypeButton" type="submit" name="rideType" value="Free">
-          <input class="rideTypeButton" type="submit" name="rideType" value="Cancelled">
+          <input class="rideTypeButton" type="submit" name="allAlltype" value="All">
+          <input class="rideTypeButton" type="submit" name="paidtype" value="Paid">
+          <input class="rideTypeButton" type="submit" name="freetype" value="Free">
+          <input class="rideTypeButton" type="submit" name="cancelledtype" value="Cancelled">
       </form>
     </div>
 
@@ -152,7 +152,7 @@
             <table class="container tableContainer">
               <tr>
                 <td class="regNumRow">
-                  <div class="tableRegNum"><%=h record[0] %></div>
+                  <div class="tableRegNum"><%=h record[0] %>
                 </td>
                 <td></td>
                 <td></td>
