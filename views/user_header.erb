@@ -1,6 +1,6 @@
 <div id="accSnav" class="accnavbar-top">        
 
-<div class="navColumn"></div>        
+<div class="navLeftColumn"></div>        
 
 <div class="nav-column2 navColumn">
   <div class="navContent">
@@ -21,7 +21,7 @@
       </div>
     <% else %>
     <!--Delete Account Button-->
-     <div class=" nav-inline2 nav-signin" style="float: right; margin-right:20px; margin-left: 0;">
+     <div class=" nav-inline2 nav-signin">
       <a>
         <button class="editAccButton" onclick="document.getElementById('deleteAccBox').style.display='block'">EDIT ACCOUNT |</button>
           <div id="deleteAccBox" class="modal">
@@ -36,7 +36,7 @@
             </form>
           </div>
       </a>
-     <a href="/logout"> <i class="fa fa-sign-out" style="font-size:13px; color:grey; float:right; padding-top:10px;"></i></a>
+     <a href="/logout"> <i class="fa fa-sign-out" style="font-size:13px; color:grey; padding-top:10px;"></i></a>
       </div>
     <% end %>
   </div>
@@ -44,6 +44,3 @@
 <a href="javascript:void(0);" class="nav-Icon" onclick="myResponsiveHeader()">
   <div class="nav-respIcon"> &#9776; </div> </a>
 </div>
-
-
-

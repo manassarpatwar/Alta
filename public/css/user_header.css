@@ -11,7 +11,11 @@
   font-size:14px;
   height:80px;
 }
-
+.navLeftColumn{
+  white-space: nowrap; 
+  width: 25%;
+  padding: 0 5px;
+}
 .navColumn {
   white-space: nowrap; 
   width: 25%;
@@ -47,11 +51,6 @@ img.nav-logo{
 .nav-name{
   display: inline-block;
 }
-
-
-/* .nav-name:hover{
-  color:#e6e6e6;
-} */
 div.nav-name{
   padding:2.5%;
   padding-top:4.5%;
@@ -100,7 +99,6 @@ a.nav-buttons, .nav-signin, .nav-vl, .nav-login{
 
 }
 
-
 /* Right column */
 .nav-inline2{
   margin-top:5px;
@@ -123,186 +121,6 @@ a .nav-respIcon{
   color:rgb(56, 56, 56);
   text-decoration:none;
 }
-
-
-
-
-/* Responsive  */
-@media only screen and (max-width: 1180px) {
-  .nav-column2 {
-    width: 80%;
-  }
-  img.nav-logo{
-    transition-duration: 1s;
-    width:70px;
-    padding-left: 30px;
-    margin-top:-25px;
-  }
-  div.nav-name{
-    font-size: 33px;
-    padding-top: 5px;
-  }
-  .nav-signin, .nav-vl, .nav-login{
-    margin-right: 60px;
-  }
-  a.nav-buttons{
-    padding-top:5px;
-  }
-}
-@media only screen and (max-width: 985px) {
-
-  img.nav-logo{
-    width: 45px;
-    padding-left: 15px;
-    margin-top: -24px;
-  }
-  div.nav-name{
-    font-size: 29px;
-    padding-top: 10px;
-  }
-  a.nav-buttons{
-    padding-top:6px;
-  }
-}
-@media only screen and (max-width: 940px) {
-  .nav-column2 {
-    width: 80%;
-  }
-
-  div.nav-name{
-    transition-duration: 1s;
-    font-size: 28px;
-    padding-top: 8px;
-    letter-spacing:0.3em;
-  }
-  .nav-signin, .nav-vl, .nav-login{
-    margin-right: 50px;
-    margin-top:15px;
-  }
-  .nav-center{
-    margin-top:5px;
-  }
-  .accnavbar-top{
-    transition-duration: 1s;
-    font-size: 13px;
-  }
-  img.nav-logo{
-    width: 45px;
-    padding-left: 15px;
-    margin-top: -25px;
-  }
-  a.nav-buttons{
-    padding-top:3px;
-  }
-
-}
-@media only screen and (max-width: 860px) {
-  .nav-column2 {
-    transition-duration: 1s;
-    display: none;
-  }
-  a .nav-respIcon{
-    
-    display: block;
-  }
-  .navContent{
-    float:left;
-  }
-  .navColumn{
-    width:44%;
-  }
-  .nav-signin{
-    margin-left: 5px
-    }
-    .nav-logo{
-      margin-left: 20px;
-      padding-top:0;
-    }
-    img.nav-logo{
-      width: 45px;
-      padding-left: 15px;
-      margin-top: -15px;
-    }
-}
-@media only screen and (max-width: 550px) {
-  .navColumn{
-    width:30%;
-  }
-  div.nav-name{
-    display: none;
-  }
-  .nav-signin{
-    transition-duration: 1s;
-    margin: 15px 20px 0 50px;
-  }
-  img.nav-logo{
-    transition-duration: 1s;
-    width: 55px;
-    margin-left: 5px;
-    margin-top: 10px;
-  }
-  .nav-Icon{
-    padding-left: 15%
-  }
-  a.nav-buttons{
-    font-size:11px;
-  }
-  a.nav-Icon{
-    padding-left: 30%;
-  }
-}
-@media only screen and (max-width: 380px) {
-  .navContent{
-    float:left;
-  }
-  .nav-signin{
-    transition-duration: 1s;
-    margin: 18px 20px 0 20px;
-    font-size: 12px;
-  }
-  img.nav-logo{
-    transition-duration: 1s;
-    width: 48px;
-    padding-left: 15px;
-    margin-top: 15px;
-  }
-  a.nav-buttons{
-    font-size:10px;
-    line-height:1;
-  }
-  div.nav-respIcon{
-    padding-top:10px;
-  }
-  .navbar-fixed-top{
-    height:60px;
-  }
-}
-/* Hamburger Header */
-@media only screen and (max-width: 985px) {
-  .nav-column2.responsive {
-    position: absolute;
-    float: none;
-    display: block;
-    background-color:rgba(0, 0, 0, 0.425);
-    margin-top:70px;
-    width:100%;
-    padding-left:45%;
-  }  
-  .nav-column2.responsive .navContent .nav-center .nav-inline{
-    display: block;
-  }
-}
-@media only screen and (max-width:550px){
-  .nav-column2.responsive {
-    padding-left: 40%;
-  }
-}
-@media only screen and (max-width:380px){
-  .nav-column2.responsive {
-    padding-left: 38%;
-  }
-}
-
 
 /* Delete Account Button*/
 .editAccButton {
@@ -355,7 +173,6 @@ a .nav-respIcon{
   background-color:white;
   border-radius:6px;
 }
-
 .deleteAccAnimate {
   -webkit-animation: animatezoom 0.6s;
   animation: animatezoom 0.6s
@@ -369,5 +186,44 @@ a .nav-respIcon{
   to {transform: scale(1)}
 }
 
+/* Responsive  */
+@media only screen and (max-width:770px){
+  .navLeftColumn {
+    width:0;
+  }
+  img.nav-logo{
+    float:left;
+  }
+  .nav-signin{
+    margin-left:10px;
+  }
+  .nav-column2{
+    width:50%;
+  }
+  #accSnav{
+    overflow: visible;
+  }
+  
+}
+@media only screen and (max-width:580px){
+  .editAccButton {
+    font-size:12px;
+    padding-top:0;
+  }
+  img.nav-logo{
+    margin-top:25px;
+    width:35px;
+  }
+  img.nav-logo{
+    float:right;
+  }
+  .nav-signin{
+    height:35px;
+    margin-left:-110px;
+    margin-top:65px;
+    float:left;
+    padding: 2px 8px 2px 8px;
+  }
+}
 
 

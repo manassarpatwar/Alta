@@ -57,6 +57,7 @@
     font-size:45px;
     text-align:center;
     text-transform: uppercase;
+    letter-spacing:40px;
 }
 .ridesTypeSummary {
     float: left;
@@ -102,6 +103,17 @@
     color: rgb(255, 232, 118);
 }
 
+/* History Title */
+.historyTitle{
+    font-size:45px;
+    color:black;
+    text-align:center;
+    margin:80px;
+    text-transform:uppercase;
+    margin-bottom:10px;
+    letter-spacing:40px;
+}
+
 /* Section2: Types of Views Buttons */
 .container{
     width: 75%;
@@ -111,7 +123,7 @@
 }
 .tableTypeBox{
     float:left;
-    padding-top:50px;
+    padding-top:20px;
     margin-bottom:5px;
 }
 .tableTypeTitle{
@@ -142,16 +154,16 @@
 .searchBarContainer{
     border-radius: 5px 5px 0 0;
     margin-bottom:10px;
-    padding-left:60px;
+    padding-left:80px;
 }
 #filterList{
     width: 140px;
     padding-top: 5px;
     padding-bottom: 4px;
-    width: 200px;
+    width: 22%;
 }
 .searchBar{
-    width: 68%;
+    width: 60%;
 }
 
 /* Section4: Types of Rides Button */
@@ -265,8 +277,3 @@ table{
 .databaseCell{
     padding:10px;
 }
-
-
-
-
-
