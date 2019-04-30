@@ -1,8 +1,8 @@
-<h1>Edit Complaint with ID: <%=h @complaintToEdit[0] %></h1>
+<h1>Edit feedback with ID: <%=h @feedbackToEdit[0] %></h1>
 
-<p>Return to <a href="/settings">viewing the complaints</a>. </p>
+<p>Return to <a href="/settings">viewing the feedback</a>. </p>
 
-<h2>Current complaint information:</h2>
+<h2>Current feedback information:</h2>
 
 <table>
     <tr>
@@ -10,27 +10,29 @@
         <th>Journey ID</th>
         <th>User ID</th>
         <th>Date Time</th>
-        <th>Complaint</th>
+        <th>Feedback</th>
+        <th>Rating</th>
     </tr>
     <tr>
-        <td><%=h @complaintToEdit[0] %></td>
-        <td><%=h @complaintToEdit[1] %></td>
-        <td><%=h @complaintToEdit[2] %></td>
-        <td><%=h @complaintToEdit[3] %></td>
-        <td><%=h @complaintToEdit[4] %></td>
+        <td><%=h @feedbackToEdit[0] %></td>
+        <td><%=h @feedbackToEdit[1] %></td>
+        <td><%=h @feedbackToEdit[2] %></td>
+        <td><%=h @feedbackToEdit[3] %></td>
+        <td><%=h @feedbackToEdit[4] %></td>
+        <td><%=h @feedbackToEdit[5] %></td>
     </tr>
 </table>
 
-<h2>Change values of the complaint:</h2>
+<h2>Change values of the feedback:</h2>
 
 <% if @submitted && @all_ok %>
-    <p>Complaint Edited.</p>
+    <p>Feedback Edited.</p>
 <% else %>
     <% if @submitted && !@all_ok %> <!-- if there was validation errors: -->
         <p style="color:red">There were errors in your form submission, please correct them below.</p>
     <% end %>
 
-    <form action="/editComplaint/<%=h @id%>" method="post">
+    <form action="/editFeedback/<%=h @id%>" method="post">
         <% if @submitted && !@journey_id_ok %>
             <p style="color:red">Please enter a journey ID</p>
         <% end %>
@@ -52,11 +54,18 @@
             <input type="text" name="date_time" value="<%=h @date_time%>"/>
         </p>
 
-        <% if @submitted && !@complaint_ok %>
-            <p style="color:red">Please enter a valid complaint</p>
+        <% if @submitted && !@feedback_ok %>
+            <p style="color:red">Please enter a valid feedback</p>
         <% end %>
-        <p>Complaint:
-            <input type="text" name="complaint" value="<%=h @complaint%>"/>
+        <p>Feedback:
+            <textarea name="feedback"><%=h @feedback%></textarea>
+        </p>
+
+        <% if @submitted && !@rating_ok %>
+            <p style="color:red">Please enter a valid rating</p>
+        <% end %>
+        <p>Rating:
+            <input type="text" name="rating" value="<%=h @rating%>"/>
         </p>
 
         <input type="submit" value="Submit" />

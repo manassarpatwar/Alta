@@ -41,8 +41,8 @@ configure do
     rescue
       abort("Database not found... \nExiting\nTip: Run createDatabase.rb")
     end
-    #$db = SQLite3::Database.new 'taxi_db.sqlite'
-    $db = SQLite3::Database.new 'taxi_database.sqlite'
+    $db = SQLite3::Database.new 'taxi_db.sqlite'
+    #$db = SQLite3::Database.new 'taxi_database.sqlite'
     begin
       TWITTER_CLIENT = Twitter::REST::Client.new do |config|
           config.consumer_key        = 'wVzUO14M25jvS3vmmtfDAtmh6'
