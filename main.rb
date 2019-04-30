@@ -5,7 +5,7 @@ get '/' do
 end
 
 get '/index' do
-    @ratings = $db.execute("SELECT * FROM complaints") 
+    @ratings = $db.execute("SELECT * FROM feedback WHERE rating >= 4") 
 	erb :index
 end
 
