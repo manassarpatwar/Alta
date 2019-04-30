@@ -103,11 +103,6 @@
 }
 
 /* Section2: Types of Views Buttons */
-.searchBarRow:before{
-    content: "";
-    display: table;
-    clear: both;
-}
 .container{
     width: 75%;
     background-color: #ffffff;
@@ -116,8 +111,8 @@
 }
 .tableTypeBox{
     float:left;
-    width: 50%;
-    padding-top:25px;
+    padding-top:50px;
+    margin-bottom:5px;
 }
 .tableTypeTitle{
     font-size:15px;
@@ -146,7 +141,8 @@
 /* Section3: Fitable Search Bar */
 .searchBarContainer{
     border-radius: 5px 5px 0 0;
-    height:50px;
+    margin-bottom:10px;
+    padding-left:60px;
 }
 #filterList{
     width: 140px;
@@ -154,18 +150,23 @@
     padding-bottom: 4px;
     width: 200px;
 }
+.searchBar{
+    width: 68%;
+}
 
 /* Section4: Types of Rides Button */
 .rideTypesContainer{
-    border-bottom:5px solid rgb(117, 117, 117);
+    border-bottom:3px solid rgb(117, 117, 117);
     padding-bottom: 10px;
+    margin-top:50px;
+    text-align:center;
 } 
 .rideTypeButton{
     width:10%;
     border: none;
     color:rgb(136, 136, 136);
     background-color:white;
-    font-style: underline;
+    font-size:15px;
 }
 .rideTypeButton:hover{
     color:rgb(66, 66, 66);
@@ -197,9 +198,10 @@ table{
     padding-left:30px;
     font-size:25px;
 }
-.tableRate::before{
+.tableRate{
     content:"";
     float:right;
+    margin-right:20px;
 }
 .tableBox{
     background-color:#ffffff;
@@ -270,215 +272,7 @@ table{
 
 
 
-
-
-
-
-  /* Search bar */
-  #myInput{
-    width: 25%;
-}
-
-
-.orderborder-bottom{
-    border-radius: 0 0 5px 5px;
-}
-
-
-/* Sorting dropdown list */
-
-
-.tablecenter{
-    text-align: center;
-    padding-left:15px;
-}
-
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 130px;
-    overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-.sortDropdown a:hover {background-color: #ddd;}
-
-.show {display: block;}
-
-
-
-
-
-
-/* Ride indicators */
-
-
-
-
-
-/* Ride History Style 1: Table View */
-
-
-.tableBox-lastrow{
-    padding-top:10px;
-}
-
-
-
-.field3-date::before{
-    content:"ON";
-    padding-left:30px;
-    font-size:12px;
-}
-.field4-time::before{
-    content:"AT";
-    padding-left:5px;
-    font-size:12px;
-}
-
-.field8-free::before{
-    padding-bottom:0;
-}
-.field9-cancelled::before{
-    padding-bottom:0;
-}
-
-#ratings{
-    cursor:pointer;
-    float:right;
-    margin-right:20px;
-}
-#rate1, #rate2, #rate3, #rate4, #rate5 {
-    color: #333333;
-}
-.col-width{
-    width:23%;
-}
-.col-width2{
-    width:15%;
-}
-.col-date, .col-time, .taxi-type{
-    padding-top:0;
-}
-.col-free, .col-reg-num, .col-date, .col-time, .col-cancelled{
-    padding-bottom:0;
-}
-
-a.convo-link{
-    color:#0189c9;
-    float:right
-}
-td.col-date, td.col-time{
-    padding-bottom:0;
-    font-size: 11px;
-}
-
-.field8-icon{
-    margin-left:30px;
-    height:15px;
-    width:15px;
-}
-.tableCell{
-    width:100%;
-}
-#startLoc, #endLoc, #taxiType{
-    font-size:18px;
-    font-weight:600;
-}
-
-
-
-
-/* Ride History Style 2: Database VIew */
-
-
-th {
-    cursor: pointer;
-}
-th, td {
-    text-align: left;
-    /* padding:15px 35px 15px 35px; */
-    /* border:10px solid yellow; */
-}
-tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-.userDatabase tbody{
-    display:block;
-    overflow: auto;
-    height: 300px;
-}
-.userDatabase thead{
-    display: block;
-}
-
-.userDatabase thead tr th, .userDatabase tbody tr td{
-    width:10%;
-    text-align:left;
-}
-.databaseCell{
-    padding:10px;
-}
-
-/* Lookup Search bar */
-/* Lookup list */
-
-/* Input search */
-#search_bar{    
-}
-#selectDisplay{
-    display: inline;
-}
-#allDisplay{
-    display:none;
-}
-#refNoDisplay{
-    display:none;
-}
-#dateDisplay{
-    display:none;
-}
-#sLocDisplay{
-    display:none;
-}
-#eLocDisplay{
-    display:none;
-}
-#canlDisplay{
-    display:none;
-}
-#freeDisplay{
-    display:none;
-}
-#rateDisplay{
-    display:none;
-}
-.submitB{
-    visibility: hidden;
-}
-input{
-    width:70%;
-    height:30px;
-}
-.sumbitB{
-    width : 65px;
-    background-color:whitesmoke;
-    float: right;
-    margin-top: 1px;
-}
-
 /* delete account */
-
 .deleteAccBut {
     background-color: #b8bdbe00;
     /* color: white; */
@@ -568,8 +362,4 @@ input{
     from {transform: scale(0)} 
     to {transform: scale(1)}
   }
-  
-
-  .info5-checked {
-    color: orange;
-  }
+ 

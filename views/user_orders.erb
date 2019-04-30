@@ -72,10 +72,9 @@
     </div>
   <!--End of Section1: Summary-->
 
-<div style="text-align:center; padding-top:5px;"> Tables </div>
     
   <!--Section2: Types of Views Buttons-->
-    <div class="searchBarRow container searchBarContainer">    
+    <div class="container searchBarContainer">    
       <div class="tableTypeBox">
         <p class="tableTypeTitle">View As: </p>
         <span onclick="myView1()" class="tableTypeButton">Table</span>
@@ -86,21 +85,20 @@
   <!--Section3: Filtable Search bar-->
     <div class="searchBarRow container searchBarContainer">
       <form method="get" action="userOrders">
-        <select id='filterList' name="column">
+        <select id='filterList' name="column" class="selectStorage">
           <option selected='selected' value="none">Select...</option> 
           <option value="all">All</option> 
           <option value='id'>Reference Number</option> 
           <option value='date_time'>Travel Date</option> 
           <option value='start_location'>Start Location</option> 
           <option value='end_location'>End Location</option> 
-          <option value='free_ride'>Free</option> 
-          <option value='cancelled'>Cancelled</option> 
           <option value='rating'>Rating</option>
         </select>
-        <input type="text" name="search" value="<%=h params[:search] %>">
+        <input type="text" name="search" value="<%=h params[:search] %>" class="searchBar">
         <input type="submit" id="order_table_submit" value="Submit" style= "width:100px">
       </form>
     </div>
+
 
   <!--Sectio4: Types of Rides Button-->
     <div class="container rideTypesContainer">
@@ -159,8 +157,7 @@
                 <td></td>
                 <td></td>
                 <td>
-                  <div class="tableRate"></div>
-                  <div id="ratings">
+                  <div id="ratings" class="tableRate">
                     <% if record[9].nil? || record[9] == 0 %>
                       <form method="post" action="/addRating">
                         <span>(no ratings, rate us now)</span>
@@ -170,14 +167,14 @@
                         <span onclick="myRating4()" id="rate4" class="fa fa-star" name="rating4" value="4"></span>
                         <span onclick="myRating5()" id="rate5" class="fa fa-star" name="rating5" value="5"></span>
                       </form>
-                  <% else %>
-                    <% for i in 0..record[9]-1%>
-                      <span class="fa fa-star" style="color:orange;"></span>
+                    <% else %>
+                      <% for i in 0..record[9]-1%>
+                        <span class="fa fa-star" style="color:orange;"></span>
+                      <% end %>
+                      <% for i in 0..(4-record[9])%>
+                        <span  class="fa fa-star"></span>
+                      <% end %>
                     <% end %>
-                    <% for i in 0..(4-record[9])%>
-                      <span  class="fa fa-star"></span>
-                    <% end %>
-                  <% end %>
                   </div>
                 </td>
               </tr>

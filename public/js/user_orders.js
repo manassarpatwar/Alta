@@ -100,13 +100,17 @@ window.onclick = function(event) {
     }
 }
 
-// var select = document.getElementById("filterList");
-// var selectedItem = select.options[select.selectedIndex].value;
-// createCookie("selectedItem",selectedItem);
+//Create Local Storage for selection 
+var select = document.querySelector(".selectStorage");
+var selectOption = select.options[select.selectedIndex];
+var lastSelected = localStorage.getItem('select');
 
-// var selectedItem = readCookie("selectedItem");
-// var select = document.getElementById("filterList");
-// select.value = selectedItem;
+if(lastSelected) {
+    select.value = lastSelected; 
+}
 
-
-
+select.onchange = function () {
+   lastSelected = select.options[select.selectedIndex].value;
+   console.log(lastSelected);
+   localStorage.setItem('select', lastSelected);
+}
