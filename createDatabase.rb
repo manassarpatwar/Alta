@@ -1,3 +1,8 @@
+require 'sqlite3'
+require 'csv'
+csv_text_complaints = File.read("public/csv/complaints.csv")
+csvComplaints = CSV.parse(csv_text_complaints, :headers => true)
+
 csv_text_feedback = File.read("public/csv/feedback.csv")
 csvFeedback = CSV.parse(csv_text_feedback, :headers => true)
 
@@ -13,6 +18,9 @@ csvUsers = CSV.parse(csv_text_users, :headers => true)
 DB = SQLite3::Database.new 'taxi_db.sqlite'
 # Create a table
 DB.execute <<-SQL
+  DROP TABLE IF EXISTS "complaints";
+SQL
+DB.execute <<-SQL
   DROP TABLE IF EXISTS "feedback";
 SQL
 DB.execute <<-SQL
@@ -24,19 +32,30 @@ SQL
 DB.execute <<-SQL
   DROP TABLE IF EXISTS "users";
 SQL
-
 DB.execute <<-SQL
-  CREATE TABLE "feedback" (
+  CREATE TABLE "complaints" (
 	"id"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
 	"journey_id"	INTEGER NOT NULL,
 	"user_id"	INTEGER NOT NULL,
 	"date_time"	TEXT NOT NULL,
 	"feedback"	TEXT NOT NULL,
-    "rating" INTEGER,
 	FOREIGN KEY("journey_id") REFERENCES "journeys"("id"),
 	FOREIGN KEY("user_id") REFERENCES "users"("id")
   );
 SQL
+
+DB.execute <<-SQL
+  CREATE TABLE "feedback" (
+	"id"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+	"journey_id"	INTEGER,
+	"user_id"	INTEGER NOT NULL,
+	"date_time"	TEXT NOT NULL,
+	"feedback"	TEXT NOT NULL,
+    "rating" INTEGER,
+	FOREIGN KEY("user_id") REFERENCES "users"("id")
+  );
+SQL
+
 DB.execute <<-SQL
   CREATE TABLE "journeys" (
       "id"	INTEGER NOT NULL UNIQUE,
@@ -73,6 +92,11 @@ DB.execute <<-SQL
 	PRIMARY KEY("id")
   );
 SQL
+
+csvComplaints.each do |row|
+  DB.execute "insert into complaints values ( ?, ?, ?, ?, ?)", row.fields 
+end
+
 
 csvFeedback.each do |row|
   DB.execute "insert into feedback values ( ?, ?, ?, ?, ?, ? )", row.fields 
