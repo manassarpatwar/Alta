@@ -54,12 +54,15 @@
             <input type="text" name="date_time" value="<%=h @date_time%>"/>
         </p>
 
+
         <% if @submitted && !@feedback_ok %>
             <p style="color:red">Please enter a valid feedback</p>
         <% end %>
-        <p>Feedback:
-            <textarea name="feedback"><%=h @feedback%></textarea>
-        </p>
+        <div class="textareaAlign">
+            <p>Feedback:
+                <textarea name="feedback"><%=h @feedback%></textarea>
+            </p>
+        </div>
 
         <% if @submitted && !@rating_ok %>
             <p style="color:red">Please enter a valid rating</p>
