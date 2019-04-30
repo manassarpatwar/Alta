@@ -1,5 +1,6 @@
 require 'sqlite3'
 require 'csv'
+
 csv_text_feedback = File.read("public/csv/feedback.csv")
 csvFeedback = CSV.parse(csv_text_feedback, :headers => true)
 
@@ -25,8 +26,6 @@ DB.execute <<-SQL
 SQL
 DB.execute <<-SQL
   DROP TABLE IF EXISTS "users";
-SQL
-DB.execute <<-SQL
 SQL
 
 DB.execute <<-SQL
