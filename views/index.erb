@@ -212,7 +212,13 @@
               <div class="info5-column">
                 <div class="info5-box">
                   <div class="info5-cont">
-                    <p class="info5-name"><%= @users.select{|user| user[0] == rating[2]}[0][1] %>
+                    <p class="info5-name">
+                      <% @name = @users.select{|user| user[0] == rating[2]} %> 
+                      <% if @name.nil? || @name[0].nil? %>
+                          Anonymous
+                      <% else %>
+                          <%= @name[0][1] %>
+                      <% end %>
                         <br>
                        <% for i in 1..rating[5] %>
                         <span class="fa fa-star info5-checked"></span>
