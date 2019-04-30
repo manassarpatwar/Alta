@@ -15,9 +15,6 @@ csvUsers = CSV.parse(csv_text_users, :headers => true)
 DB = SQLite3::Database.new 'taxi_db.sqlite'
 # Create a table
 DB.execute <<-SQL
-  DROP TABLE IF EXISTS "complaints";
-SQL
-DB.execute <<-SQL
   DROP TABLE IF EXISTS "feedback";
 SQL
 DB.execute <<-SQL
