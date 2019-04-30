@@ -29,7 +29,7 @@ function myView1() {
     y.style.display = "block";
 }
 function myView2() {
-	x.style.display = "table";
+	x.style.display = "block";
 	y.style.display = "none";
 }
 

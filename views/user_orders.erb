@@ -45,19 +45,19 @@
         <div class="summaryRow">
           <div class="ridesTypeSummary">
             <div class="rideTypeContainer">
-              <p>Total Ride</p>
+              <p class="rideTypeContent">Total Ride</p>
               <h3>5</h3>
             </div>
           </div>
           <div class="ridesTypeSummary">
             <div class="rideTypeContainer">
-              <p>Free Rides taken</p>
+              <p class="rideTypeContent">Free Rides taken</p>
               <h3>5</h3>
             </div>
           </div>
           <div class="ridesTypeSummary sumcolumn5">
             <div class="rideTypeContainer">
-              <p>Cancelled Rides</p>
+              <p class="rideTypeContent">Cancelled Rides</p>
               <h3>5</h3>
             </div>
           </div>
@@ -162,7 +162,7 @@
                   <div id="ratings" class="tableRate">
                     <% if record[9].nil? || record[9] == 0 %>
                       <form method="post" action="/addRating">
-                        <span>(no ratings, rate us now)</span>
+                        <span class="ratingText">(no ratings, rate us now)</span>
                         <span onclick="myRating1()" id="rate1" class="fa fa-star" name="rating1" value="1"></span>
                         <span onclick="myRating2()" id="rate2" class="fa fa-star" name="rating2" value="2"></span>
                         <span onclick="myRating3()" id="rate3" class="fa fa-star" name="rating3" value="3"></span>
@@ -194,7 +194,7 @@
                 <td class="cellEndLoc"><%=h record[6] %></td>
               </tr>      
               <tr>
-                <td class="tableBox">
+                <td class="tableBox tableFreeBox">
                   <% if record[7]==1 %>
                     <i class=" checkBox far fa-check-square" style="margin-left:30px"></i>
                   <% else %>
@@ -202,7 +202,7 @@
                     <% end %>
                   <div class="cellFree">Free Rides</div>
                 </td>
-                <td class="tableBox col-cancelled">
+                <td class="tableBox tableCancelledBox">
                   <% if record[8]==1 %>
                     <i class=" checkBox far fa-check-square"></i>
                   <% else %>
@@ -210,7 +210,7 @@
                   <% end %>
                     <div class="cellCancelled">Cancelled</div>
                 </td>
-                <td class="tableBox"><a href class="chatLink">Conversation link</a></td>
+                <td class="tableBox tableConvoBox"><a href class="chatLink">Conversation link</a></td>
               </tr>
             </table>
             <form method="post" action="/newReview">

@@ -42,7 +42,7 @@
     margin-top:20px;
 }
 .dateContent{
-    padding-top:15px;
+    padding-top:20px;
     float:right;
 }
 .separation1{
@@ -154,7 +154,7 @@
 .searchBarContainer{
     border-radius: 5px 5px 0 0;
     margin-bottom:10px;
-    padding-left:80px;
+    padding-left:0;
 }
 #filterList{
     width: 140px;
@@ -174,7 +174,7 @@
     text-align:center;
 } 
 .rideTypeButton{
-    width:10%;
+    width:15%;
     border: none;
     color:rgb(136, 136, 136);
     background-color:white;
@@ -215,6 +215,10 @@ table{
     float:right;
     margin-right:20px;
 }
+.ratingText{
+    display:block;
+}
+
 .tableBox{
     background-color:#ffffff;
     margin-top:0;
@@ -270,10 +274,222 @@ table{
 /* View2: Database Version */
 #view2{
     display:none;
+    border-collapse: collapse;
+    overflow-x: auto;
+    padding:0;
 }
 .databaseHeader{
     background-color: rgb(194, 194, 194);
 }
 .databaseCell{
     padding:10px;
+    width: 10%;
+}
+
+
+
+/* Responsive */
+@media only screen and (max-width:1000px){
+    .searchBar {
+      display:block;
+      width:100%;
+      margin: 5px 0;
+    }
+    #filterList{
+        width:200px;
+    }
+}
+@media only screen and (max-width:780px){
+    .summaryTitle{
+        font-size:40px;
+    }
+    .taxiIcon{
+        font-size:30px;
+    }
+    .rideTypeButton{
+        width: 20%;
+    }
+}
+@media only screen and (max-width:720px){
+    .summaryTitle{
+        font-size:35px;
+        height:80px;
+        letter-spacing: 30px
+    }
+}
+@media only screen and (max-width:670px){
+    .taxiIcon{
+        margin-top:-40px;
+    }
+}
+@media only screen and (max-width:590px){
+    .summaryTitle{
+        font-size:30px;
+        height:60px;
+        letter-spacing: 30px
+    }
+    .separation1{
+        height:0;
+        padding-bottom:5px;
+    }
+    .greetingContent{
+        font-size:16px;
+    }
+    .dateColumn{
+        padding-left:0;
+    }
+    .historyTitle{
+        font-size: 40px;
+    }
+    .ridesTypeSummary{
+        float: none;
+        width:100%;
+        height:100%;
+    }
+    .rideTypeContainer{
+        height:50%;
+        margin-left: 20px;
+    }
+    .rideTypeButton{
+        width: auto;
+    }
+    .rideTypeContent{
+        float:left;
+    }
+    .chatLink {
+        margin-top: 40px;
+    }
+    .cellStartLoc, .cellEndLoc {
+        font-size: 18px;
+    }
+    .writeReview{
+        height: 55px;
+    }
+}
+@media only screen and (max-width:550px){
+    .summaryTitle{
+        height:50px;
+        letter-spacing: 20px
+    }
+    .historyTitle{
+        font-size: 35px;
+    }
+    .separation1{
+        padding-bottom:0;
+    }
+    .greetingContent{
+        font-size:16px;
+    }
+    .dateColumn{
+        padding-left:0;
+    }
+    .tableFreeBox, .tableCancelledBox,.tableConvoBox{
+        display:block;
+    }
+    .tableFreeBox{
+        margin-top:15px;
+    }
+    .tableCancelledBox{
+        margin-top:5px;
+        margin-left:30px;
+    }
+    .tableEndLoc, .tableStartLoc {
+        padding-top: 30px;
+    }
+    .fa{
+        font-size: 12px;
+    }
+    .chatLink{
+        float:left;
+        margin:10px 0 10px 30px;
+    }
+}
+@media only screen and (max-width:510px){
+    .summaryTitle{
+        font-size:25px;
+        letter-spacing: 28px;
+    }
+    .summaryTitle{
+        height:40px;
+    }
+    .separation1{
+        padding-top:10px;
+    }
+    .rideSummary{
+        height:650px;
+    }
+    .h3{
+        margin-top:0;
+    }
+    .historyTitle{
+        font-size:28px;
+    }
+    .dateColumn{
+        float:none;
+    }
+    .dateContent, .greetingContent{
+        padding-top:0;
+        padding-bottom:10px;
+    }
+    .greetingColumn{
+        height:100%;
+    }
+}
+@media only screen and (max-width:490px){
+    .summaryTitle{
+        font-size:20px;
+        letter-spacing: 10px;
+    }
+    .historyTitle{
+        font-size:30px;
+        letter-spacing: 30px;
+    }
+    .cellStartLoc, .cellEndLoc {
+        font-size: 16px;
+        font-weight: bold;
+    }
+    .tableEndLoc, .tableStartLoc {
+        font-size: 11px;
+        padding-top: 20px;
+    }
+    .regNumRow{
+        font-size:20px;
+    }
+    .cellDate {
+        font-size: 12px;
+    }
+    .cellFree, .cellCancelled{
+        font-size: 13px;
+   }
+   .chatLink{
+       margin-top:10px;
+   }
+   .reviewSumbit{
+    font-size: 12px;
+   }
+   #filterList {
+    width: 150px;
+    font-size: 13px;    
+    }
+    .container{
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .writeReview {
+        height: 50px;
+        font-size: 13px;
+    }
+    #order_table_submit{
+        font-size:12px;
+    }
+}
+@media only screen and (max-width:450px){
+    .historyTitle{
+        font-size: 28px;
+        letter-spacing: 25px;
+        margin-left:50px;
+    }
+    .tableTypeButton{
+        font-size: 10px;
+    }
 }
