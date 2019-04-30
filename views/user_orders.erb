@@ -15,189 +15,111 @@
     <link rel="stylesheet" href="css/user_orders.css" />
   </head>
 
-  <body id="ordersBG">
-    
+  <body id="bodyBackground">
 
-
-      <!--Summary-->
+  <!--Section1: Summary-->
     <div class="rideSummary">
-      <div class="sumcontainer" style="background-color:rgba(247, 247, 247, 0);">
+      <div class="summaryContainer">
       
-      <!--navigation bar-->
-      <header class="stick">
+      <!--Navigation bar-->
+        <header>
           <%= erb :user_header %>
-      </header>
+        </header>
     
+      <!--Greetings with twitterhandle and display current date-->
+        <div class="summaryRow">
+          <div class="greetingColumn">
+            <div class="greetingContent">Welcome Back, <%=h session[:name] %></div>
+          </div>
+          <div class="dateColumn" >
+            <div class="dateContent">date</div>
+          </div>
+        </div>
+        <div class="separation1"></div>
 
-        <div class="Sumrow2">
-          <div class="Sumcolumn1">
-            <div class="sumgreet">
-              Welcome Back, <%=h session[:name] %> <br><br>
+      <!--Summary Title-->
+        <div class="summaryTitle">summary</div>
+        <div class="separation1"></div>
+
+      <!--Summary Content-->
+        <div class="summaryRow">
+          <div class="ridesTypeSummary">
+            <div class="rideTypeContainer">
+              <p>Total Ride</p>
+              <h3>5</h3>
             </div>
           </div>
-          <div class="Sumcolumn3" >
-            <div class="sumgreet2">date</div>
+          <div class="ridesTypeSummary">
+            <div class="rideTypeContainer">
+              <p>Free Rides taken</p>
+              <h3>5</h3>
+            </div>
+          </div>
+          <div class="ridesTypeSummary sumcolumn5">
+            <div class="rideTypeContainer">
+              <p>Cancelled Rides</p>
+              <h3>5</h3>
+            </div>
           </div>
         </div>
 
-        <div class="separation3"></div>
-
-        <div class="sumTopBar">
-          <div class="sumNavBar">
-            <a href="#home" class="sumNavBut"> HOME</a>
-            <a href="#summary" class="sumNavBut"> SUMMARY</a>
-            <a href="#table" class="sumNavBut"> TABLES</a>
-            <a href="#deleteAcc" class="sumNavBut"> 
-              <button class="deleteAccBut" onclick="document.getElementById('id01').style.display='block'" style="width:5%;">ACCOUNT</button>
-              <div id="id01" class="modal">
-                <form class="modal-content animate" action="/action_page.php">
-                  <div class="imgcontainer">
-                    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-                  </div>
-                  <div class="delAccContainer">
-                    <button type="submit">Delete Account</button>
-                        <span class="psw">Read our <a href="#"> delete account policy</a></span>
-                  </div>
-                </form>
-              </div>
-            </a>
-          </div>
-      </div>
-
-
-        <div class="separation2"></div>
-
-        <div class="sumTweet">
-         SUMMARY <br><br>
+    <!--Deals Indicator-->
+        <div class="dealsContainer">
+          <div class="remainingRides">1 more ride for a free one!</div>
+          <div class="iconBox"> <i class='fas fa-taxi taxiIcon'></i></div>
         </div>
-
-        <div class="separation2"></div>
-
-        <div class="Sumrow2">
-            <div class="Sumcolumn2">
-              
-              <div class="Sumcard">
-                <p><i class="fa fa-user"></i></p>
-                <p>Total Ride this month</p>
-                <h3>5</h3>
-              </div>
-
-            </div>
-            
-            <div class="Sumcolumn4">
-              
-            <div class="ridePeriod">
-            <select class="sumPeriod">
-              <optgroup label="Year">
-                <option value="2019">2019</option>
-                <option value="2018">2018</option>
-              </optgroup>
-              <optgroup label="Month">
-                <option value="Jan">January</option>
-                <option value="Feb">Febuary</option>
-                <option value="Mar">March</option>
-                <option value="Apr">April</option>
-                <option value="May">May</option>
-                <option value="June">June</option>
-                <option value="Jul">July</option>
-                <option value="Aug">August</option>
-                <option value="Sep">September</option>
-                <option value="Oct">October</option>
-                <option value="Nov">November</option>
-                <option value="Dec">December</option>
-              </optgroup>
-            </select>
-          </div>
-
-          <div class="separation2"></div>
-
-          <div class="deals-container">
-            <div class="rideNo">1 more ride for a free one!</div>
-            <div class="freeNo">
-              <i class='fas fa-taxi freeRIcon'>
-              </i>
-            </div>
-          </div>
-
-          <div class="separation2" style="margin-top:10px"></div>
-          <div class="sumtweet">Tweet us at @ise</div>
-
-
-        </div>
-      </div>
-
       </div>
     </div>
-
+  <!--End of Section1: Summary-->
 
 <div style="text-align:center; padding-top:5px;"> Tables </div>
     
-    <div class="separation"></div>
-
-
-    <!--Databsae Views and sort button-->
-    <div class="ordertable-row container orderborder-top">
-        <div class="ordertable-column tableTopPad">
-          <p class="table-titleView inline" style='font-size:15px'> View As: </p>
-          <span onclick="myView1()" class="title-button type1-button inline">Table</span>
-          <span onclick="myView2()" class="title-button type1-button inline">Databse</span>
-        </div>
-    
-        <div id ="sorting" class="ordertable-column3 sortDropdown inlne">
-          <div class="dropdown-title inline"> Sort by :&nbsp</div>
-          <button onclick="myFunction()" id="sortButtonText" class="dropbtn inline" style='font-size:15px'>
-            <i class='fas fa-caret-down' style='font-size:17px'></i>
-          </button>
-          <div id="myDropdown" class="dropdown-content">
-            <a href="#home">Newest</a>
-            <a href="#about">Oldest</a>
-            <a href="#contact">Highest Rating</a>
-            <a href="#contact">Lowest Rating</a>
-          </div>
-        </div>
+  <!--Section2: Types of Views Buttons-->
+    <div class="searchBarRow container searchBarContainer">    
+      <div class="tableTypeBox">
+        <p class="tableTypeTitle">View As: </p>
+        <span onclick="myView1()" class="tableTypeButton">Table</span>
+        <span onclick="myView2()" class="tableTypeButton">Databse</span>
+      </div>
     </div>
     
+  <!--Section3: Filtable Search bar-->
+    <div class="searchBarRow container searchBarContainer">
+      <form method="get" action="userOrders">
+        <select id='filterList' name="column">
+          <option selected='selected' value="none">Select...</option> 
+          <option value="all">All</option> 
+          <option value='id'>Reference Number</option> 
+          <option value='date_time'>Travel Date</option> 
+          <option value='start_location'>Start Location</option> 
+          <option value='end_location'>End Location</option> 
+          <option value='free_ride'>Free</option> 
+          <option value='cancelled'>Cancelled</option> 
+          <option value='rating'>Rating</option>
+        </select>
+        <input type="text" name="search" value="<%=h params[:search] %>">
+        <input type="submit" id="order_table_submit" value="Submit" style= "width:100px">
+      </form>
+    </div>
 
-<!--Search bar-->
+  <!--Sectio4: Types of Rides Button-->
+    <div class="container rideTypesContainer">
+      <form method="get">
+          <input class="rideTypeButton" type="submit" name="allAlltype" value="All">
+          <input class="rideTypeButton" type="submit" name="paidtype" value="Paid">
+          <input class="rideTypeButton" type="submit" name="freetype" value="Free">
+          <input class="rideTypeButton" type="submit" name="cancelledtype" value="Cancelled">
+      </form>
+    </div>
 
-<div class="ordertable-row container search-container">
-  <form method="get" action = "userOrders">
-    <select id='searchList' style='width: 200px;' name="column">
-      <option selected='selected' value = "none">Select...</option> 
-      <option value = "all">All</option> 
-      <option value='id'>Reference Number</option> 
-      <option value='date_time'>Travel Date</option> 
-      <option value='start_location'>Start Location</option> 
-      <option value='end_location'>End Location</option> 
-      <option value='free_ride'>Free</option> 
-      <option value='cancelled'>Cancelled</option> 
-      <option value='rating'>Rating</option>
-    </select>
-    <input type="text" name="search" value="<%=h params[:search] %>">
-    <input type="submit" id = "order_table_submit" value="Submit" style= "width:100px">
-  </form>
+<!--Section5: Order History-->
 
-</div>
-
-<!--Ride Types Indications-->
-<div class="container ride-types" rideTyBox>
-  <form method="get">
-      <input class="rideTyIndc" type="submit" name="allAlltype" value="All">
-      <input class="rideTyIndc" type="submit" name="paidtype" value="Paid">
-      <input class="rideTyIndc" type="submit" name="freetype" value="Free">
-      <input class="rideTyIndc" type="submit" name="cancelledtype" value="Cancelled">
-  </form>
-</div>
- 
-
-<!--Order History Views-->
-    <!--View 1: Database Version-->
+  <!--View2: Database Version-->
     <% unless @results.nil? %>
-      <% if @results.length == 0 %>
-      <p style="text-align:center;"> no results </p>
-        <table class="js-sort-table container" id="demo1" id="view2" >
-          <thead class="tableStyle2-head">
-          <tr>
+        <br />
+        <table class="container" id="view2" >
+          <thead class="databaseHeader">
+            <tr>
               <th class="databaseCell">Reference Number</th>
               <th class="databaseCell">Travel Date</th>
               <th class="databaseCell">Start Location</th>
@@ -207,246 +129,104 @@
               <th class="databaseCell">Rating</th>
             </tr>
           </thead>
+        <% @results.each do |record| %>
           <tbody>
-          <tr>
-            <td> No result found </td>
-          </tr>
-          </tbody>
-        </table>
-      <% else %>
-        <br />
-        <table class="js-sort-table container" id="demo1" id="view2" >
-          <thead class="tableStyle2-head">
-          <tr>
-              <th class="databaseCell">Reference Number</th>
-              <th class="databaseCell">Travel Date</th>
-              <th class="databaseCell">Start Location</th>
-              <th class="databaseCell">End Location</th>
-              <th class="databaseCell">Free</th>
-              <th class="databaseCell">Cancelled</th>
-              <th class="databaseCell">Rating</th>
-            </tr>
-            </thead>
-          <% @results.each do |record| %>
-            <tbody>
             <tr>
-              <td class="col-reg-num databaseCell"><%=h record[0] %></td>
-              <td class="col-date databaseCell"><%=h record[4] %></td>
-              <td class="col-startLoc databaseCell"><%=h record[5] %></td>
-              <td class="col-endLoc databaseCell"><%=h record[6] %></td>
-              <td class="col-free databaseCell"><%=h record[7] %></td>
-              <td class="col-cancelled databaseCell"><%=h record[8] %></td>
-              <td class="col-rate databaseCell"><%=h record[9] %></td>
+              <td class="databaseCell"><%=h record[0]%></td>
+              <td class="databaseCell"><%=h record[4]%></td>
+              <td class="databaseCell"><%=h record[5]%></td>
+              <td class="databaseCell"><%=h record[6]%></td>
+              <td class="databaseCell"><%=h record[7]%></td>
+              <td class="databaseCell"><%=h record[8]%></td>
+              <td class="databaseCell"><%=h record[9]%></td>
             </tr>
-            </tbody>
-          <% end %>
+          </tbody>
+        <% end %>
         </table>
+    <% end %>
+        
+  <!--View1: Table Version-->
+    <% unless @results.nil? %>
+      <% if @results.length == 0 %> <p style="text-align:center;"> no results found </p> 
+      <% else %>
+        <div id="view1">
+          <% @results.each do |record| %>
+            <table class="container tableContainer">
+              <tr>
+                <td class="regNumRow">
+                  <div class="tableRegNum"><%=h record[0] %>
+                </td>
+                <td></td>
+                <td></td>
+                <td>
+                  <div class="tableRate"></div>
+                  <div id="ratings">
+                    <% if record[9].nil? || record[9] == 0 %>
+                      <form method="post" action="/addRating">
+                        <span>(no ratings, rate us now)</span>
+                        <span onclick="myRating1()" id="rate1" class="fa fa-star" name="rating1" value="1"></span>
+                        <span onclick="myRating2()" id="rate2" class="fa fa-star" name="rating2" value="2"></span>
+                        <span onclick="myRating3()" id="rate3" class="fa fa-star" name="rating3" value="3"></span>
+                        <span onclick="myRating4()" id="rate4" class="fa fa-star" name="rating4" value="4"></span>
+                        <span onclick="myRating5()" id="rate5" class="fa fa-star" name="rating5" value="5"></span>
+                      </form>
+                  <% else %>
+                    <% for i in 0..record[9]-1%>
+                      <span class="fa fa-star" style="color:orange;"></span>
+                    <% end %>
+                    <% for i in 0..(4-record[9])%>
+                      <span  class="fa fa-star"></span>
+                    <% end %>
+                  <% end %>
+                  </div>
+                </td>
+              </tr>
+            </table>
+            <table class="view1 container tableBox">
+              <tr class="tableContainer">
+                <td class="tableColumn cellDate">On <%=h record[4]%></td><td></td><td></td>
+              </tr>
+              <tr>
+                <td class="tableBox tableStartLoc">start</td>
+                <td class="tableBox tableEndLoc">end</td>
+              </tr>        
+              <tr>
+                <td class="tableColumn cellStartLoc"><%=h record[5] %></td>
+                <td class="cellEndLoc"><%=h record[6] %></td>
+              </tr>      
+              <tr>
+                <td class="tableBox">
+                  <% if record[7]==1 %>
+                    <i class=" checkBox far fa-check-square" style="margin-left:30px"></i>
+                  <% else %>
+                    <i class=" checkBox far fa-square" style="margin-left:30px"></i>
+                    <% end %>
+                  <div class="cellFree">Free Rides</div>
+                </td>
+                <td class="tableBox col-cancelled">
+                  <% if record[8]==1 %>
+                    <i class=" checkBox far fa-check-square"></i>
+                  <% else %>
+                    <i class=" checkBox far fa-square"></i>
+                  <% end %>
+                    <div class="cellCancelled">Cancelled</div>
+                </td>
+                <td class="tableBox"><a href class="chatLink">Conversation link</a></td>
+              </tr>
+            </table>
+            <form method="post" action="/newReview">
+              <input class=" container writeReview" type="text" name="newReview" value="<%=h params[:newReview] %>" placeholder="Tell us what do you think about our services !">
+              <input class="container reviewSumbit" type="submit" value="SUBMIT">
+            </form>
+          <% end %>
+        </div>
       <% end %>
     <% end %>
-  
 
-
-      
-  <!--Style 1: Table Version-->
-
-  <% unless @results.nil? %>
-
-  <% if @results.length == 0 %>
-    <p style="text-align:center;"> no results </p>
-    <div id="view1" class="tablestyle1">
-    <table id="userTable"  class="container container2 userTable1 orderborder-top">
-
-      <tr class="userTable1">
-        <td class="col-reg-num">
-          <div class="field1-regNum inline"></div>
-          <div id="regNum" class="style1-regNum inline">no data
-          </div>
-        </td>
-        <td></td>
-        <td></td>
-        <td class="col-rate">
-          <div class="field2-rate inline"></div>
-          <div id="ratings" class="inline">
-            <span onclick="" id="rate1" class="fa fa-star"></span>
-            <span onclick="" id="rate2" class="fa fa-star"></span>
-            <span onclick="" id="rate3" class="fa fa-star"></span>
-            <span onclick="" id="rate4" class="fa fa-star"></span>
-            <span onclick="" id="rate5" class="fa fa-star "></span>
-          </div>
-        </td>
-      </tr>
-    </table>
-    
-    <table id="userTable"  class="container container2 userTable2">
-    <tr class="userTable1">
-        <td class="col-date col-width">
-          <div class="field3-date inline"></div>
-          <div id="date" class="inline tableCell firstCol" style=" margin-bottom:10px;">no data</div>
-        </td>
-        <td class="col-time col-width2">
-          <div class="field4-time inline tableCell"></div>
-          <div id="time" class="inline tableCell" style=" margin-bottom:10px;"> no data </div>
-        </td>
-        <td></td><td></td>
-      </tr>
-
-      <tr>
-        <td class="col-startLoc userTable2">
-          <div class="field5-startLoc inline" style="margin-top: 20px; padding-left:10px;"></div>
-        </td>
-          <td class="col-startLoc userTable2">
-          <div class="field6-endLoc inline" style="margin-top: 20px"></div>
-        </td>
-        <td class="col-startLoc userTable2">
-          <div class="field7-taxi-type inline" style="margin-top: 20px;"></div>
-        </td>
-        <td class="userTable2"></td>
-      </tr>  
-
-      <tr>
-
-        <td class="col-startLoc userTable2">
-          <div id="startLoc" class="inline firstCol" style="margin-bottom: 50px;">no data</div>
-        </td>
-        <td class="col-endLoc userTable2">
-          <div id="endLoc" class="inline" style="margin-bottom: 50px;">no data</div>
-        </td>
-        <td class="taxi-type userTable2">
-          <div id="taxiType" class="inline" style="margin-bottom: 50px;">no data</div>
-        </td>
-        <td class="userTable2"></td>
-      </tr>   
-      <tr>
-      <td class="userTable2 col-free">
-        <input disabled type="text" onkeyup="myFunction()" placeholder="Tell us what do you think about our services !" title=" " class="inline order-comment">
-      </td>
-    </tr>    
-      <tr>
-        <td class="userTable2 col-free">
-          <i id ="freeNot" class="field8-icon far fa-check-square inline" style='font-size:15px '></i>
-          <div class="field8-free inline" style="margin-top: 50px; margin-bottom:20px;">(*code)Free Rides</div>
-          <div class="inline" style="margin-top: 20px;">&nbsp &nbsp|</div>
-        </td>
-        <td class="userTable2 col-cancelled">
-          <i id ="cancelledNot" class="field9-icon far fa-square inline" style='font-size:15px; margin-left:0px'></i>
-          <div class="field9-cancelled inline" style="margin-top: 50px; margin-bottom:20px;">(*code)Cancelled</div>
-        </td>
-        <td class="userTable2">
-          <a href="" id="convoLink" class="convo-link" style="margin-top:50px; margin-right:20px;">(fix in db +code)Conversation link
-          </a>
-        </td>
-      </tr> 
-                
-    </table>
-  </div>
-    
-  <% else %>
-    <% @results.each do |record| %>
-
-      <div id="view1" class="tablestyle1">
-        <table id="userTable"  class="container container2 userTable1 orderborder-top">
-  
-          <tr class="userTable1">
-            <td class="col-reg-num">
-              <div class="field1-regNum inline"></div>
-              <div id="regNum" class="style1-regNum inline"><%=h record[0] %>
-              </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td class="col-rate">
-              <div class="field2-rate inline"></div>
-              <div id="ratings" class="inline">
-                <% if record[9].nil? || record[9] == 0 %>
-                  <form method="post" action="/addRating">
-                    <span onclick="myRating1()" id="rate1" class="fa fa-star" name="rating1" value="1"></span>
-                    <span onclick="myRating2()" id="rate2" class="fa fa-star" name="rating2" value="2"></span>
-                    <span onclick="myRating3()" id="rate3" class="fa fa-star" name="rating3" value="3"></span>
-                    <span onclick="myRating4()" id="rate4" class="fa fa-star" name="rating4" value="4"></span>
-                    <span onclick="myRating5()" id="rate5" class="fa fa-star" name="rating5" value="5"></span>
-                  </form>
-              <% else %>
-                <% for i in 0..record[9]-1%>
-                  <span class="fa fa-star" style="color:orange;"></span>
-                <% end %>
-                <% for i in 0..(4-record[9])%>
-                  <span  class="fa fa-star"></span>
-                <% end %>
-              <% end %>
-              </div>
-            </td>
-          </tr>
-        </table>
-        
-        <table id="userTable"  class="container container2 userTable2">
-        <tr class="userTable1">
-            <td class="col-date col-width">
-              <div class="field3-date inline"></div>
-              <div id="date" class="inline tableCell firstCol" style=" margin-bottom:10px;"> <%=h record[4] %> </div>
-            </td>
-            <td class="col-time col-width2">
-              <div class="field4-time inline tableCell"></div>
-              <div id="time" class="inline tableCell" style=" margin-bottom:10px;"> (??) </div>
-            </td>
-            <td></td><td></td>
-          </tr>
-  
-          <tr>
-            <td class="col-startLoc userTable2">
-              <div class="field5-startLoc inline" style="margin-top: 20px; padding-left:10px;"></div>
-            </td>
-              <td class="col-startLoc userTable2">
-              <div class="field6-endLoc inline" style="margin-top: 20px"></div>
-            </td>
-            <td class="col-startLoc userTable2">
-              <div class="field7-taxi-type inline" style="margin-top: 20px;"></div>
-            </td>
-            <td class="userTable2"></td>
-          </tr>  
-  
-          <tr>
-  
-            <td class="col-startLoc userTable2">
-              <div id="startLoc" class="inline firstCol" style="margin-bottom: 50px;"><%=h record[5] %></div>
-            </td>
-            <td class="col-endLoc userTable2">
-              <div id="endLoc" class="inline" style="margin-bottom: 50px;"><%=h record[6] %></div>
-            </td>
-            <td class="taxi-type userTable2">
-              <div id="taxiType" class="inline" style="margin-bottom: 50px;">(*code)</div>
-            </td>
-            <td class="userTable2"></td>
-          </tr>   
-          <tr>
-          <td class="userTable2 col-free">
-            <input type="text" onkeyup="myFunction()" placeholder="Tell us what do you think about our services !" title=" " class="inline order-comment">
-          </td>
-        </tr>    
-          <tr>
-            <td class="userTable2 col-free">
-              <i id ="freeNot" class="field8-icon far fa-check-square inline" style='font-size:15px '></i>
-              <div class="field8-free inline" style="margin-top: 50px; margin-bottom:20px;">(*code)Free Rides</div>
-              <div class="inline" style="margin-top: 20px;">&nbsp &nbsp|</div>
-            </td>
-            <td class="userTable2 col-cancelled">
-              <i id ="cancelledNot" class="field9-icon far fa-square inline" style='font-size:15px; margin-left:0px'></i>
-              <div class="field9-cancelled inline" style="margin-top: 50px; margin-bottom:20px;">(*code)Cancelled</div>
-            </td>
-            <td class="userTable2">
-              <a href="" id="convoLink" class="convo-link" style="margin-top:50px; margin-right:20px;">(fix in db +code)Conversation link
-              </a>
-            </td>
-          </tr> 
-        </table>
-    <% end %>
-    <% end %>
-  <% end %>
-
-
-     <div class="separation" style="height:200px;"></div>  
+    <div class="separation" style="height:100px;"></div>  
 
   <!--footer-->
-          <%= erb :user_footer %>
-    </div>
+    <%= erb :user_footer %>
+
   </body>
 </html>

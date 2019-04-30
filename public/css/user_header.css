@@ -21,7 +21,7 @@
   flex-direction: row;
   white-space: nowrap; 
   font-size:14px;
-  height:60px;
+  height:80px;
   /* background-color:rgba(255, 255, 255, 0) !important; */
 }
 /* .acc-nav-hide{
@@ -55,15 +55,13 @@ a.nav-buttons:hover{
 
 /* Left Column*/
 img.nav-logo{
-  margin-top:15px;
+  margin-top:35px;
   width:45px;
 }
 .nav-name{
   display: inline-block;
 }
-.nav-logo{
-  padding-top:5px;
-}
+
 
 /* .nav-name:hover{
   color:#e6e6e6;
@@ -123,7 +121,7 @@ a.nav-buttons, .nav-signin, .nav-vl, .nav-login{
 }
 .nav-signin, .nav-vl, .nav-login{
   float: right;
-  margin-top: 25px;
+  margin-top: 40px;
   padding: 2px 10px 2px 10px;
   background-color:rgba(255, 255, 255, 0.164);
 }

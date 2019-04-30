@@ -29,8 +29,22 @@
      <div class=" nav-inline2 nav-signin" style="float: right; margin-right:20px; margin-left: 0;">
       <!--<a href="/dashboard" style="font-size:11px;">MY ORDERS | </a> -->
 
-      <a href="/editAccount" style="font-size:11px; text-transform: uppcase">edit account | </a>
-     <a href="/logout"> <i class="fa fa-sign-out" style="font-size:13px; color:grey"></i></a>
+      <a style="font-size:11px; text-transform: uppcase">
+        <button class="deleteAccBut" onclick="document.getElementById('id01').style.display='block'">EDIT ACCOUNT |</button>
+          <div id="id01" class="modal">
+            <form class="modal-content animate" action="/action_page.php">
+              <div class="imgcontainer">
+                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+              </div>
+              <div class="delAccContainer">
+                <button type="submit">Delete Account</button>
+                    <span class="psw"><a href="#"> delete account policy</a></span>
+              </div>
+            </form>
+          </div>
+      
+      </a>
+     <a href="/logout"> <i class="fa fa-sign-out" style="font-size:13px; color:grey; float:right; padding-top:10px;"></i></a>
       </div>
     <% end %>
   </div>
