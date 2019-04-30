@@ -16,6 +16,19 @@
         <%= erb :admin_nav %>
         <div id = "page-content-wrapper">
             <h1>Settings</h1>
+            <h2>Edit values:</h2>
+            <form action="/settings" method="post">
+                <% if @submitted && !@rideDeal_ok %>
+                    <p style="color:red">Please enter a valid ride deal (positive number)</p>
+                <% end %>
+                <% if @submitted && @rideDeal_ok %>
+                    <p>Ride deal value updated.</p>
+                <% end %>
+                <p>Ride Deal Value:
+                    <input type="text" name="rideDeal" value="<%=h $rideDeal %>"/>
+                </p>
+            </form>
+
             <div id = "users">
               <%= erb :viewUsers %>
             </div>

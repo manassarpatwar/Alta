@@ -10,8 +10,22 @@ end
 get '/settings' do
     redirect '/index' unless session[:admin]
     @submitted = false
+    @rideDeal = $rideDeal
     erb :settings
 end
+
+post '/settings' do
+    redirect '/index' unless session[:admin]
+    @submitted = true
+    @rideDeal = params[:rideDeal]
+
+    @rideDeal_ok = isPositiveNumber?(@rideDeal)
+    if @rideDeal_ok
+        $rideDeal = @rideDeal
+    end
+    erb :settings
+end
+
 #--------------------Post Methods--------------------#
 
 post '/replyToTweet' do
@@ -124,7 +138,7 @@ post '/addJourney' do
             if @userId == record[0] #If uid = id then:
                if @freeRide == '1' then
                  $db.execute("UPDATE users SET free_rides = #{@userInfo[0][4]-1}  WHERE id='#{@userId}'")
-               elsif (@userInfo[0][5]+1) % @rideDeal == 0 && @freeRide == '0' then
+             elsif (@userInfo[0][5]+1) % $rideDeal == 0 && @freeRide == '0' then
                  $db.execute("UPDATE users SET total_rides = #{@userInfo[0][5]+1}  WHERE id='#{@userId}'")
                  $db.execute("UPDATE users SET free_rides = #{@userInfo[0][4]+1}  WHERE id='#{@userId}'")
                else
@@ -137,14 +151,14 @@ post '/addJourney' do
 end
 
 post '/addToAvailable' do
-    taxiId = params[:taxiId].to_i 
+    taxiId = params[:taxiId].to_i
     $db.execute("UPDATE taxis SET available = 1 WHERE id='#{taxiId}'")
     gather_taxis
     erb :displayTaxis
 end
 
 post '/addToUnavailable' do
-    taxiId = params[:taxiId].to_i 
+    taxiId = params[:taxiId].to_i
     $db.execute("UPDATE taxis SET available = 0 WHERE id='#{taxiId}'")
     gather_taxis
     erb :displayTaxis
@@ -158,7 +172,7 @@ end
 post '/fillInfoInJourney' do
     gather_taxis
     @noAvailableTaxis = false
-    if !@availableTaxis[0].nil? 
+    if !@availableTaxis[0].nil?
 	 @taxiId = @availableTaxis[0][0]
     else
      @noAvailableTaxis = true
@@ -173,12 +187,12 @@ post '/fillInfoInJourney' do
            @userInfo = $db.execute("SELECT * FROM users WHERE id = ?", @userId)
            if @userInfo[0][4] != 0 then
              @freeRide = 1
-           else 
+           else
              @freeRide = 0
            end
         end
     end
-    @cancelled = 0  
+    @cancelled = 0
 	@convoLink = params[:convoLink].strip
     erb :addJourney
 end
