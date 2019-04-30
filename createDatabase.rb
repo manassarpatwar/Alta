@@ -32,7 +32,7 @@ DB.execute <<-SQL
   CREATE TABLE "feedback" (
 	"id"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
 	"journey_id"	INTEGER,
-	"user_id"	INTEGER NOT NULL,
+	"user_id"	TEXT NOT NULL,
 	"date_time"	TEXT NOT NULL,
 	"feedback"	TEXT NOT NULL,
     "rating" INTEGER,
