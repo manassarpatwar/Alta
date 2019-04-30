@@ -14,7 +14,9 @@ get '/settings' do
     erb :settings
 end
 
-post '/settings' do
+
+#--------------------Post Methods--------------------#
+post '/rideDeal' do
     redirect '/index' unless session[:admin]
     @submitted = true
     @rideDeal = params[:rideDeal]
@@ -23,10 +25,8 @@ post '/settings' do
     if @rideDeal_ok
         $rideDeal = @rideDeal
     end
-    erb :settings
+    erb :rideDeal
 end
-
-#--------------------Post Methods--------------------#
 
 post '/replyToTweet' do
     index = (params[:tweetindex]).to_i
