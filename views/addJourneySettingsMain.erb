@@ -4,6 +4,7 @@
     <title>Settings</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="../css/admin_nav.css">
+    <link rel="stylesheet" type="text/css" href="../css/form.css">
     <link rel="stylesheet" type="text/css" href="../css/settings.css">
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="../css/bootstrap-responsive.css">
@@ -16,7 +17,12 @@
         <%= erb :admin_nav %>
 
         <div id = "page-content-wrapper">
-            <%= erb :addJourneySettings %>
+          <h1>Add a Journey</h1>
+          <p>Return to <a href="/settings">viewing the journeys</a>. </p>
+          <h2>Add new journey values:</h2>
+          <div id = "add_journey_dashboard">
+            <%= erb :addJourneyDashboard %>
+          </div>
         </div>
     </div>
 

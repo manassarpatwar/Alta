@@ -1,0 +1,21 @@
+#page-content-wrapper #journeyForm{
+  width: 300px;
+}
+
+.inputbox{
+  display: inline-block;
+  width: 160px;
+  float: right;
+}
+
+.input_label{
+  line-height: 35px;
+}
+
+.submitButton{
+  background: #38A1F3;
+  color: white;
+  border-radius: 25px;
+  height: 30px;
+  width: 70px;
+}
