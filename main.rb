@@ -16,11 +16,12 @@ end
 #end
 
 get'/userOrders' do
-    totalRide = 0
-    $db.each do |ride|
-        totalRide+=0
+    @totalRide = 0
+    @db2 = $db.execute("SELECT * FROM journeys WHERE user_id =  '#{session[:id]}'")
+    @db2.each do |ride|
+        @totalRide+=0
     end
-puts totalRide
+    puts @totalRide
 
     @ridesUntilFree = 1
 
