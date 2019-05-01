@@ -8,20 +8,6 @@ task wipedb: [:createdb] do
   `ruby wipeDatabase.rb`
 end
 
-desc "Install rvm"
-task :installrvm do
-   puts "Installing keys"
-   system('gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB')
-   puts "Installing rvm"
-   system('\curl -sSL https://get.rvm.io | bash -s stable --ruby')
-end
-
-desc "Upgrade ruby 2.6.0"
-task :upgraderuby do
-  puts "Upgrading ruby to 2.6.0"
-  system('source /home/codio/.rvm/scripts/rvm upgrade 2.6.0')
-end
-
 desc "Install gems"
 task :installgems do
    puts "Installing gems"
@@ -100,11 +86,8 @@ end
 
 desc "Run the Sinatra app locally"
 task :install do
-  Rake::Task[:installrvm].execute
-  Rake::Task[:upgraderuby].execute
   Rake::Task[:installchromedriver].execute
   Rake::Task[:installgems].execute
   Rake::Task[:createdb].execute
-  Rake::Task[:addcallback].execute
 end
 
