@@ -304,16 +304,9 @@ end
 post '/editJourney/:id' do
 	redirect '/index' unless session[:admin]
 
-	#get feedback table from the database
-	@journeyInfo = $db.execute("SELECT * FROM journeys")
-	@id = params[:id].to_i
-
-	#find user which has the ID given
-	@journeyInfo.each do |journey|
-		if journey[0] == @id
-			@journeyToEdit = journey
-		end
-	end
+	#get journey
+    @id = params[:id].to_i
+	@journeyToEdit = $db.execute("SELECT * FROM journeys WHERE id = #{@id}")[0]
 
 	#submitted is false
 	@submitted = true
@@ -329,43 +322,56 @@ post '/editJourney/:id' do
 	@cancelled = params[:cancelled].strip
 	@rating = params[:rating].strip
 	@convoLink = params[:convoLink].strip
-
+    
+    @currentTaxiId = @journeyToEdit[1].to_i
+    @currentUserId = @journeyToEdit[2].to_i
     
 
-    #looping to check for every id/name whether they are in the database
-    @taxiTbl = $db.execute %{SELECT id FROM taxis}
-    @taxiIdFound = false
-    @taxiTbl.each do |record| #Go through each user record
-        if record[0] == @taxiId.to_i   #If uid = id then:
-            @taxiIdFound = true #Boolean found is true (record is already there)
-        end
+    if @currentTaxiId != @taxiId.to_i then
+      #looping to check for every id/name whether they are in the database
+      @taxiTbl = $db.execute ("SELECT * FROM taxis WHERE id = #{@taxiId}")
+      @taxiTbl.each do |record| #Go through each user record
+          if record[0] == @taxiId.to_i   #If uid = id then:
+              @taxiIdFound = true #Boolean found is true (record is already there)
+          else
+              @taxiIdFound = false
+          end
+      end
+    else
+      @taxiIdFound = true
     end
 
-    @twitterHandleTbl = $db.execute %{SELECT name FROM users}
-    @twitterHandleFound = false
-    @twitterHandleTbl.each do |record| #Go through each user record
-        if record[0] == @twitterHandle #If uid = id then:
-            @twitterHandleFound = true #Boolean found is true (record is already there)
-        end
+    if @currentUserId != @userId.to_i then
+      @usersTbl = $db.execute ("SELECT * FROM users WHERE id = #{@userId}")
+      @usersTbl.each do |record| #Go through each user record
+          if record[0] == @userId.to_i   #If uid = id then:
+              @userIdFound = true #Boolean found is true (record is already there)
+          else
+              @userIdFound = false
+          end
+      end
+    else 
+       @userIdFound = true
     end
 
 	# perform validation
 	#taxiID and userID and twitterHandle needs better validation!!!!!
 	@taxiId_ok = isPositiveNumber?(@taxiId) && @taxiIdFound
-    @twitterHandle_ok = !@twitterHandle.nil? && @twitterHandle != "" && @twitterHandleFound
+    @userId_ok = isPositiveNumber?(@userId) && @userIdFound
+    @twitterHandle_ok = !@twitterHandle.nil? && @twitterHandle != ""
 	@dateTime_ok = !@dateTime.nil? && @dateTime != ""
 	@startLocation_ok = !@startLocation.nil? && @startLocation != ""
 	@endLocation_ok = !@endLocation.nil? && @endLocation != ""
 	@freeRide_ok = @freeRide == '0' || @freeRide == '1'
 	@cancelled_ok = @cancelled == '0' || @cancelled == '1'
-	@rating_ok = @rating == '' || @rating == '0' || @rating == '1' || @rating == '2' || @rating == '3' || @rating == '4' || @rating == '5'
+	@rating_ok = @rating == '0' || @rating == '1' || @rating == '2' || @rating == '3' || @rating == '4' || @rating == '5'
 	@convoLink_ok =	!@convoLink.nil? && @convoLink != ""
 
 	@all_ok = @taxiId_ok && @twitterHandle_ok && @dateTime_ok && @startLocation_ok && @endLocation_ok && @freeRide_ok && @cancelled_ok && @rating_ok && @convoLink_ok
 
     # add data to the database
     if @all_ok# do the insert
-		$db.execute("UPDATE journeys SET taxi_id = '#{@taxiId}' WHERE id='#{@id}'")
+        $db.execute("UPDATE journeys SET taxi_id = '#{@taxiId}' WHERE id='#{@id}'")
 		$db.execute("UPDATE journeys SET user_id = '#{@userId}' WHERE id='#{@id}'")
 		$db.execute("UPDATE journeys SET twitter_handle = '#{@twitterHandle}' WHERE id='#{@id}'")
 		$db.execute("UPDATE journeys SET date_time = '#{@dateTime}' WHERE id='#{@id}'")
@@ -527,69 +533,4 @@ post '/addFeedback' do
         $db.execute('INSERT INTO feedback VALUES (?, ?, ?, ?, ?, ?)', [@id, @journey_id, @user_id, @date_time, @feedback, @rating])
     end
     erb :addFeedbackMain
-<<<<<<< HEAD
 end
-
-post '/addJourneySettings' do
-	redirect '/index' unless session[:admin]
-
-	#get journey table from the database
-	@journeyInfo = $db.execute("SELECT * FROM journeys")
-
-    @submitted = true
-
-    #sanitize values
-	@taxiId = params[:taxiId].strip
-	@userId = params[:userId].strip
-	@twitterHandle = params[:twitterHandle].strip
-	@dateTime = params[:dateTime].strip
-	@startLocation = params[:startLocation].strip
-	@endLocation = params[:endLocation].strip
-	@freeRide = params[:freeRide].strip
-	@cancelled = params[:cancelled].strip
-	@rating = params[:rating].strip
-	@convoLink = params[:convoLink].strip
-    
-    #looping to check for every id/name whether they are in the database
-    @taxiTbl = $db.execute %{SELECT id FROM taxis}
-    @taxiIdFound = false
-    @taxiTbl.each do |record| #Go through each user record
-        if record[0] == @taxiId.to_i   #If uid = id then:
-            @taxiIdFound = true #Boolean found is true (record is already there)
-        end
-    end
-
-    @twitterHandleTbl = $db.execute %{SELECT name FROM users}
-    @twitterHandleFound = false
-    @twitterHandleTbl.each do |record| #Go through each user record
-        if record[0] == @twitterHandle #If uid = id then:
-            @twitterHandleFound = true #Boolean found is true (record is already there)
-        end
-    end
-
-	# perform validation
-	#taxiID and userID and twitterHandle needs better validation!!!!!
-	@taxiId_ok = isPositiveNumber?(@taxiId) && @taxiIdFound
-    @twitterHandle_ok = !@twitterHandle.nil? && @twitterHandle != "" && @twitterHandleFound
-	@dateTime_ok = !@dateTime.nil? && @dateTime != ""
-	@startLocation_ok = !@startLocation.nil? && @startLocation != ""
-	@endLocation_ok = !@endLocation.nil? && @endLocation != ""
-	@freeRide_ok = @freeRide == '0' || @freeRide == '1'
-	@cancelled_ok = @cancelled == '0' || @cancelled == '1'
-	@rating_ok = @rating == '' || @rating == '0' || @rating == '1' || @rating == '2' || @rating == '3' || @rating == '4' || @rating == '5'
-	@convoLink_ok =	!@convoLink.nil? && @convoLink != ""
-
-	@all_ok = @taxiId_ok && @twitterHandle_ok && @dateTime_ok && @startLocation_ok && @endLocation_ok && @freeRide_ok && @cancelled_ok && @rating_ok && @convoLink_ok
-
-	@id = @journeyInfo[@journeyInfo.length-1][0].to_i + 1
-    # add data to the database
-    if @all_ok
-		# do the insert
-		$db.execute('INSERT INTO journeys VALUES (?, ?, ?, ?, ?, ? ,?, ?, ?, ?, ?)', [@id, @taxiId, @userId, @twitterHandle, @dateTime, @startLocation, @endLocation, @freeRide, @cancelled, @rating, @convoLink])
-    end
-
-	erb :addJourneySettingsMain
-end
-=======
-end
->>>>>>> f028aa7ac6b96a80eafa87f55b8cc446350bd628
