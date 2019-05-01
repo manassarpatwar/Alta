@@ -16,7 +16,9 @@ task :addcallback do
   STDOUT.puts "This task requires the user to be running from codio. Proceed? [Y/n]"
   proceed = STDIN.gets.strip
   if proceed == "y" || proceed == "Y" then
-    driver = Selenium::WebDriver.for :chrome
+    options = Selenium::WebDriver::Chrome::Options.new
+    options.add_argument('--headless')
+    driver = Selenium::WebDriver.for :chrome, options: options
     host = Socket.gethostname
     #Sign in to twitter
     driver.navigate.to "http://twitter.com/login"
@@ -28,6 +30,7 @@ task :addcallback do
     
     #Edit app callback url
     driver.navigate.to "https://developer.twitter.com/en/apps/16126309"
+    sleep 5
     edit = driver.find_element(class: "page-title-bar").find_element(class: "dropdown-button").click
 
     editdetails = driver.find_element(id: "feather-dropdown-7-menu-item-content-0").click
