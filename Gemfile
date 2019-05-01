@@ -13,5 +13,6 @@ source 'https://rubygems.org' do
   gem 'simplecov'
   gem 'selenium-webdriver'
   gem 'puma'
+  gem "chartkick"
   gem 'csv'
 end

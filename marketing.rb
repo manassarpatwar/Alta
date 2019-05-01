@@ -1,12 +1,3 @@
-require 'erb'
-require 'sinatra'
-require 'twitter'
-require 'rufus-scheduler'
-
-set :bind, '0.0.0.0' # needed if you're running from Codio
-
-include ERB::Util
-
 before do
     marketingConfig = {
         :consumer_key => 'DjSQ85AGsA2oFDoELKGiQlqe9',
