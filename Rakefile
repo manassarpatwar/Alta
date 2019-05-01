@@ -19,8 +19,6 @@ task :installprereq do
   `\curl -sSL https://get.rvm.io | bash -s stable --ruby`
   puts "Installing ruby 2.6.0"
   `source /home/codio/.rvm/scripts/rvm upgrade 2.6.0`
-  puts "Installing gems"
-  `bundle install`
   puts "Installing chromedriver"
   `sudo cp chromedriver /bin`
   `sudo apt-get install chromium-chromedriver`
