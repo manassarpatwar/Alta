@@ -16,14 +16,14 @@ task :addcallback do
   STDOUT.puts "This task requires the user to be running from codio. Proceed? [Y/n]"
   proceed = STDIN.gets.strip
   if proceed == "y" || proceed == "Y" then
-    options = Selenium::WebDriver::Chrome::Options.new
-    options.add_argument('--headless')
-    driver = Selenium::WebDriver.for :chrome, options: options
+#    options = Selenium::WebDriver::Chrome::Options.new
+#    options.add_argument('--headless')
+    driver = Selenium::WebDriver.for :chrome #options: options
     host = Socket.gethostname
     #Sign in to twitter
     driver.navigate.to "http://twitter.com/login"
     username = driver.find_element(class: 'js-username-field')
-    username.send_keys "ise19team29"
+    username.send_keys "tbtonner1@sheffield.ac.uk"
     password = driver.find_element(class: 'js-password-field')
     password.send_keys "SoftEng2019"
     password.submit
@@ -37,7 +37,8 @@ task :addcallback do
 
     add =  driver.find_element(class: 'addButton')
     add.click
-    addUrl =  driver.find_element(name: 'callbackUrls[7].url')
+    addUrl =  driver.find_element(name: 'callbackUrls[0].url')
+    addUrl.clear
     addUrl.send_keys "http://#{host}-4567.codio.io/auth/twitter/callback"
     save = driver.find_element(class: 'Button--primary')
     save.click
