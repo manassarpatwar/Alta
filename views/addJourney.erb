@@ -101,11 +101,6 @@
       <input type="submit" value="Submit" class = "add_journey_submitButton" id = "add_journey_submit"/>
   </form>
 <script>
-  if(ready){
-    setTimeout(fade_out, 10000);
-    function fade_out() {
-      $("#journeyAddedMsg").fadeOut().empty();
-    }
     $( "#journeyForm" ).submit(function( event ) {
 
       // Stop form from submitting normally
@@ -146,6 +141,5 @@
         }
       });
     });
-  }
 </script>
 <script src="js/jquery.min.js"></script>
