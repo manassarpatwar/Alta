@@ -95,7 +95,7 @@ post '/deleteTweet' do
     erb :tweetActions
 end
 
-post '/addJourneyDashboard' do
+post '/addJourney' do
 	redirect '/index' unless session[:admin]
 
 	#get journey table from the database
@@ -147,7 +147,7 @@ post '/addJourneyDashboard' do
             end
         end
   	end
-    erb :addJourneyDashboard
+    erb :addJourney
 end
 
 post '/addToAvailable' do
@@ -194,5 +194,5 @@ post '/fillInfoInJourney' do
     end
     @cancelled = 0
 	@convoLink = params[:convoLink].strip
-    erb :addJourneyDashboard
+    erb :addJourney
 end
