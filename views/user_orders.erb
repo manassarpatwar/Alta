@@ -41,32 +41,34 @@
         <div class="summaryTitle">summary</div>
         <div class="separation1"></div>
 
+      <!--Deals Indicator-->
+      <div class="dealsText"><span style="color:rgb(250, 221, 76)"><%=h @ridesUntilDeal %> </span>rides until next deal!</div>
+        <div class="dealsContainer">
+          <div class="dealsIndicator"  style="width:<%=h @percentageDeal %>%"></div>
+          <% @percentageDeal2 = 100-@percentageDeal %>
+          <div class="dealsIndicator2"  style="width: <%=h @percentageDeal2 %>%"></div>
+        </div>
+
       <!--Summary Content-->
         <div class="summaryRow">
-          <div class="ridesTypeSummary">
+          <div class="ridesTypeSummary summaryColumnLeft">
             <div class="rideTypeContainer">
               <p class="rideTypeContent"> Total Rides</p>
                 <h3><%=h @totalRides %></h3>
             </div>
           </div>
-          <div class="ridesTypeSummary">
+          <div class="ridesTypeSummary summaryColumnMid">
+          <div class="rideTypeContainer">
+            <p class="rideTypeContent">Our Deals</p>
+              <p class="dealsContent"> <span style="color:rgb(255, 232, 118);"><%=h $rideDeal%> </span>Rides for a Free Ride!</p>
+          </div>
+        </div>
+          <div class="ridesTypeSummary summaryColumnLeft">
             <div class="rideTypeContainer">
               <p class="rideTypeContent">Free Rides taken</p>
                 <h3><%=h @freeRides %></h3>
             </div>
           </div>
-          <div class="ridesTypeSummary sumcolumn5">
-            <div class="rideTypeContainer">
-              <p class="rideTypeContent">Cancelled Rides</p>
-                <h3> <%=h @cancelledRides%></h3>
-            </div>
-          </div>
-        </div>
-
-    <!--Deals Indicator-->
-        <div class="dealsContainer">
-          <div class="remainingRides"><%=h @ridesUntilDeal %> more ride for a free one!</div>
-          <div class="iconBox"> <i class='fas fa-taxi taxiIcon'></i></div>
         </div>
       </div>
     </div>
@@ -147,7 +149,7 @@
         
   <!--View1: Table Version-->
     <% unless @results.nil? %>
-      <% if @results.length == 0 %> <p style="text-align:center;"> no results found </p> 
+      <% if @results.length == 0 %> <p style="text-align:center ;font-size:17px;"> no results found </p> 
       <% else %>
         <div id="view1">
           <% @results.each do |record| %>
@@ -226,7 +228,7 @@
 
       
 
-    <div class="separation" style="height:100px;"></div>  
+    <div class="separation" style="height:90px;"></div>  
 
   <!--General Overall Feebacks-->
     <div class="generalReviewBox container">
@@ -237,7 +239,7 @@
         <div class="generalFeedBackText"> 
           <input type="text" class="generalFeedBack" name="newReview" value="<%=h params[:genreralFeedBack] %>" placeholder="Give us general feedbacks on our service!">
         </div>
-        <p style="display:inline;"> Rating: </p>
+        <p style="display:inline; font-weight:200; letter-spacing:2px;"> RATING: </p>
         <input type="submit" onclick="myRating1()" id="rate1" class="fa fa-star generalRate" name="generalRating" value="1">
         <input type="submit" onclick="myRating2()" id="rate2" class="fa fa-star generalRate" name="generalRating" value="2">
         <input type="submit" onclick="myRating3()" id="rate3" class="fa fa-star generalRate" name="generalRating" value="3">

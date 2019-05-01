@@ -14,14 +14,12 @@ end
 #    redirect '/index' unless session[:loggedin]
 #    erb :user_account
 #end
-
 get'/userOrders' do
     @totalRides = 0
     @freeRides = 0
-    @cancelledRides = 0
+    @freeDeal = Hash.new()
     @db2 = $db.execute("SELECT * FROM journeys WHERE user_id =  '#{session[:id]}' AND free_ride = 0")
     @db3 = $db.execute("SELECT * FROM journeys WHERE user_id =  '#{session[:id]}' AND free_ride = 1")
-    @db4 = $db.execute("SELECT * FROM journeys WHERE user_id =  '#{session[:id]}' AND cancelled = 1")
 
     @db2.each do |ride|
         @totalRides+=1
@@ -29,25 +27,26 @@ get'/userOrders' do
     @db3.each do |ride|
         @freeRides+=1
     end
-    @db4.each do |ride|
-        @cancelledRides+=1
-    end
 
     @temp = @totalRides % $rideDeal
     @ridesUntilDeal = $rideDeal - @temp
+    @percentageDeal = (@totalRides.to_f / $rideDeal.to_f)*100
+
+    @freeDeal["Rides Until Deal"] = @ridesUntilDeal
+    # @freeDeal["You need"] = $rideDeal
 
     redirect '/index' unless session[:loggedin]
     if params[:search].nil? || params[:search] == "" || params[:column == "none"] then
         @results = $db.execute("SELECT * FROM journeys WHERE user_id =  '#{session[:id]}'")
       if params[:column] == 'all'
           @results = $db.execute("SELECT * FROM journeys WHERE user_id =  '#{session[:id]}'")
-      elsif params[:allAlltype]
+      elsif params[:rideType] == "All"
           @results = $db.execute("SELECT * FROM journeys WHERE user_id = '#{session[:id]}'") 
-      elsif params[:paidtype]
+      elsif params[:rideType] == "Paid"
           @results = $db.execute("SELECT * FROM journeys WHERE user_id = '#{session[:id]}' AND free_ride = 0") 
-      elsif params[:freetype]
+      elsif params[:rideType] == "Free"
           @results = $db.execute("SELECT * FROM journeys WHERE user_id = '#{session[:id]}' AND free_ride = 1") 
-      elsif params[:cancelledtype]
+      elsif params[:rideType] == "Cancelled"
           @results = $db.execute("SELECT * FROM journeys WHERE user_id = '#{session[:id]}' AND cancelled = 1") 
       elsif params[:column] == "none" 
           @results = ""
@@ -82,7 +81,6 @@ post'/addReview' do
     @rating  = params[:generalRating]
     # @generalFeedBack = params[:generalFeedBack]
 
-
     #get feedback table from the database
 	@feedbackInfo = $db.execute("SELECT * FROM feedback")
 
@@ -97,7 +95,5 @@ post'/addReview' do
 		# do the insert
         $db.execute('INSERT INTO feedback VALUES (?, ?, ?, ?, ?, ?)', [@id, @journey_id, session[:id], @date_time, @feedback, @rating])
     end
-     
-
     redirect '/userOrders'
 end
