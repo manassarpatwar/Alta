@@ -411,7 +411,7 @@ get '/addFeedback' do
 end
 
 # add journey
-get '/addJourney' do
+get '/addJourneySettings' do
 	redirect '/index' unless session[:admin]
 
 	erb :addJourneySettingsMain

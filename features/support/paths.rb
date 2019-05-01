@@ -16,7 +16,7 @@ module NavigationHelpers
       '/addUser'
     when /the addTaxi\s?page/
       '/addTaxi'
-    when /the addJourney\s?page/
+    when /the addJourneySettings\s?page/
       '/addUser'
     when /the addFeedback\s?page/
       '/addFeedback'
