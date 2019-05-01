@@ -16,18 +16,19 @@ end
 #end
 
 get'/userOrders' do
-    totalRide = 0
-    
-    for $db.each do |ride|
-        totalRide+=0
+    @totalRide = 1
+    @dbforID = $db.execute("SELECT * FROM journeys WHERE user_id =  '#{session[:id]}'")
+
+    @dbforID.each do |record|
+        @totalRide+=0
     end
-puts totalRide
+    puts @totalRide
 
     @ridesUntilFree = 1
 
     redirect '/index' unless session[:loggedin]
     if params[:search].nil? || params[:search] == "" || params[:column == "none"] then
-        @results = $db.execute("SELECT * FROM journeys WHERE user_id =  '#{session[:id]}'")
+          @results = $db.execute("SELECT * FROM journeys WHERE user_id =  '#{session[:id]}'")
       if params[:column] == 'all'
           @results = $db.execute("SELECT * FROM journeys WHERE user_id =  '#{session[:id]}'")
       elsif params[:allAlltype]
