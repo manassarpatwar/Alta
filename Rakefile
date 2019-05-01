@@ -11,6 +11,22 @@ task :wipedb do
   `ruby wipeDatabase.rb`
 end
 
+desc "Install all prerequisites"
+task :installprereq do
+  puts "Installing prerequisites"
+  puts "Installing rvm"
+  `gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB`
+  `\curl -sSL https://get.rvm.io | bash -s stable --ruby`
+  puts "Installing ruby 2.6.0"
+  `source /home/codio/.rvm/scripts/rvm upgrade 2.6.0`
+  puts "Installing gems"
+  `bundle install`
+  puts "Installing chromedriver"
+  `sudo cp chromedriver /bin`
+  `sudo apt-get install chromium-chromedriver`
+  `sudo apt-get install libnss3-dev`
+end
+
 desc "Add callback url in twitter"
 task :addcallback do
   STDOUT.puts "This task requires the user to be running from codio. Proceed? [Y/n]"
