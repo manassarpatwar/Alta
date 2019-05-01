@@ -46,19 +46,36 @@
           <div class="ridesTypeSummary">
             <div class="rideTypeContainer">
               <p class="rideTypeContent">Total Ride</p>
-              <h3>5</h3>
+                <% totalR =0%>
+                <% @results.each do |record| %>
+                  <% totalR+=1 %>
+                <%end%>
+                <p><% puts --totalR %> </p>
+                <h3> <%=h totalR%></h3>
             </div>
           </div>
           <div class="ridesTypeSummary">
             <div class="rideTypeContainer">
               <p class="rideTypeContent">Free Rides taken</p>
-              <h3>5</h3>
+                <% freeR =0%>
+                <% @results.each do |record| %>
+                  <% if record[7]==0%>
+                    <% freeR+=1 %>
+                  <%end%>
+                <%end%>
+                <h3> <%=h freeR%></h3>
             </div>
           </div>
           <div class="ridesTypeSummary sumcolumn5">
             <div class="rideTypeContainer">
               <p class="rideTypeContent">Cancelled Rides</p>
-              <h3>5</h3>
+                <% canlR =0%>
+                <% @results.each do |record| %>
+                  <% if record[8]==0%>
+                    <% freeR+=1 %>
+                  <%end%>
+                <%end%>
+                <h3> <%=h canlR%></h3>
             </div>
           </div>
         </div>
