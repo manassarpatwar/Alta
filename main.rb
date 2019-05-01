@@ -16,14 +16,25 @@ end
 #end
 
 get'/userOrders' do
-    @totalRide = 0
-    @db2 = $db.execute("SELECT * FROM journeys WHERE user_id =  '#{session[:id]}'")
-    @db2.each do |ride|
-        @totalRide+=0
-    end
-    puts @totalRide
+    @totalRides = 0
+    @freeRides = 0
+    @cancelledRides = 0
+    @db2 = $db.execute("SELECT * FROM journeys WHERE user_id =  '#{session[:id]}' AND free_ride = 0")
+    @db3 = $db.execute("SELECT * FROM journeys WHERE user_id =  '#{session[:id]}' AND free_ride = 1")
+    @db4 = $db.execute("SELECT * FROM journeys WHERE user_id =  '#{session[:id]}' AND cancelled = 1")
 
-    @ridesUntilFree = 1
+    @db2.each do |ride|
+        @totalRides+=1
+    end
+    @db3.each do |ride|
+        @freeRides+=1
+    end
+    @db4.each do |ride|
+        @cancelledRides+=1
+    end
+
+    @temp = @totalRides % $rideDeal
+    @ridesUntilDeal = $rideDeal - @temp
 
     redirect '/index' unless session[:loggedin]
     if params[:search].nil? || params[:search] == "" || params[:column == "none"] then

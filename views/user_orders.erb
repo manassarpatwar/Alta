@@ -45,44 +45,27 @@
         <div class="summaryRow">
           <div class="ridesTypeSummary">
             <div class="rideTypeContainer">
-              <p class="rideTypeContent">Total Rides</p>
-                <% totalR =0%>
-                <% @results.each do |record| %>
-                  <% totalR+=1 %>
-                <%end%>
-                <p><% puts --totalR %> </p>
-                <h3> <%=h totalR%></h3>
+              <p class="rideTypeContent"> Total Rides</p>
+                <h3><%=h @totalRides %></h3>
             </div>
           </div>
           <div class="ridesTypeSummary">
             <div class="rideTypeContainer">
               <p class="rideTypeContent">Free Rides taken</p>
-                <% freeR =0%>
-                <% @results.each do |record| %>
-                  <% if record[7]==0%>
-                    <% freeR+=1 %>
-                  <%end%>
-                <%end%>
-                <h3> <%=h freeR%></h3>
+                <h3><%=h @freeRides %></h3>
             </div>
           </div>
           <div class="ridesTypeSummary sumcolumn5">
             <div class="rideTypeContainer">
               <p class="rideTypeContent">Cancelled Rides</p>
-                <% canlR =0%>
-                <% @results.each do |record| %>
-                  <% if record[8]==0%>
-                    <% freeR+=1 %>
-                  <%end%>
-                <%end%>
-                <h3> <%=h canlR%></h3>
+                <h3> <%=h @cancelledRides%></h3>
             </div>
           </div>
         </div>
 
     <!--Deals Indicator-->
         <div class="dealsContainer">
-          <div class="remainingRides">1 more ride for a free one!</div>
+          <div class="remainingRides"><%=h @ridesUntilDeal %> more ride for a free one!</div>
           <div class="iconBox"> <i class='fas fa-taxi taxiIcon'></i></div>
         </div>
       </div>
