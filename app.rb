@@ -10,6 +10,7 @@ require 'omniauth-twitter'
 require 'sqlite3'
 require 'chartkick'
 require 'csv'
+require 'socket'
 #require_relative 'createDatabase.rb'
 require_relative 'editDatabases.rb'
 require_relative 'dashboard.rb'
@@ -17,6 +18,8 @@ require_relative 'main.rb'
 require_relative 'login.rb'
 require_relative 'marketing.rb'
 require_relative 'analytics.rb'
+
+puts "#{Socket.gethostname}"
 
 set :bind, '0.0.0.0' # Needed when running from Codio
 include ERB::Util #Ensure ERB is enabled
