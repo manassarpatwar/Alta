@@ -16,6 +16,7 @@ require_relative 'dashboard.rb'
 require_relative 'main.rb'
 require_relative 'login.rb'
 require_relative 'marketing.rb'
+require_relative 'analytics.rb'
 
 set :bind, '0.0.0.0' # Needed when running from Codio
 include ERB::Util #Ensure ERB is enabled
@@ -39,7 +40,7 @@ configure do
     begin
       File.read("taxi_db.sqlite")
     rescue
-      abort("Database not found... \nExiting\nTip: Run createDatabase.rb")
+      abort("Database not found... \nExiting\nTip: Run createDatabase.rb (ruby createDatabase.rb)")
     end
     $db = SQLite3::Database.new 'taxi_db.sqlite'
     #$db = SQLite3::Database.new 'taxi_database.sqlite'
