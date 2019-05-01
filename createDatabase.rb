@@ -1,3 +1,6 @@
+require 'sqlite3'
+require 'csv'
+
 csv_text_feedback = File.read("public/csv/feedback.csv")
 csvFeedback = CSV.parse(csv_text_feedback, :headers => true)
 
@@ -28,20 +31,20 @@ SQL
 DB.execute <<-SQL
   CREATE TABLE "feedback" (
 	"id"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
-	"journey_id"	INTEGER NOT NULL,
-	"user_id"	INTEGER NOT NULL,
+	"journey_id"	INTEGER,
+	"user_id"	TEXT NOT NULL,
 	"date_time"	TEXT NOT NULL,
 	"feedback"	TEXT NOT NULL,
     "rating" INTEGER,
-	FOREIGN KEY("journey_id") REFERENCES "journeys"("id"),
 	FOREIGN KEY("user_id") REFERENCES "users"("id")
   );
 SQL
+
 DB.execute <<-SQL
   CREATE TABLE "journeys" (
       "id"	INTEGER NOT NULL UNIQUE,
       "taxi_id"	INTEGER NOT NULL,
-      "user_id"	INTEGER NOT NULL,
+      "user_id"	TEXT NOT NULL,
       "twitter_handle"	TEXT NOT NULL,
       "date_time"	TEXT NOT NULL,
       "start_location"	TEXT NOT NULL,
@@ -58,14 +61,14 @@ SQL
 DB.execute <<-SQL
   CREATE TABLE "taxis" (
 	"id"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
-	"reg_num"	INTEGER NOT NULL UNIQUE,
-	"contact_num"	INTEGER NOT NULL UNIQUE,
+	"reg_num"	TEXT NOT NULL UNIQUE,
+	"contact_num"	TEXT NOT NULL UNIQUE,
 	"taxi_type"	TEXT NOT NULL
 , city STRING, available INTEGER);
 SQL
 DB.execute <<-SQL
   CREATE TABLE "users" (
-	"id"	INTEGER NOT NULL UNIQUE,
+	"id"	TEXT NOT NULL UNIQUE,
 	"name"	TEXT NOT NULL,
 	"signup_date"	TEXT NOT NULL,
 	"user_type"	INTEGER NOT NULL,

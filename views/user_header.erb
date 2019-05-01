@@ -1,21 +1,15 @@
 <div id="accSnav" class="accnavbar-top">        
 
-<div class="nav-column logo" style="text-align: center;">
-  <div class="nav-cont">
-  </div>
-</div>        
+<div class="navLeftColumn"></div>        
 
-<div class="nav-column2 nav-column" id="RespHeader">
-  <div class="nav-cont">
-    <a href = "/index">
-      <img class="nav-logo" src="img/alta.png">
-      
-    </a>
+<div class="nav-column2 navColumn">
+  <div class="navContent">
+    <a href = "/index"> <img class="nav-logo" src="img/alta.png"> </a>
   </div>
 </div>
 
-<div class="nav-column">
-  <div class="nav-cont">
+<div class="navColumn">
+  <div class="navContent">
     <%if !session[:loggedin] %>
       <div class=" nav-signin nav-inline2 ">
           <a href="/login">Log In</a>
@@ -26,25 +20,23 @@
       <a href="/logout"> <i class="fa fa-sign-out" style="font-size:13px; color:grey"></i></a>
       </div>
     <% else %>
-     <div class=" nav-inline2 nav-signin" style="float: right; margin-right:20px; margin-left: 0;">
-      <!--<a href="/dashboard" style="font-size:11px;">MY ORDERS | </a> -->
-
-      <a style="font-size:11px; text-transform: uppcase">
-        <button class="deleteAccBut" onclick="document.getElementById('id01').style.display='block'">EDIT ACCOUNT |</button>
-          <div id="id01" class="modal">
-            <form class="modal-content animate" action="/action_page.php">
-              <div class="imgcontainer">
-                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-              </div>
+    <!--Delete Account Button-->
+     <div class=" nav-inline2 nav-signin">
+      <a>
+        <button class="editAccButton" onclick="document.getElementById('deleteAccBox').style.display='block'">EDIT ACCOUNT |</button>
+          <div id="deleteAccBox" class="modal">
+            <form class="delAccForm deleteAccAnimate" action="/deleteAccount">
+              <span class="closeIcon" onclick="document.getElementById('deleteAccBox').style.display='none'">&times;</span>
               <div class="delAccContainer">
-                <button type="submit">Delete Account</button>
-                    <span class="psw"><a href="#"> delete account policy</a></span>
+                <p class="delAccMessage">Are you sure?</p>
+              </div>
+              <div class="delAccButton">
+                <input type="submit" name="deleteAcc" value="Yes I'm Sure, Delete My Account">
               </div>
             </form>
           </div>
-      
       </a>
-     <a href="/logout"> <i class="fa fa-sign-out" style="font-size:13px; color:grey; float:right; padding-top:10px;"></i></a>
+     <a href="/logout"> <i class="fa fa-sign-out" style="font-size:13px; color:grey; padding-top:10px;"></i></a>
       </div>
     <% end %>
   </div>
@@ -52,6 +44,3 @@
 <a href="javascript:void(0);" class="nav-Icon" onclick="myResponsiveHeader()">
   <div class="nav-respIcon"> &#9776; </div> </a>
 </div>
-
-
-

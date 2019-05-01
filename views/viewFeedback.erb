@@ -1,0 +1,35 @@
+<h2>Feedback table</h2>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Journey ID</th>
+        <th>User ID</th>
+        <th>Date Time</th>
+        <th>Feedback</th>
+        <th>Rating</th>
+        <th>Edit Record</th>
+        <th>Delete Record</th>
+    </tr>
+    <% unless @feedbackInfo.nil? %>
+        <% @feedbackInfo.each do |feedback| %>
+        <tr>
+            <td><%=h feedback[0] %></td>
+            <td><%=h feedback[1] %></td>
+            <td><%=h feedback[2] %></td>
+            <td><%=h feedback[3] %></td>
+            <td><%=h feedback[4] %></td>
+            <td><%=h feedback[5] %></td>
+            <td><a href='editFeedback/<%=h feedback[0] %>'>Edit</a></td>
+            <td>
+              <form method = "post" action = "/deleteFromTable" style = "margin:0;">
+                  <input type = "hidden" name = "table" value = "feedback" />
+                  <input type = "hidden" name = "id" value = "<%=h feedback[0] %>" />
+                  <input type="submit" value="Delete"  onclick="return confirm('Are you sure you want to delete this record?');" style = "background:none; border:none; color:#0088cc; outline:none"/>
+              </form>
+            </td>
+        </tr>
+        <% end %>
+    <% end %>
+</table>
+
+<p>To add a new feedback click <a href="/addFeedback">here</a>.</p>

@@ -1,3 +1,5 @@
+document.getElementById('date').innerHTML = new Date().toDateString();
+
 //Filtable Search Bar
 function myFunction() {
   var input, filter, table, tr, td, i, txtValue;
@@ -27,9 +29,30 @@ function myView1() {
     y.style.display = "block";
 }
 function myView2() {
-	x.style.display = "table";
+	x.style.display = "block";
 	y.style.display = "none";
 }
+
+
+// //Create Local Storage for table databse
+// var bgColor = document.getElementById('viewButton1');
+// bgColor.onclick = function() {
+//     y.style.display = "block";
+//     x.style.display = "none";
+//     localStorage.setItem('bgColor', block);
+//     localStorage.setItem('bgColor', block);
+// };
+// bgColor.value = localStorage.getItem('bgColor');
+// bgColor.onclick();
+
+// var bgColor2 = document.getElementById('viewButton2');
+// bgColor2.onclick = function() {
+//       y.style.display = "none";
+//       x.style.display = "table";
+//       localStorage.setItem('bgColor2', block);
+// };
+// bgColor2.value = localStorage.getItem('bgColor2');
+// bgColor2.onclick();
 
 //User manual ratings
 var a = document.getElementById("rate1");
@@ -92,21 +115,35 @@ function myRating5(){
 
 
 //Delete account
-var modal = document.getElementById('id01');
-// When the user clicks anywhere outside of the modal, close it
+var modal = document.getElementById('deleteAccBox');
+
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
 }
 
-// var select = document.getElementById("filterList");
-// var selectedItem = select.options[select.selectedIndex].value;
-// createCookie("selectedItem",selectedItem);
+//Create Local Storage for selection 
+var select = document.querySelector(".selectStorage");
+var selectOption = select.options[select.selectedIndex];
+var lastSelected = localStorage.getItem('select');
 
-// var selectedItem = readCookie("selectedItem");
-// var select = document.getElementById("filterList");
-// select.value = selectedItem;
+if(lastSelected) {
+    select.value = lastSelected; 
+}
 
+select.onchange = function () {
+   lastSelected = select.options[select.selectedIndex].value;
+   console.log(lastSelected);
+   localStorage.setItem('select', lastSelected);
+}
 
+//Stay on table after submitted form
+// function goToTable(reload)
+//    {
+//     window.location.hash = '#tableSection';
+//     window.location.reload(true);
+//    }
+  window.location.hash = '#tableSection';
 
+   

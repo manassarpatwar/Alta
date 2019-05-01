@@ -26,13 +26,17 @@
 .greetingColumn{
     float:left;
     width: 65%;
-    height:50px;
+    height:100%;
     margin-top: 20px;
 }
 .greetingContent{
-    font-size:18px;
+    font-size:16px;
     padding-top:15px;
     height:100%;
+    font-size: 15px;
+    letter-spacing: 15px;
+    text-transform: uppercase;
+    width: 120%;
 }
 .dateColumn{
     float:left;
@@ -42,7 +46,7 @@
     margin-top:20px;
 }
 .dateContent{
-    padding-top:15px;
+    padding-top:30px;
     float:right;
 }
 .separation1{
@@ -57,6 +61,7 @@
     font-size:45px;
     text-align:center;
     text-transform: uppercase;
+    letter-spacing:40px;
 }
 .ridesTypeSummary {
     float: left;
@@ -71,7 +76,13 @@
     text-align: center;
     background-color: rgba(236, 236, 236, 0);
     color: white;
-    height: 100%;
+    height: 90%;
+    margin-top:10px;
+}
+.rideTypeContent{
+    padding-top:20px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
 }
 .dealsContainer{
     width: 100%;
@@ -102,12 +113,18 @@
     color: rgb(255, 232, 118);
 }
 
-/* Section2: Types of Views Buttons */
-.searchBarRow:before{
-    content: "";
-    display: table;
-    clear: both;
+/* History Title */
+.historyTitle{
+    font-size:45px;
+    color:black;
+    text-align:center;
+    margin:80px;
+    text-transform:uppercase;
+    margin-bottom:10px;
+    letter-spacing:40px;
 }
+
+/* Section2: Types of Views Buttons */
 .container{
     width: 75%;
     background-color: #ffffff;
@@ -116,12 +133,13 @@
 }
 .tableTypeBox{
     float:left;
-    width: 50%;
-    padding-top:25px;
+    padding-top:20px;
+    margin-bottom:5px;
 }
 .tableTypeTitle{
     font-size:15px;
     display: inline;
+    letter-spacing: 2px
 }
 .inline{
     display:inline-block;
@@ -146,26 +164,34 @@
 /* Section3: Fitable Search Bar */
 .searchBarContainer{
     border-radius: 5px 5px 0 0;
-    height:50px;
+    margin-bottom:10px;
+    padding-left:0;
 }
 #filterList{
     width: 140px;
     padding-top: 5px;
     padding-bottom: 4px;
-    width: 200px;
+    width: 22%;
+}
+.searchBar{
+    width: 60%;
 }
 
 /* Section4: Types of Rides Button */
 .rideTypesContainer{
-    border-bottom:5px solid rgb(117, 117, 117);
+    border-bottom:3px solid rgb(117, 117, 117);
     padding-bottom: 10px;
+    margin-top:50px;
+    text-align:center;
 } 
 .rideTypeButton{
-    width:10%;
+    width:20%;
     border: none;
-    color:rgb(136, 136, 136);
+    color:rgb(94, 93, 93);
     background-color:white;
-    font-style: underline;
+    font-size:13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
 }
 .rideTypeButton:hover{
     color:rgb(66, 66, 66);
@@ -174,7 +200,7 @@
 /* Section5: Order History */
 /* View1:Table version */
 table{
-    margin-top:5%;
+    margin-top:2%;
     border: 0.5px solid rgb(206, 204, 204);
 }
 #view1{
@@ -197,9 +223,13 @@ table{
     padding-left:30px;
     font-size:25px;
 }
-.tableRate::before{
+.tableRate{
     content:"";
     float:right;
+    margin-right:20px;
+}
+.ratingText{
+    display:block;
 }
 .tableBox{
     background-color:#ffffff;
@@ -222,6 +252,7 @@ table{
     text-transform: uppercase;
     font-size:14px;
     padding-bottom:10px;
+    letter-spacing: 2px
 }
 .writeReview, .reviewSumbit{
     margin-left:12.5%;
@@ -251,325 +282,269 @@ table{
     margin-top: 50px; 
     display:inline;
     height:10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 13px;
 }
-
 
 /* View2: Database Version */
 #view2{
     display:none;
+    border-collapse: collapse;
+    overflow-x: auto;
+    padding:0;
 }
 .databaseHeader{
     background-color: rgb(194, 194, 194);
 }
 .databaseCell{
     padding:10px;
+    width: 10%;
 }
 
-
-
-
-
-
-
-
-
-
-  /* Search bar */
-  #myInput{
-    width: 25%;
+/* Responsive */
+@media only screen and (max-width:1127px){
+    .dateContent{
+        padding-top: 40px;
+    }
 }
 
+@media only screen and (max-width:1000px){
+    .searchBar {
+      display:block;
+      width:100%;
+      margin: 5px 0;
+    }
+    #filterList{
+        width:200px;
+    }
+}
+@media only screen and (max-width:780px){
+    .summaryTitle{
+        font-size:40px;
+    }
+    .taxiIcon{
+        font-size:30px;
+    }
+    .rideTypeButton{
+        width: auto;
+    }
+    .rideTypeContent{
+        font-size:12px;
+    }
+}
+@media only screen and (max-width:720px){
+    .summaryTitle{
+        font-size:35px;
+        height:80px;
+        letter-spacing: 30px
+    }
+}
+@media only screen and (max-width:670px){
+    .taxiIcon{
+        margin-top:-40px;
+    }
+}
+@media only screen and (max-width:690px){
+    .rideTypeContainer{
+        height:50%;
+        margin-left: 20px;
+    }
+    .ridesTypeSummary{
+        float: none;
+        width:100%;
+        height:100%;
+    }
+    .rideTypeContent{
+        float:left;
+    }
+    .greetingContent{
+        width: 110%;
+        font-size:15px;
+        letter-spacing: 4px;
+    }
+    .dateContent{
+        padding-top:30px;
+        width: 150%;
+        float: left;
+    }
+}
+@media only screen and (max-width:590px){
+    .summaryTitle{
+        height:60px;
+        letter-spacing: 30px
+    }
+    .separation1{
+        height:0;
+        padding-bottom:5px;
+    }
+    .dateColumn{
+        padding-left:0;
+    }
+    .historyTitle{
+        font-size: 40px;
+    }
+    .chatLink {
+        margin-top: 40px;
+    }
+    .cellStartLoc, .cellEndLoc {
+        font-size: 18px;
+    }
+    .writeReview{
+        height: 55px;
+    }
+}
+@media only screen and (max-width:550px){
+    .summaryTitle{
+        height:50px;
+        letter-spacing: 20px
+    }
+    .historyTitle{
+        font-size: 35px;
+    }
+    .separation1{
+        padding-bottom:0;
+    }
+    .dateColumn{
+        padding-left:0;
+    }
+    .tableFreeBox, .tableCancelledBox,.tableConvoBox{
+        display:block;
+    }
+    .tableFreeBox{
+        margin-top:15px;
+    }
+    .tableCancelledBox{
+        margin-top:5px;
+        margin-left:30px;
+    }
+    .tableEndLoc, .tableStartLoc {
+        padding-top: 30px;
+    }
+    .fa{
+        font-size: 12px;
+    }
+    .chatLink{
+        float:left;
+        margin:10px 0 10px 30px;
+    }
+}
+@media only screen and (max-width:510px){
+    .summaryTitle{
+        font-size:25px;
+        letter-spacing: 28px;
+    }
+    .summaryTitle{
+        height:40px;
+    }
+    .separation1{
+        padding-top:10px;
+    }
+    .rideSummary{
+        height:650px;
+    }
+    .h3{
+        margin-top:0;
+    }
+    .historyTitle{
+        font-size:28px;
+    }
+    .dateColumn{
+        float:none;
+    }
+    .dateContent, .greetingContent{
+        padding-top:0;
+        padding-bottom:10px;
+    }
+    .remainingRides{
+        font-size:13px;
+    }
+    .greetingContent{
+        font-size:14px;
+        letter-spacing: 3px;
+        width:150%;
+    }
+    .dateContent{
+        font-size: 12px;
+        width:150%;
+        float: left;
+    }
+}
+@media only screen and (max-width:490px){
+    .summaryTitle{
+        font-size:20px;
+        letter-spacing: 25px;
+    }
+    .historyTitle{
+        font-size:30px;
+        letter-spacing: 30px;
+    }
+    .cellStartLoc, .cellEndLoc {
+        font-size: 16px;
+        font-weight: bold;
+    }
+    .tableEndLoc, .tableStartLoc {
+        font-size: 11px;
+        padding-top: 20px;
+    }
+    .regNumRow{
+        font-size:20px;
+    }
+    .cellDate {
+        font-size: 12px;
+    }
+    .cellFree, .cellCancelled{
+        font-size: 13px;
+   }
+   .chatLink{
+       margin-top:10px;
+   }
+   .reviewSumbit{
+    font-size: 12px;
+   }
+   #filterList {
+    width: 150px;
+    font-size: 13px;    
+    }
+    .container{
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .writeReview {
+        height: 50px;
+        font-size: 13px;
+    }
+    #order_table_submit{
+        font-size:12px;
+    }
 
-.orderborder-bottom{
-    border-radius: 0 0 5px 5px;
+}
+@media only screen and (max-width:450px){
+    .historyTitle{
+        font-size: 28px;
+        letter-spacing: 25px;
+        margin-left:50px;
+    }
+    .tableTypeButton{
+        font-size: 10px;
+    }
+    .rideTypeContainer{
+        height:30%;
+        margin-left: 20px;
+        padding:10px;
+    }
+    .summaryTitle{
+        font-size:20px;
+        letter-spacing: 20px;
+    }
+}
+@media only screen and (max-width:400px){
+    .greetingContent {
+        font-size: 13px;
+        width: 200%;
+    }
+    .rideTypeContent {
+        padding-top: 0;
+    }
 }
 
-
-/* Sorting dropdown list */
-
-
-.tablecenter{
-    text-align: center;
-    padding-left:15px;
-}
-
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 130px;
-    overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-.sortDropdown a:hover {background-color: #ddd;}
-
-.show {display: block;}
-
-
-
-
-
-
-/* Ride indicators */
-
-
-
-
-
-/* Ride History Style 1: Table View */
-
-
-.tableBox-lastrow{
-    padding-top:10px;
-}
-
-
-
-.field3-date::before{
-    content:"ON";
-    padding-left:30px;
-    font-size:12px;
-}
-.field4-time::before{
-    content:"AT";
-    padding-left:5px;
-    font-size:12px;
-}
-
-.field8-free::before{
-    padding-bottom:0;
-}
-.field9-cancelled::before{
-    padding-bottom:0;
-}
-
-#ratings{
-    cursor:pointer;
-    float:right;
-    margin-right:20px;
-}
-#rate1, #rate2, #rate3, #rate4, #rate5 {
-    color: #333333;
-}
-.col-width{
-    width:23%;
-}
-.col-width2{
-    width:15%;
-}
-.col-date, .col-time, .taxi-type{
-    padding-top:0;
-}
-.col-free, .col-reg-num, .col-date, .col-time, .col-cancelled{
-    padding-bottom:0;
-}
-
-a.convo-link{
-    color:#0189c9;
-    float:right
-}
-td.col-date, td.col-time{
-    padding-bottom:0;
-    font-size: 11px;
-}
-
-.field8-icon{
-    margin-left:30px;
-    height:15px;
-    width:15px;
-}
-.tableCell{
-    width:100%;
-}
-#startLoc, #endLoc, #taxiType{
-    font-size:18px;
-    font-weight:600;
-}
-
-
-
-
-/* Ride History Style 2: Database VIew */
-
-
-th {
-    cursor: pointer;
-}
-th, td {
-    text-align: left;
-    /* padding:15px 35px 15px 35px; */
-    /* border:10px solid yellow; */
-}
-tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-.userDatabase tbody{
-    display:block;
-    overflow: auto;
-    height: 300px;
-}
-.userDatabase thead{
-    display: block;
-}
-
-.userDatabase thead tr th, .userDatabase tbody tr td{
-    width:10%;
-    text-align:left;
-}
-.databaseCell{
-    padding:10px;
-}
-
-/* Lookup Search bar */
-/* Lookup list */
-
-/* Input search */
-#search_bar{    
-}
-#selectDisplay{
-    display: inline;
-}
-#allDisplay{
-    display:none;
-}
-#refNoDisplay{
-    display:none;
-}
-#dateDisplay{
-    display:none;
-}
-#sLocDisplay{
-    display:none;
-}
-#eLocDisplay{
-    display:none;
-}
-#canlDisplay{
-    display:none;
-}
-#freeDisplay{
-    display:none;
-}
-#rateDisplay{
-    display:none;
-}
-.submitB{
-    visibility: hidden;
-}
-input{
-    width:70%;
-    height:30px;
-}
-.sumbitB{
-    width : 65px;
-    background-color:whitesmoke;
-    float: right;
-    margin-top: 1px;
-}
-
-/* delete account */
-
-.deleteAccBut {
-    background-color: #b8bdbe00;
-    /* color: white; */
-    border: none;
-    cursor: pointer;
-  }
-  
-  /* Extra styles for the cancel button */
-  .cancelbtn {
-    width: auto;
-    padding: 10px 18px;
-    background-color: #f44336;
-  }
-  
-  /* Center the image and position the close button */
-  .imgcontainer {
-    text-align: center;
-    margin: 24px 0 12px 0;
-    position: relative;
-  }
-  
-  img.avatar {
-    width: 40%;
-    border-radius: 50%;
-  }
-  
-  .delAccContainer {
-    padding: 16px;
-  }
-  
-  span.psw {
-    float: right;
-    padding-top: 16px;
-  }
-  
-  /* The Modal (background) */
-  .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    padding-top: 60px;
-  }
-  
-  /* Modal Content/Box */
-  .modal-content {
-    background-color: #fefefe;
-    margin: 20% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-    border: 1px solid #888;
-    width: 30%; /* Could be more or less, depending on screen size */
-  }
-  
-  /* The Close Button (x) */
-  .close {
-    position: absolute;
-    right: 25px;
-    top: 0;
-    color: #000;
-    font-size: 35px;
-    font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: red;
-    cursor: pointer;
-  }
-  
-  /* Add Zoom Animation */
-  .animate {
-    -webkit-animation: animatezoom 0.6s;
-    animation: animatezoom 0.6s
-  }
-  
-  @-webkit-keyframes animatezoom {
-    from {-webkit-transform: scale(0)} 
-    to {-webkit-transform: scale(1)}
-  }
-    
-  @keyframes animatezoom {
-    from {transform: scale(0)} 
-    to {transform: scale(1)}
-  }
-  
-
-  .info5-checked {
-    color: orange;
-  }

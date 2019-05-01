@@ -5,7 +5,7 @@ get '/settings' do
 
 	@usersInfo = $db.execute("SELECT * FROM users")
 	@journeyInfo = $db.execute("SELECT * FROM journeys")
-	@complaintsInfo = $db.execute("SELECT * FROM complaints")
+	@feedbackInfo = $db.execute("SELECT * FROM feedback")
 	@taxiInfo = $db.execute("SELECT * FROM taxis")
 
     erb :settings
@@ -82,17 +82,17 @@ get '/editTaxi/:id' do
 	erb :editTaxiMain
 end
 
-# edit complaint
-get '/editComplaint/:id' do
+# edit feedback
+get '/editFeedback/:id' do
 	redirect '/index' unless session[:admin]
 
-	#get complaints table from the database
-	@complatintsInfo = $db.execute("SELECT * FROM complaints")
+	#get feedback table from the database
+	@feedbackInfo = $db.execute("SELECT * FROM feedback")
 
 	#find user which has the ID given
-	@complatintsInfo.each do |complaint|
-		if complaint[0] == params[:id].to_i
-			@complaintToEdit = complaint
+	@feedbackInfo.each do |feedback|
+		if feedback[0] == params[:id].to_i
+			@feedbackToEdit = feedback
 		end
 	end
 
@@ -101,19 +101,20 @@ get '/editComplaint/:id' do
 
 	#setting all the variables to various values from the table
 	@id = params[:id]
-	@journey_id = @complaintToEdit[1]
-	@user_id = @complaintToEdit[2]
-	@date_time = @complaintToEdit[3]
-	@complaint = @complaintToEdit[4]
+	@journey_id = @feedbackToEdit[1]
+	@user_id = @feedbackToEdit[2]
+	@date_time = @feedbackToEdit[3]
+	@feedback = @feedbackToEdit[4]
+    @rating = @feedbackToEdit[5]
 
-	erb :editComplaintMain
+	erb :editFeedbackMain
 end
 
 # edit journey
 get '/editJourney/:id' do
 	redirect '/index' unless session[:admin]
 
-	#get complaints table from the database
+	#get feedback table from the database
 	@journeyInfo = $db.execute("SELECT * FROM journeys")
 	@id = params[:id].to_i
 
@@ -253,17 +254,17 @@ post '/editTaxi/:id' do
 	erb :editTaxiMain
 end
 
-# edit complaint
-post '/editComplaint/:id' do
+# edit feedback
+post '/editFeedback/:id' do
 	redirect '/index' unless session[:admin]
 
-	#get complaints table from the database
-	@complatintsInfo = $db.execute("SELECT * FROM complaints")
+	#get feedback table from the database
+	@feedbackInfo = $db.execute("SELECT * FROM feedback")
 
 	#find user which has the ID given
-	@complatintsInfo.each do |complaint|
-		if complaint[0] == params[:id].to_i
-			@complaintToEdit = complaint
+	@feedbackInfo.each do |feedback|
+		if feedback[0] == params[:id].to_i
+			@feedbackToEdit = feedback
 		end
 	end
 
@@ -275,32 +276,35 @@ post '/editComplaint/:id' do
 	@journey_id = params[:journey_id]
     @user_id = params[:user_id]
     @date_time = params[:date_time]
-    @complaint = params[:complaint]
+    @feedback = params[:feedback]
+    @rating = params[:rating]
 
 	# perform validation
     @journey_id_ok = isPositiveNumber? (@journey_id)
-    @complaint_ok = !@complaint.nil? && @complaint != ""
+    @feedback_ok = !@feedback.nil? && @feedback != ""
     @user_id_ok = !@user_id.nil? && @user_id != ""
 	@date_time_ok = !@date_time.nil? && @date_time != ""
+    @rating_ok = @rating == '' || @rating == '0' || @rating == '1' || @rating == '2' || @rating == '3' || @rating == '4' || @rating == '5'
 
-    @all_ok = @journey_id_ok && @complaint_ok && @user_id_ok && @date_time_ok
+    @all_ok = @journey_id_ok && @feedback_ok && @user_id_ok && @date_time_ok && @rating_ok
 
     # add data to the database
     if @all_ok# do the insert
-		$db.execute("UPDATE complaints SET journey_id = '#{@journey_id}' WHERE id='#{@id}'")
-		$db.execute("UPDATE complaints SET user_id = '#{@user_id}' WHERE id='#{@id}'")
-		$db.execute("UPDATE complaints SET date_time = '#{@date_time}' WHERE id='#{@id}'")
-		$db.execute("UPDATE complaints SET complaint = '#{@complaint}' WHERE id='#{@id}'")
+		$db.execute("UPDATE feedback SET journey_id = '#{@journey_id}' WHERE id='#{@id}'")
+		$db.execute("UPDATE feedback SET user_id = '#{@user_id}' WHERE id='#{@id}'")
+		$db.execute("UPDATE feedback SET date_time = '#{@date_time}' WHERE id='#{@id}'")
+		$db.execute("UPDATE feedback SET feedback = '#{@feedback}' WHERE id='#{@id}'")
+        $db.execute("UPDATE feedback SET rating = '#{@rating}' WHERE id='#{@id}'")
 	end
 
-	erb :editComplaintMain
+	erb :editFeedbackMain
 end
 
 # edit journey
 post '/editJourney/:id' do
 	redirect '/index' unless session[:admin]
 
-	#get complaints table from the database
+	#get feedback table from the database
 	@journeyInfo = $db.execute("SELECT * FROM journeys")
 	@id = params[:id].to_i
 
@@ -325,32 +329,32 @@ post '/editJourney/:id' do
 	@cancelled = params[:cancelled].strip
 	@rating = params[:rating].strip
 	@convoLink = params[:convoLink].strip
-    
+
     #looping to check for every id/name whether they are in the database
-    @taxiTbl = $db.execute %{SELECT * FROM taxis} 
+    @taxiTbl = $db.execute %{SELECT * FROM taxis}
     @taxiIdFound = false
     @taxiTbl.each do |record| #Go through each user record
         if record[0] == @taxiId #If uid = id then:
             @taxiIdFound = true #Boolean found is true (record is already there)
         end
     end
-    
-    @userTbl = $db.execute %{SELECT * FROM users} 
+
+    @userTbl = $db.execute %{SELECT * FROM users}
     @userIdFound = false
     @userTbl.each do |record| #Go through each user record
         if record[0] == @userId #If uid = id then:
             @userIdFound = true #Boolean found is true (record is already there)
         end
     end
-    
-    @twitterHandleTbl = $db.execute %{SELECT * FROM users} 
+
+    @twitterHandleTbl = $db.execute %{SELECT * FROM users}
     @twitterHandleFound = false
     @twitterHandleTbl.each do |record| #Go through each user record
         if record[0] == @twitterHandle #If uid = id then:
             @twitterHandleFound = true #Boolean found is true (record is already there)
         end
     end
-    
+
 	# perform validation
 	#taxiID and userID and twitterHandle needs better validation!!!!!
 	@taxiId_ok = isPositiveNumber?(@taxiId) && @taxiIdFound
@@ -399,11 +403,11 @@ get '/addTaxi' do
 	erb :addTaxiMain
 end
 
-# add complaint
-get '/addComplaint' do
+# add feedback
+get '/addFeedback' do
 	redirect '/index' unless session[:admin]
 
-	erb :addComplaintMain
+	erb :addFeedbackMain
 end
 
 # add journey
@@ -497,12 +501,12 @@ post '/addTaxi' do
     erb :addTaxiMain
 end
 
-# add complaint
-post '/addComplaint' do
+# add feedback
+post '/addFeedback' do
 	redirect '/index' unless session[:admin]
 
-	#get complaints table from the database
-	@complaintsInfo = $db.execute("SELECT * FROM complaints")
+	#get feedback table from the database
+	@feedbackInfo = $db.execute("SELECT * FROM feedback")
 
     @submitted = true
 
@@ -510,21 +514,24 @@ post '/addComplaint' do
     @journey_id = params[:journey_id]
     @user_id = params[:user_id]
     @date_time = Time.now.strftime("%d/%m/%Y %H:%M").to_s
-    @complaint = params[:complaint]
+    @feedback = params[:feedback]
+    @rating = params[:rating]
 
     # perform validation
     @journey_id_ok = isPositiveNumber? (@journey_id)
-    @complaint_ok = !@complaint.nil? && @complaint != ""
+    @feedback_ok = !@feedback.nil? && @feedback != ""
     @user_id_ok = !@user_id.nil? && @user_id != ""
+    @rating_ok = @rating == '' || @rating == '0' || @rating == '1' || @rating == '2' || @rating == '3' || @rating == '4' || @rating == '5'
 
-    @all_ok = @journey_id_ok && @complaint_ok && @user_id_ok
 
-	@id = @complaintsInfo[@complaintsInfo.length-1][0].to_i + 1
+    @all_ok = @journey_id_ok && @feedback_ok && @user_id_ok && @rating_ok
+
+	@id = @feedbackInfo[@feedbackInfo.length-1][0].to_i + 1
 
     # add data to the database
     if @all_ok
 		# do the insert
-        $db.execute('INSERT INTO complaints VALUES (?, ?, ?, ?, ?)', [@id, @journey_id, @user_id, @date_time, @complaint])
+        $db.execute('INSERT INTO feedback VALUES (?, ?, ?, ?, ?, ?)', [@id, @journey_id, @user_id, @date_time, @feedback, @rating])
     end
-    erb :addComplaintMain
+    erb :addFeedbackMain
 end

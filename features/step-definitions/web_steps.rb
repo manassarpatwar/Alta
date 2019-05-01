@@ -27,10 +27,14 @@ When /^I wait for (\d+) seconds?$/ do |secs|
 end
 
 When /^I am signed in as admin from sheffield$/ do
-   visit "/login"
-   fill_in("Username or email", :with => "tbtonner1@sheffield.ac.uk")
-   fill_in("Password", :with => "SoftEng2019")
-   click_button("Sign In")
+   begin
+       visit '/login' 
+       fill_in("Username or email", :with => "tbtonner1@sheffield.ac.uk")
+       fill_in("Password", :with => "SoftEng2019")
+       click_button("Sign In")
+    rescue Capybara::ElementNotFound
+        puts "already signed in"
+    end
 end
 
 When /^I am signed in as admin from manchester$/ do
@@ -70,9 +74,9 @@ When /^(?:|I )fill in "([^\"]*)" with "([^\"]*)"(?: within "([^\"]*)")?$/ do |fi
   end
 end
 
-When /^(?:|I )click "([^\"]*)" within last element in "([^\"]*)"?$/ do |click, selector|
+When /^(?:|I )press "([^\"]*)" within last element in "([^\"]*)"?$/ do |button, selector|
   with_scope("#{selector} table tbody tr:last-child") do
-    click_link(click)
+     click_button(button)
   end
 end
 

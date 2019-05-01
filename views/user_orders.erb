@@ -31,8 +31,8 @@
           <div class="greetingColumn">
             <div class="greetingContent">Welcome Back, <%=h session[:name] %></div>
           </div>
-          <div class="dateColumn" >
-            <div class="dateContent">date</div>
+          <div class="dateColumn">
+            <div class="dateContent" id="date">date</div>
           </div>
         </div>
         <div class="separation1"></div>
@@ -45,20 +45,37 @@
         <div class="summaryRow">
           <div class="ridesTypeSummary">
             <div class="rideTypeContainer">
-              <p>Total Ride</p>
-              <h3>5</h3>
+              <p class="rideTypeContent">Total Ride</p>
+                <% totalR =0%>
+                <% @results.each do |record| %>
+                  <% totalR+=1 %>
+                <%end%>
+                <p><% puts --totalR %> </p>
+                <h3> <%=h totalR%></h3>
             </div>
           </div>
           <div class="ridesTypeSummary">
             <div class="rideTypeContainer">
-              <p>Free Rides taken</p>
-              <h3>5</h3>
+              <p class="rideTypeContent">Free Rides taken</p>
+                <% freeR =0%>
+                <% @results.each do |record| %>
+                  <% if record[7]==0%>
+                    <% freeR+=1 %>
+                  <%end%>
+                <%end%>
+                <h3> <%=h freeR%></h3>
             </div>
           </div>
           <div class="ridesTypeSummary sumcolumn5">
             <div class="rideTypeContainer">
-              <p>Cancelled Rides</p>
-              <h3>5</h3>
+              <p class="rideTypeContent">Cancelled Rides</p>
+                <% canlR =0%>
+                <% @results.each do |record| %>
+                  <% if record[8]==0%>
+                    <% freeR+=1 %>
+                  <%end%>
+                <%end%>
+                <h3> <%=h canlR%></h3>
             </div>
           </div>
         </div>
@@ -72,43 +89,43 @@
     </div>
   <!--End of Section1: Summary-->
 
-<div style="text-align:center; padding-top:5px;"> Tables </div>
     
+  <!--History Title-->
+    <div class="historyTitle">History</div>
   <!--Section2: Types of Views Buttons-->
-    <div class="searchBarRow container searchBarContainer">    
+    <div id="tableSection" class="container searchBarContainer">    
       <div class="tableTypeBox">
         <p class="tableTypeTitle">View As: </p>
-        <span onclick="myView1()" class="tableTypeButton">Table</span>
-        <span onclick="myView2()" class="tableTypeButton">Databse</span>
+        <span id="viewButton1" onclick="myView1()" class="tableTypeButton">Table</span>
+        <span id="viewButton2" onclick="myView2()" class="tableTypeButton">Databse</span>
       </div>
     </div>
     
   <!--Section3: Filtable Search bar-->
     <div class="searchBarRow container searchBarContainer">
-      <form method="get" action="userOrders">
-        <select id='filterList' name="column">
+      <form method="get" action="userOrders" id="filterForm" onsubmit="goToTable()">
+        <select id='filterList' name="column" class="selectStorage">
           <option selected='selected' value="none">Select...</option> 
           <option value="all">All</option> 
           <option value='id'>Reference Number</option> 
           <option value='date_time'>Travel Date</option> 
           <option value='start_location'>Start Location</option> 
           <option value='end_location'>End Location</option> 
-          <option value='free_ride'>Free</option> 
-          <option value='cancelled'>Cancelled</option> 
           <option value='rating'>Rating</option>
         </select>
-        <input type="text" name="search" value="<%=h params[:search] %>">
-        <input type="submit" id="order_table_submit" value="Submit" style= "width:100px">
+        <input type="text" name="search" value="<%=h params[:search] %>" class="searchBar">
+        <input type="submit" id="order_table_submit" value="Submit" style= "width:80px">
       </form>
     </div>
+
 
   <!--Sectio4: Types of Rides Button-->
     <div class="container rideTypesContainer">
       <form method="get">
-          <input class="rideTypeButton" type="submit" name="allAlltype" value="All">
-          <input class="rideTypeButton" type="submit" name="paidtype" value="Paid">
-          <input class="rideTypeButton" type="submit" name="freetype" value="Free">
-          <input class="rideTypeButton" type="submit" name="cancelledtype" value="Cancelled">
+          <input class="rideTypeButton" type="submit" name="rideType" value="All">
+          <input class="rideTypeButton" type="submit" name="rideType" value="Paid">
+          <input class="rideTypeButton" type="submit" name="rideType" value="Free">
+          <input class="rideTypeButton" type="submit" name="rideType" value="Cancelled">
       </form>
     </div>
 
@@ -154,30 +171,29 @@
             <table class="container tableContainer">
               <tr>
                 <td class="regNumRow">
-                  <div class="tableRegNum"><%=h record[0] %>
+                  <div class="tableRegNum"><%=h record[0] %></div>
                 </td>
                 <td></td>
                 <td></td>
                 <td>
-                  <div class="tableRate"></div>
-                  <div id="ratings">
+                  <div id="ratings" class="tableRate">
                     <% if record[9].nil? || record[9] == 0 %>
                       <form method="post" action="/addRating">
-                        <span>(no ratings, rate us now)</span>
+                        <span class="ratingText">(no ratings, rate us now)</span>
                         <span onclick="myRating1()" id="rate1" class="fa fa-star" name="rating1" value="1"></span>
                         <span onclick="myRating2()" id="rate2" class="fa fa-star" name="rating2" value="2"></span>
                         <span onclick="myRating3()" id="rate3" class="fa fa-star" name="rating3" value="3"></span>
                         <span onclick="myRating4()" id="rate4" class="fa fa-star" name="rating4" value="4"></span>
                         <span onclick="myRating5()" id="rate5" class="fa fa-star" name="rating5" value="5"></span>
                       </form>
-                  <% else %>
-                    <% for i in 0..record[9]-1%>
-                      <span class="fa fa-star" style="color:orange;"></span>
+                    <% else %>
+                      <% for i in 0..record[9]-1%>
+                        <span class="fa fa-star" style="color:orange;"></span>
+                      <% end %>
+                      <% for i in 0..(4-record[9])%>
+                        <span  class="fa fa-star"></span>
+                      <% end %>
                     <% end %>
-                    <% for i in 0..(4-record[9])%>
-                      <span  class="fa fa-star"></span>
-                    <% end %>
-                  <% end %>
                   </div>
                 </td>
               </tr>
@@ -195,7 +211,7 @@
                 <td class="cellEndLoc"><%=h record[6] %></td>
               </tr>      
               <tr>
-                <td class="tableBox">
+                <td class="tableBox tableFreeBox">
                   <% if record[7]==1 %>
                     <i class=" checkBox far fa-check-square" style="margin-left:30px"></i>
                   <% else %>
@@ -203,7 +219,7 @@
                     <% end %>
                   <div class="cellFree">Free Rides</div>
                 </td>
-                <td class="tableBox col-cancelled">
+                <td class="tableBox tableCancelledBox">
                   <% if record[8]==1 %>
                     <i class=" checkBox far fa-check-square"></i>
                   <% else %>
@@ -211,7 +227,7 @@
                   <% end %>
                     <div class="cellCancelled">Cancelled</div>
                 </td>
-                <td class="tableBox"><a href class="chatLink">Conversation link</a></td>
+                <td class="tableBox tableConvoBox"><a href class="chatLink">Conversation link</a></td>
               </tr>
             </table>
             <form method="post" action="/newReview">

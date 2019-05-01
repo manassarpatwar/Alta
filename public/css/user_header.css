@@ -3,18 +3,6 @@
   width:100%;
   background-color:rgba(255, 255, 255, 0);
 }
-/* .acc-nav-sticky{
-  width:100px;
-  position:fixed;
-  top:0;
-}
-
-.acc-nav-sticky + .acc-container2{
-  padding:150px;
-  padding-bottom:70px;
-  -webkit-transition: padding-top 1s;
-  transition: padding-top 1s;
-} */
 .accnavbar-top{
   width:100%;
   display: flex;
@@ -22,12 +10,13 @@
   white-space: nowrap; 
   font-size:14px;
   height:80px;
-  /* background-color:rgba(255, 255, 255, 0) !important; */
 }
-/* .acc-nav-hide{
-  display:none;
-} */
-.nav-column {
+.navLeftColumn{
+  white-space: nowrap; 
+  width: 25%;
+  padding: 0 5px;
+}
+.navColumn {
   white-space: nowrap; 
   width: 25%;
   padding: 0 5px;
@@ -35,11 +24,11 @@
 .nav-column2 {
   width: 50%;
 }
-.nav-cont{
+.navContent{
   color:rgba(255, 255, 255, 0.788);
   text-align:center;
 }
-.nav-cont::after{
+.navContent::after{
   content: "";
   clear: both;
   display: table;
@@ -57,15 +46,11 @@ a.nav-buttons:hover{
 img.nav-logo{
   margin-top:35px;
   width:45px;
+  text-align:center;
 }
 .nav-name{
   display: inline-block;
 }
-
-
-/* .nav-name:hover{
-  color:#e6e6e6;
-} */
 div.nav-name{
   padding:2.5%;
   padding-top:4.5%;
@@ -114,7 +99,6 @@ a.nav-buttons, .nav-signin, .nav-vl, .nav-login{
 
 }
 
-
 /* Right column */
 .nav-inline2{
   margin-top:5px;
@@ -138,182 +122,107 @@ a .nav-respIcon{
   text-decoration:none;
 }
 
-
-
+/* Delete Account Button*/
+.editAccButton {
+  cursor: pointer;
+  padding-top:5px;
+  background-color: rgba(255, 255, 255, 0);
+  border:none;
+}
+.deleteAccBox {
+  display: none;
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%; 
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4); 
+  padding-top: 60px;
+}
+.closeIcon {
+  margin-right:30px;
+  font-size: 30px;
+  float:right;
+  color:black;
+}
+.closeIcon:hover,.closeIcon:focus {
+  color: red;
+  cursor: pointer;
+}
+.delAccMessage{
+  text-align:center;
+  text-decoration:none;
+  color:black;
+  margin-bottom:20px;
+  padding-top:70px;
+  font-weight:500;
+}
+.delAccButton{
+  color:rgb(1, 108, 170);
+  text-align:center;
+  padding-bottom:50px;
+  font-size:17px;
+  font-weight:500;
+}
+.delAccForm {
+  margin: 18% auto 15% auto;
+  width: 30%;
+  background-color:white;
+  border-radius:6px;
+}
+.deleteAccAnimate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
 
 /* Responsive  */
-@media only screen and (max-width: 1180px) {
-  .nav-column2 {
-    width: 80%;
+@media only screen and (max-width:770px){
+  .navLeftColumn {
+    width:0;
   }
   img.nav-logo{
-    transition-duration: 1s;
-    width:70px;
-    padding-left: 30px;
-    margin-top:-25px;
-  }
-  div.nav-name{
-    font-size: 33px;
-    padding-top: 5px;
-  }
-  .nav-signin, .nav-vl, .nav-login{
-    margin-right: 60px;
-  }
-  a.nav-buttons{
-    padding-top:5px;
-  }
-}
-@media only screen and (max-width: 985px) {
-
-  img.nav-logo{
-    width: 45px;
-    padding-left: 15px;
-    margin-top: -24px;
-  }
-  div.nav-name{
-    font-size: 29px;
-    padding-top: 10px;
-  }
-  a.nav-buttons{
-    padding-top:6px;
-  }
-}
-@media only screen and (max-width: 940px) {
-  .nav-column2 {
-    width: 80%;
-  }
-
-  div.nav-name{
-    transition-duration: 1s;
-    font-size: 28px;
-    padding-top: 8px;
-    letter-spacing:0.3em;
-  }
-  .nav-signin, .nav-vl, .nav-login{
-    margin-right: 50px;
-    margin-top:15px;
-  }
-  .nav-center{
-    margin-top:5px;
-  }
-  .accnavbar-top{
-    transition-duration: 1s;
-    font-size: 13px;
-  }
-  img.nav-logo{
-    width: 45px;
-    padding-left: 15px;
-    margin-top: -25px;
-  }
-  a.nav-buttons{
-    padding-top:3px;
-  }
-
-}
-@media only screen and (max-width: 860px) {
-  .nav-column2 {
-    transition-duration: 1s;
-    display: none;
-  }
-  a .nav-respIcon{
-    
-    display: block;
-  }
-  .nav-cont{
-    float:left;
-  }
-  .nav-column{
-    width:44%;
-  }
-  .nav-signin{
-    margin-left: 5px
-    }
-    .nav-logo{
-      margin-left: 20px;
-      padding-top:0;
-    }
-    img.nav-logo{
-      width: 45px;
-      padding-left: 15px;
-      margin-top: -15px;
-    }
-}
-@media only screen and (max-width: 550px) {
-  .nav-column{
-    width:30%;
-  }
-  div.nav-name{
-    display: none;
-  }
-  .nav-signin{
-    transition-duration: 1s;
-    margin: 15px 20px 0 50px;
-  }
-  img.nav-logo{
-    transition-duration: 1s;
-    width: 55px;
-    margin-left: 5px;
-    margin-top: 10px;
-  }
-  .nav-Icon{
-    padding-left: 15%
-  }
-  a.nav-buttons{
-    font-size:11px;
-  }
-  a.nav-Icon{
-    padding-left: 30%;
-  }
-}
-@media only screen and (max-width: 380px) {
-  .nav-cont{
     float:left;
   }
   .nav-signin{
-    transition-duration: 1s;
-    margin: 18px 20px 0 20px;
-    font-size: 12px;
+    margin-left:10px;
+  }
+  .nav-column2{
+    width:50%;
+  }
+  #accSnav{
+    overflow: visible;
+  }
+  
+}
+@media only screen and (max-width:580px){
+  .editAccButton {
+    font-size:12px;
+    padding-top:0;
   }
   img.nav-logo{
-    transition-duration: 1s;
-    width: 48px;
-    padding-left: 15px;
-    margin-top: 15px;
+    margin-top:25px;
+    width:35px;
   }
-  a.nav-buttons{
-    font-size:10px;
-    line-height:1;
+  img.nav-logo{
+    float:right;
   }
-  div.nav-respIcon{
-    padding-top:10px;
-  }
-  .navbar-fixed-top{
-    height:60px;
-  }
-}
-/* Hamburger Header */
-@media only screen and (max-width: 985px) {
-  .nav-column2.responsive {
-    position: absolute;
-    float: none;
-    display: block;
-    background-color:rgba(0, 0, 0, 0.425);
-    margin-top:70px;
-    width:100%;
-    padding-left:45%;
-  }  
-  .nav-column2.responsive .nav-cont .nav-center .nav-inline{
-    display: block;
-  }
-}
-@media only screen and (max-width:550px){
-  .nav-column2.responsive {
-    padding-left: 40%;
-  }
-}
-@media only screen and (max-width:380px){
-  .nav-column2.responsive {
-    padding-left: 38%;
+  .nav-signin{
+    height:35px;
+    margin-left:-110px;
+    margin-top:65px;
+    float:left;
+    padding: 2px 8px 2px 8px;
   }
 }
 

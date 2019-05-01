@@ -1,11 +1,11 @@
-<h1>Add a Complaint</h1>
+<h1>Add some feedback</h1>
 
-<p>Return to <a href="/settings">viewing the complaints</a>. </p>
+<p>Return to <a href="/settings">viewing the feedback</a>. </p>
 
-<h2>Add new complaint values:</h2>
+<h2>Add new feedback values:</h2>
 
 <% if @submitted && @all_ok %>
-    <p>Complaint Added.</p>
+    <p>Feedback Added.</p>
 <% else %>
     <% if @submitted && @all_ok %> <!-- if validation passed: -->
         <p>User Added.</p>
@@ -14,7 +14,7 @@
             <p style="color:red">There were errors in your form submission, please correct them below.</p>
         <% end %>
 
-        <form action="/addComplaint" method="post">
+        <form action="/addFeedback" method="post">
             <% if @submitted && !@journey_id_ok %>
                 <p style="color:red">Please enter a journey ID</p>
             <% end %>
@@ -29,11 +29,20 @@
                 <input type="text" name="user_id" value="<%=h @user_id if @submitted %>"/>
             </p>
 
-            <% if @submitted && !@complaint_ok %>
-                <p style="color:red">Please enter a valid complaint</p>
+            <% if @submitted && !@feedback_ok %>
+                <p style="color:red">Please enter a valid feedback</p>
             <% end %>
-            <p>Complaint:
-                <input type="text" name="complaint" value="<%=h @complaint if @submitted %>"/>
+            <div class="textareaAlign">
+                <p>Feedback:
+                    <textarea name="feedback"><%=h @feedback%></textarea>
+                </p>
+            </div>
+
+            <% if @submitted && !@rating_ok %>
+                <p style="color:red">Please enter a valid rating</p>
+            <% end %>
+            <p>Rating:
+                <input type="text" name="rating" value="<%=h @rating%>"/>
             </p>
 
             <input type="submit" value="Submit" />
