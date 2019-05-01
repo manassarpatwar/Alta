@@ -4,7 +4,7 @@ require 'date'
 #--------------get settings---------------#
 
 get '/analytics' do
-    #redirect '/index' unless session[:admin]
+    redirect '/index' unless session[:admin]
     
     date = Array.new()
             
