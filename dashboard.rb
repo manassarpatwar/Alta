@@ -180,7 +180,7 @@ post '/fillInfoInJourney' do
 	@userId = params[:userId]
 	@twitterHandle = params[:twitterHandle]
     @convoLink = params[:convoLink]
-    @dateTime = Time.now
+    @dateTime = Time.now.strftime("%Y/%m/%d %H:%M").to_s
     @usersTable = $db.execute %{SELECT * FROM users} #Gather all user data
     @usersTable.each do |record| #Go through each user record
         if @userId == record[0] #If uid = id then:

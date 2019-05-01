@@ -7,7 +7,7 @@
       <p>Journey Added.</p>
       <% @taxiId = "" %><% @userId = "" %><% @twitterHandle= "" %> <% @dateTime = "" %><% @startLocation = "" %><% @endLocation = "" %> <% @freeRide = "" %><% @cancelled = "" %><% @convoLink = "" %><% @rating = "" %>
     <% end %>
-  </div> 
+  </div>
   <div id = "submitErrors" ><% if @submitted && !@all_ok %><p style="color:red">There were errors in your form submission,<br> please correct them below.</p><% end %></div>
 
  <form id="journeyForm">
@@ -43,7 +43,7 @@
       <% if @submitted && !@cancelled_ok %>
           <p style="color:red">Please enter a 0 or 1 for cancelled?</p>
       <% end %>
-   
+
       <% if @submitted && !@rating_ok %>
             <p style="color:red">Please enter a valid rating (0-5)</p>
       <% end %>
@@ -89,7 +89,7 @@
       </label>
 
 
-      <label class = "input_label">rating:
+      <label class = "input_label">Rating:
           <input type="text" name="rating" value="<%=h @rating if @submitted %>" class = "inputbox"/>
       </label>
 

@@ -513,7 +513,7 @@ post '/addFeedback' do
     #sanitize values
     @journey_id = params[:journey_id]
     @user_id = params[:user_id]
-    @date_time = Time.now.strftime("%d/%m/%Y %H:%M").to_s
+    @date_time = Time.now.strftime("%Y/%m/%d %H:%M").to_s
     @feedback = params[:feedback]
     @rating = params[:rating]
 

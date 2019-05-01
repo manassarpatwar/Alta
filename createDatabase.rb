@@ -44,7 +44,7 @@ DB.execute <<-SQL
   CREATE TABLE "journeys" (
       "id"	INTEGER NOT NULL UNIQUE,
       "taxi_id"	INTEGER NOT NULL,
-      "user_id"	TEXT NOT NULL,
+      "user_id"	TEXT,
       "twitter_handle"	TEXT NOT NULL,
       "date_time"	TEXT NOT NULL,
       "start_location"	TEXT NOT NULL,
@@ -78,7 +78,7 @@ DB.execute <<-SQL
 SQL
 
 csvFeedback.each do |row|
-  DB.execute "insert into feedback values ( ?, ?, ?, ?, ?, ? )", row.fields 
+  DB.execute "insert into feedback values ( ?, ?, ?, ?, ?, ? )", row.fields
 end
 
 csvJourneys.each do |row|
@@ -86,9 +86,9 @@ csvJourneys.each do |row|
 end
 
 csvTaxis.each do |row|
-  DB.execute "insert into taxis values ( ?, ?, ?, ?, ?, ? )", row.fields 
+  DB.execute "insert into taxis values ( ?, ?, ?, ?, ?, ? )", row.fields
 end
 
 csvUsers.each do |row|
-  DB.execute "insert into users values ( ?, ?, ?, ?, ?, ? )", row.fields 
+  DB.execute "insert into users values ( ?, ?, ?, ?, ?, ? )", row.fields
 end

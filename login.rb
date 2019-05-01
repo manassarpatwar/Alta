@@ -31,7 +31,7 @@ get '/auth/twitter/callback' do
 	#Gather user information from twitter
 	id = env['omniauth.auth']['uid'].to_s
 	name = env['omniauth.auth']['info']['name'].to_s
-	dateTime = Time.now.strftime("%d/%m/%Y %H:%M").to_s
+	dateTime = Time.now.strftime("%Y/%m/%d %H:%M").to_s
 
 	#Add to database if user is not found already
 	if @found == false
