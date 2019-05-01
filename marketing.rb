@@ -1,3 +1,5 @@
+#--------------Marketing code---------------#
+
 before do
     marketingConfig = {
         :consumer_key => 'DjSQ85AGsA2oFDoELKGiQlqe9',
