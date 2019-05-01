@@ -16,6 +16,15 @@ end
 #end
 
 get'/userOrders' do
+    totalRide = 0
+    
+    for $db.each do |ride|
+        totalRide+=0
+    end
+puts totalRide
+
+    @ridesUntilFree = 1
+
     redirect '/index' unless session[:loggedin]
     if params[:search].nil? || params[:search] == "" || params[:column == "none"] then
         @results = $db.execute("SELECT * FROM journeys WHERE user_id =  '#{session[:id]}'")
@@ -45,9 +54,39 @@ not_found do
 end
 
 post'/addRating' do
-    @rating1 = params[:rating1]
-    @rating2 = params[:rating2]
-    @rating3 = params[:rating3]
-    @rating4 = params[:rating4]
-    @rating5 = params[:rating5]
+    @rating = params[:rating].to_i
+    @referenceNo = params[:referenceNo].to_i
+    
+    $db.execute("UPDATE journeys SET rating = '#{@rating}' WHERE id = '#{@referenceNo}' AND user_id = '#{session[:id]}'")
+    # puts params[:rating]
+    puts params[:referenceNo]
+    redirect '/userOrders'
+end
+
+post'/addReview' do
+    @feedback = params[:newReview]
+    @date_time = Time.now.strftime("%Y/%m/%d %H:%M").to_s
+    # @rating = 0
+    @journey_id = params[:referenceNo].to_i
+    @rating  = params[:generalRating]
+    # @generalFeedBack = params[:generalFeedBack]
+
+
+    #get feedback table from the database
+	@feedbackInfo = $db.execute("SELECT * FROM feedback")
+
+    @submitted = true
+
+    @feedback_ok = !@feedback.nil? && @feedback != ""
+
+	@id = @feedbackInfo[@feedbackInfo.length-1][0].to_i + 1
+
+    # add data to the database
+    if @feedback_ok
+		# do the insert
+        $db.execute('INSERT INTO feedback VALUES (?, ?, ?, ?, ?, ?)', [@id, @journey_id, session[:id], @date_time, @feedback, @rating])
+    end
+     
+
+    redirect '/userOrders'
 end

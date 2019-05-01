@@ -309,6 +309,42 @@ table{
     }
 }
 
+/* General Overall Feedbacks */
+.generalReviewBox{
+    height:300px;
+    text-align:center;
+    background-color: rgb(223, 223, 223);
+    border-radius:7px;
+}
+.generalRatingText{
+    font-size:17px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    padding:10px;
+    padding-top:50px;
+}
+.generalFeedBack{
+    width:80%;
+    height:100px;
+    border-radius:7px;
+    border-color:white;
+    padding-left:20px;
+}
+.generalFeedBackText{
+    padding:20px;
+    text-align:center;
+}
+.generalRate{
+    border:none;
+    color:rgb(153, 115, 9);
+    font-size:18px;
+    margin:5px;
+}
+.generalRate:hover{
+    color:rgb(255, 251, 0);
+    background-color:gray;
+}
+
 @media only screen and (max-width:1000px){
     .searchBar {
       display:block;

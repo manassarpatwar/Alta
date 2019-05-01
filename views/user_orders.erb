@@ -45,7 +45,7 @@
         <div class="summaryRow">
           <div class="ridesTypeSummary">
             <div class="rideTypeContainer">
-              <p class="rideTypeContent">Total Ride</p>
+              <p class="rideTypeContent">Total Rides</p>
                 <% totalR =0%>
                 <% @results.each do |record| %>
                   <% totalR+=1 %>
@@ -180,11 +180,12 @@
                     <% if record[9].nil? || record[9] == 0 %>
                       <form method="post" action="/addRating">
                         <span class="ratingText">(no ratings, rate us now)</span>
-                        <span onclick="myRating1()" id="rate1" class="fa fa-star" name="rating1" value="1"></span>
-                        <span onclick="myRating2()" id="rate2" class="fa fa-star" name="rating2" value="2"></span>
-                        <span onclick="myRating3()" id="rate3" class="fa fa-star" name="rating3" value="3"></span>
-                        <span onclick="myRating4()" id="rate4" class="fa fa-star" name="rating4" value="4"></span>
-                        <span onclick="myRating5()" id="rate5" class="fa fa-star" name="rating5" value="5"></span>
+                        <input type="hidden" name="referenceNo" value="<%=record[0]%>">
+                        <input type="submit" onclick="myRating1()" id="rate1" class="fa fa-star" name="rating" value="1">
+                        <input type="submit" onclick="myRating2()" id="rate2" class="fa fa-star" name="rating" value="2">
+                        <input type="submit" onclick="myRating3()" id="rate3" class="fa fa-star" name="rating" value="3">
+                        <input type="submit" onclick="myRating4()" id="rate4" class="fa fa-star" name="rating" value="4">
+                        <input type="submit" onclick="myRating5()" id="rate5" class="fa fa-star" name="rating" value="5">
                       </form>
                     <% else %>
                       <% for i in 0..record[9]-1%>
@@ -230,7 +231,8 @@
                 <td class="tableBox tableConvoBox"><a href class="chatLink">Conversation link</a></td>
               </tr>
             </table>
-            <form method="post" action="/newReview">
+            <form method="post" action="/addReview">
+              <input type="hidden" name="referenceNo" value="<%=record[0]%>">
               <input class=" container writeReview" type="text" name="newReview" value="<%=h params[:newReview] %>" placeholder="Tell us what do you think about our services !">
               <input class="container reviewSumbit" type="submit" value="SUBMIT">
             </form>
@@ -239,7 +241,29 @@
       <% end %>
     <% end %>
 
+      
+
     <div class="separation" style="height:100px;"></div>  
+
+  <!--General Overall Feebacks-->
+    <div class="generalReviewBox container">
+      <form method="post" action="/addReview">
+        <div class="generalRatingText">
+          <span class="ratingText">Give us the overall rating on our services</span>
+        </div>
+        <div class="generalFeedBackText"> 
+          <input type="text" class="generalFeedBack" name="newReview" value="<%=h params[:genreralFeedBack] %>" placeholder="Give us general feedbacks on our service!">
+        </div>
+        <p style="display:inline;"> Rating: </p>
+        <input type="submit" onclick="myRating1()" id="rate1" class="fa fa-star generalRate" name="generalRating" value="1">
+        <input type="submit" onclick="myRating2()" id="rate2" class="fa fa-star generalRate" name="generalRating" value="2">
+        <input type="submit" onclick="myRating3()" id="rate3" class="fa fa-star generalRate" name="generalRating" value="3">
+        <input type="submit" onclick="myRating4()" id="rate4" class="fa fa-star generalRate" name="generalRating" value="4">
+        <input type="submit" onclick="myRating5()" id="rate5" class="fa fa-star generalRate" name="generalRating" value="5">
+      </form>
+    </div>
+
+  <div class="separation" style="height:100px;"></div>  
 
   <!--footer-->
     <%= erb :user_footer %>
