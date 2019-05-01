@@ -1,0 +1,36 @@
+<h2>Edit values:</h2>
+            <form id = "rideDealForm">
+                <% if @submitted && !@rideDeal_ok %>
+                    <p style="color:red">Please enter a valid ride deal (positive number)</p>
+                <% end %>
+                <% if @submitted && @rideDeal_ok %>
+                <div id = "rideDealMsg">
+                     <p>Ride deal value updated.</p>
+                </div>  
+                <% end %>
+                <p>Ride Deal Value:
+                    <input type="text" name="rideDeal" value="<%=h $rideDeal %>"/>
+                   <input type="submit" value="Edit" style = "background:none; border:none; color:#0088cc; outline:none; margin-top: -10px;"/>
+                </p>
+            </form>
+    <script>
+  setTimeout(fade_out, 10000);
+  function fade_out() {
+    $("#rideDealMsg").fadeOut().empty();
+  }
+  $( "#rideDealForm" ).submit(function( event ) {
+    // Stop form from submitting normally
+    event.preventDefault();
+
+    // Get some values from elements on the page:
+    var term = []
+    var $form = $( this );
+    term[1] = $form.find( "input[name='rideDeal']" ).val();
+    // Send the data using post
+   var posting = $.post("rideDeal", { rideDeal: term[1]});
+   posting.done(function( data ) {
+      var content = $(data);
+      $( "#rideDeal" ).empty().append( content );
+    });
+  });
+</script>

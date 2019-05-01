@@ -13,7 +13,7 @@
         <p style="color:red">There were errors in your form submission, please correct them below.</p>
     <% end %>
 
-    <form action="/addJourney" method="post">
+    <form action="/addJourneySettings" method="post">
         <% if @submitted && !@taxiId_ok %>
             <p style="color:red">Please enter a valid taxi ID number</p>
         <% end %>

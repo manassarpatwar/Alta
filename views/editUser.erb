@@ -14,18 +14,11 @@
         <th>Total Rides</th>
     </tr>
     <tr>
-        <% @totalJourneys = 0 %>
-        <% @journeyInfo.each do |journey| %>
-            <% if journey[2] == @userToEdit[0] %>
-                <% @totalJourneys = @totalJourneys + 1 %>
-            <% end %>
-        <% end %>
-
         <td><%=h @userToEdit[0] %></td>
         <td><%=h @userToEdit[1] %></td>
         <td><%=h @userToEdit[2] %></td>
         <td><%=h @userToEdit[3] %></td>
-        <td><%=h @totalJourneys %></td>
+        <td><%=h @userToEdit[4] %></td>
         <td><%=h @userToEdit[5] %></td>
     </tr>
 </table>

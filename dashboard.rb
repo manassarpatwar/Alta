@@ -7,7 +7,26 @@ get '/dashboard' do
     erb :dashboard
 end
 
+get '/settings' do
+    redirect '/index' unless session[:admin]
+    @submitted = false
+    @rideDeal = $rideDeal
+    erb :settings
+end
+
+
 #--------------------Post Methods--------------------#
+post '/rideDeal' do
+    redirect '/index' unless session[:admin]
+    @submitted = true
+    @rideDeal = params[:rideDeal]
+
+    @rideDeal_ok = isPositiveNumber?(@rideDeal)
+    if @rideDeal_ok
+        $rideDeal = @rideDeal
+    end
+    erb :rideDeal
+end
 
 post '/replyToTweet' do
     index = (params[:tweetindex]).to_i
@@ -17,13 +36,27 @@ post '/replyToTweet' do
         end
     rescue Twitter::Error::TooManyRequests => error
         @error = "Too many requests."
-        unless error.nil?
-          sleep error.rate_limit.reset_in
-        end
+        sleep error.rate_limit.reset_in
     end
     @tweets = $tweets.dup
     erb :tweetActions
 end
+
+post '/destroyTweet' do
+    index = (params[:tweetindex]).to_i
+    begin
+        TWITTER_CLIENT.destroy_status($tweets[index].uri)
+        unless $tweets[index].in_reply_to_status_id.nil?
+          $tweets[index] = TWITTER_CLIENT.status($tweets[index].in_reply_to_status_id)
+        end
+    rescue Twitter::Error::TooManyRequests => error
+        @error = "Too many requests."
+        sleep error.rate_limit.reset_in
+    end
+    @tweets = $tweets.dup
+    erb :tweetActions
+end
+
 
 post '/fetchTweets' do
     if $tweets.length > 0
@@ -32,7 +65,7 @@ post '/fetchTweets' do
     begin
         @noNewTweets = false
         tweetsLenBefore = $tweets.length()
-        $tweets =  TWITTER_CLIENT.mentions_timeline(count: "5", since_id: "#{$since_id}") + $tweets
+        $tweets = TWITTER_CLIENT.mentions_timeline(count: "5", since_id: "#{$since_id}") + $tweets
         tweetsLenAfter = $tweets.length()
         if tweetsLenBefore == tweetsLenAfter then
           @noNewTweets = true
@@ -63,8 +96,13 @@ post '/deleteTweet' do
 end
 
 post '/addJourney' do
-	@submitted = true
-	# sanitize values
+	redirect '/index' unless session[:admin]
+
+	#get journey table from the database
+
+    @submitted = true
+
+    #sanitize values
 	@taxiId = params[:taxiId].strip
 	@userId = params[:userId].strip
 	@twitterHandle = params[:twitterHandle].strip
@@ -85,13 +123,11 @@ post '/addJourney' do
 	@startLocation_ok = !@startLocation.nil? && @startLocation != ""
 	@endLocation_ok = !@endLocation.nil? && @endLocation != ""
 	@freeRide_ok = @freeRide == '0' || @freeRide == '1'
- 	@cancelled_ok = @cancelled == '0' || @cancelled == '1'
+	@cancelled_ok = @cancelled == '0' || @cancelled == '1'
+	@rating_ok = @rating == '' || @rating == '0' || @rating == '1' || @rating == '2' || @rating == '3' || @rating == '4' || @rating == '5'
 	@convoLink_ok =	!@convoLink.nil? && @convoLink != ""
 
-	@all_ok = @taxiId_ok && @userId_ok && @twitterHandle_ok && @dateTime_ok && @startLocation_ok && @endLocation_ok && @freeRide_ok && @cancelled_ok && @convoLink_ok
-
-	count = $db.get_first_value('SELECT COUNT(*) FROM journeys')
-	@id = count + 1
+	@all_ok = @taxiId_ok && @userId_ok && @twitterHandle_ok && @dateTime_ok && @startLocation_ok && @endLocation_ok && @freeRide_ok && @cancelled_ok && @rating_ok && @convoLink_ok
 
   	# add data to the database
 	if @all_ok
@@ -102,7 +138,7 @@ post '/addJourney' do
             if @userId == record[0] #If uid = id then:
                if @freeRide == '1' then
                  $db.execute("UPDATE users SET free_rides = #{@userInfo[0][4]-1}  WHERE id='#{@userId}'")
-               elsif (@userInfo[0][5]+1) % @rideDeal == 0 && @freeRide == '0' then
+             elsif (@userInfo[0][5]+1) % $rideDeal == 0 && @freeRide == '0' then
                  $db.execute("UPDATE users SET total_rides = #{@userInfo[0][5]+1}  WHERE id='#{@userId}'")
                  $db.execute("UPDATE users SET free_rides = #{@userInfo[0][4]+1}  WHERE id='#{@userId}'")
                else
@@ -144,7 +180,7 @@ post '/fillInfoInJourney' do
 	@userId = params[:userId]
 	@twitterHandle = params[:twitterHandle]
     @convoLink = params[:convoLink]
-    @dateTime = Time.now
+    @dateTime = Time.now.strftime("%Y/%m/%d %H:%M").to_s
     @usersTable = $db.execute %{SELECT * FROM users} #Gather all user data
     @usersTable.each do |record| #Go through each user record
         if @userId == record[0] #If uid = id then:

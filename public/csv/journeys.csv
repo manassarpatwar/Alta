@@ -1,0 +1,4 @@
+id,taxi_id,user_id,twitter_handle,date_time,start_location,end_location,free_ride,cancelled,rating,conversation_link
+1,1,1109074554515873792,kassycy,2019/02/08,Diamond,Meadowhall,0,0,4,some_twitter_url
+2,2,3301792117,ManasSarpatwar,"2019/04/26 16:02:44 +0100",ss,dsf,0,0,4,https://twitter.com/ManasSarpatwar/status/1111734799113355266
+3,3,1109074554515873792,kassycy,2019/04/30,"ALlen Court",Diamond,1,0,0,url

@@ -83,7 +83,16 @@
                       <input type = "hidden" name = "tweetindex" value = "<%=h params[:tweetindex]%>" />
                       <input type="image" src = "img/cross.png" name="button" id = "delete_tweet_icon<%=h@tweets.index(tweet)%>" value="delete" class = "delete tweet_actions_icons">
                     </form>
-                    <a href = "<%= tweet.uri %>"  target="_blank"><img src = "img/more_info.png" class= "moreinfo tweet_actions_icons" alt = "get more info" width = "50"></a>
+                    <div>
+                      <a href = "<%= tweet.uri %>"  target="_blank"><img src = "img/more_info.png" class= "moreinfo tweet_actions_icons" alt = "get more info" width = "50"></a>
+                    </div>
+                    <% if tweet.user.screen_name == "ise19team29" %>
+                      <form class = "destroyTweet"> 
+                        <% params[:tweetindex] = @tweets.index(tweet) %>
+                        <input type = "hidden" name = "tweetindex" value = "<%=h params[:tweetindex]%>" />
+                        <input type="image" src = "img/destroyTweet.png" name="button" id = "destroy_tweet_icon<%=h@tweets.index(tweet)%>" value="destroy" class = "destroy tweet_actions_icons">
+                      </form>
+                    <% end %>
                   </div>
                 </td>
               </tr>
@@ -143,6 +152,22 @@
     term[1] = $form.find( "input[name='tweetindex']" ).val();
     // Send the data using post
    var posting = $.post("deleteTweet", { tweetindex: term[1]});
+    
+   posting.done(function( data ) {
+      var content = $(data);
+      $( "#incoming_tweets").empty().append( content );
+    });
+  });
+   $( ".destroyTweet").submit(function( event ) {
+    // Stop form from submitting normally
+    event.preventDefault();
+
+    // Get some values from elements on the page:
+    var term = []
+    var $form = $( this );
+    term[1] = $form.find( "input[name='tweetindex']" ).val();
+    // Send the data using post
+   var posting = $.post("destroyTweet", { tweetindex: term[1]});
     
    posting.done(function( data ) {
       var content = $(data);

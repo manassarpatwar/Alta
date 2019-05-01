@@ -7,7 +7,7 @@
       <p>Journey Added.</p>
       <% @taxiId = "" %><% @userId = "" %><% @twitterHandle= "" %> <% @dateTime = "" %><% @startLocation = "" %><% @endLocation = "" %> <% @freeRide = "" %><% @cancelled = "" %><% @convoLink = "" %><% @rating = "" %>
     <% end %>
-  </div> 
+  </div>
   <div id = "submitErrors" ><% if @submitted && !@all_ok %><p style="color:red">There were errors in your form submission,<br> please correct them below.</p><% end %></div>
 
  <form id="journeyForm">
@@ -42,6 +42,10 @@
 
       <% if @submitted && !@cancelled_ok %>
           <p style="color:red">Please enter a 0 or 1 for cancelled?</p>
+      <% end %>
+
+      <% if @submitted && !@rating_ok %>
+            <p style="color:red">Please enter a valid rating (0-5)</p>
       <% end %>
 
       <% if @submitted && !@convoLink_ok %>
@@ -85,7 +89,7 @@
       </label>
 
 
-      <label class = "input_label">rating:
+      <label class = "input_label">Rating:
           <input type="text" name="rating" value="<%=h @rating if @submitted %>" class = "inputbox"/>
       </label>
 
@@ -97,49 +101,51 @@
       <input type="submit" value="Submit" class = "add_journey_submitButton" id = "add_journey_submit"/>
   </form>
 <script>
-  setTimeout(fade_out, 10000);
-  function fade_out() {
-    $("#journeyAddedMsg").fadeOut().empty();
-  }
-  $( "#journeyForm" ).submit(function( event ) {
- 
-    // Stop form from submitting normally
-    event.preventDefault();
-
-    // Get some values from elements on the page:
-    var term = []
-    var $form = $( this );
-    term[1] = $form.find( "input[name='taxiId']" ).val();
-    term[2] = $form.find( "input[name='userId']" ).val();
-    term[3] = $form.find( "input[name='twitterHandle']" ).val();
-    term[4] = $form.find( "input[name='dateTime']" ).val();
-    term[5] = $form.find( "input[name='startLocation']" ).val();
-    term[6] = $form.find( "input[name='endLocation']" ).val();
-    term[7] = $form.find( "input[name='freeRide']" ).val();
-    term[8] = $form.find( "input[name='cancelled']" ).val();
-    term[9] = $form.find( "input[name='rating']" ).val();
-    term[10] = $form.find( "input[name='convoLink']" ).val();
-    for(var i = 1; i <= 10; i++){
-      if (term[i] == undefined){
-        term[i] = "";
-      }
-      console.log(term[i]);
+  if(ready){
+    setTimeout(fade_out, 10000);
+    function fade_out() {
+      $("#journeyAddedMsg").fadeOut().empty();
     }
-    // Send the data using post
-   var posting = $.post("addJourney", { taxiId: term[1], userId: term[2], twitterHandle: term[3], dateTime: term[4], startLocation: term[5], endLocation: term[6], freeRide: term[7], cancelled: term[8], rating: term[9], convoLink: term[10] });
-   var addJourneyPosting = posting.done(function( data ) {
-      var content = $(data);
-      $( "#add_journey" ).empty().append( content );
-    });
-    addJourneyPosting.done(function(){
-      if($("#submitErrors").is(':empty')){
-       var postingToTaxi = $.post("addToUnavailable", { taxiId: term[1]});
-       postingToTaxi.done(function( data ) {
-          var content = $(data);
-          $( "#taxis" ).empty().append( content );
-        });
+    $( "#journeyForm" ).submit(function( event ) {
+
+      // Stop form from submitting normally
+      event.preventDefault();
+
+      // Get some values from elements on the page:
+      var term = []
+      var $form = $( this );
+      term[1] = $form.find( "input[name='taxiId']" ).val();
+      term[2] = $form.find( "input[name='userId']" ).val();
+      term[3] = $form.find( "input[name='twitterHandle']" ).val();
+      term[4] = $form.find( "input[name='dateTime']" ).val();
+      term[5] = $form.find( "input[name='startLocation']" ).val();
+      term[6] = $form.find( "input[name='endLocation']" ).val();
+      term[7] = $form.find( "input[name='freeRide']" ).val();
+      term[8] = $form.find( "input[name='cancelled']" ).val();
+      term[9] = $form.find( "input[name='rating']" ).val();
+      term[10] = $form.find( "input[name='convoLink']" ).val();
+      for(var i = 1; i <= 10; i++){
+        if (term[i] == undefined){
+          term[i] = "";
+        }
+        console.log(term[i]);
       }
+      // Send the data using post
+     var posting = $.post("addJourney", { taxiId: term[1], userId: term[2], twitterHandle: term[3], dateTime: term[4], startLocation: term[5], endLocation: term[6], freeRide: term[7], cancelled: term[8], rating: term[9], convoLink: term[10] });
+     var addJourneyPosting = posting.done(function( data ) {
+        var content = $(data);
+        $( "#add_journey" ).empty().append( content );
+      });
+      addJourneyPosting.done(function(){
+        if($("#submitErrors").is(':empty')){
+         var postingToTaxi = $.post("addToUnavailable", { taxiId: term[1]});
+         postingToTaxi.done(function( data ) {
+            var content = $(data);
+            $( "#taxis" ).empty().append( content );
+          });
+        }
+      });
     });
-  });
+  }
 </script>
 <script src="js/jquery.min.js"></script>

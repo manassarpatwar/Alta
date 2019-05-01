@@ -1,0 +1,15 @@
+id,journey_id,user_id,date_time,feedback,rating
+0,0,0,0,0,0
+1,123,12345,2019/03/20 10:00,taxi never came,0
+3,5903953587,7289006081,2019/03/29 16:52,I am not satisfied,0
+4,1748935308,8948682424,2019/03/29 16:56,I am not satisfied,0
+5,101713664,5420516084,2019/03/29 17:02,I am not satisfied,0
+6,537670952,822984960,2019/03/29 17:04,I am not satisfied,0
+7,4313141247,1524668120,2019/03/29 17:06,I am not satisfied,0
+8,3932383390,3927893875,2019/03/29 17:08,I am not satisfied,0
+9,8621923925,6283884840,2019/03/29 17:09,I am not satisfied,0
+10,6147587054,4132627633,2019/03/29 17:11,I am not satisfied,0
+11,,1117546537159200768,2019/03/29 17:11,This is one of the greatest taxi services that I have ever used. Would higly recommend the L type taxi. It is the best when compared to other services.,5
+12,,1109074554515873792,2019/03/29 17:11,"This was a lifesaver to me, there was one time I was in a rush, just tweeted to ALTA to request a taxi, and it took only about 5 minutes.",4
+13,,835530127568154624,2019/03/29 17:06,"There is not much trouble using these services. Just tweeted to ALTA and the employees are fast to respond.
+                            Although, the cars are not exceptional.",4

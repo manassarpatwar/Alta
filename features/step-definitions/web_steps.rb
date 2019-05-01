@@ -27,10 +27,14 @@ When /^I wait for (\d+) seconds?$/ do |secs|
 end
 
 When /^I am signed in as admin from sheffield$/ do
-   visit "/login"
-   fill_in("Username or email", :with => "ise19team29")
-   fill_in("Password", :with => "SoftEng2019")
-   click_button("Sign In")
+   begin
+       visit '/login' 
+       fill_in("Username or email", :with => "tbtonner1@sheffield.ac.uk")
+       fill_in("Password", :with => "SoftEng2019")
+       click_button("Sign In")
+    rescue Capybara::ElementNotFound
+        puts "already signed in"
+    end
 end
 
 When /^I am signed in as admin from manchester$/ do
@@ -46,15 +50,15 @@ When /^(?:|I )press "([^\"]*)"(?: within "([^\"]*)")?$/ do |button, selector|
   end
 end
 
-When /^(?:|I )delete the reply?$/ do |button, selector|
-  with_scope(selector) do
-    click_button(button)
-  end
-end
-
 When /^(?:|I )click "([^\"]*)"(?: within "([^\"]*)")?$/ do |click, selector|
   with_scope(selector) do
     find(click).click
+  end
+end
+
+When /^(?:|I )click "([^\"]*)" within first element in "([^\"]*)"?$/ do |click, selector|
+  with_scope("#{selector} table tbody tr:nth-child(2)") do
+    click_link(click)
   end
 end
 
@@ -70,28 +74,38 @@ When /^(?:|I )fill in "([^\"]*)" with "([^\"]*)"(?: within "([^\"]*)")?$/ do |fi
   end
 end
 
-When /^(?:|I )fill in "([^\"]*)" for "([^\"]*)"(?: within "([^\"]*)")?$/ do |value, field, selector|
-  with_scope(selector) do
-    fill_in(field, :with => value)
+When /^(?:|I )press "([^\"]*)" within last element in "([^\"]*)"?$/ do |button, selector|
+  with_scope("#{selector} table tbody tr:last-child") do
+     click_button(button)
   end
+end
+
+When /^(?:|I )click on the alert/ do 
+  page.driver.browser.switch_to.alert.accept
+end
+
+When /^(?:|I )scroll down within "([^\"]*)"/ do |selector|
+  page.execute_script "$('#{selector}').scrollTop(10000)"
+end
+
+When /^(?:|I )tweet to "([^\"]*)"/ do |user|
+  TWITTER_CLIENT.update("@ise19team29 this is a test")
 end
 
 When /^(?:|I )fill in "([^\"]*)" with randomid(?: within "([^\"]*)")?$/ do |field, selector|
   with_scope(selector) do
-    fill_in(field, :with => rand.to_s[2..11])
+    fill_in(field, :with => rand.to_s[2..5])
   end
 end
 
 When /^(?:|I )fill in "([^\"]*)" with invalid randomid(?: within "([^\"]*)")?$/ do |field, selector|
   with_scope(selector) do
-    fill_in(field, :with => rand.to_s[2..11])
+    fill_in(field, :with => rand.to_s[2..5])
   end
 end
 
-When /^(?:|I )fill in "([^\"]*)" with random text(?: within "([^\"]*)")?$/ do |field, selector|
-  with_scope(selector) do
-    fill_in(field, :with => (0...20).map { ('a'..'z').to_a[rand(26)] }.join)
-  end
+When /^I delete the reply/ do 
+  TWITTER_CLIENT.destroy_status("Testing reply to tweets")
 end
 
 # Use this to fill in an entire form with data from a table. Example:

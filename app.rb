@@ -8,12 +8,18 @@ require 'twitter'
 require 'rufus-scheduler'
 require 'omniauth-twitter'
 require 'sqlite3'
+require 'chartkick'
+require 'csv'
+require 'socket'
+#require_relative 'createDatabase.rb'
 require_relative 'editDatabases.rb'
 require_relative 'dashboard.rb'
-require_relative 'table.rb'
 require_relative 'main.rb'
 require_relative 'login.rb'
 require_relative 'marketing.rb'
+require_relative 'analytics.rb'
+
+puts "#{Socket.gethostname}"
 
 set :bind, '0.0.0.0' # Needed when running from Codio
 include ERB::Util #Ensure ERB is enabled
@@ -29,13 +35,19 @@ before do
     response.set_cookie(:following, :value => "true")
     response.set_cookie(:follow_state, :value => "true")
     response.set_cookie(:tweet_state, :value => "true")
-    @rideDeal = 2
 end
 
 #Configure sessions
 configure do
 	enable :sessions
-    $db = SQLite3::Database.new './taxi_database.sqlite'
+    begin
+      File.read("taxi_db.sqlite")
+    rescue
+      abort("Database not found... \nExiting\nTip: Run createDatabase.rb (ruby createDatabase.rb)")
+    end
+    $db = SQLite3::Database.new 'taxi_db.sqlite'
+    #$db = SQLite3::Database.new 'taxi_database.sqlite'
+    $rideDeal = 5
     begin
       TWITTER_CLIENT = Twitter::REST::Client.new do |config|
           config.consumer_key        = 'wVzUO14M25jvS3vmmtfDAtmh6'
@@ -76,23 +88,4 @@ helpers do
           return false
       end
     end
-end
-
-before do
-    config = {
-        :consumer_key => '...',
-        :consumer_secret => '...',
-        :access_token => '...',
-        :access_token_secret => '...'
-    }
-    @client = Twitter::REST::Client.new(config)
-end
-
-get '/twitter_search' do
-    unless params[:search].nil?
-        search_string = params[:search]
-        results = @client.search(search_string)
-        @tweets = results.take(20)
-    end
-    erb :twitter_search
 end
