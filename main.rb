@@ -17,8 +17,7 @@ end
 
 get'/userOrders' do
     totalRide = 0
-    
-    for $db.each do |ride|
+    $db.each do |ride|
         totalRide+=0
     end
 puts totalRide
