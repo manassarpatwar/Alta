@@ -1,12 +1,19 @@
 <% if @noAvailableTaxis %>
             <p style="color:red">No taxi available. Please wait till a taxi becomes available.</p>
 <% end %>
-  <div id = "journeyAddedMsg">
-    <% if @submitted && @all_ok %>
-      <p>Journey Added.</p>
-      <% @taxiId = "" %><% @userId = "" %><% @twitterHandle= "" %> <% @dateTime = "" %><% @startLocation = "" %><% @endLocation = "" %> <% @freeRide = "" %><% @cancelled = "" %><% @convoLink = "" %><% @rating = "" %>
-    <% end %>
-  </div>
+    <div>
+      <% if @submitted && @all_ok %>
+        <p id = "journeyAddedMsg">Journey Added.</p>
+        <% @taxiId = "" %><% @userId = "" %><% @twitterHandle= "" %> <% @dateTime = "" %><% @startLocation = "" %><% @endLocation = "" %> <% @freeRide = "" %><% @cancelled = "" %><% @convoLink = "" %><% @rating = "" %>
+      <% end %>
+      <script>
+          setTimeout(function(){
+            if ($('#journeyAddedMsg').length > 0) {
+              $('#journeyAddedMsg').remove();
+            }
+          }, 20000)
+      </script>
+    </div>  
   <div id = "submitErrors" ><% if @submitted && !@all_ok %><p style="color:red">There were errors in your form submission,<br> please correct them below.</p><% end %></div>
 
  <form id="journeyForm">
@@ -100,12 +107,7 @@
       <input type="submit" value="Submit" class = "submitButton" id = "add_journey_submit"/>
   </form>
 <script>
-    setTimeout(fade_out, 10000);
-    function fade_out() {
-      $("#journeyAddedMsg").fadeOut().empty();
-    }
-    $( "#journeyForm" ).submit(function( event ) {
-
+$( "#journeyForm" ).submit(function( event ) {
       // Stop form from submitting normally
       event.preventDefault();
 
