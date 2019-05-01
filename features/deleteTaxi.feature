@@ -10,7 +10,7 @@
             When I press "Submit"
             Then I should see "Taxi Added"
             And I am on the settings page
-            When I click "Delete" within last element in "#taxis"
+            When I press "Delete" within last element in "#taxis"
             And I click on the alert
             Then I should not see "1232245678" within "#taxis"
       

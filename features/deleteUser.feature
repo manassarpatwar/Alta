@@ -11,6 +11,6 @@
             When I press "Submit"
             Then I should see "User Added"
             And I am on the settings page
-            When I click "Delete" within last element in "#users"
+            When I press "Delete" within last element in "#users"
             And I click on the alert
             Then I should not see "1232245678" within "#users"

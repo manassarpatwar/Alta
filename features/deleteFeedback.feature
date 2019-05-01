@@ -10,7 +10,7 @@ Feature: Deleting data
             When I press "Submit"
             Then I should see "Feedback Added"
             And I am on the settings page
-            When I click "Delete" within last element in "#feedback"
+            When I press "Delete" within last element in "#feedback"
             And I click on the alert
             Then I should not see "1232245678" within "#feedback"
         
