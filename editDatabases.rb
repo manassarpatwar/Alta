@@ -179,7 +179,7 @@ post '/editUser/:id' do
 		@userType_ok = false
 	end
 	@freeRide_ok = isPositiveNumber?(@freeRide)
-	@totalRide_ok = isPositiveNumber?(@freeRide)
+	@totalRide_ok = isPositiveNumber?(@totalRides)
 
 	@all_ok = @name_ok && @dateTime_ok && @userType_ok && @freeRide_ok && @totalRide_ok
 
