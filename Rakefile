@@ -38,7 +38,7 @@ task :addcallback do
     add =  driver.find_element(class: 'addButton')
     add.click
     addUrl =  driver.find_element(name: 'callbackUrls[7].url')
-    addUrl.send_keys "http://#{host}-4567.codio.io/auth/twitter"
+    addUrl.send_keys "http://#{host}-4567.codio.io/auth/twitter/callback"
     save = driver.find_element(class: 'Button--primary')
     save.click
     driver.quit
