@@ -16,9 +16,9 @@ task :addcallback do
   STDOUT.puts "This task requires the user to be running from codio. Proceed? [Y/n]"
   proceed = STDIN.gets.strip
   if proceed == "y" || proceed == "Y" then
-#    options = Selenium::WebDriver::Chrome::Options.new
-#    options.add_argument('--headless')
-    driver = Selenium::WebDriver.for :chrome #options: options
+    options = Selenium::WebDriver::Chrome::Options.new
+    options.add_argument('--headless')
+    driver = Selenium::WebDriver.for :chrome, options: options
     host = Socket.gethostname
     #Sign in to twitter
     driver.navigate.to "http://twitter.com/login"
