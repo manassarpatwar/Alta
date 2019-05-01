@@ -8,6 +8,7 @@ require 'twitter'
 require 'rufus-scheduler'
 require 'omniauth-twitter'
 require 'sqlite3'
+require 'chartkick'
 require 'csv'
 #require_relative 'createDatabase.rb'
 require_relative 'editDatabases.rb'
@@ -30,13 +31,19 @@ before do
     response.set_cookie(:following, :value => "true")
     response.set_cookie(:follow_state, :value => "true")
     response.set_cookie(:tweet_state, :value => "true")
-    @rideDeal = 2
 end
 
 #Configure sessions
 configure do
 	enable :sessions
+    begin
+      File.read("taxi_db.sqlite")
+    rescue
+      abort("Database not found... \nExiting\nTip: Run createDatabase.rb")
+    end
+    $db = SQLite3::Database.new 'taxi_db.sqlite'
     #$db = SQLite3::Database.new 'taxi_database.sqlite'
+    $rideDeal = 5
     begin
       TWITTER_CLIENT = Twitter::REST::Client.new do |config|
           config.consumer_key        = 'wVzUO14M25jvS3vmmtfDAtmh6'
