@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="css/admin_nav.css">
   <link rel="stylesheet" type="text/css" href="css/dashboard.css">
+  <link rel="stylesheet" type="text/css" href="../css/form.css">
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,8 +24,11 @@
         <div id = "incoming_tweets">
           <%= erb :tweetActions %>
         </div>
-        <div id = "add_journey">
-          <%= erb :addJourney %>
+        <div>
+          <h2>Add a Journey</h2>
+          <div id = "add_journey">
+            <%= erb :addJourney%>
+          </div>
         </div>
         <div id = "taxis">
           <%= erb :displayTaxis %>
@@ -35,10 +39,6 @@
   <script src="js/admin_nav.js"></script>
   <script> 
     var timePrev = new Date().getTime();
-    var ready;
-    $( document ).ready(function() {
-    ready = true;
-  });
   </script>
 </body>
 </html>

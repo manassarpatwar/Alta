@@ -404,7 +404,7 @@ get '/addFeedback' do
 end
 
 # add journey
-get '/addJourney' do
+get '/addJourneySettings' do
 	redirect '/index' unless session[:admin]
 
 	erb :addJourneySettingsMain
@@ -527,6 +527,7 @@ post '/addFeedback' do
         $db.execute('INSERT INTO feedback VALUES (?, ?, ?, ?, ?, ?)', [@id, @journey_id, @user_id, @date_time, @feedback, @rating])
     end
     erb :addFeedbackMain
+<<<<<<< HEAD
 end
 
 post '/addJourneySettings' do
@@ -589,3 +590,6 @@ post '/addJourneySettings' do
 
 	erb :addJourneySettingsMain
 end
+=======
+end
+>>>>>>> f028aa7ac6b96a80eafa87f55b8cc446350bd628

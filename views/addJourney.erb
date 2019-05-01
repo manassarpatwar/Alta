@@ -1,4 +1,3 @@
-<h2>Add a Journey</h2>
 <% if @noAvailableTaxis %>
             <p style="color:red">No taxi available. Please wait till a taxi becomes available.</p>
 <% end %>
@@ -98,10 +97,9 @@
       </label>
 
 
-      <input type="submit" value="Submit" class = "add_journey_submitButton" id = "add_journey_submit"/>
+      <input type="submit" value="Submit" class = "submitButton" id = "add_journey_submit"/>
   </form>
 <script>
-  if(ready){
     setTimeout(fade_out, 10000);
     function fade_out() {
       $("#journeyAddedMsg").fadeOut().empty();
@@ -146,6 +144,5 @@
         }
       });
     });
-  }
 </script>
 <script src="js/jquery.min.js"></script>

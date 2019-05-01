@@ -1,18 +1,31 @@
 require "rake/testtask"
 
 # replace the below with the path to your app
-require_relative 'app.rb'
-require "selenium-webdriver"
-require 'socket'
 
 desc "Restore the state of the db"
-task :wipedb do
+task wipedb: [:createdb] do
   puts "Wiping the database"
   `ruby wipeDatabase.rb`
 end
 
+desc "Install gems"
+task :installgems do
+   puts "Installing gems"
+   system('bundle install')
+end
+
+desc "Install chromedriver"
+task :installchromedriver do
+  puts "Installing chromedriver"
+  system('sudo cp chromedriver /bin')
+  system('sudo apt-get install chromium-chromedriver')
+  system('sudo apt-get install libnss3-dev')
+end
+
 desc "Add callback url in twitter"
 task :addcallback do
+  require "selenium-webdriver"
+  require 'socket'
   STDOUT.puts "This task requires the user to be running from codio. Proceed? [Y/n]"
   proceed = STDIN.gets.strip
   if proceed == "y" || proceed == "Y" then
@@ -23,7 +36,7 @@ task :addcallback do
     #Sign in to twitter
     driver.navigate.to "http://twitter.com/login"
     username = driver.find_element(class: 'js-username-field')
-    username.send_keys "ise19team29"
+    username.send_keys "tbtonner1@sheffield.ac.uk"
     password = driver.find_element(class: 'js-password-field')
     password.send_keys "SoftEng2019"
     password.submit
@@ -37,7 +50,8 @@ task :addcallback do
 
     add =  driver.find_element(class: 'addButton')
     add.click
-    addUrl =  driver.find_element(name: 'callbackUrls[7].url')
+    addUrl =  driver.find_element(name: 'callbackUrls[0].url')
+    addUrl.clear
     addUrl.send_keys "http://#{host}-4567.codio.io/auth/twitter/callback"
     save = driver.find_element(class: 'Button--primary')
     save.click
@@ -66,6 +80,14 @@ end
 
 desc "Run the Sinatra app locally"
 task :run do
+  require_relative 'app.rb'
   Sinatra::Application.run!
+end
+
+desc "Run the Sinatra app locally"
+task :install do
+  Rake::Task[:installchromedriver].execute
+  Rake::Task[:installgems].execute
+  Rake::Task[:createdb].execute
 end
 

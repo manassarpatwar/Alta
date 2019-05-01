@@ -124,7 +124,7 @@ post '/addJourney' do
 	@endLocation_ok = !@endLocation.nil? && @endLocation != ""
 	@freeRide_ok = @freeRide == '0' || @freeRide == '1'
 	@cancelled_ok = @cancelled == '0' || @cancelled == '1'
-	@rating_ok = @rating == '' || @rating == '0' || @rating == '1' || @rating == '2' || @rating == '3' || @rating == '4' || @rating == '5'
+	@rating_ok = @rating == '0' || @rating == '1' || @rating == '2' || @rating == '3' || @rating == '4' || @rating == '5'
 	@convoLink_ok =	!@convoLink.nil? && @convoLink != ""
 
 	@all_ok = @taxiId_ok && @userId_ok && @twitterHandle_ok && @dateTime_ok && @startLocation_ok && @endLocation_ok && @freeRide_ok && @cancelled_ok && @rating_ok && @convoLink_ok

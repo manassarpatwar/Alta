@@ -6,6 +6,7 @@ Feature: Add Journey
             When I click "#reply_tweet_icon1" within "#incoming_tweets"
             When I fill in "startLocation" with "Diamond"
             When I fill in "endLocation" with "Meadowhall"
+            When I fill in "rating" with "3"
             When I press "Submit"
             Then I should see "Journey Added." 
             

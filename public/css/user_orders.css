@@ -61,12 +61,13 @@
     font-size:45px;
     text-align:center;
     text-transform: uppercase;
-    letter-spacing:40px;
+    letter-spacing: 50px;
+    font-weight: 200;
 }
 .ridesTypeSummary {
     float: left;
-    width: 33%;
-    padding:0px 20px 0 0;
+    width: 33.3%;
+    padding:0px 10px 0 10px;
     height: 200px;
 }
 .rideTypeContainer {
@@ -76,27 +77,63 @@
     text-align: center;
     background-color: rgba(236, 236, 236, 0);
     color: white;
-    height: 90%;
+    height: 70%;
     margin-top:10px;
+}
+.summaryColumnLeft{
+    width: 28%;
+}
+.summaryColumnMid{
+    width:44%;
 }
 .rideTypeContent{
     padding-top:20px;
     letter-spacing: 3px;
     text-transform: uppercase;
+    letter-spacing:2px;
+}
+h3{
+    font-weight: 200;
+}
+.dealsContent{
+    font-size:15px;
+    letter-spacing:2px;
+    font-weight: 200;
 }
 .dealsContainer{
     width: 100%;
     height: 40px;
     border: 1px solid rgb(255, 255, 255);
     margin-top:30px;
+    margin-bottom:30px;
 }
-.remainingRides{
-    width: 90%; 
-    background-color: rgba(79, 183, 231, 0.26);
+.dealsText{
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 20px;
+    letter-spacing: 3px;
+    letter-spacing: 3px;
+    font-weight: 200;
+}
+.dealsIndicator{
+    background-color: rgb(255, 230, 0);
     text-align: right;
     padding: 10px;
     color: rgb(255, 255, 255);
     float:left;
+    letter-spacing:2px;
+    text-transform: uppercase;
+    height:100%;
+}
+.dealsIndicator2{
+    background-color: rgba(255, 255, 255, 0.322);
+    text-align: right;
+    padding: 10px;
+    color: rgb(255, 255, 255);
+    float:left;
+    letter-spacing:2px;
+    text-transform: uppercase;
+    height:100%;
 }
 .iconBox{
     float:right;
@@ -121,7 +158,8 @@
     margin:80px;
     text-transform:uppercase;
     margin-bottom:10px;
-    letter-spacing:40px;
+    letter-spacing: 50px;
+    font-weight: 200;
 }
 
 /* Section2: Types of Views Buttons */
@@ -303,10 +341,44 @@ table{
 }
 
 /* Responsive */
-@media only screen and (max-width:1127px){
-    .dateContent{
-        padding-top: 40px;
-    }
+
+
+/* General Overall Feedbacks */
+.generalReviewBox{
+    height:300px;
+    text-align:center;
+    background-color: rgb(223, 223, 223);
+    border-radius:7px;
+}
+.generalRatingText{
+    font-size:17px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    padding:10px;
+    padding-top:50px;
+}
+.generalFeedBack{
+    width:80%;
+    height:100px;
+    border-radius:7px;
+    border-color:white;
+    padding-left:20px;
+}
+.generalFeedBackText{
+    padding:20px;
+    text-align:center;
+}
+.generalRate{
+    border:none;
+    color:rgb(252, 149, 64);
+    font-size:18px;
+    margin:5px;
+    font-family: Sans-serif;
+    font-weight:500;
+}
+.generalRate:hover{
+    color:rgb(255, 251, 0);
+    background-color:gray;
 }
 
 @media only screen and (max-width:1000px){
@@ -346,9 +418,11 @@ table{
     }
 }
 @media only screen and (max-width:690px){
+    .rideSummary{
+        height:700px;
+    }
     .rideTypeContainer{
         height:50%;
-        margin-left: 20px;
     }
     .ridesTypeSummary{
         float: none;
@@ -366,7 +440,8 @@ table{
     .dateContent{
         padding-top:30px;
         width: 150%;
-        float: left;
+        width: 50%;
+        margin-left: 100px;
     }
 }
 @media only screen and (max-width:590px){
@@ -457,7 +532,8 @@ table{
         padding-bottom:10px;
     }
     .remainingRides{
-        font-size:13px;
+        font-size:12px;
+        letter-spacing:0px;
     }
     .greetingContent{
         font-size:14px;
@@ -468,6 +544,21 @@ table{
         font-size: 12px;
         width:150%;
         float: left;
+    }
+    .dealsContainer{
+        margin-top:10px;
+    }
+    .dealsText{
+        font-size:17px;
+    }
+    .dealsContent{
+        font-size:13px;
+    }
+    h3{
+        font-size: 15px;
+    }
+    .rideButtonColumn{
+        font-size: 13px;
     }
 }
 @media only screen and (max-width:490px){
@@ -530,8 +621,8 @@ table{
     }
     .rideTypeContainer{
         height:30%;
-        margin-left: 20px;
         padding:10px;
+        width: 100%;
     }
     .summaryTitle{
         font-size:20px;

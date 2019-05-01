@@ -417,6 +417,7 @@ p.info5-reviews, .info5-name, .info5-date{
   padding-bottom:1%;
   padding-top: 3%;
   position:relative;
+  z-index: -1;
 }
 .info6-title{
   padding: 7.5% 0 3% 0;

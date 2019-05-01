@@ -91,28 +91,6 @@ body{
   bottom: 0;
 }
 
-#page-content-wrapper #journeyForm{
-  width: 300px;
-}
-
-#page-content-wrapper #add_journey .inputbox{
-  display: inline-block;
-  width: 160px;
-  float: right;
-}
-
-#page-content-wrapper #add_journey .input_label{
-  line-height: 35px;
-}
-
-#page-content-wrapper #add_journey .add_journey_submitButton{
-  background: #38A1F3;
-  color: white;
-  border-radius: 25px;
-  height: 30px;
-  width: 70px;
-}
-
 #fetch_tweets{
   width: 50px;
   padding: 5px 0 0 5px;

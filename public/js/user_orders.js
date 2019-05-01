@@ -96,7 +96,6 @@ function myRating5(){
   e.style.color = "orange";
 }
 
-
 // //DropDownList
 // 	$(document).ready(function(){
  
@@ -138,12 +137,13 @@ select.onchange = function () {
    localStorage.setItem('select', lastSelected);
 }
 
-//Stay on table after submitted form
+// Stay on table after submitted form
 // function goToTable(reload)
 //    {
-//     window.location.hash = '#tableSection';
 //     window.location.reload(true);
+//     window.location.hash = '#tableSection';
 //    }
-  window.location.hash = '#tableSection';
+window.location.hash = '#tableSection';
+
 
    
