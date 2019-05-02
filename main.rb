@@ -74,26 +74,6 @@ post'/addRating' do
 end
 
 post'/addReview' do
-    @feedback = params[:newReview]
-    @date_time = Time.now.strftime("%Y/%m/%d %H:%M").to_s
-    # @rating = 0
-    @journey_id = params[:referenceNo].to_i
-    @rating  = params[:generalRating]
-    # @generalFeedBack = params[:generalFeedBack]
-
-    #get feedback table from the database
-	@feedbackInfo = $db.execute("SELECT * FROM feedback")
-
-    @submitted = true
-
-    @feedback_ok = !@feedback.nil? && @feedback != ""
-
-	@id = @feedbackInfo[@feedbackInfo.length-1][0].to_i + 1
-
-    # add data to the database
-    if @feedback_ok
-		# do the insert
-        $db.execute('INSERT INTO feedback VALUES (?, ?, ?, ?, ?, ?)', [@id, @journey_id, session[:id], @date_time, @feedback, @rating])
-    end
+    add_feedback(params[:referenceNo].to_i, session[:id], params[:newReview], params[:generalRating])
     redirect '/userOrders'
 end

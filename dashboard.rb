@@ -6,27 +6,7 @@ get '/dashboard' do
     @tweets = $tweets.dup
     erb :dashboard
 end
-
-get '/settings' do
-    redirect '/index' unless session[:admin]
-    @submitted = false
-    @rideDeal = $rideDeal
-    erb :settings
-end
-
-
 #--------------------Post Methods--------------------#
-post '/rideDeal' do
-    redirect '/index' unless session[:admin]
-    @submitted = true
-    @rideDeal = params[:rideDeal]
-
-    @rideDeal_ok = isPositiveNumber?(@rideDeal)
-    if @rideDeal_ok
-        $rideDeal = @rideDeal
-    end
-    erb :rideDeal
-end
 
 post '/replyToTweet' do
     index = (params[:tweetindex]).to_i

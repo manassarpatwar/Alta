@@ -2,16 +2,28 @@
 
 get '/settings' do
     redirect '/index' unless session[:admin]
-
 	@usersInfo = $db.execute("SELECT * FROM users")
 	@journeyInfo = $db.execute("SELECT * FROM journeys")
 	@feedbackInfo = $db.execute("SELECT * FROM feedback")
 	@taxiInfo = $db.execute("SELECT * FROM taxis")
-
+    @rideDeal = $rideDeal
     erb :settings
 end
 
-#---------------post delete---------------#
+#---------------post delete & ride deal---------------#
+
+post '/rideDeal' do
+    redirect '/index' unless session[:admin]
+    @submitted = true
+    @rideDeal = params[:rideDeal]
+
+    @rideDeal_ok = isPositiveNumber?(@rideDeal)
+    if @rideDeal_ok
+        $rideDeal = @rideDeal
+    end
+    erb :rideDeal
+end
+
 post '/deleteFromTable' do
 	redirect '/index' unless session[:admin]
 
@@ -503,34 +515,6 @@ end
 # add feedback
 post '/addFeedback' do
 	redirect '/index' unless session[:admin]
-
-	#get feedback table from the database
-	@feedbackInfo = $db.execute("SELECT * FROM feedback")
-
-    @submitted = true
-
-    #sanitize values
-    @journey_id = params[:journey_id]
-    @user_id = params[:user_id]
-    @date_time = Time.now.strftime("%Y/%m/%d %H:%M").to_s
-    @feedback = params[:feedback]
-    @rating = params[:rating]
-
-    # perform validation
-    @journey_id_ok = isPositiveNumber? (@journey_id)
-    @feedback_ok = !@feedback.nil? && @feedback != ""
-    @user_id_ok = !@user_id.nil? && @user_id != ""
-    @rating_ok = @rating == '' || @rating == '0' || @rating == '1' || @rating == '2' || @rating == '3' || @rating == '4' || @rating == '5'
-
-
-    @all_ok = @journey_id_ok && @feedback_ok && @user_id_ok && @rating_ok
-
-	@id = @feedbackInfo[@feedbackInfo.length-1][0].to_i + 1
-
-    # add data to the database
-    if @all_ok
-		# do the insert
-        $db.execute('INSERT INTO feedback VALUES (?, ?, ?, ?, ?, ?)', [@id, @journey_id, @user_id, @date_time, @feedback, @rating])
-    end
+    add_feedback(params[:journey_id], params[:user_id], params[:feedback], params[:rating])
     erb :addFeedbackMain
 end
