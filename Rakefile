@@ -22,6 +22,14 @@ task :installchromedriver do
   system('sudo apt-get install libnss3-dev')
 end
 
+desc "install rvm"
+task :installrvm do
+    system('sudo apt-get update')
+    system('command curl -sSL https://rvm.io/pkuczynski.asc | gpg --import -')
+    system('\curl -sSL https://get.rvm.io | bash -s stable --ruby')
+end
+
+
 desc "Add callback url in twitter"
 task :addcallback do
   require "selenium-webdriver"
@@ -90,10 +98,11 @@ task :run do
   Sinatra::Application.run!
 end
 
-desc "Run the Sinatra app locally"
+desc "Install the app"
 task :install do
   Rake::Task[:installchromedriver].execute
   Rake::Task[:installgems].execute
   Rake::Task[:createdb].execute
+  Rake::Task[:addcallback].execute
 end
 
