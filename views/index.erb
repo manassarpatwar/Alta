@@ -220,10 +220,10 @@
                           <%= @name[0][1] %>
                       <% end %>
                         <br>
-                       <% for i in 1..rating[5] %>
+                       <% for i in 1..rating[5].to_i %>
                         <span class="fa fa-star info5-checked"></span>
                        <% end %>
-                       <% for i in 1..(5-rating[5]) %>
+                       <% for i in 1..(5-rating[5].to_i) %>
                         <span class="fa fa-star"></span>
                        <% end %> 
                     </p>
