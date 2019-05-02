@@ -77,3 +77,10 @@ post'/addReview' do
     add_feedback(params[:referenceNo].to_i, session[:id], params[:newReview], params[:generalRating])
     redirect '/userOrders'
 end
+
+# delete account
+post '/deleteAccount/' do
+	#execute the deletion
+	$db.execute("DELETE FROM users WHERE id='#{session[:id]}'")
+	redirect '/'
+end
