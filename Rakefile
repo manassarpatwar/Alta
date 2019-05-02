@@ -43,14 +43,15 @@ task :addcallback do
     
     #Edit app callback url
     driver.navigate.to "https://developer.twitter.com/en/apps/16126309"
-    sleep 5
+    sleep 2
     edit = driver.find_element(class: "page-title-bar").find_element(class: "dropdown-button").click
 
     editdetails = driver.find_element(id: "feather-dropdown-7-menu-item-content-0").click
 
     add =  driver.find_element(class: 'addButton')
     add.click
-    addUrl =  driver.find_element(name: 'callbackUrls[0].url')
+    size = driver.find_element(class: 'callback-urls').find_elements(class: "field-with-delete").length
+    addUrl =  driver.find_element(name: "callbackUrls[#{size-1}].url")
     addUrl.clear
     addUrl.send_keys "http://#{host}-4567.codio.io/auth/twitter/callback"
     save = driver.find_element(class: 'Button--primary')
