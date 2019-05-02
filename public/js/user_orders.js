@@ -1,17 +1,18 @@
 document.getElementById('date').innerHTML = new Date().toDateString();
 
-//Filtable Search Bar
-function myFunction() {
+function addFilter() {
+  var index = $("#filterList")[0].selectedIndex;
   var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInput");
+  input = document.getElementById("filterInput");
   filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
+  table1 = document.getElementById("databaseView");
+  tr = table1.getElementsByTagName("tr");
+  console.log(tr);
   for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
+    td = tr[i].getElementsByTagName("td")[index-1];
     if (td) {
       txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      if (txtValue.toUpperCase().indexOf(filter) > -1 || txtValue == filter) {
         tr[i].style.display = "";
       } else {
         tr[i].style.display = "none";
@@ -20,6 +21,38 @@ function myFunction() {
   }
 }
 
+function addHeaderFilter() {
+    $('.rideTypeButton').click(function(){
+      index = $('.rideTypeButton').index(this);
+      var input, filter, table, tr, td, i, txtValue, btn;
+      table = document.getElementById("databaseView");
+      tr = table.getElementsByTagName("tr");
+      filter = "";
+      if(index == 1){
+        filter = "0";
+        index = 2;
+      }
+      else if(index == 3){
+        filter = "1";
+      }else if(index == 2){
+        filter = "1";
+      }
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[index+2];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1 || txtValue == filter) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }       
+      }
+    });
+}
+
+
+//Filtable Search Bar
 //Switching between two views: Table and Database
 var x = document.getElementById("view2");
 var y = document.getElementById("view1");
