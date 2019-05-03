@@ -21,12 +21,12 @@
   <!--Section1: Summary-->
     <div class="rideSummary">
       <div class="summaryContainer">
-      
+
       <!--Navigation bar-->
         <header>
           <%= erb :user_header %>
         </header>
-    
+
       <!--Greetings with twitterhandle and display current date-->
         <div class="summaryRow">
           <div class="greetingColumn">
@@ -67,7 +67,7 @@
           <div class="ridesTypeSummary summaryColumnLeft">
             <div class="rideTypeContainer">
               <p class="rideTypeContent">Free Rides Left</p>
-                <h3><%=h @freeRides %></h3>
+                <h3><%=h session[:freeRides] %></h3>
             </div>
           </div>
         </div>
@@ -75,28 +75,28 @@
     </div>
   <!--End of Section1: Summary-->
 
-    
+
   <!--History Title-->
     <div class="historyTitle">History</div>
   <!--Section2: Types of Views Buttons-->
-    <div id="tableSection" class="container searchBarContainer">    
+    <div id="tableSection" class="container searchBarContainer">
       <div class="tableTypeBox">
         <p class="tableTypeTitle">View As: </p>
         <span id="viewButton1" onclick="myView1()" class="tableTypeButton">Table</span>
         <span id="viewButton2" onclick="myView2()" class="tableTypeButton">Databse</span>
       </div>
     </div>
-    
+
   <!--Section3: Filtable Search bar-->
     <div id ="view1_1" class="searchBarRow container searchBarContainer">
       <select id='filterList' name="column" class="selectStorage">
-        <option value="all">All</option> 
-        <option value='id'>Reference Number</option> 
-        <option value='date_time'>Travel Date</option> 
-        <option value='start_location'>Start Location</option> 
-        <option value='end_location'>End Location</option> 
-        <option style = "display:none"></option> 
-        <option style = "display:none"></option> 
+        <option value="all">All</option>
+        <option value='id'>Reference Number</option>
+        <option value='date_time'>Travel Date</option>
+        <option value='start_location'>Start Location</option>
+        <option value='end_location'>End Location</option>
+        <option style = "display:none"></option>
+        <option style = "display:none"></option>
         <option value='rating'>Rating</option>
       </select>
       <input type="text" id="filterInput" onkeyup="addFilter()" placeholder="Search for names.." title="Type in a name">
@@ -145,12 +145,12 @@
         </tbody>
         </table>
     <% end %>
-        
+
   <!--View1: Table Version-->
     <% unless @results.nil? %>
-      <% if @results.length == 0 %> <p style="text-align:center ;font-size:17px;"> no results found </p> 
+      <% if @results.length == 0 %> <p style="text-align:center ;font-size:17px;"> no results found </p>
       <% else %>
-        
+
         <div id="view1">
           <% @results.each do |record| %>
             <tr>
@@ -194,11 +194,11 @@
                 <tr>
                   <td class="tableBox tableStartLoc">start</td>
                   <td class="tableBox tableEndLoc">end</td>
-                </tr>        
+                </tr>
                 <tr>
                   <td class="tableColumn cellStartLoc"><%=h record[5] %></td>
                   <td class="cellEndLoc"><%=h record[6] %></td>
-                </tr>      
+                </tr>
                 <tr>
                   <td class="tableBox tableFreeBox">
                     <% if record[7]==1 %>
@@ -233,9 +233,9 @@
       <% end %>
     <% end %>
 
-      
 
-    <div class="separation" style="height:90px;"></div>  
+
+    <div class="separation" style="height:90px;"></div>
 
   <!--General Overall Feebacks-->
     <div class="generalReviewBox container">
@@ -243,7 +243,7 @@
         <div class="generalRatingText">
           <span class="ratingText">Give us the overall rating on our services</span>
         </div>
-        <div class="generalFeedBackText"> 
+        <div class="generalFeedBackText">
           <input type="text" class="generalFeedBack" name="newReview" value="<%=h params[:genreralFeedBack] %>" placeholder="Give us general feedbacks on our service!">
         </div>
         <p style="display:inline; font-weight:200; letter-spacing:2px;"> RATING: </p>
@@ -255,7 +255,7 @@
       </form>
     </div>
 
-  <div class="separation" style="height:100px;"></div>  
+  <div class="separation" style="height:100px;"></div>
 
   <!--footer-->
     <%= erb :user_footer %>

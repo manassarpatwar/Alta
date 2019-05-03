@@ -17,17 +17,12 @@ end
 get'/userOrders' do
     redirect '/index' unless session[:loggedin]
     @totalRides = 0
-    @freeRides = 0
     @freeDeal = Hash.new()
     @results = $db.execute("SELECT * FROM journeys WHERE user_id =  '#{session[:id]}'")
     @db2 = $db.execute("SELECT * FROM journeys WHERE user_id =  '#{session[:id]}' AND free_ride = 0")
-    @db3 = $db.execute("SELECT * FROM journeys WHERE user_id =  '#{session[:id]}' AND free_ride = 1")
 
     @db2.each do |ride|
         @totalRides+=1
-    end
-    @db3.each do |ride|
-        @freeRides+=1
     end
 
     @temp = @totalRides % $rideDeal
