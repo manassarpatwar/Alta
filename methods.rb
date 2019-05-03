@@ -40,6 +40,15 @@ def add_feedback(j_id, u_id, fdbk, rat)
     end
     return false
 end
+    
+def get_total_rides(id)
+    @totalRides = 0
+    @journeys = $db.execute("SELECT * FROM journeys WHERE user_id =  '#{id}' AND free_ride = 0")
+    @journeys.each do |ride|
+        @totalRides+=1
+    end
+    return @totalRides
+end
 
 def isPositiveNumber? string
   begin

@@ -16,21 +16,11 @@ end
 #end
 get'/userOrders' do
     redirect '/index' unless session[:loggedin]
-    @totalRides = 0
-    @freeDeal = Hash.new()
     @results = $db.execute("SELECT * FROM journeys WHERE user_id =  '#{session[:id]}'")
-    @db2 = $db.execute("SELECT * FROM journeys WHERE user_id =  '#{session[:id]}' AND free_ride = 0")
-
-    @db2.each do |ride|
-        @totalRides+=1
-    end
+    @totalRides = get_total_rides(session[:id])
 
     @temp = @totalRides % $rideDeal
     @ridesUntilDeal = $rideDeal - @temp
-    @percentageDeal = (@totalRides.to_f / $rideDeal.to_f)*100
-
-    @freeDeal["Rides Until Deal"] = @ridesUntilDeal
-    # @freeDeal["You need"] = $rideDeal
     erb :user_orders
 end
 
