@@ -55,15 +55,21 @@ function addHeaderFilter() {
 //Filtable Search Bar
 //Switching between two views: Table and Database
 var x = document.getElementById("view2");
+var q = document.getElementById("view1_2");
+var z = document.getElementById("view1_1");
 var y = document.getElementById("view1");
 
 function myView1() {
     x.style.display = "none";
+    q.style.display = "none";
+    z.style.display = "none";
     y.style.display = "block";
 }
 function myView2() {
 	x.style.display = "block";
-	y.style.display = "none";
+  y.style.display = "none";
+  q.style.display = "block";
+  z.style.display = "block";
 }
 
 

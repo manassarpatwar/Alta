@@ -244,6 +244,9 @@ table{
 #view1{
     display:block;
 }
+#view1_1, #view1_2{
+    display:none;
+}
 .tableContainer{
     background-color:#f2f2f2;
     margin-bottom:0;
