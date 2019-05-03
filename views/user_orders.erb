@@ -223,7 +223,7 @@
             <tr>
               <form method="post" action="/addReview">
                 <input type="hidden" name="referenceNo" value="<%=record[0]%>">
-                <input class=" container writeReview" type="text" name="newReview" value="<%=h params[:newReview] %>" placeholder="Tell us what do you think about our services !">
+                <input class=" container writeReview" type="text" name="newReview" value="<%=h params[:newReview] %>" placeholder="Tell us what do you think about our service!">
                 <input class="container reviewSumbit" type="submit" value="SUBMIT">
               </form>
           </tr>
@@ -241,10 +241,10 @@
     <div class="generalReviewBox container">
       <form method="post" action="/addReview">
         <div class="generalRatingText">
-          <span class="ratingText">Give us the overall rating on our services</span>
+          <span class="ratingText">Please give us general feedback on our service!</span>
         </div>
         <div class="generalFeedBackText">
-          <input type="text" class="generalFeedBack" name="newReview" value="<%=h params[:genreralFeedBack] %>" placeholder="Give us general feedbacks on our service!">
+          <input type="text" class="generalFeedBack" name="newReview" value="<%=h params[:genreralFeedBack] %>" placeholder="Give us general feedback on our service!">
         </div>
         <p style="display:inline; font-weight:200; letter-spacing:2px;"> RATING: </p>
         <input type="submit" onclick="myRating1()" id="rate1" class="fa fa-star generalRate" name="generalRating" value="1">
