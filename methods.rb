@@ -25,7 +25,7 @@ def add_feedback(j_id, u_id, fdbk, rat)
     @journey_id_ok = isPositiveNumber? (@journey_id)
     @feedback_ok = !@feedback.nil? && @feedback != ""
     @user_id_ok = !@user_id.nil? && @user_id != ""
-    @rating_ok = @rating == '' || @rating == '0' || @rating == '1' || @rating == '2' || @rating == '3' || @rating == '4' || @rating == '5'
+    @rating_ok = @rating == '0' || @rating == '1' || @rating == '2' || @rating == '3' || @rating == '4' || @rating == '5'
 
 
     @all_ok = @journey_id_ok && @feedback_ok && @user_id_ok && @rating_ok
