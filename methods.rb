@@ -1,4 +1,3 @@
-
 def gather_taxis
   if session[:admin_sheffield] then
      @availableTaxis = $db.execute %{SELECT * FROM taxis WHERE city IS "SHEFFIELD" AND available IS "1"} #Gather all taxis
@@ -37,7 +36,9 @@ def add_feedback(j_id, u_id, fdbk, rat)
     if @all_ok
         # do the insert
         $db.execute('INSERT INTO feedback VALUES (?, ?, ?, ?, ?, ?)', [@id, @journey_id, @user_id, @date_time, @feedback, @rating])
+        return true
     end
+    return false
 end
 
 def isPositiveNumber? string
