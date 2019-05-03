@@ -182,7 +182,7 @@ select.onchange = function () {
 //     window.location.reload(true);
 //     window.location.hash = '#tableSection';
 //    }
-window.location.hash = '#tableSection';
+// window.location.hash = '#tableSection';
 
 
    
