@@ -73,8 +73,7 @@ DB.execute <<-SQL
 	"name"	TEXT NOT NULL,
 	"signup_date"	TEXT NOT NULL,
 	"user_type"	INTEGER NOT NULL,
-	"free_rides"	INTEGER NOT NULL, 
-    "total_rides" INTEGER,
+	"free_rides"	INTEGER NOT NULL,
 	PRIMARY KEY("id")
   );
 SQL
@@ -92,5 +91,5 @@ csvTaxis.each do |row|
 end
 
 csvUsers.each do |row|
-  DB.execute "insert into users values ( ?, ?, ?, ?, ?, ? )", row.fields
+  DB.execute "insert into users values ( ?, ?, ?, ?, ?)", row.fields
 end
