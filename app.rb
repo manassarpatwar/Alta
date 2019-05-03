@@ -74,7 +74,7 @@ helpers do
          @unavailableTaxis = $db.execute %{SELECT * FROM taxis WHERE city IS "MANCHESTER" AND available IS "0"} #Gather all taxis
       end
     end
-        
+
     def add_feedback(j_id, u_id, fdbk, rat)
       	#get feedback table from the database
         @feedbackInfo = $db.execute("SELECT * FROM feedback")
