@@ -43,11 +43,10 @@
         <div class="separation1"></div>
 
       <!--Deals Indicator-->
-      <div class="dealsText"><span style="color:rgb(250, 221, 76)"><%=h @ridesUntilDeal %> </span>rides until next deal!</div>
+      <div class="dealsText"><span style="color:rgb(250, 221, 76)"><%=h @ridesUntilDeal %> </span>rides until next free ride!</div>
         <div class="dealsContainer">
+          <% @percentageDeal = (@ridesUntilDeal.to_f / $rideDeal.to_f)*100 %>
           <div class="dealsIndicator"  style="width:<%=h @percentageDeal %>%"></div>
-          <% @percentageDeal2 = 100-@percentageDeal %>
-          <div class="dealsIndicator2"  style="width: <%=h @percentageDeal2 %>%"></div>
         </div>
 
       <!--Summary Content-->
