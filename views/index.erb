@@ -12,16 +12,16 @@
     <link rel="stylesheet" href="css/home_content.css" />
     <link rel="stylesheet" href="css/home_footer.css" />
   </head>
-    
 
-  <body id="bg">  
+
+  <body id="bg">
   <!--navigation bar-->
     <header class="stick">
         <%= erb :home_header %>
-    </header> 
-     
+    </header>
+
     <div id = "wrapper">
-      
+
     <div id = "page-content-wrapper">
 
 <!--Welcoming Sign up-->
@@ -33,41 +33,41 @@
             <%if session[:loggedin] %>
             <div id="welcome-left-box">
                 <div class="head-box1">RIDE WITH US NOW</div>
-                <div class="head-box2">Tweet at us<a class="twitter" href="https://twitter.com/ise19team29">@ise19team29</a> to get a taxi</div> </div>
+                <div class="head-box2">Tweet <a class="twitter" href="https://twitter.com/ise19team29">@ise19team29</a> to get a taxi</div> </div>
                 <% else %>
                 <div id="welcome-left-box">
 
-                    <div class="head-box1">JOIN.US.TODAY</div> <br>
-                    <div class="head-box2">Sign up with <a class="twitter" href="/login">Twitter</a><br> to get the Greatest DEALS<br> & <br> FREE RIDES!</div>
+                    <div class="head-box1">JOIN US TODAY</div> <br>
+                    <div class="head-box2">Sign up with us via <a class="twitter" href="/login">Twitter</a><br> and get the fantasitc deals</div>
                     </div></div>
             <% end %>
         </div>
     </div>
 </div>
-        
+
 
 
 <!--Content 1: How to use our service-->
 <div class="content-wrapper">
-<div class="info1-container" id="section1">        
+<div class="info1-container" id="section1">
         <p class="titles uppercaseT info1-title">
-            How to use our Services
+            How it works
         </p>
 
         <div class="info1-column info1-col2">
             <div class="info1-box info1-box2">
-                <p class="info1-content1">To get a car...
+                <p class="info1-content1">To get a taxi:
                 </p>
                 <p class="info1-content1">
                     <ol style="padding-left:10px;">
-                    <li class="info1-lists">Login to your Twitter</li>
-                    <li class="info1-lists">Tweet us by tagging us with our account name, @ise19team29. </li>
-                    <li class="info1-lists">Provide these required information: start location, preferred taxi type (see below) and your end location.</li>
-                    <li class="info1-lists">In no time, we will reply or direct message you.</li>
-                    </ol> 
+                    <li class="info1-lists">Login to your Twitter account</li>
+                    <li class="info1-lists">Tweet at us by tagging us with our account name: @ise19team29. </li>
+                    <li class="info1-lists">In the tweet tell us information on your: start location, preferred taxi type (see below) and your end location.</li>
+                    <li class="info1-lists">In next no time we will reply to let you know the status of your taxi.</li>
+                    </ol>
                 </p>
             </div>
-        </div>        
+        </div>
 
         <div class="info1-column">
                 <img class="info1-img" src="img/background1.jpg">
@@ -75,11 +75,14 @@
 
         <div class="info1-column info1-column2">
             <div class="info1-box">
-                <p class="info1-content1">After tweeting us...</p>
+                <p class="info1-content1">After tweeting us:</p>
                     <p class="info1-content2">
-                        We will then contact our local taxi drivers, and they will reach to you.
+                        If any more information is required, our staff will message to recive more infomation from you.
                     </p>
-                <p class="info1-content2">Payment method: Cash / Credit Card</p>
+                    <p class="info1-content2">
+                        Once everything is OK, we will then contact our local taxi drivers and they will be on their way to you.
+                    </p>
+                <p class="info1-content2">Payment to be made in the taxi after the ride. Payment method: Cash, Credit/Debit Card or any form of contactless payment.</p>
             </div>
         </div>
     </div>
@@ -88,25 +91,25 @@
     <!--Content 2: Types of taxi services-->
 
     <div class="slideshow-container section22" id="section2" >
-        
+
         <div class="mySlides">
             <div class="info4-container container">
                 <div class="bd-row1" style="height:780px;">
                     <div class="info4-column">
                         <div class="info4-box">
-                            <div class="info4-title uppercaseT">Types of Taxis</div>
+                            <div class="info4-title uppercaseT">Taxi Types</div>
                             <div class="info4-content1">Small (S) Taxi</div>
                             <div class="info4-content2">
-                            This is a 1-4 seated taxi.<br>
-                            The cheapest taxi type you find here.<br>
+                            Type S is a 1-4 seated taxi.<br>
+                            It's the cheapest taxi we offer.<br>
                             This a great option for a low budget rides.<br>
-                            The price varies based on the distance and waiting type.
+                            The price will vary based on the distance of the journey.
                             </div>
                         </div>
                     </div>
                     <div class="info4-column">
                     <div class="info4-indicators">
-                        <span class="info4-indict" onclick="currentSlide(1)"><b>Type S</b></span> 
+                        <span class="info4-indict" onclick="currentSlide(1)"><b>Type S</b></span>
                         <span class="info4-indict" onclick="currentSlide(2)"><b>Type M</b></span>
                         <span class="info4-indict" onclick="currentSlide(3)"><b>Type L</b></span>
                     <!-- <span class="info4-indict" onclick="currentSlide(4)">Type 4</span> -->
@@ -122,19 +125,19 @@
                 <div class="bd-row1">
                     <div class="info4-column">
                         <div class="info4-box">
-                            <div class="info4-title uppercaseT">Types of Taxis</div>
+                            <div class="info4-title uppercaseT">Taxi Types</div>
                             <div class="info4-content1">Medium (M) Taxi</div>
                             <div class="info4-content2">
-                            This is a 1-6 seated taxi.<br>
+                            Type M is a 1-6 seated taxi.<br>
                             This is a great option for groups.<br>
-                            This is a great option for average budget rides.<br>
-                            The price varies based on the distance and waiting type.
+                            And a great option for average budget rides.<br>
+                            The price will vary based on the distance of the journey.
                             </div>
                         </div>
                     </div>
                     <div class="info4-column">
                     <div class="info4-indicators">
-                        <span class="info4-indict" onclick="currentSlide(1)"><b>Type S</b></span> 
+                        <span class="info4-indict" onclick="currentSlide(1)"><b>Type S</b></span>
                         <span class="info4-indict" onclick="currentSlide(2)"><b>Type M</b></span>
                         <span class="info4-indict" onclick="currentSlide(3)"><b>Type L</b></span>
                     <!-- <span class="info4-indict" onclick="currentSlide(4)">Type 4</span> -->
@@ -150,19 +153,19 @@
                 <div class="bd-row1">
                     <div class="info4-column">
                         <div class="info4-box">
-                            <div class="info4-title uppercaseT">Types of Taxis</div>
+                            <div class="info4-title uppercaseT">Taxi Types</div>
                             <div class="info4-content1">Luxury (L) Taxi</div>
                             <div class="info4-content2">
-                            This is a 1-4 seated taxi.<br>
-                            This is the most expensive taxi type.<br>
+                            Type L is a 1-4 seated taxi.<br>
+                            This is our most expensive taxi type.<br>
                             Rides with the most luxurious car brands.<br>
-                            The price varies based on the distance and waiting type.
+                            The price will vary based on the distance of the journey.
                             </div>
                         </div>
                     </div>
                     <div class="info4-column">
                     <div class="info4-indicators">
-                        <span class="info4-indict" onclick="currentSlide(1)"><b>Type S</b></span> 
+                        <span class="info4-indict" onclick="currentSlide(1)"><b>Type S</b></span>
                         <span class="info4-indict" onclick="currentSlide(2)"><b>Type M</b></span>
                         <span class="info4-indict" onclick="currentSlide(3)"><b>Type L</b></span>
                     </div>
@@ -175,11 +178,11 @@
 
 <!-- Content 3: Deals-->
 
-    <div class="info3-container section33" id="section3">              
+    <div class="info3-container section33" id="section3">
         <div class="info3-column">
             <div class="info3-box info3-img1">
                 <div class="info5-cont">
-                
+
                 </div>
             </div>
         </div>
@@ -187,7 +190,7 @@
         <div class="info3-column">
             <div class="info3-box info3-img2">
                 <div class="info5-cont">
-                 
+
                 </div>
             </div>
             <div class="info3-textcontainer">
@@ -195,8 +198,11 @@
            </div>
         </div>
         <div class="info3-textcontainer ">
-        <p class="info3-textbox1 titles uppercaseT">deals</p>
-          <p class="info3-textbox2 info3-text">Dont miss out on the fantastic deals and discounts we offer to out customers.<br><br><br><br><br><br><br></p>
+        <p class="info3-textbox1 titles uppercaseT">Deals</p>
+          <p class="info3-textbox2 info3-text">Dont miss out on the fantastic deals and discounts we offer to customers signed up with us.<br><br></p>
+          <p class="info3-textbox2 info3-text">Currently our deal is for every <%=h $rideDeal %> rides with us you get a ride free!<br><br></p>
+          <p class="info3-textbox2 info3-text">To see when you'll recive an offer visit <a href="/userOrders">your account</a> after <a href="/login">signing up</a> with us.<br><br></p>
+          <p class="info3-textbox2 info3-text">To use your offer make sure to mention it in your tweet that you wish to use your free ride.<br><br></p>
        </div>
     </div>
     </div>
@@ -204,7 +210,7 @@
 
     <!-- Content 4: Customer Reviews-->
 
-    <div class="info5-container" id="section4">        
+    <div class="info5-container" id="section4">
         <p class="titles info5-title uppercaseT">
             What do People Say</p>
         <div class="info4-CRrow">
@@ -213,7 +219,7 @@
                 <div class="info5-box">
                   <div class="info5-cont">
                     <p class="info5-name">
-                      <% @name = @users.select{|user| user[0] == rating[2]} %> 
+                      <% @name = @users.select{|user| user[0] == rating[2]} %>
                       <% if @name.nil? || @name[0].nil? %>
                           Anonymous
                       <% else %>
@@ -225,7 +231,7 @@
                        <% end %>
                        <% for i in 1..(5-rating[5].to_i) %>
                         <span class="fa fa-star"></span>
-                       <% end %> 
+                       <% end %>
                     </p>
                     <p class="info5-date"><%= rating[3] %></p>
                     <p class="info5-reviews">
@@ -233,13 +239,13 @@
                     </p>
                   </div>
               </div>
-            </div>      
-          
+            </div>
+
             <% end %>
             </div>
-        </div>    
+        </div>
     </div>
-    
+
 
     <!--Content 5: About Us-->
 
@@ -253,7 +259,7 @@
             </div>
             <div class="bd5-column2">
                 <div class="info5-AboutUscontent">
-                    We are Alta. <br> The safest and best guaranteed online transportation network company in th UK, located at Sheffield. <br><br> We aim to provide our customers the safest, fastest and most convenient taxi services, no matter you are purchasing our services for individual needs to group rides. <br><br><br><br><br>
+                    <p>We are Alta. <br> The safest online transportation network company in th UK, located in Sheffield and Manchester. <br><br> We aim to provide our customers the best, fastest and most convenient taxi service no matter you are needing our services for individual needs or for group rides. <br><br>What makes us unique is our revolutionary way to order taxis. Simlpy tweet at us and a taxi will be on it's way to your location.<br><br><br></p>
                 </div>
             </div>
 
@@ -264,25 +270,25 @@
 
 
     <!-- Content 6: Contact us and banner -->
-    <div class="info6-container" id="section6">        
+    <div class="info6-container" id="section6">
 
         <div class="info6-column">
             <div class="info6-box">
                 <div class="info6-cont">
                 </div>
             </div>
-        </div>        
+        </div>
 
         <div class="info6-maincolumn">
             <div class="info6-box">
                 <div class="info6-cont">
                     <div class="info6-title">Get in Touch</div>
                     <div class="info6-content1">
-                        For any questions, <br> please contact us at Twitter, <br>
+                        For any questions, please contact us on Twitter: <br>
                         <a href = "https://twitter.com/ise19team29" class="ourTwitter">@ise19team29</a>
                     </div>
                     <div class="info6-content2">
-                        Don't Forget to sign up to our services <br>to receive the lastest news and exclusive offers!
+                        Don't forget to sign up to our services <br>to receive the lastest news and exclusive offers!
                     </div>
                     <div class="info6-content3">
                         <div class="ft-tw">
@@ -298,6 +304,5 @@
 </div>
  <script async src="js/content.js"></script>
   </body>
-  
-</html>
 
+</html>

@@ -19,7 +19,7 @@ post '/rideDeal' do
 
     @rideDeal_ok = isPositiveNumber?(@rideDeal)
     if @rideDeal_ok
-        $rideDeal = @rideDeal
+        $rideDeal = @rideDeal.to_i
     end
     erb :rideDeal
 end
@@ -334,10 +334,10 @@ post '/editJourney/:id' do
 	@cancelled = params[:cancelled].strip
 	@rating = params[:rating].strip
 	@convoLink = params[:convoLink].strip
-    
+
     @currentTaxiId = @journeyToEdit[1].to_i
     @currentUserId = @journeyToEdit[2].to_i
-    
+
 
     if @currentTaxiId != @taxiId.to_i then
       #looping to check for every id/name whether they are in the database
@@ -362,7 +362,7 @@ post '/editJourney/:id' do
               @userIdFound = false
           end
       end
-    else 
+    else
        @userIdFound = true
     end
 

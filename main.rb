@@ -6,7 +6,7 @@ end
 
 get '/index' do
     @ratings = $db.execute("SELECT * FROM feedback WHERE rating >= 4")
-    @users = $db.execute("SELECT * FROM users") 
+    @users = $db.execute("SELECT * FROM users")
 	erb :index
 end
 
@@ -46,7 +46,7 @@ end
 post'/addRating' do
     @rating = params[:rating].to_i
     @referenceNo = params[:referenceNo].to_i
-    
+
     $db.execute("UPDATE journeys SET rating = '#{@rating}' WHERE id = '#{@referenceNo}' AND user_id = '#{session[:id]}'")
     # puts params[:rating]
     puts params[:referenceNo]
