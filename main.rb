@@ -18,7 +18,7 @@ get'/userOrders' do
     redirect '/index' unless session[:loggedin]
     @results = $db.execute("SELECT * FROM journeys WHERE user_id =  '#{session[:id]}'")
     @totalRides = get_total_rides(session[:id])
-
+    @rideDeal = $rideDeal
     @temp = @totalRides % $rideDeal
     @ridesUntilDeal = $rideDeal - @temp
     erb :user_orders
