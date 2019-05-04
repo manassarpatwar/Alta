@@ -44,7 +44,7 @@ configure do
     begin
       File.read("taxi_db.sqlite")
     rescue
-      abort("Database not found... \nExiting\nTip: Run createDatabase.rb (ruby createDatabase.rb)")
+      abort("Database not found... \nExiting\nTip: Run ruby createDatabase.rb")
     end
     $db = SQLite3::Database.new 'taxi_db.sqlite'
     #$db = SQLite3::Database.new 'taxi_database.sqlite'

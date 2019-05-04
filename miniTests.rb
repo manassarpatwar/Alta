@@ -1,8 +1,10 @@
+require 'simplecov'
+SimpleCov.start
 require 'minitest/autorun'
 require 'sqlite3'
 require_relative 'methods.rb'
 
-$db = SQLite3::Database.new 'taxi_db.sqlite'
+$db = SQLite3::Database.new 'taxi_test_db.sqlite'
 
 class TestIsPositiveNumber < Minitest::Test
     def test_string

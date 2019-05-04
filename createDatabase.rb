@@ -13,7 +13,12 @@ csvTaxis = CSV.parse(csv_text_taxis, :headers => true)
 csv_text_users = File.read("public/csv/users.csv")
 csvUsers = CSV.parse(csv_text_users, :headers => true)
 
-DB = SQLite3::Database.new 'taxi_db.sqlite'
+inputs = ARGV
+if inputs[0] == "testdb"
+  DB = SQLite3::Database.new 'taxi_test_db.sqlite'
+else
+  DB = SQLite3::Database.new 'taxi_db.sqlite'
+end
 # Create a table
 DB.execute <<-SQL
   DROP TABLE IF EXISTS "feedback";

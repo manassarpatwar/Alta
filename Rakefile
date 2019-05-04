@@ -3,7 +3,7 @@ require "rake/testtask"
 # replace the below with the path to your app
 
 desc "Restore the state of the db"
-task wipedb: [:createdb] do
+task :wipedb do
   puts "Wiping the database"
   `ruby wipeDatabase.rb`
 end
@@ -22,7 +22,7 @@ task :installchromedriver do
   system('sudo apt-get install libnss3-dev')
 end
 
-desc "install rvm"
+desc "Install rvm"
 task :installrvm do
     system('sudo apt-get update')
     system('command curl -sSL https://rvm.io/pkuczynski.asc | gpg --import -')
@@ -84,12 +84,16 @@ end
 desc "Delete temporary files"
 task :clean => :wipedb do
   `echo deleting temporary files`
+  `rm taxi_test_db.sqlite`
   # ... code to delete the database ....
 end
 
 desc "Run tests"
-Rake::TestTask.new do |t|
-  t.pattern = "*_test.rb"
+task :test do
+  system('ruby createDatabase.rb testdb')
+  system('ruby minitests.rb')
+  system('cucumber')
+  `rm taxi_test_db.sqlite`
 end
 
 desc "Run the Sinatra app locally"
