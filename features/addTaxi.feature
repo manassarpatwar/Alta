@@ -30,6 +30,7 @@ Feature: Adding data
             When I fill in "taxiType" with "L"
             When I fill in "city" with "SHEFFIELD"
             When I press "Submit"
+            And I am on the addTaxi page
             When I fill in "regNum" with "12345"
             When I fill in "contact" with "12345"
             When I fill in "taxiType" with "O"

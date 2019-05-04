@@ -7,6 +7,7 @@ Feature: Deleting data
             When I fill in "journey_id" with randomid
             When I fill in "user_id" with randomid
             When I fill in "feedback" with "1232245678"
+            When I fill in "rating" with "0"
             When I press "Submit"
             Then I should see "Feedback Added"
             And I am on the settings page

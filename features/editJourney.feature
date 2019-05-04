@@ -21,7 +21,7 @@ Feature: Edit Journey
             Given I am signed in as admin from sheffield
             And I am on the settings page
             When I click "Edit" within first element in "#journeys" 
-            When I fill in "taxiId" with "1"
+            When I fill in "taxiId" with "-1"
             When I press "Submit"
             Then I should see "There were errors in your form submission"
             

@@ -26,6 +26,15 @@ When /^I wait for (\d+) seconds?$/ do |secs|
   sleep secs.to_i
 end
 
+When /^I log out of twitter$/ do
+   begin
+       visit 'https://twitter.com/logout' 
+       click_button("Log out")
+    rescue Capybara::ElementNotFound
+        puts "already logged out"
+    end
+end
+
 When /^I am signed in as admin from sheffield$/ do
    begin
        visit '/login' 
