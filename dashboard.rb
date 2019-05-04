@@ -1,7 +1,7 @@
 #--------------------Get Methods--------------------#
 get '/dashboard' do
     redirect '/index' unless session[:admin]
-    gather_taxis
+    gather_taxis(session[:admin_city]) 
     @submitted = false
     @tweets = $tweets.dup
     erb :dashboard
@@ -133,14 +133,14 @@ end
 post '/addToAvailable' do
     taxiId = params[:taxiId].to_i
     $db.execute("UPDATE taxis SET available = 1 WHERE id='#{taxiId}'")
-    gather_taxis
+    gather_taxis(session[:admin_city])
     erb :displayTaxis
 end
 
 post '/addToUnavailable' do
     taxiId = params[:taxiId].to_i
     $db.execute("UPDATE taxis SET available = 0 WHERE id='#{taxiId}'")
-    gather_taxis
+    gather_taxis(session[:admin_city])
     erb :displayTaxis
 end
 
@@ -150,7 +150,7 @@ post '/handleDeletedTweet' do
 end
 
 post '/fillInfoInJourney' do
-    gather_taxis
+    gather_taxis(session[:admin_city])
     @noAvailableTaxis = false
     if !@availableTaxis[0].nil?
 	 @taxiId = @availableTaxis[0][0]

@@ -1,11 +1,6 @@
-def gather_taxis
-  if session[:admin_sheffield] then
-     @availableTaxis = $db.execute %{SELECT * FROM taxis WHERE city IS "SHEFFIELD" AND available IS "1"} #Gather all taxis
-     @unavailableTaxis = $db.execute %{SELECT * FROM taxis WHERE city IS "SHEFFIELD" AND available IS "0"} #Gather all taxis
-  elsif session[:admin_manchester] then
-     @availableTaxis = $db.execute %{SELECT * FROM taxis WHERE city IS "MANCHESTER" AND available IS "1"} #Gather all taxis
-     @unavailableTaxis = $db.execute %{SELECT * FROM taxis WHERE city IS "MANCHESTER" AND available IS "0"} #Gather all taxis
-  end
+def gather_taxis(city)
+     @availableTaxis = $db.execute %{SELECT * FROM taxis WHERE city IS '#{city}' AND available IS "1"} #Gather all taxis
+     @unavailableTaxis = $db.execute %{SELECT * FROM taxis WHERE city IS '#{city}' AND available IS "0"} #Gather all taxis
 end
 
 def add_feedback(j_id, u_id, fdbk, rat)

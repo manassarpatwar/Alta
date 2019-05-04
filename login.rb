@@ -10,6 +10,7 @@ get '/logout' do
 
   	session[:loggedin] = nil
     session[:admin] = nil
+    session[:admin_city] = nil
   	redirect '/index'
 end
 
@@ -45,11 +46,11 @@ get '/auth/twitter/callback' do
 	session[:dateTime] = @userInfo[0][2]
 	if @userInfo[0][3] == 1
 		session[:admin] = true
-        session[:admin_sheffield] = true
+        session[:admin_city] = "SHEFFIELD"
 	end
     if @userInfo[0][3] == 2
 		session[:admin] = true
-        session[:admin_manchester] = true
+        session[:admin_city] = "MANCHESTER"
 	end
 	session[:freeRides] = @userInfo[0][4]
 
