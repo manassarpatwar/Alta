@@ -62,7 +62,6 @@ get '/editUser/:id' do
 	@dateTime = @userToEdit[2]
 	@userType = @userToEdit[3]
 	@freeRide = @userToEdit[4]
-    @totalRides = @userToEdit[5]
 
 	erb :editUserMain
 end
@@ -177,11 +176,10 @@ post '/editUser/:id' do
 
 	#setting all the variables to paramaters given
 	@id = params[:id]
-	@name = params[:name].strip
+	@name = params[:name]
 	@dateTime = params[:dateTime]
-	@userType = params[:userType].strip
-	@freeRide = params[:freeRide].strip
-    @totalRides = params[:totalRides].strip
+	@userType = params[:userType]
+	@freeRide = params[:freeRide]
 
 	# perform validation
 	@name_ok = !@name.nil? && @name != ""
@@ -192,9 +190,8 @@ post '/editUser/:id' do
 		@userType_ok = false
 	end
 	@freeRide_ok = isPositiveNumber?(@freeRide)
-	@totalRide_ok = isPositiveNumber?(@totalRides)
 
-	@all_ok = @name_ok && @dateTime_ok && @userType_ok && @freeRide_ok && @totalRide_ok
+	@all_ok = @name_ok && @dateTime_ok && @userType_ok && @freeRide_ok
 
   	# add data to the database
 	if @all_ok
@@ -203,7 +200,6 @@ post '/editUser/:id' do
     	$db.execute("UPDATE users SET signup_date = '#{@dateTime}' WHERE id='#{@id}'")
 		$db.execute("UPDATE users SET user_type = '#{@userType}' WHERE id='#{@id}'")
 		$db.execute("UPDATE users SET free_rides = '#{@freeRide}' WHERE id='#{@id}'")
-		$db.execute("UPDATE users SET total_rides = '#{@totalRides}' WHERE id='#{@id}'")
   	end
 
 	erb :editUserMain
@@ -261,7 +257,7 @@ post '/editTaxi/:id' do
 		$db.execute("UPDATE taxis SET reg_num = '#{@regNum}' WHERE id='#{@id}'")
     	$db.execute("UPDATE taxis SET contact_num = '#{@contact}' WHERE id='#{@id}'")
 		$db.execute("UPDATE taxis SET taxi_type = '#{@taxiType}' WHERE id='#{@id}'")
-		$db.execute("UPDATE taxis SET city = '#{@city}' WHERE id='#{@id}'")
+		$db.execute("UPDATE taxis SET city = '#{@city.upcase}' WHERE id='#{@id}'")
   	end
 
 	erb :editTaxiMain

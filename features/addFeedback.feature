@@ -7,6 +7,7 @@ Feature: Adding data
             When I fill in "journey_id" with randomid
             When I fill in "user_id" with randomid
             When I fill in "feedback" with "I am not satisfied"
+            When I fill in "rating" with "0"
             When I press "Submit"
             Then I should see "Feedback Added"
         

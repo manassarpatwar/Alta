@@ -19,7 +19,7 @@
         <td><%=h @userToEdit[2] %></td>
         <td><%=h @userToEdit[3] %></td>
         <td><%=h @userToEdit[4] %></td>
-        <td><%=h @userToEdit[5] %></td>
+        <td><%=h get_total_rides(@userToEdit[0]) %></td>
     </tr>
 </table>
 
@@ -64,14 +64,6 @@
         <% end %>
         <p>Free Rides Left:
             <input type="text" name="freeRide" value="<%=h @freeRide %>"/>
-        </p>
-
-        <!-- totalRides -->
-        <% if @submitted && !@totalRide_ok %>
-            <p style="color:red">Please enter a valid total ride value (0 or more)</p>
-        <% end %>
-        <p>Total Rides:
-            <input type="text" name="totalRides" value="<%= @totalRides %>"/>
         </p>
 
         <input type="submit" value="Submit" />

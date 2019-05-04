@@ -5,7 +5,7 @@ Feature: Adding data
             Given I am signed in as admin from sheffield
             And I am on the settings page
             When I click "Edit" within first element in "#users" 
-            When I fill in "totalRides" with "10"
+            When I fill in "freeRide" with "10"
             When I press "Submit"
             Then I should see "User Edited"
         
