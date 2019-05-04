@@ -1,48 +1,51 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>Twitter Marketing Tab</title>
+    <title>Twitter Marketing Tab</title>
 
-  <meta charset="UTF-8">
-  <link rel="stylesheet" type="text/css" href="css/admin_nav.css">
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-  <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="js/jquery.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>s
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/admin_nav.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>s
 </head>
+
 <body>
-  <div id = "wrapper">
-    <%= erb :admin_nav %>
-     <div id = "page-content-wrapper">
-      <h1>Custom Twitter Marketing</h1>
+    <div id="wrapper">
+        <%= erb :admin_nav %>
+        <div id="page-content-wrapper">
+            <h1>Custom Twitter Marketing</h1>
 
-      <form method="post" action = "followPeopleUsingKeyword">
-        Keyword follow: <input type="text" name="follow" value="<%=h params[:follow] %>"/>
-        <input type="submit" name="submit" value="Follow" />
-      </form>
+            <form method="post" action="followPeopleUsingKeyword">
+                Keyword follow: <input type="text" name="follow" value="<%=h params[:follow] %>" />
+                <input type="submit" name="submit" value="Follow" />
+            </form>
 
-        <% unless (request.cookies['following'] == "true") %>
-        <% if (request.cookies['follow_state'] == "true") %>
-          <p>You followed 5 people that used this keyword recently.</p>
-        <% else %>
-          <p>You already reached your follow limits today. Please come back tomorrow or try 15 minutes later..</p>
-        <% end %>
-        <% end %>
-
-      <form method="post" action = "tweetToTimeline" >
-        Tweet: <input type="text" name="tweet" value="<%=h params[:tweet] %>"/>
-        <input type="submit" name="post tweet" value="Tweet" />
-      </form>
-           <% unless (request.cookies['tweeting'] == "true") %>
-          <% if (request.cookies['tweet_state'] == "true")%>
-          <p>Your tweet has been posted.</p>
+            <% unless (request.cookies['following'] == "true") %>
+            <% if (request.cookies['follow_state'] == "true") %>
+            <p>You followed 5 people that used this keyword recently.</p>
             <% else %>
-          <p>You already reached your tweeting limit from the app today. Please come back tomorrow or try 15 minutes later.</p>
-        <% end %>
-        <% end %>
+            <p>You already reached your follow limits today. Please come back tomorrow or try 15 minutes later..</p>
+            <% end %>
+            <% end %>
+
+            <form method="post" action="tweetToTimeline">
+                Tweet: <input type="text" name="tweet" value="<%=h params[:tweet] %>" />
+                <input type="submit" name="post tweet" value="Tweet" />
+            </form>
+            <% unless (request.cookies['tweeting'] == "true") %>
+            <% if (request.cookies['tweet_state'] == "true")%>
+            <p>Your tweet has been posted.</p>
+            <% else %>
+            <p>You already reached your tweeting limit from the app today. Please come back tomorrow or try 15 minutes later.</p>
+            <% end %>
+            <% end %>
+        </div>
     </div>
-  </div>
-  <script src="js/admin_nav.js"></script>
+    <script src="js/admin_nav.js"></script>
 </body>
+
 </html>

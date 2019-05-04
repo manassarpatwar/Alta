@@ -26,47 +26,47 @@
 <h2>Change values of the user:</h2>
 
 <% if @submitted && @all_ok %>
-    <p>User Edited.</p>
+<p>User Edited.</p>
 <% else %>
 
-    <% if @submitted && !@all_ok %>
-        <p style="color:red">There were errors in your form submission, please correct them below.</p>
+<% if @submitted && !@all_ok %>
+<p style="color:red">There were errors in your form submission, please correct them below.</p>
+<% end %>
+
+<form action="/editUser/<%=h @id%>" method="post">
+    <!-- name -->
+    <% if @submitted && !@name_ok %>
+    <p style="color:red">Please enter a valid name</p>
     <% end %>
+    <p>Name:
+        <input type="text" name="name" value="<%=h @name %>" />
+    </p>
 
-    <form action="/editUser/<%=h @id%>" method="post">
-        <!-- name -->
-        <% if @submitted && !@name_ok %>
-            <p style="color:red">Please enter a valid name</p>
-        <% end %>
-        <p>Name:
-            <input type="text" name="name" value="<%=h @name %>"/>
-        </p>
+    <!-- dateTime -->
+    <% if @submitted && !@dateTime_ok %>
+    <p style="color:red">Please enter a valid date/time</p>
+    <% end %>
+    <p>Date/Time:
+        <input type="text" name="dateTime" value="<%=h @dateTime %>" />
+    </p>
 
-        <!-- dateTime -->
-        <% if @submitted && !@dateTime_ok %>
-            <p style="color:red">Please enter a valid date/time</p>
-        <% end %>
-        <p>Date/Time:
-            <input type="text" name="dateTime" value="<%=h @dateTime %>"/>
-        </p>
+    <!-- userType -->
+    <% if @submitted && !@userType_ok %>
+    <p style="color:red">Please enter a valid user type (0 or 1)</p>
+    <% end %>
+    <p>User Type:
+        <input type="text" name="userType" value="<%=h @userType %>" />
+    </p>
 
-        <!-- userType -->
-        <% if @submitted && !@userType_ok %>
-            <p style="color:red">Please enter a valid user type (0 or 1)</p>
-        <% end %>
-        <p>User Type:
-            <input type="text" name="userType" value="<%=h @userType %>"/>
-        </p>
+    <!-- freeRide -->
+    <% if @submitted && !@freeRide_ok %>
+    <p style="color:red">Please enter a valid free ride value (0 or more)</p>
+    <% end %>
+    <p>Free Rides Left:
+        <input type="text" name="freeRide" value="<%=h @freeRide %>" />
+    </p>
 
-        <!-- freeRide -->
-        <% if @submitted && !@freeRide_ok %>
-            <p style="color:red">Please enter a valid free ride value (0 or more)</p>
-        <% end %>
-        <p>Free Rides Left:
-            <input type="text" name="freeRide" value="<%=h @freeRide %>"/>
-        </p>
-
-        <input type="submit" value="Submit" />
-    </form>
+    <input type="submit" value="Submit" />
+</form>
 
 <% end %>

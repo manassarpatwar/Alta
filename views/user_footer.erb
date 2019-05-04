@@ -1,34 +1,35 @@
-
 <footer>
-<div class="ft-row">
-  <div class="ft-column ft-column1">
-      <p>Contact Us</p>
-      <a href><img class="ft_contact" src="img/grey_twitter.png">
-      </a>
-    </div>
-  <div class="ft-column ft-column2" >
-      <p style="text-transform: uppercase;">Ride with us now</p>
-      <div class="ft-tw">
-        <p><a href class="ft-tw-link">Twitter</a>
-         </p>
+    <div class="ft-row">
+        <div class="ft-column ft-column1">
+            <p>Contact Us</p>
+            <a href><img class="ft_contact" src="img/grey_twitter.png">
+            </a>
         </div>
+        <div class="ft-column ft-column2">
+            <p style="text-transform: uppercase;">Ride with us now</p>
+            <div class="ft-tw">
+                <p><a href class="ft-tw-link">Twitter</a>
+                </p>
+            </div>
+        </div>
+        <div class="ft-column ft-column3">
+            <div class="logout">
+                <p><a href="/logout">Logout</a> | <a href="/index">Home</a></p>
+            </div>
+        </div>
+
+        <div class="ft-vl"></div>
+
+        <div class="ft-row2">
+            <a href="/index"><img class="ft-row2-img" src="img/alta.png"></a>
+            <div class="ft-row2-cont"> © 2019 alta. all rights reserved
+            </div>
+        </div>
+
+        <form action="/deleteAccount" method="post">
+            <input onclick="return confirm('Are you sure you want to delete your account?');" type="submit" value="Delete Account" />
+        </form>
+
+        <!--<div class="logout"><p><a href = "/logout" >Logout</a> or go back <a href = "/index" >home</a></p></div>-->
     </div>
-  <div class="ft-column ft-column3">
-    <div class="logout"><p><a href = "/logout" >Logout<a>    |    <a href="/index">Home</a></p></div>
-</div>
-
-<div class="ft-vl"></div>
-
-<div class="ft-row2">
-  <a href="/index"><img class="ft-row2-img" src="img/alta.png"></a>
-  <div class="ft-row2-cont"> © 2019 alta. all rights reserved
-  </div>
-  </div>
-    
-    <form action="/deleteAccount" method="post">
-       <input onclick="return confirm('Are you sure you want to delete your account?');" type="submit" value="Delete Account"/>
-    </form>
-
-  <!--<div class="logout"><p><a href = "/logout" >Logout</a> or go back <a href = "/index" >home</a></p></div>-->
-
 </footer>

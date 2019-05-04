@@ -1,147 +1,151 @@
-
 <h2>Available Taxis</h2>
-<div class = "header_taxi_table">
-  <table>
-      <tr>
-            <th class = "table_id">ID</th>
-            <th class = "table_reg">Reg No.</th> 
-            <th class = "table_contact">Contact No.</th>
-            <th class = "table_type">Type</th>
-            <th class = "table_city">City</th>
-            <th class = "table_actions">Action</th>
-      </tr>
-  </table>
-</div>
-<div id = "availableTaxis" class = "displayTaxis">
-  <table class = "taxisTable">
-      <tr style = "visibility:hidden">
-        <th class = "table_id">ID</th>
-        <th class = "table_reg">Reg No.</th> 
-        <th class = "table_contact">Contact No.</th>
-        <th class = "table_type">Type</th>
-        <th class = "table_city">City</th>
-        <th class = "table_actions">Action</th>
-      </tr>
-     <% unless @availableTaxis.nil? %>
-       <% @availableTaxis.each do |taxi| %>
-          <tr>
-            <td>
-              <%=h taxi[0] %>
-            </td>
-            <td>
-              <%=h taxi[1] %>
-            </td>
-            <td>
-              <%=h taxi[2] %>
-            </td>
-            <td>
-              <%=h taxi[3] %>
-            </td>
-            <td>
-              <%=h taxi[4] %>
-            </td>
-            <td>
-              <form class = "add_to_unavailable"> 
-                <% params[:taxiId] = taxi[0] %>
-                <input type = "hidden" name = "taxiId" value = "<%=h params[:taxiId]%>" />
-                <input type="image" src = "img/check.png" name="button" value="add" class = "add tweet_actions_icons" id = "add_icon<%=h @availableTaxis.index(taxi)%>" width = "50" >
-              </form>
-            </td>
-          </tr>
-       <% end %>
-     <% end %>
-  </table>
-</div>
-
-<h2>Unavailable Taxis</h2>
-<div class = "header_taxi_table">
+<div class="header_taxi_table">
     <table>
         <tr>
-          <th class = "table_id">ID</th>
-          <th class = "table_reg">Reg No.</th> 
-          <th class = "table_contact">Contact No.</th>
-          <th class = "table_type">Type</th>
-          <th class = "table_city">City</th>
-          <th class = "table_actions">Action</th>
+            <th class="table_id">ID</th>
+            <th class="table_reg">Reg No.</th>
+            <th class="table_contact">Contact No.</th>
+            <th class="table_type">Type</th>
+            <th class="table_city">City</th>
+            <th class="table_actions">Action</th>
         </tr>
     </table>
 </div>
-<div id = "unavailableTaxis" class = "displayTaxis">
-  <table class = "taxisTable">
-    <tr style = "visibility:hidden">
-        <th class = "table_id">ID</th>
-        <th class = "table_reg">Reg No.</th> 
-        <th class = "table_contact">Contact No.</th>
-        <th class = "table_type">Type</th>
-        <th class = "table_city">City</th>
-        <th class = "table_actions">Action</th>
-    </tr>
-     <% unless @unavailableTaxis.nil? %>
-       <% @unavailableTaxis.each do |taxi| %>
-          <tr>
+<div id="availableTaxis" class="displayTaxis">
+    <table class="taxisTable">
+        <tr style="visibility:hidden">
+            <th class="table_id">ID</th>
+            <th class="table_reg">Reg No.</th>
+            <th class="table_contact">Contact No.</th>
+            <th class="table_type">Type</th>
+            <th class="table_city">City</th>
+            <th class="table_actions">Action</th>
+        </tr>
+        <% unless @availableTaxis.nil? %>
+        <% @availableTaxis.each do |taxi| %>
+        <tr>
             <td>
-              <%=h taxi[0] %>
+                <%=h taxi[0] %>
             </td>
             <td>
-              <%=h taxi[1] %>
+                <%=h taxi[1] %>
             </td>
             <td>
-              <%=h taxi[2] %>
+                <%=h taxi[2] %>
             </td>
             <td>
-              <%=h taxi[3] %>
+                <%=h taxi[3] %>
             </td>
             <td>
-              <%=h taxi[4] %>
+                <%=h taxi[4] %>
             </td>
             <td>
-              <form class = "add_to_available"> 
-                <% params[:taxiId] = taxi[0] %>
-                <input type = "hidden" name = "taxiId" value = "<%=h params[:taxiId]%>" />
-                <input type="image" src = "img/cross.png" name="button" value="add" class = "delete tweet_actions_icons" id = "delete_icon<%=h @unavailableTaxis.index(taxi)%>" width = "50" >
-              </form>
+                <form class="add_to_unavailable">
+                    <% params[:taxiId] = taxi[0] %>
+                    <input type="hidden" name="taxiId" value="<%=h params[:taxiId]%>" />
+                    <input type="image" src="img/check.png" name="button" value="add" class="add tweet_actions_icons" id="add_icon<%=h @availableTaxis.index(taxi)%>" width="50">
+                </form>
             </td>
-          </tr>
-       <% end %>
-    <% end %>
-  </table>
+        </tr>
+        <% end %>
+        <% end %>
+    </table>
+</div>
+
+<h2>Unavailable Taxis</h2>
+<div class="header_taxi_table">
+    <table>
+        <tr>
+            <th class="table_id">ID</th>
+            <th class="table_reg">Reg No.</th>
+            <th class="table_contact">Contact No.</th>
+            <th class="table_type">Type</th>
+            <th class="table_city">City</th>
+            <th class="table_actions">Action</th>
+        </tr>
+    </table>
+</div>
+<div id="unavailableTaxis" class="displayTaxis">
+    <table class="taxisTable">
+        <tr style="visibility:hidden">
+            <th class="table_id">ID</th>
+            <th class="table_reg">Reg No.</th>
+            <th class="table_contact">Contact No.</th>
+            <th class="table_type">Type</th>
+            <th class="table_city">City</th>
+            <th class="table_actions">Action</th>
+        </tr>
+        <% unless @unavailableTaxis.nil? %>
+        <% @unavailableTaxis.each do |taxi| %>
+        <tr>
+            <td>
+                <%=h taxi[0] %>
+            </td>
+            <td>
+                <%=h taxi[1] %>
+            </td>
+            <td>
+                <%=h taxi[2] %>
+            </td>
+            <td>
+                <%=h taxi[3] %>
+            </td>
+            <td>
+                <%=h taxi[4] %>
+            </td>
+            <td>
+                <form class="add_to_available">
+                    <% params[:taxiId] = taxi[0] %>
+                    <input type="hidden" name="taxiId" value="<%=h params[:taxiId]%>" />
+                    <input type="image" src="img/cross.png" name="button" value="add" class="delete tweet_actions_icons" id="delete_icon<%=h @unavailableTaxis.index(taxi)%>" width="50">
+                </form>
+            </td>
+        </tr>
+        <% end %>
+        <% end %>
+    </table>
 </div>
 
 <script>
-  $( ".add_to_unavailable" ).submit(function( event ) {
- 
-    // Stop form from submitting normally
-    event.preventDefault();
+    $(".add_to_unavailable").submit(function(event) {
 
-    // Get some values from elements on the page:
-    var term = []
-    var $form = $( this );
-    term[1] = $form.find( "input[name='taxiId']" ).val();
-    console.log(term[1])
-    // Send the data using post
-   var posting = $.post("addToUnavailable", { taxiId: term[1]});
-    
-   posting.done(function( data ) {
-      var content = $(data);
-      $( "#taxis" ).empty().append( content );
-    });
-  });
-  $( ".add_to_available").submit(function( event ) {
- 
-    // Stop form from submitting normally
-    event.preventDefault();
+        // Stop form from submitting normally
+        event.preventDefault();
 
-    // Get some values from elements on the page:
-    var term = []
-    var $form = $( this );
-    term[1] = $form.find( "input[name='taxiId']" ).val();
-    console.log(term[1])
-    // Send the data using post
-   var posting = $.post("addToAvailable", { taxiId: term[1]});
-    
-   posting.done(function( data ) {
-      var content = $(data);
-      $( "#taxis" ).empty().append( content );
+        // Get some values from elements on the page:
+        var term = []
+        var $form = $(this);
+        term[1] = $form.find("input[name='taxiId']").val();
+        console.log(term[1])
+        // Send the data using post
+        var posting = $.post("addToUnavailable", {
+            taxiId: term[1]
+        });
+
+        posting.done(function(data) {
+            var content = $(data);
+            $("#taxis").empty().append(content);
+        });
     });
-  });
+    $(".add_to_available").submit(function(event) {
+
+        // Stop form from submitting normally
+        event.preventDefault();
+
+        // Get some values from elements on the page:
+        var term = []
+        var $form = $(this);
+        term[1] = $form.find("input[name='taxiId']").val();
+        console.log(term[1])
+        // Send the data using post
+        var posting = $.post("addToAvailable", {
+            taxiId: term[1]
+        });
+
+        posting.done(function(data) {
+            var content = $(data);
+            $("#taxis").empty().append(content);
+        });
+    });
+
 </script>

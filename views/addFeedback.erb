@@ -5,47 +5,49 @@
 <h2>Add new feedback values:</h2>
 
 <% if @submitted && @all_ok %>
-    <p>Feedback Added.</p>
+<p>Feedback Added.</p>
 <% else %>
-    <% if @submitted && @all_ok %> <!-- if validation passed: -->
-        <p>User Added.</p>
-    <% else %>
-        <% if @submitted && !@all_ok %> <!-- if there was validation errors: -->
-            <p style="color:red">There were errors in your form submission, please correct them below.</p>
-        <% end %>
+<% if @submitted && @all_ok %>
+<!-- if validation passed: -->
+<p>User Added.</p>
+<% else %>
+<% if @submitted && !@all_ok %>
+<!-- if there was validation errors: -->
+<p style="color:red">There were errors in your form submission, please correct them below.</p>
+<% end %>
 
-        <form action="/addFeedback" method="post">
-            <% if @submitted && !@journey_id_ok %>
-                <p style="color:red">Please enter a journey ID</p>
-            <% end %>
-            <p>Journey ID:
-                <input type="text" name="journey_id" value="<%=h @journey_id if @submitted %>"/>
-            </p>
-
-            <% if @submitted && !@user_id_ok %>
-               <p style="color:red">Please enter a user ID</p>
-           <% end %>
-            <p>User ID:
-                <input type="text" name="user_id" value="<%=h @user_id if @submitted %>"/>
-            </p>
-
-            <% if @submitted && !@feedback_ok %>
-                <p style="color:red">Please enter a valid feedback</p>
-            <% end %>
-            <div class="textareaAlign">
-                <p>Feedback:
-                    <textarea name="feedback"><%=h @feedback%></textarea>
-                </p>
-            </div>
-
-            <% if @submitted && !@rating_ok %>
-                <p style="color:red">Please enter a valid rating</p>
-            <% end %>
-            <p>Rating:
-                <input type="text" name="rating" value="<%=h @rating%>"/>
-            </p>
-
-            <input type="submit" value="Submit" />
-        </form>
+<form action="/addFeedback" method="post">
+    <% if @submitted && !@journey_id_ok %>
+    <p style="color:red">Please enter a journey ID</p>
     <% end %>
+    <p>Journey ID:
+        <input type="text" name="journey_id" value="<%=h @journey_id if @submitted %>" />
+    </p>
+
+    <% if @submitted && !@user_id_ok %>
+    <p style="color:red">Please enter a user ID</p>
+    <% end %>
+    <p>User ID:
+        <input type="text" name="user_id" value="<%=h @user_id if @submitted %>" />
+    </p>
+
+    <% if @submitted && !@feedback_ok %>
+    <p style="color:red">Please enter a valid feedback</p>
+    <% end %>
+    <div class="textareaAlign">
+        <p>Feedback:
+            <textarea name="feedback"><%=h @feedback%></textarea>
+        </p>
+    </div>
+
+    <% if @submitted && !@rating_ok %>
+    <p style="color:red">Please enter a valid rating</p>
+    <% end %>
+    <p>Rating:
+        <input type="text" name="rating" value="<%=h @rating%>" />
+    </p>
+
+    <input type="submit" value="Submit" />
+</form>
+<% end %>
 <% end %>

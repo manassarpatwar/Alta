@@ -1,83 +1,89 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>WebApp Analytics</title>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" type="text/css" href="css/admin_nav.css">
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-  <link rel="stylesheet" type="text/css" href="css/analytics.css">
-  <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="js/jquery.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="https://www.google.com/jsapi"></script>
-  <script src="js/chartkick.js"></script>
-</head>
-<body>
-  <div id = "wrapper">
-    <%= erb :admin_nav %>
 
-    <div id = "page-content-wrapper">
-      <nav>
-        <h1 id = "Analytics">Analytics</h1>
-      </nav>
-      <div id = "data">
-        <div id =  "user_number">
-          <h3>
-            Total number of users by day:
-          </h3>
-          <center>
-            <p>
-                <%= line_chart @userData %>
-            </p>
-            <h4>
-              Current total number of users is <%= @howManyUsers.to_s.slice(2..-3)%>
-            </h4>
-          </center>
+<head>
+    <title>WebApp Analytics</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/admin_nav.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/analytics.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://www.google.com/jsapi"></script>
+    <script src="js/chartkick.js"></script>
+</head>
+
+<body>
+    <div id="wrapper">
+        <%= erb :admin_nav %>
+
+        <div id="page-content-wrapper">
+            <nav>
+                <h1 id="Analytics">Analytics</h1>
+            </nav>
+            <div id="data">
+                <div id="user_number">
+                    <h3>
+                        Total number of users by day:
+                    </h3>
+                    <center>
+                        <p>
+                            <%= line_chart @userData %>
+                        </p>
+                        <h4>
+                            Current total number of users is <%= @howManyUsers.to_s.slice(2..-3)%>
+                        </h4>
+                    </center>
+                </div>
+                <div id="journey_number">
+                    <h3>
+                        Total number of journeys taken by day:
+                    </h3>
+                    <center>
+                        <p>
+                            <%= line_chart @journeyData %>
+                        </p>
+                        <h4>
+                            Current total number of journeys is <%= @howManyJourneys.to_s.slice(2..-3)%>
+                        </h4>
+                    </center>
+                </div>
+                <div id="complaint_number">
+                    <h3>
+                        Total number of feedback given by day:
+                    </h3>
+                    <center>
+                        <p>
+                            <%= line_chart @feedbackData %>
+                        </p>
+                        <h4>
+                            Current total number of feedback given is <%= @howManyFeedbacks.to_s.slice(2..-3) %>
+                        </h4>
+                    </center>
+                </div>
+                <div id="taxi_number">
+                    <h3>
+                        Number of taxis registered:
+                    </h3>
+                    <center>
+                        <p>
+                            <%= column_chart @taxiData %>
+                        </p>
+                        <h4>
+                            Current total number taxis is <%= @howManyTaxis.to_s.slice(2..-3) %>
+                        </h4>
+                    </center>
+                </div>
+            </div>
         </div>
-        <div id = "journey_number">
-          <h3>
-            Total number of journeys taken by day:
-          </h3>
-          <center>
-            <p>
-                <%= line_chart @journeyData %>
-            </p>
-            <h4>
-              Current total number of journeys is <%= @howManyJourneys.to_s.slice(2..-3)%>
-            </h4>
-          </center>
-        </div>
-        <div id = "complaint_number">
-          <h3>
-            Total number of feedback given by day:
-          </h3>
-           <center>
-            <p>
-                <%= line_chart @feedbackData %>
-            </p>
-            <h4>
-              Current total number of feedback given is <%= @howManyFeedbacks.to_s.slice(2..-3) %>
-            </h4>
-          </center>
-        </div>
-          <div id = "taxi_number">
-            <h3>
-              Number of taxis registered:
-            </h3>
-            <center>
-              <p>
-                <%= column_chart @taxiData %>
-              </p>
-              <h4>
-                Current total number taxis is <%= @howManyTaxis.to_s.slice(2..-3) %>
-              </h4>
-            </center>
-        </div>
-      </div>
     </div>
-  </div>
-  <script src="js/admin_nav.js"></script>
-  <script> var timePrev = new Date().getTime();</script>
+    <script src="js/admin_nav.js"></script>
+    <script>
+        var timePrev = new Date().getTime();
+
+    </script>
 </body>
+
 </html>

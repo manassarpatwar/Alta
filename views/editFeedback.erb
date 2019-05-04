@@ -26,52 +26,53 @@
 <h2>Change values of the feedback:</h2>
 
 <% if @submitted && @all_ok %>
-    <p>Feedback Edited.</p>
+<p>Feedback Edited.</p>
 <% else %>
-    <% if @submitted && !@all_ok %> <!-- if there was validation errors: -->
-        <p style="color:red">There were errors in your form submission, please correct them below.</p>
+<% if @submitted && !@all_ok %>
+<!-- if there was validation errors: -->
+<p style="color:red">There were errors in your form submission, please correct them below.</p>
+<% end %>
+
+<form action="/editFeedback/<%=h @id%>" method="post">
+    <% if @submitted && !@journey_id_ok %>
+    <p style="color:red">Please enter a journey ID</p>
     <% end %>
+    <p>Journey ID:
+        <input type="text" name="journey_id" value="<%=h @journey_id%>" />
+    </p>
 
-    <form action="/editFeedback/<%=h @id%>" method="post">
-        <% if @submitted && !@journey_id_ok %>
-            <p style="color:red">Please enter a journey ID</p>
-        <% end %>
-        <p>Journey ID:
-            <input type="text" name="journey_id" value="<%=h @journey_id%>"/>
+    <% if @submitted && !@user_id_ok %>
+    <p style="color:red">Please enter a user ID</p>
+    <% end %>
+    <p>User ID:
+        <input type="text" name="user_id" value="<%=h @user_id%>" />
+    </p>
+
+    <% if @submitted && !@datetime_ok %>
+    <p style="color:red">Please enter a valid date time</p>
+    <% end %>
+    <p>Date Time:
+        <input type="text" name="date_time" value="<%=h @date_time%>" />
+    </p>
+
+
+    <% if @submitted && !@feedback_ok %>
+    <p style="color:red">Please enter a valid feedback</p>
+    <% end %>
+    <div class="textareaAlign">
+        <p>Feedback:
+            <textarea name="feedback"><%=h @feedback%></textarea>
         </p>
+    </div>
 
-        <% if @submitted && !@user_id_ok %>
-           <p style="color:red">Please enter a user ID</p>
-       <% end %>
-        <p>User ID:
-            <input type="text" name="user_id" value="<%=h @user_id%>"/>
-        </p>
+    <% if @submitted && !@rating_ok %>
+    <p style="color:red">Please enter a valid rating</p>
+    <% end %>
+    <p>Rating:
+        <input type="text" name="rating" value="<%=h @rating%>" />
+    </p>
 
-        <% if @submitted && !@datetime_ok %>
-            <p style="color:red">Please enter a valid date time</p>
-        <% end %>
-        <p>Date Time:
-            <input type="text" name="date_time" value="<%=h @date_time%>"/>
-        </p>
-
-
-        <% if @submitted && !@feedback_ok %>
-            <p style="color:red">Please enter a valid feedback</p>
-        <% end %>
-        <div class="textareaAlign">
-            <p>Feedback:
-                <textarea name="feedback"><%=h @feedback%></textarea>
-            </p>
-        </div>
-
-        <% if @submitted && !@rating_ok %>
-            <p style="color:red">Please enter a valid rating</p>
-        <% end %>
-        <p>Rating:
-            <input type="text" name="rating" value="<%=h @rating%>"/>
-        </p>
-
-        <input type="submit" value="Submit" />
-    </form>
+    <input type="submit" value="Submit" />
+</form>
 
 <% end %>

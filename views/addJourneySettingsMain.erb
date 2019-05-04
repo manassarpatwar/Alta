@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Settings</title>
     <meta charset="UTF-8">
@@ -12,20 +13,22 @@
     <script src="../js/jquery.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
 </head>
+
 <body>
-    <div id = "wrapper">
+    <div id="wrapper">
         <%= erb :admin_nav %>
 
-        <div id = "page-content-wrapper">
-          <h1>Add a Journey</h1>
-          <p>Return to <a href="/settings">viewing the journeys</a>. </p>
-          <h2>Add new journey values:</h2>
-          <div id = "add_journey">
-            <%= erb :addJourney %>
-          </div>
+        <div id="page-content-wrapper">
+            <h1>Add a Journey</h1>
+            <p>Return to <a href="/settings">viewing the journeys</a>. </p>
+            <h2>Add new journey values:</h2>
+            <div id="add_journey">
+                <%= erb :addJourney %>
+            </div>
         </div>
     </div>
 
     <script src="../js/admin_nav.js"></script>
 </body>
+
 </html>

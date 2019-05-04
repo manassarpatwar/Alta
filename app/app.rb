@@ -13,18 +13,18 @@ require 'csv'
 require 'socket'
 #require_relative 'createDatabase.rb'
 require_relative 'methods.rb'
-require_relative 'editDatabases.rb'
-require_relative 'dashboard.rb'
 require_relative 'main.rb'
-require_relative 'login.rb'
-require_relative 'marketing.rb'
-require_relative 'analytics.rb'
+require_relative '../database/editDatabases.rb'
+require_relative '../admin/dashboard.rb'
+require_relative '../admin/login.rb'
+require_relative '../admin/marketing.rb'
+require_relative '../admin/analytics.rb'
 
 puts "#{Socket.gethostname}"
 
 set :bind, '0.0.0.0' # Needed when running from Codio
+set :root, File.dirname("../")
 include ERB::Util #Ensure ERB is enabled
-
 #Setting up OmnuAuth-Twitter for our Twitter App
 use OmniAuth::Builder do
   	provider :twitter, 'wVzUO14M25jvS3vmmtfDAtmh6', 'x1hieq7QNwhbUM8wjqgl5HujELyyqmZiJUzpaWi1tQEnG8cQrX'
@@ -41,12 +41,10 @@ end
 #Configure sessions
 configure do
 	enable :sessions
-    begin
-      File.read("taxi_db.sqlite")
-    rescue
-      abort("Database not found... \nExiting\nTip: Run ruby createDatabase.rb")
+    puts ENV['RACK_ENV']
+    unless ENV['RACK_ENV'] == 'test'
+        $db = SQLite3::Database.new 'database/taxi_db.sqlite'
     end
-    $db = SQLite3::Database.new 'taxi_db.sqlite'
     #$db = SQLite3::Database.new 'taxi_database.sqlite'
     $rideDeal = 5
     begin

@@ -2,15 +2,8 @@ require 'capybara'
 require 'rspec'
 require 'capybara/cucumber'
 require 'selenium-webdriver'
-
-#require 'simplecov'
-
-#SimpleCov.start do
-#  add_filter 'features/'
-#end
-require_relative '../../app.rb'
-
 ENV['RACK_ENV'] = 'test'
+require_relative '../../../app/app.rb'
 
 Capybara.app = Sinatra::Application
 Capybara.app_host = 'http://localhost:4567'
@@ -26,7 +19,7 @@ class Sinatra::ApplicationWorld
   include RSpec::Expectations
   include RSpec::Matchers
   include Capybara::DSL
-  $db = SQLite3::Database.new 'taxi_test_db.sqlite'
+  $db = SQLite3::Database.new '../taxi_test_db.sqlite'
 end
 
 World do

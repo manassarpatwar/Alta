@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
+<head>
     <title>ALTA Home</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -15,12 +15,12 @@
     <link rel="stylesheet" href="css/user_orders.css" />
     <link rel="stylesheet" href="css/user_account.css" />
     <link rel="stylesheet" href="css/user_header.css" />
-  </head>
+</head>
 
-  <body id="ordersBG">
-    
-  <!--greeitngs-->
-  <!--
+<body id="ordersBG">
+
+    <!--greeitngs-->
+    <!--
       <div class="acc-container welcome-back-container">
         <p class="welcome-back"> Welcome Back,
           <%=h session[:name] %>
@@ -28,42 +28,43 @@
         </p>
       </div> -->
 
-  <!--navigation bar-->
-          <%= erb :user_header %>
+    <!--navigation bar-->
+    <%= erb :user_header %>
 
-  <!-- page name-->
+    <!-- page name-->
     <div class="acc-container acc-container2">
-      <p class="page-indict accUpcase"> 
-      <i class='fas fa-taxi' style='font-size:40px; color:#FEDE3B'></i>
-        My Account
-      </p>
+        <p class="page-indict accUpcase">
+            <i class='fas fa-taxi' style='font-size:40px; color:#FEDE3B'></i>
+            My Account
+        </p>
     </div>
-    
-  <!--Deals Display-->
-      <div class="acc-container deals-container">
-        <p class="acc-dealsshown  accUpcase"> your deals display here</div>
-      </div>
 
-<!--Buttons-->
-  <div class="acc-butt-row">
-    <div class="acc-butt-column">
-      <button class="acc-button">
-        <span>My Past Orders </span>
-      </button>
+    <!--Deals Display-->
+    <div class="acc-container deals-container">
+        <p class="acc-dealsshown  accUpcase"> your deals display here
     </div>
-    <div class="acc-butt-column">
-      <button class="acc-button">
-        <span>Complains </span>
-      </button>
     </div>
-    <div class="acc-butt-column">
-      <button class="acc-button acc-button3">
-        <span>Edit Account </span>
-      </button>
-    </div>
-  </div>
 
-  <!--footer-->
-          <%= erb :user_footer %>
+    <!--Buttons-->
+    <div class="acc-butt-row">
+        <div class="acc-butt-column">
+            <button class="acc-button">
+                <span>My Past Orders </span>
+            </button>
+        </div>
+        <div class="acc-butt-column">
+            <button class="acc-button">
+                <span>Complains </span>
+            </button>
+        </div>
+        <div class="acc-butt-column">
+            <button class="acc-button acc-button3">
+                <span>Edit Account </span>
+            </button>
+        </div>
+    </div>
 
-  </body>
+    <!--footer-->
+    <%= erb :user_footer %>
+
+</body>

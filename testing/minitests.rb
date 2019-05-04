@@ -2,8 +2,8 @@ require 'simplecov'
 SimpleCov.start
 require 'minitest/autorun'
 require 'sqlite3'
-require_relative 'methods.rb'
-
+require_relative '../app/methods.rb'
+$db = SQLite3::Database.open 'taxi_test_db.sqlite'
 class TestIsPositiveNumber < Minitest::Test
     def test_string
         assert_equal false, isPositiveNumber?("string")

@@ -11,24 +11,24 @@
         <th>Delete Record</th>
     </tr>
     <% unless @taxiInfo.nil? %>
-        <% @taxiInfo.each do |taxi| %>
-        <tr>
-            <td><%=h taxi[0] %></td>
-            <td><%=h taxi[1] %></td>
-            <td><%=h taxi[2] %></td>
-            <td><%=h taxi[3] %></td>
-            <td><%=h taxi[4] %></td>
-            <td><%=h taxi[5] %></td>
-            <td><a href='editTaxi/<%=h taxi[0] %>'>Edit</a></td>
-             <td>
-              <form method = "post" action = "/deleteFromTable" style = "margin:0;">
-                  <input type = "hidden" name = "table" value = "taxis" />
-                  <input type = "hidden" name = "id" value = "<%=h taxi[0] %>" />
-                  <input type="submit" value="Delete"  onclick="return confirm('Are you sure you want to delete this record?');" style = "background:none; border:none; color:#0088cc; outline:none"/>
-              </form>
-            </td>
-        </tr>
-        <% end %>
+    <% @taxiInfo.each do |taxi| %>
+    <tr>
+        <td><%=h taxi[0] %></td>
+        <td><%=h taxi[1] %></td>
+        <td><%=h taxi[2] %></td>
+        <td><%=h taxi[3] %></td>
+        <td><%=h taxi[4] %></td>
+        <td><%=h taxi[5] %></td>
+        <td><a href='editTaxi/<%=h taxi[0] %>'>Edit</a></td>
+        <td>
+            <form method="post" action="/deleteFromTable" style="margin:0;">
+                <input type="hidden" name="table" value="taxis" />
+                <input type="hidden" name="id" value="<%=h taxi[0] %>" />
+                <input type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete this record?');" style="background:none; border:none; color:#0088cc; outline:none" />
+            </form>
+        </td>
+    </tr>
+    <% end %>
     <% end %>
 </table>
 

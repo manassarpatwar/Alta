@@ -5,7 +5,7 @@ require "rake/testtask"
 desc "Restore the state of the db"
 task :wipedb do
   puts "Wiping the database"
-  `ruby wipeDatabase.rb`
+  `ruby database/wipeDatabase.rb`
 end
 
 desc "Install gems"
@@ -78,35 +78,38 @@ end
 desc "Create db"
 task :createdb do
   puts "Creating the database"
-  `ruby createDatabase.rb`
+  `ruby database/createDatabase.rb`
 end
 
 desc "Delete temporary files"
-task :clean => :wipedb do
+task :clean do
   `echo deleting temporary files`
-  `rm taxi_test_db.sqlite`
+  `rm database/taxi_test_db.sqlite`
   # ... code to delete the database ....
 end
 
 desc "Create backup of database into csv files"
 task :backupdb do
-    system('sqlite3 -header -csv taxi_db.sqlite "select * from users;" > public/csv/users.csv')
-    system('sqlite3 -header -csv taxi_db.sqlite "select * from feedback;" > public/csv/feedback.csv')
-    system('sqlite3 -header -csv taxi_db.sqlite "select * from taxis;" > public/csv/taxis.csv')
-    system('sqlite3 -header -csv taxi_db.sqlite "select * from journeys;" > public/csv/journeys.csv')
+    system('sqlite3 -header -csv database/taxi_db.sqlite "select * from users;" > public/csv/users.csv')
+    system('sqlite3 -header -csv database/taxi_db.sqlite "select * from feedback;" > public/csv/feedback.csv')
+    system('sqlite3 -header -csv database/taxi_db.sqlite "select * from taxis;" > public/csv/taxis.csv')
+    system('sqlite3 -header -csv database/taxi_db.sqlite "select * from journeys;" > public/csv/journeys.csv')
 end
 
 desc "Run tests"
 task :test do
-  system('ruby createDatabase.rb testdb')
-  system('ruby minitests.rb')
+#  require 'simplecov'
+#  SimpleCov.start
+  system('ruby database/createDatabase.rb testdb')
+  system('ruby testing/minitests.rb')
+  system('cd testing')
   system('cucumber')
-  `rm taxi_test_db.sqlite`
+  Rake::Task[:clean].execute
 end
 
 desc "Run the Sinatra app locally"
 task :run do
-  require_relative 'app.rb'
+  require_relative 'app/app.rb'
   Sinatra::Application.run!
 end
 
@@ -115,6 +118,5 @@ task :install do
   Rake::Task[:installchromedriver].execute
   Rake::Task[:installgems].execute
   Rake::Task[:createdb].execute
-  Rake::Task[:addcallback].execute
 end
 
