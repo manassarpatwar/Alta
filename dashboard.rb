@@ -118,8 +118,9 @@ post '/addJourney' do
             if @userId == record[0] #If uid = id then:
                if @freeRide == '1' then
                  $db.execute("UPDATE users SET free_rides = #{@userInfo[0][4]-1}  WHERE id='#{@userId}'")
-             elsif (get_total_rides(@userId)) % $rideDeal == 0 && @freeRide == '0' then
+               elsif (get_total_rides(@userId)) % $rideDeal == 0 && @freeRide == '0' then
                  $db.execute("UPDATE users SET free_rides = #{@userInfo[0][4]+1}  WHERE id='#{@userId}'")
+               end
             end
         end
   	end
