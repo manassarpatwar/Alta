@@ -5,7 +5,7 @@ Feature: Tweet actions
             And I am on the dashboard page
             And I scroll down within "#incoming_tweets"
             When I click "#reply_tweet_icon0" within "#incoming_tweets"
-            When I fill in "reply" with "Testing reply to tweets"
+            When I fill in "reply" with "Testing reply to tweets" within "#incoming_tweets"
             When I press "replyBtn0" within "#incoming_tweets"
             Then I should see "Testing reply to tweets" within "#incoming_tweets"
             And I click "#destroy_tweet_icon0"
