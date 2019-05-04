@@ -15,7 +15,7 @@ csvUsers = CSV.parse(csv_text_users, :headers => true)
 
 inputs = ARGV
 if inputs[0] == "testdb"
-  DB = SQLite3::Database.new 'taxi_test_db.sqlite'
+  DB = SQLite3::Database.new 'database/taxi_test_db.sqlite'
 else
   DB = SQLite3::Database.new 'database/taxi_db.sqlite'
 end

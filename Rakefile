@@ -98,12 +98,15 @@ end
 
 desc "Run tests"
 task :test do
-#  require 'simplecov'
-#  SimpleCov.start
+  require 'simplecov'
+  SimpleCov.start
   system('ruby database/createDatabase.rb testdb')
+  SimpleCov.command_name 'test:minitests'
   system('ruby testing/minitests.rb')
-  system('cd testing')
-  system('cucumber')
+  SimpleCov.command_name 'test:cucumber'    
+  Dir.chdir('testing') do  
+    system('cucumber')  
+  end
   Rake::Task[:clean].execute
 end
 

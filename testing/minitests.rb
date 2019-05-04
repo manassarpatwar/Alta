@@ -1,9 +1,7 @@
-require 'simplecov'
-SimpleCov.start
 require 'minitest/autorun'
 require 'sqlite3'
 require_relative '../app/methods.rb'
-$db = SQLite3::Database.open 'taxi_test_db.sqlite'
+
 class TestIsPositiveNumber < Minitest::Test
     def test_string
         assert_equal false, isPositiveNumber?("string")
@@ -51,7 +49,7 @@ class TestIsPositiveNumber < Minitest::Test
 end
 
 class TestAddFeedback < Minitest::Test
-    $db = SQLite3::Database.new 'taxi_test_db.sqlite'
+    $db = SQLite3::Database.new 'database/taxi_test_db.sqlite'
 
     def test_Valid
         j_id = 1
@@ -127,7 +125,7 @@ class TestAddFeedback < Minitest::Test
 end
 
 class TestGetTotalRides < Minitest::Test
-    $db = SQLite3::Database.new 'taxi_db.sqlite'
+    $db = SQLite3::Database.new 'database/taxi_db.sqlite'
 
     def test_noJourneys
         u_id = 1

@@ -19,7 +19,7 @@ class Sinatra::ApplicationWorld
   include RSpec::Expectations
   include RSpec::Matchers
   include Capybara::DSL
-  $db = SQLite3::Database.new '../taxi_test_db.sqlite'
+  $db = SQLite3::Database.new '../database/taxi_test_db.sqlite'
 end
 
 World do
