@@ -88,6 +88,14 @@ task :clean => :wipedb do
   # ... code to delete the database ....
 end
 
+desc "Create backup of database into csv files"
+task :backupdb do
+    system('sqlite3 -header -csv taxi_db.sqlite "select * from users;" > public/csv/users.csv')
+    system('sqlite3 -header -csv taxi_db.sqlite "select * from feedback;" > public/csv/feedback.csv')
+    system('sqlite3 -header -csv taxi_db.sqlite "select * from taxis;" > public/csv/taxis.csv')
+    system('sqlite3 -header -csv taxi_db.sqlite "select * from journeys;" > public/csv/journeys.csv')
+end
+
 desc "Run tests"
 task :test do
   system('ruby createDatabase.rb testdb')
