@@ -23,6 +23,10 @@ class Sinatra::ApplicationWorld
   $db = SQLite3::Database.new 'database/taxi_test_db.sqlite'
 end
 
+Before do
+  Capybara.session_name = ":session_#{Time.now.to_i}" 
+end
+
 World do
   Sinatra::ApplicationWorld.new  
 end
