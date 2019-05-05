@@ -98,21 +98,15 @@ end
 
 desc "Run tests"
 task :test do
-  require 'simplecov'
-  SimpleCov.start
   system('ruby database/createDatabase.rb testdb')
-  SimpleCov.command_name 'test:minitests'
-  system('ruby testing/minitests.rb')
-  SimpleCov.command_name 'test:cucumber'    
-  Dir.chdir('testing') do  
-    system('cucumber')  
-  end
+  system('ruby minitests.rb')
+  system('cucumber')  
   Rake::Task[:clean].execute
 end
 
 desc "Run the Sinatra app locally"
 task :run do
-  require_relative 'app/app.rb'
+  require_relative 'app.rb'
   Sinatra::Application.run!
 end
 

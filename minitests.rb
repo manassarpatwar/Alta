@@ -1,6 +1,7 @@
+require 'simplecov'
 require 'minitest/autorun'
 require 'sqlite3'
-require_relative '../app/methods.rb'
+require_relative 'app/methods.rb'
 
 class TestIsPositiveNumber < Minitest::Test
     def test_string
