@@ -344,7 +344,7 @@ post '/editJourney/:id' do
 
     if @currentTaxiId != @taxiId.to_i then
       #looping to check for every id/name whether they are in the database
-      @taxiTbl = $db.execute ("SELECT * FROM taxis WHERE id = #{@taxiId}")
+      @taxiTbl = $db.execute ("SELECT * FROM taxis")
       @taxiTbl.each do |record| #Go through each user record
           if record[0] == @taxiId.to_i   #If uid = id then:
               @taxiIdFound = true #Boolean found is true (record is already there)
@@ -357,7 +357,7 @@ post '/editJourney/:id' do
     end
 
     if @currentUserId != @userId.to_i then
-      @usersTbl = $db.execute ("SELECT * FROM users WHERE id = #{@userId}")
+      @usersTbl = $db.execute ("SELECT * FROM users")
       @usersTbl.each do |record| #Go through each user record
           if record[0] == @userId.to_i   #If uid = id then:
               @userIdFound = true #Boolean found is true (record is already there)
