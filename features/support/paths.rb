@@ -20,8 +20,6 @@ module NavigationHelpers
       '/addJourney'
     when /the addFeedback\s?page/
       '/addFeedback'
-    when /the analytics\s?page/
-      '/analytics'
     when /the root\s?page/
       '/'
     when /the login\s?page/

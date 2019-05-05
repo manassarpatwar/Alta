@@ -23,16 +23,6 @@ class Sinatra::ApplicationWorld
   $db = SQLite3::Database.new 'database/taxi_test_db.sqlite'
 end
 
-Before do
-  Capybara.session_name = ":session_#{Time.now.to_i}" 
-end
-
-After do
-  if Capybara.current_driver == Capybara.javascript_driver
-      Capybara.current_session.driver.quit
-  end
-end
-
 World do
   Sinatra::ApplicationWorld.new  
 end
