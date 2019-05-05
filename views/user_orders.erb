@@ -238,21 +238,8 @@
     <div class="separation" style="height:90px;"></div>
 
     <!--General Overall Feebacks-->
-    <div class="generalReviewBox container">
-        <form method="post" action="/addReview">
-            <div class="generalRatingText">
-                <span class="ratingText">Please give us general feedback on our service!</span>
-            </div>
-            <div class="generalFeedBackText">
-                <input type="text" class="generalFeedBack" name="newReview" value="<%=h params[:genreralFeedBack] %>" placeholder="Give us general feedback on our service!">
-            </div>
-            <p style="display:inline; font-weight:200; letter-spacing:2px;"> RATING: </p>
-            <input type="submit" onclick="myRating1()" id="rate1" class="fa fa-star generalRate" name="generalRating" value="1">
-            <input type="submit" onclick="myRating2()" id="rate2" class="fa fa-star generalRate" name="generalRating" value="2">
-            <input type="submit" onclick="myRating3()" id="rate3" class="fa fa-star generalRate" name="generalRating" value="3">
-            <input type="submit" onclick="myRating4()" id="rate4" class="fa fa-star generalRate" name="generalRating" value="4">
-            <input type="submit" onclick="myRating5()" id="rate5" class="fa fa-star generalRate" name="generalRating" value="5">
-        </form>
+    <div class="generalReviewBox container" id="addNewReview">
+        <%= erb :addReview %>
     </div>
 
     <div class="separation" style="height:100px;"></div>

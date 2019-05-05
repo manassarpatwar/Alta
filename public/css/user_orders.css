@@ -1,75 +1,85 @@
 /* Body */
-#bodyBackground{
+#bodyBackground {
     /* background-image: url(../img/userorderBG.jpg); */
     background-repeat: no-repeat;
-    background-size: cover; 
+    background-size: cover;
 }
 
 /* Section1: Summary */
-.rideSummary{
+.rideSummary {
     background-image: url(../img/summary.jpg);
     background-repeat: no-repeat;
-    background-size: cover; 
-    height:680px;
-    color:white;
+    background-size: cover;
+    height: 680px;
+    color: white;
 }
-.summaryContainer{
+
+.summaryContainer {
     width: 80%;
     background-color: rgba(247, 247, 247, 0);
-    padding-left:20%
+    padding-left: 20%
 }
+
 .summaryRow:after {
     content: "";
     display: table;
     clear: both;
 }
-.greetingColumn{
-    float:left;
+
+.greetingColumn {
+    float: left;
     width: 65%;
-    height:100%;
+    height: 100%;
     margin-top: 20px;
 }
-.greetingContent{
-    font-size:16px;
-    padding-top:15px;
-    height:100%;
+
+.greetingContent {
+    font-size: 16px;
+    padding-top: 15px;
+    height: 100%;
     font-size: 15px;
     letter-spacing: 15px;
     text-transform: uppercase;
     width: 120%;
 }
-.dateColumn{
-    float:left;
+
+.dateColumn {
+    float: left;
     width: 35%;
-    height:50px;
-    padding-left:20px;
-    margin-top:20px;
+    height: 50px;
+    padding-left: 20px;
+    margin-top: 20px;
 }
-.dateContent{
-    padding-top:30px;
-    float:right;
+
+.dateContent {
+    padding-top: 30px;
+    float: right;
 }
-.separation1{
-    height:30px;
-    content:"";
+
+.separation1 {
+    height: 30px;
+    content: "";
     border-top: 1px solid rgb(255, 255, 255);
-    width:100%;
-    padding:15px;
+    width: 100%;
+    padding: 15px;
 }
-.summaryTitle{
-    height:85px;
-    font-size:45px;
-    text-align:center;
+
+.summaryTitle {
+    height: 85px;
+    font-size: 45px;
+    text-align: center;
     text-transform: uppercase;
     letter-spacing: 50px;
     font-weight: 200;
 }
+
 .ridesTypeSummary {
     float: left;
     width: 33.3%;
-    padding:0px 10px 0 10px;
+    padding: 0px 10px 0 10px;
     height: 200px;
 }
+
 .rideTypeContainer {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     border: 1px solid rgb(255, 255, 255);
@@ -78,38 +88,45 @@
     background-color: rgba(236, 236, 236, 0);
     color: white;
     height: 70%;
-    margin-top:10px;
+    margin-top: 10px;
 }
-.summaryColumnLeft{
+
+.summaryColumnLeft {
     width: 28%;
 }
-.summaryColumnMid{
-    width:44%;
+
+.summaryColumnMid {
+    width: 44%;
 }
-.rideTypeContent{
-    padding-top:20px;
+
+.rideTypeContent {
+    padding-top: 20px;
     letter-spacing: 3px;
     text-transform: uppercase;
-    letter-spacing:2px;
+    letter-spacing: 2px;
 }
-h3{
+
+h3 {
     font-weight: 200;
 }
-.dealsContent{
-    font-size:15px;
-    letter-spacing:2px;
+
+.dealsContent {
+    font-size: 15px;
+    letter-spacing: 2px;
     font-weight: 200;
 }
-.dealsContainer{
+
+.dealsContainer {
     background-color: #C0C0C0;
     opacity: 0.5%;
     width: 100%;
     height: 40px;
     border: 1px solid rgb(255, 255, 255);
-    margin-top:30px;
-    margin-bottom:30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
-.dealsText{
+
+.dealsText {
     text-align: center;
     text-transform: uppercase;
     font-size: 20px;
@@ -117,74 +134,83 @@ h3{
     letter-spacing: 3px;
     font-weight: 200;
 }
-.dealsIndicator{
+
+.dealsIndicator {
     background-color: rgb(255, 230, 0);
     text-align: right;
     padding: 10px;
     color: rgb(255, 255, 255);
-    float:left;
-    letter-spacing:2px;
+    float: left;
+    letter-spacing: 2px;
     text-transform: uppercase;
-    height:100%;
+    height: 100%;
 }
-.dealsIndicator2{
+
+.dealsIndicator2 {
     background-color: rgba(255, 255, 255, 0.322);
     text-align: right;
     padding: 10px;
     color: rgb(255, 255, 255);
-    float:left;
-    letter-spacing:2px;
+    float: left;
+    letter-spacing: 2px;
     text-transform: uppercase;
-    height:100%;
+    height: 100%;
 }
-.iconBox{
-    float:right;
+
+.iconBox {
+    float: right;
 }
-.taxiIcon{
-    font-size:35px;
+
+.taxiIcon {
+    font-size: 35px;
     color: rgb(255, 255, 255);
-    float:right;
-    padding:5px;
-    display:relative;
-    padding-top:4px;
+    float: right;
+    padding: 5px;
+    display: relative;
+    padding-top: 4px;
 }
-.taxiIcon:hover{
+
+.taxiIcon:hover {
     color: rgb(255, 232, 118);
 }
 
 /* History Title */
-.historyTitle{
-    font-size:45px;
-    color:black;
-    text-align:center;
-    margin:80px;
-    text-transform:uppercase;
-    margin-bottom:10px;
+.historyTitle {
+    font-size: 45px;
+    color: black;
+    text-align: center;
+    margin: 80px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
     letter-spacing: 50px;
     font-weight: 200;
 }
 
 /* Section2: Types of Views Buttons */
-.container{
+.container {
     width: 75%;
     background-color: #ffffff;
-    padding-left:40px;
-    padding-right:40px;
+    padding-left: 40px;
+    padding-right: 40px;
 }
-.tableTypeBox{
-    float:left;
-    padding-top:20px;
-    margin-bottom:5px;
+
+.tableTypeBox {
+    float: left;
+    padding-top: 20px;
+    margin-bottom: 5px;
 }
-.tableTypeTitle{
-    font-size:15px;
+
+.tableTypeTitle {
+    font-size: 15px;
     display: inline;
     letter-spacing: 2px
 }
-.inline{
-    display:inline-block;
+
+.inline {
+    display: inline-block;
 }
-.tableTypeButton{
+
+.tableTypeButton {
     background-color: #f8f0e5;
     border: none;
     color: rgb(43, 30, 20);
@@ -198,150 +224,181 @@ h3{
     text-transform: uppercase;
     cursor: pointer;
     border-radius: 25px;
-    display:inline;
+    display: inline;
 }
 
 /* Section3: Fitable Search Bar */
-.searchBarContainer{
+.searchBarContainer {
     border-radius: 5px 5px 0 0;
-    margin-bottom:10px;
-    padding-left:0;
+    margin-bottom: 10px;
+    padding-left: 0;
 }
-#filterList{
+
+#filterList {
     width: 140px;
     padding-top: 5px;
     padding-bottom: 4px;
     width: 22%;
 }
-.searchBar{
+
+.searchBar {
     width: 60%;
 }
 
 /* Section4: Types of Rides Button */
-.rideTypesContainer{
-    border-bottom:3px solid rgb(117, 117, 117);
+.rideTypesContainer {
+    border-bottom: 3px solid rgb(117, 117, 117);
     padding-bottom: 10px;
-    margin-top:50px;
-    text-align:center;
-} 
-.rideTypeButton{
-    width:20%;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.rideTypeButton {
+    width: 20%;
     border: none;
-    color:rgb(94, 93, 93);
-    background-color:white;
-    font-size:13px;
+    color: rgb(94, 93, 93);
+    background-color: white;
+    font-size: 13px;
     letter-spacing: 3px;
     text-transform: uppercase;
 }
-.rideTypeButton:hover{
-    color:rgb(66, 66, 66);
+
+.rideTypeButton:hover {
+    color: rgb(66, 66, 66);
 }
 
 /* Section5: Order History */
 /* View1:Table version */
-table{
-    margin-top:2%;
+table {
+    margin-top: 2%;
     border: 0.5px solid rgb(206, 204, 204);
 }
-#view1{
-    display:block;
+
+#view1 {
+    display: block;
 }
-#view1_1, #view1_2{
-    display:none;
+
+#view1_1,
+#view1_2 {
+    display: none;
 }
-.tableContainer{
-    background-color:#f2f2f2;
-    margin-bottom:0;
-    border-bottom:none;
+
+.tableContainer {
+    background-color: #f2f2f2;
+    margin-bottom: 0;
+    border-bottom: none;
 }
-.tableField1{
-    padding-top:3%;
+
+.tableField1 {
+    padding-top: 3%;
 }
-.regNumRow{
-    font-size:30px;
-    padding-top:30px;
+
+.regNumRow {
+    font-size: 30px;
+    padding-top: 30px;
 }
-.tableRegNum::before{
-    content:"#";
-    padding-left:30px;
-    font-size:25px;
+
+.tableRegNum::before {
+    content: "#";
+    padding-left: 30px;
+    font-size: 25px;
 }
-.tableRate{
-    content:"";
-    float:right;
-    margin-right:20px;
+
+.tableRate {
+    content: "";
+    float: right;
+    margin-right: 20px;
 }
-.ratingText{
-    display:block;
+
+.ratingText {
+    display: block;
 }
-.tableBox{
-    background-color:#ffffff;
-    margin-top:0;
-    border-top:none;
+
+.tableBox {
+    background-color: #ffffff;
+    margin-top: 0;
+    border-top: none;
 }
-.tableColumn, .tableStartLoc{
-    padding-left:30px;
+
+.tableColumn,
+.tableStartLoc {
+    padding-left: 30px;
 }
-.tableEndLoc, .tableStartLoc{
-    font-size:12px;
-    padding-top:50px;
+
+.tableEndLoc,
+.tableStartLoc {
+    font-size: 12px;
+    padding-top: 50px;
     text-transform: uppercase
 }
-.cellStartLoc, .cellEndLoc{
-    font-size:20px;
-    font-weight:bold;
+
+.cellStartLoc,
+.cellEndLoc {
+    font-size: 20px;
+    font-weight: bold;
 }
-.cellDate{
+
+.cellDate {
     text-transform: uppercase;
-    font-size:14px;
-    padding-bottom:10px;
+    font-size: 14px;
+    padding-bottom: 10px;
     letter-spacing: 2px
 }
-.writeReview, .reviewSumbit{
-    margin-left:12.5%;
-    height:70px;
-    border-top:none;
+
+.writeReview,
+.reviewSumbit {
+    margin-left: 12.5%;
+    height: 70px;
+    border-top: none;
     border: 0.5px solid rgb(199, 199, 199);
 }
-.reviewSumbit{
-    border-top:none;
-    height:30px;
+
+.reviewSumbit {
+    border-top: none;
+    height: 30px;
     background-color: rgb(245, 245, 245);
     color: rgb(88, 86, 86);
 }
-.reviewSumbit:hover{
-    background-color:rgb(207, 207, 207);
+
+.reviewSumbit:hover {
+    background-color: rgb(207, 207, 207);
 }
-.chatLink{
-    margin-top:50px; 
-    margin-right:20px; 
-    float:right;
-    margin-bottom:10px;
+
+.chatLink {
+    margin-top: 50px;
+    margin-right: 20px;
+    float: right;
+    margin-bottom: 10px;
 }
-.checkBox{
-    font-size:15px
+
+.checkBox {
+    font-size: 15px
 }
-.cellFree,.cellCancelled{
-    margin-top: 50px; 
-    display:inline;
-    height:10px;
+
+.cellFree,
+.cellCancelled {
+    margin-top: 50px;
+    display: inline;
+    height: 10px;
     letter-spacing: 3px;
     text-transform: uppercase;
     font-size: 13px;
 }
 
 /* View2: Database Version */
-#view2{
-    display:none;
+#view2 {
+    display: none;
     border-collapse: collapse;
     overflow-x: auto;
-    padding:0;
+    padding: 0;
 }
-.databaseHeader{
+
+.databaseHeader {
     background-color: rgb(194, 194, 194);
 }
-.databaseCell{
-    padding:10px;
+
+.databaseCell {
+    padding: 10px;
     width: 10%;
 }
 
@@ -349,298 +406,375 @@ table{
 
 
 /* General Overall Feedbacks */
-.generalReviewBox{
-    height:300px;
-    text-align:center;
+.generalReviewBox {
+    padding-bottom: 40px;
+    text-align: center;
     background-color: rgb(223, 223, 223);
-    border-radius:7px;
-}
-.generalRatingText{
-    font-size:17px;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    padding:10px;
-    padding-top:50px;
-}
-.generalFeedBack{
-    width:80%;
-    height:100px;
-    border-radius:7px;
-    border-color:white;
-    padding-left:20px;
-}
-.generalFeedBackText{
-    padding:20px;
-    text-align:center;
-}
-.generalRate{
-    border:none;
-    color:rgb(252, 149, 64);
-    font-size:18px;
-    margin:5px;
-    font-family: Sans-serif;
-    font-weight:500;
-}
-.generalRate:hover{
-    color:rgb(255, 251, 0);
-    background-color:gray;
+    border-radius: 7px;
 }
 
-@media only screen and (max-width:1000px){
+.generalRatingText {
+    font-size: 17px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    padding: 10px;
+    padding-top: 50px;
+}
+
+.generalFeedBack {
+    width: 80%;
+    height: 100px;
+    border-radius: 7px;
+    border-color: white;
+    padding-left: 20px;
+}
+
+.generalFeedBackText {
+    padding: 20px;
+    text-align: center;
+}
+
+.generalRate {
+    border: none;
+    color: rgb(252, 149, 64);
+    font-size: 18px;
+    margin: 5px;
+    font-family: Sans-serif;
+    font-weight: 500;
+}
+
+.generalRate:hover {
+    color: rgb(255, 251, 0);
+    background-color: gray;
+}
+
+@media only screen and (max-width:1000px) {
     .searchBar {
-      display:block;
-      width:100%;
-      margin: 5px 0;
+        display: block;
+        width: 100%;
+        margin: 5px 0;
     }
-    #filterList{
-        width:200px;
+
+    #filterList {
+        width: 200px;
     }
 }
-@media only screen and (max-width:780px){
-    .summaryTitle{
-        font-size:40px;
+
+@media only screen and (max-width:780px) {
+    .summaryTitle {
+        font-size: 40px;
     }
-    .taxiIcon{
-        font-size:30px;
+
+    .taxiIcon {
+        font-size: 30px;
     }
-    .rideTypeButton{
+
+    .rideTypeButton {
         width: auto;
     }
-    .rideTypeContent{
-        font-size:12px;
+
+    .rideTypeContent {
+        font-size: 12px;
     }
 }
-@media only screen and (max-width:720px){
-    .summaryTitle{
-        font-size:35px;
-        height:80px;
+
+@media only screen and (max-width:720px) {
+    .summaryTitle {
+        font-size: 35px;
+        height: 80px;
         letter-spacing: 30px
     }
 }
-@media only screen and (max-width:670px){
-    .taxiIcon{
-        margin-top:-40px;
+
+@media only screen and (max-width:670px) {
+    .taxiIcon {
+        margin-top: -40px;
     }
 }
-@media only screen and (max-width:690px){
-    .rideSummary{
-        height:700px;
+
+@media only screen and (max-width:690px) {
+    .rideSummary {
+        height: 700px;
     }
-    .rideTypeContainer{
-        height:50%;
+
+    .rideTypeContainer {
+        height: 50%;
     }
-    .ridesTypeSummary{
+
+    .ridesTypeSummary {
         float: none;
-        width:100%;
-        height:100%;
+        width: 100%;
+        height: 100%;
     }
-    .rideTypeContent{
-        float:left;
+
+    .rideTypeContent {
+        float: left;
     }
-    .greetingContent{
+
+    .greetingContent {
         width: 110%;
-        font-size:15px;
+        font-size: 15px;
         letter-spacing: 4px;
     }
-    .dateContent{
-        padding-top:30px;
+
+    .dateContent {
+        padding-top: 30px;
         width: 150%;
         width: 50%;
         margin-left: 100px;
     }
 }
-@media only screen and (max-width:590px){
-    .summaryTitle{
-        height:60px;
+
+@media only screen and (max-width:590px) {
+    .summaryTitle {
+        height: 60px;
         letter-spacing: 30px
     }
-    .separation1{
-        height:0;
-        padding-bottom:5px;
+
+    .separation1 {
+        height: 0;
+        padding-bottom: 5px;
     }
-    .dateColumn{
-        padding-left:0;
+
+    .dateColumn {
+        padding-left: 0;
     }
-    .historyTitle{
+
+    .historyTitle {
         font-size: 40px;
     }
+
     .chatLink {
         margin-top: 40px;
     }
-    .cellStartLoc, .cellEndLoc {
+
+    .cellStartLoc,
+    .cellEndLoc {
         font-size: 18px;
     }
-    .writeReview{
+
+    .writeReview {
         height: 55px;
     }
 }
-@media only screen and (max-width:550px){
-    .summaryTitle{
-        height:50px;
+
+@media only screen and (max-width:550px) {
+    .summaryTitle {
+        height: 50px;
         letter-spacing: 20px
     }
-    .historyTitle{
+
+    .historyTitle {
         font-size: 35px;
     }
-    .separation1{
-        padding-bottom:0;
+
+    .separation1 {
+        padding-bottom: 0;
     }
-    .dateColumn{
-        padding-left:0;
+
+    .dateColumn {
+        padding-left: 0;
     }
-    .tableFreeBox, .tableCancelledBox,.tableConvoBox{
-        display:block;
+
+    .tableFreeBox,
+    .tableCancelledBox,
+    .tableConvoBox {
+        display: block;
     }
-    .tableFreeBox{
-        margin-top:15px;
+
+    .tableFreeBox {
+        margin-top: 15px;
     }
-    .tableCancelledBox{
-        margin-top:5px;
-        margin-left:30px;
+
+    .tableCancelledBox {
+        margin-top: 5px;
+        margin-left: 30px;
     }
-    .tableEndLoc, .tableStartLoc {
+
+    .tableEndLoc,
+    .tableStartLoc {
         padding-top: 30px;
     }
-    .fa{
+
+    .fa {
         font-size: 12px;
     }
-    .chatLink{
-        float:left;
-        margin:10px 0 10px 30px;
+
+    .chatLink {
+        float: left;
+        margin: 10px 0 10px 30px;
     }
 }
-@media only screen and (max-width:510px){
-    .summaryTitle{
-        font-size:25px;
+
+@media only screen and (max-width:510px) {
+    .summaryTitle {
+        font-size: 25px;
         letter-spacing: 28px;
     }
-    .summaryTitle{
-        height:40px;
+
+    .summaryTitle {
+        height: 40px;
     }
-    .separation1{
-        padding-top:10px;
+
+    .separation1 {
+        padding-top: 10px;
     }
-    .rideSummary{
-        height:650px;
+
+    .rideSummary {
+        height: 650px;
     }
-    .h3{
-        margin-top:0;
+
+    .h3 {
+        margin-top: 0;
     }
-    .historyTitle{
-        font-size:28px;
+
+    .historyTitle {
+        font-size: 28px;
     }
-    .dateColumn{
-        float:none;
+
+    .dateColumn {
+        float: none;
     }
-    .dateContent, .greetingContent{
-        padding-top:0;
-        padding-bottom:10px;
+
+    .dateContent,
+    .greetingContent {
+        padding-top: 0;
+        padding-bottom: 10px;
     }
-    .remainingRides{
-        font-size:12px;
-        letter-spacing:0px;
-    }
-    .greetingContent{
-        font-size:14px;
-        letter-spacing: 3px;
-        width:150%;
-    }
-    .dateContent{
+
+    .remainingRides {
         font-size: 12px;
-        width:150%;
+        letter-spacing: 0px;
+    }
+
+    .greetingContent {
+        font-size: 14px;
+        letter-spacing: 3px;
+        width: 150%;
+    }
+
+    .dateContent {
+        font-size: 12px;
+        width: 150%;
         float: left;
     }
-    .dealsContainer{
-        margin-top:10px;
+
+    .dealsContainer {
+        margin-top: 10px;
     }
-    .dealsText{
-        font-size:17px;
+
+    .dealsText {
+        font-size: 17px;
     }
-    .dealsContent{
-        font-size:13px;
+
+    .dealsContent {
+        font-size: 13px;
     }
-    h3{
+
+    h3 {
         font-size: 15px;
     }
-    .rideButtonColumn{
+
+    .rideButtonColumn {
         font-size: 13px;
     }
 }
-@media only screen and (max-width:490px){
-    .summaryTitle{
-        font-size:20px;
+
+@media only screen and (max-width:490px) {
+    .summaryTitle {
+        font-size: 20px;
         letter-spacing: 25px;
     }
-    .historyTitle{
-        font-size:30px;
+
+    .historyTitle {
+        font-size: 30px;
         letter-spacing: 30px;
     }
-    .cellStartLoc, .cellEndLoc {
+
+    .cellStartLoc,
+    .cellEndLoc {
         font-size: 16px;
         font-weight: bold;
     }
-    .tableEndLoc, .tableStartLoc {
+
+    .tableEndLoc,
+    .tableStartLoc {
         font-size: 11px;
         padding-top: 20px;
     }
-    .regNumRow{
-        font-size:20px;
+
+    .regNumRow {
+        font-size: 20px;
     }
+
     .cellDate {
         font-size: 12px;
     }
-    .cellFree, .cellCancelled{
+
+    .cellFree,
+    .cellCancelled {
         font-size: 13px;
-   }
-   .chatLink{
-       margin-top:10px;
-   }
-   .reviewSumbit{
-    font-size: 12px;
-   }
-   #filterList {
-    width: 150px;
-    font-size: 13px;    
     }
-    .container{
+
+    .chatLink {
+        margin-top: 10px;
+    }
+
+    .reviewSumbit {
+        font-size: 12px;
+    }
+
+    #filterList {
+        width: 150px;
+        font-size: 13px;
+    }
+
+    .container {
         padding-left: 0;
         padding-right: 0;
     }
+
     .writeReview {
         height: 50px;
         font-size: 13px;
     }
-    #order_table_submit{
-        font-size:12px;
+
+    #order_table_submit {
+        font-size: 12px;
     }
 
 }
-@media only screen and (max-width:450px){
-    .historyTitle{
+
+@media only screen and (max-width:450px) {
+    .historyTitle {
         font-size: 28px;
         letter-spacing: 25px;
-        margin-left:50px;
+        margin-left: 50px;
     }
-    .tableTypeButton{
+
+    .tableTypeButton {
         font-size: 10px;
     }
-    .rideTypeContainer{
-        height:30%;
-        padding:10px;
+
+    .rideTypeContainer {
+        height: 30%;
+        padding: 10px;
         width: 100%;
     }
-    .summaryTitle{
-        font-size:20px;
+
+    .summaryTitle {
+        font-size: 20px;
         letter-spacing: 20px;
     }
 }
-@media only screen and (max-width:400px){
+
+@media only screen and (max-width:400px) {
     .greetingContent {
         font-size: 13px;
         width: 200%;
     }
+
     .rideTypeContent {
         padding-top: 0;
     }
 }
-

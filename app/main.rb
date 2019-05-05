@@ -39,8 +39,9 @@ post'/addRating' do
 end
 
 post'/addReview' do
-    add_feedback(params[:referenceNo].to_i, session[:id], params[:newReview], params[:generalRating])
-    redirect '/userOrders'
+    if params[:newReview] == "" then @nofdbk end
+    @all_ok = add_feedback(params[:referenceNo].to_i, session[:id], params[:newReview], params[:generalRating]) unless @nofdbk
+    erb :addReview
 end
 
 # delete account
