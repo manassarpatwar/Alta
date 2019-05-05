@@ -14,4 +14,5 @@ Feature: Follow by keyword and tweet to timeline
             When I fill in "tweet" with "Testing tweet to timeline"
             When I press "Tweet"
             Then I should see "Your tweet has been posted"
+            And I delete the reply
             

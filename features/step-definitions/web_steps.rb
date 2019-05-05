@@ -26,24 +26,11 @@ When /^I wait for (\d+) seconds?$/ do |secs|
   sleep secs.to_i
 end
 
-When /^I log out of twitter$/ do
-   begin
-       visit 'https://twitter.com/logout' 
-       click_button("Log out")
-    rescue Capybara::ElementNotFound
-        puts "already logged out"
-    end
-end
-
 When /^I am signed in as admin from sheffield$/ do
-   begin
-       visit '/login' 
-       fill_in("Username or email", :with => "tbtonner1@sheffield.ac.uk")
-       fill_in("Password", :with => "SoftEng2019")
-       click_button("Sign In")
-    rescue Capybara::ElementNotFound
-        puts "already signed in"
-    end
+   visit '/login' 
+   fill_in("Username or email", :with => "tbtonner1@sheffield.ac.uk")
+   fill_in("Password", :with => "SoftEng2019")
+   click_button("Sign In")
 end
 
 When /^I am signed in as admin from manchester$/ do
