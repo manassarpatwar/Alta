@@ -120,14 +120,20 @@ end
 
 desc "Run the Sinatra app locally"
 task :run do
-  require_relative 'app.rb'
-  Sinatra::Application.run!
+    begin
+        File.read("database/taxi_db.sqlite")
+    rescue
+        puts "No database found. Creating now..."
+        Rake::Task[:createdb].execute
+    end
+    require_relative 'app.rb'
+    Sinatra::Application.run!
 end
 
 desc "Install the app"
 task :install do
-  Rake::Task[:installchromedriver].execute
-  Rake::Task[:installgems].execute
-  Rake::Task[:createdb].execute
+    Rake::Task[:installchromedriver].execute
+    Rake::Task[:installgems].execute
+    Rake::Task[:createdb].execute
 end
 
