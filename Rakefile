@@ -2,12 +2,6 @@ require "rake/testtask"
 
 # replace the below with the path to your app
 
-desc "Restore the state of the db"
-task :wipedb do
-  puts "Wiping the database"
-  `ruby database/wipeDatabase.rb`
-end
-
 desc "Install gems"
 task :installgems do
    puts "Installing gems"
@@ -28,7 +22,6 @@ task :installrvm do
     system('command curl -sSL https://rvm.io/pkuczynski.asc | gpg --import -')
     system('\curl -sSL https://get.rvm.io | bash -s stable --ruby')
 end
-
 
 desc "Add callback url in twitter"
 task :addcallback do
@@ -96,12 +89,33 @@ task :backupdb do
     system('sqlite3 -header -csv database/taxi_db.sqlite "select * from journeys;" > public/csv/journeys.csv')
 end
 
+
+desc "Restore the state of the db"
+task :wipedb do
+  puts "Wiping the database"
+  `ruby database/wipeDatabase.rb`
+end
+
+
+desc "Run cucumber tests"
+task :cucumber do
+   system('ruby database/createDatabase.rb testdb')
+   system('cucumber')  
+   Rake::Task[:clean].execute
+end
+
+desc "Run minitests"
+task :minitests do
+   system('ruby database/createDatabase.rb testdb')    
+   system('ruby minitests.rb')
+   Rake::Task[:clean].execute
+end
+
+
 desc "Run tests"
 task :test do
-  system('ruby database/createDatabase.rb testdb')
-  system('ruby minitests.rb')
-  system('cucumber')  
-  Rake::Task[:clean].execute
+    Rake::Task[:minitests].execute
+    Rake::Task[:cucumber].execute
 end
 
 desc "Run the Sinatra app locally"
