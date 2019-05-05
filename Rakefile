@@ -111,6 +111,11 @@ task :minitests do
    Rake::Task[:clean].execute
 end
 
+desc "Create test database"
+task :createtestdb do
+    system('ruby database/createDatabase.rb testdb')
+end
+
 
 desc "Run tests"
 task :test do

@@ -39,10 +39,7 @@ end
 #Configure sessions
 configure do
 	enable :sessions
-    puts ENV['RACK_ENV']
-    unless ENV['RACK_ENV'] == 'test'
-        $db = SQLite3::Database.new 'database/taxi_db.sqlite'
-    end
+    $db = SQLite3::Database.new 'database/taxi_db.sqlite'
     $rideDeal = 5
     begin
       TWITTER_CLIENT = Twitter::REST::Client.new do |config|
