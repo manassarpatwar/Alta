@@ -1,68 +1,68 @@
 <nav class="navbar-fixed-top">
 
-    <div class="nav-column logo" style="text-align: center;">
-        <div class="nav-cont">
-            <a href="#section0">
-                <img class="nav-logo" src="img/alta.png">
-                <div class="nav-name">
-                    alta
-                </div>
-            </a>
+  <div class="nav-column logo" style="text-align: center;">
+    <div class="nav-cont">
+      <a href="#section0">
+        <img class="nav-logo" src="img/alta.png">
+        <div class="nav-name">
+          alta
         </div>
+      </a>
     </div>
+  </div>
 
-    <div class="nav-column2 nav-column" id="RespHeader">
-        <div class="nav-cont">
-            <ul class="nav-center">
+  <div class="nav-column2 nav-column" id="RespHeader">
+    <div class="nav-cont">
+      <ul class="nav-center">
 
 
-                <li class="nav-inline">
-                    <a href="#section1" class="nav-buttons">how to?</a>
-                </li>
+        <li class="nav-inline">
+          <a href="#section1" class="nav-buttons">how to?</a>
+        </li>
 
-                <li class="nav-inline">
-                    <a href="#section2" class="nav-buttons">services</a>
-                </li>
+        <li class="nav-inline">
+          <a href="#section2" class="nav-buttons">services</a>
+        </li>
 
-                <li class="nav-inline">
-                    <a href="#section3" class="nav-buttons">deals</a>
-                </li>
+        <li class="nav-inline">
+          <a href="#section3" class="nav-buttons">deals</a>
+        </li>
 
-                <li class="nav-inline">
-                    <a href="#section4" class="nav-buttons">reviews</a>
-                </li>
+        <li class="nav-inline">
+          <a href="#section4" class="nav-buttons">reviews</a>
+        </li>
 
-                <li class="nav-inline">
-                    <a href="#section5" class="nav-buttons">about</a>
-                </li>
+        <li class="nav-inline">
+          <a href="#section5" class="nav-buttons">about</a>
+        </li>
 
-                <li class="nav-inline">
-                    <a href="#section6" class="nav-buttons">contact</a>
-                </li>
+        <li class="nav-inline">
+          <a href="#section6" class="nav-buttons">contact</a>
+        </li>
 
-            </ul>
-        </div>
+      </ul>
     </div>
+  </div>
 
-    <div class="nav-column">
-        <div class="nav-cont">
-            <%if !session[:loggedin] %>
-            <div class=" nav-signin nav-inline2 ">
-                <a href="/login">Log In</a>
-            </div>
-            <% elsif !session[:admin] %>
-            <div class=" nav-inline2 nav-signin">
-                <a href="/userOrders">My Orders</a>
-            </div>
-            <% else %>
-            <div class=" nav-inline2 nav-signin" style="float: right; margin-right:20px; margin-left: 0;">
-                <a href="/dashboard" style="font-size:11px;">Dashboard | </a>
-                <i class="fa fa-sign-out" style="font-size:13px; color:grey"></i>
-            </div>
-            <% end %>
-        </div>
+  <div class="nav-column">
+    <div class="nav-cont">
+      <%if !session[:loggedin] %>
+      <div class=" nav-signin nav-inline2 ">
+        <a href="/login">Log In</a>
+      </div>
+      <% elsif !session[:admin] %>
+      <div class=" nav-inline2 nav-signin">
+        <a href="/myAccount">My Account</a>
+      </div>
+      <% else %>
+      <div class=" nav-inline2 nav-signin" style="float: right; margin-right:20px; margin-left: 0;">
+        <a href="/dashboard" style="font-size:11px;">Dashboard | </a>
+        <i class="fa fa-sign-out" style="font-size:13px; color:grey"></i>
+      </div>
+      <% end %>
     </div>
-    <a href="javascript:void(0);" class="nav-Icon" onclick="myResponsiveHeader()">
-        <div class="nav-respIcon"> &#9776; </div>
-    </a>
+  </div>
+  <a href="javascript:void(0);" class="nav-Icon" onclick="myResponsiveHeader()">
+    <div class="nav-respIcon"> &#9776; </div>
+  </a>
 </nav>

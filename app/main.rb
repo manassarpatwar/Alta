@@ -10,18 +10,14 @@ get '/index' do
 	erb :index
 end
 
-#get '/userAccount' do
-#    redirect '/index' unless session[:loggedin]
-#    erb :user_account
-#end
-get'/userOrders' do
+get'/myAccount' do
     redirect '/index' unless session[:loggedin]
     @results = $db.execute("SELECT * FROM journeys WHERE user_id =  '#{session[:id]}'")
     @totalRides = get_total_rides(session[:id])
     @rideDeal = $rideDeal
     @temp = @totalRides % $rideDeal
     @ridesUntilDeal = $rideDeal - @temp
-    erb :user_orders
+    erb :myAccount
 end
 
 not_found do
@@ -35,7 +31,7 @@ post'/addRating' do
     $db.execute("UPDATE journeys SET rating = '#{@rating}' WHERE id = '#{@referenceNo}' AND user_id = '#{session[:id]}'")
     # puts params[:rating]
     puts params[:referenceNo]
-    redirect '/userOrders'
+    redirect '/myAccount'
 end
 
 post'/addReview' do

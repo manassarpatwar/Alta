@@ -30,8 +30,8 @@ module NavigationHelpers
       '/logout'
     when /the dashboard\s?page/
       '/dashboard'
-    when /the user orders\s?page/
-      '/userOrders'
+    when /the my account\s?page/
+      '/myAccount'
     when /the not found\s?page/
       '/404notfound'
     when /the marketing\s?page/
