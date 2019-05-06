@@ -2,50 +2,61 @@
 <html>
 
 <head>
-    <title>Twitter Marketing Tab</title>
+  <title>Twitter Marketing Tab</title>
 
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="css/admin_nav.css">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>s
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="css/admin_nav.css">
+  <link rel="stylesheet" type="text/css" href="css/marketing.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="js/jquery.min.js"></script>
+  <script src="https://platform.twitter.com/widgets.js"></script>
+  <script src="js/bootstrap.min.js"></script>s
 </head>
 
 <body>
-    <div id="wrapper">
-        <%= erb :admin_nav %>
-        <div id="page-content-wrapper">
-            <h1>Custom Twitter Marketing</h1>
-
-            <form method="post" action="followPeopleUsingKeyword">
-                Keyword follow: <input type="text" name="follow" value="<%=h params[:follow] %>" />
-                <input type="submit" name="submit" value="Follow" />
-            </form>
-
-            <% unless (request.cookies['following'] == "true") %>
-            <% if (request.cookies['follow_state'] == "true") %>
-            <p>You followed 5 people that used this keyword recently.</p>
-            <% else %>
-            <p>You already reached your follow limits today. Please come back tomorrow or try 15 minutes later..</p>
-            <% end %>
-            <% end %>
-
-            <form method="post" action="tweetToTimeline">
-                Tweet: <input type="text" name="tweet" value="<%=h params[:tweet] %>" />
-                <input type="submit" name="post tweet" value="Tweet" />
-            </form>
-            <% unless (request.cookies['tweeting'] == "true") %>
-            <% if (request.cookies['tweet_state'] == "true")%>
-            <p>Your tweet has been posted.</p>
-            <% else %>
-            <p>You already reached your tweeting limit from the app today. Please come back tomorrow or try 15 minutes later.</p>
-            <% end %>
-            <% end %>
+  <div id="wrapper">
+    <%= erb :admin_nav %>
+    <div id="page-content-wrapper">
+      <h1>Twitter Page</h1>
+      <div id="marketing_wrapper">
+        <div class="inputs">
+          <form method="post" action="followPeopleUsingKeyword">
+            <label>Keyword follow: <input type="text" name="follow" value="<%=h params[:follow] %>" />
+              <input type="submit" name="submit" class="submitButton" value="Follow" /></label>
+          </form>
         </div>
+        <div class="inputs">
+          <form method="post" action="tweetToTimeline">
+            <label>Tweet:<input type="text" name="tweet" value="<%=h params[:tweet] %>" /><input type="submit" name="post tweet" class="submitButton" value="Tweet" /></label>
+          </form>
+        </div>
+      </div>
+      <div>
+        <% unless (request.cookies['tweeting'] == "true") %>
+        <% if (request.cookies['tweet_state'] == "true")%>
+        <p>Your tweet has been posted.</p>
+        <% else %>
+        <p>You already reached your tweeting limit from the app today. Please come back tomorrow or try 15 minutes later.</p>
+        <% end %>
+        <% end %>
+        <% unless (request.cookies['following'] == "true") %>
+        <% if (request.cookies['follow_state'] == "true") %>
+        <p>You followed 5 people that used this keyword recently.</p>
+        <% else %>
+        <p>You already reached your follow limits today. Please come back tomorrow or try 15 minutes later..</p>
+        <% end %>
+        <% end %>
+      </div>
+      <div id="container" style="display:flex;flex-direction:row">
+        <a class="twitter-timeline" href="https://twitter.com/ise19team29" data-width="500" data-height="700">
+          Tweets by @TwitterDev
+        </a>
+      </div>
     </div>
-    <script src="js/admin_nav.js"></script>
+  </div>
+  <script src="js/admin_nav.js"></script>
 </body>
 
 </html>
