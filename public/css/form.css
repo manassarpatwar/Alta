@@ -1,22 +1,35 @@
-#page-content-wrapper #journeyForm{
-  width: 300px;
+#page-content-wrapper #journeyForm {
+    width: 300px;
 }
 
-.inputbox{
-  display: inline-block;
-  width: 160px;
-  float: right;
+.inputbox {
+    display: inline-block;
+    width: 160px;
+    float: right;
 }
 
-.input_label{
-  line-height: 35px;
+#add {
+    width: 350px;
 }
 
-.submitButton{
-  background: #38A1F3;
-  color: white;
-  border-radius: 25px;
-  height: 30px;
-  width: 70px;
-  outline: none;
+.input_label {
+    line-height: 35px;
+}
+
+.textArea {
+    width: 97%;
+    resize: none;
+    display: inline-block;
+    width: 160px;
+    float: right;
+    font-size: 1.2em;
+}
+
+.submitButton {
+    background: #38A1F3;
+    color: white;
+    border-radius: 25px;
+    height: 30px;
+    width: 70px;
+    outline: none;
 }

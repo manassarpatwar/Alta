@@ -1,4 +1,4 @@
-"id","taxi_id","user_id","twitter_handle","date_time","start_location","end_location","free_ride","cancelled","rating","conversation_link"
+id,taxi_id,user_id,twitter_handle,date_time,start_location,end_location,free_ride,cancelled,rating,conversation_link
 0,0,"1105505463234379778","TomTonner3","2019/03/08 12:34","Endcliffe","Diamond",0,0,5,"https://twitter.com/testinglinks"
 1,0,"3301792117","ManasSarpatwar","2019/03/26 16:02","Diamond","Meadowhall",0,0,4,"https://twitter.com/testinglinks"
 2,1,"1109074554515873792","kassycy","2019/04/03 13:56","Piccadilly station","Old Trafford",0,0,0,"https://twitter.com/testinglinks"

@@ -1,4 +1,4 @@
-"id","reg_num","contact_num","taxi_type","city","available"
+id,reg_num,contact_num,taxi_type,city,available
 0,"IO17 MFE","07500090833","S","SHEFFIELD",0
 1,"NG07 EDF","07254123699","M","MANCHESTER",0
 2,"T58 THY","07258152966","L","MANCHESTER",1
