@@ -14,27 +14,27 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2019-05-05T17:59:03+00:00">2019-05-05T17:59:03+00:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2019-05-07T23:54:14+00:00">2019-05-07T23:54:14+00:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="green">94.82%</span></span>
+    (<span class="covered_percent"><span class="green">95.28%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         8.81
+         8.72
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>8</b> files in total.
-    <b>599</b> relevant lines. 
-    <span class="green"><b>568</b> lines covered</span> and
-    <span class="red"><b>31</b> lines missed </span>
+    <b>593</b> relevant lines. 
+    <span class="green"><b>565</b> lines covered</span> and
+    <span class="red"><b>28</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -67,7 +67,7 @@
         <td>114</td>
         <td>101</td>
         <td>13</td>
-        <td>2.7</td>
+        <td>2.5</td>
       </tr>
       
       <tr>
@@ -77,7 +77,7 @@
         <td>35</td>
         <td>33</td>
         <td>2</td>
-        <td>31.8</td>
+        <td>30.7</td>
       </tr>
       
       <tr>
@@ -103,7 +103,7 @@
       <tr>
         <td class="strong"><a href="#1b5a88fa0d051478a8408ba6b700de91d8d2a3d4" class="src_link" title="app/main.rb">app/main.rb</a></td>
         <td class="green strong">93.1 %</td>
-        <td>52</td>
+        <td>48</td>
         <td>29</td>
         <td>27</td>
         <td>2</td>
@@ -117,16 +117,16 @@
         <td>34</td>
         <td>34</td>
         <td>0</td>
-        <td>33.1</td>
+        <td>32.5</td>
       </tr>
       
       <tr>
         <td class="strong"><a href="#4464d5354dfbdad9c90bc773d13dbe0f6a767c24" class="src_link" title="database/editDatabases.rb">database/editDatabases.rb</a></td>
-        <td class="green strong">97.18 %</td>
-        <td>529</td>
-        <td>284</td>
-        <td>276</td>
-        <td>8</td>
+        <td class="green strong">98.2 %</td>
+        <td>517</td>
+        <td>278</td>
+        <td>273</td>
+        <td>5</td>
         <td>3.5</td>
       </tr>
       
@@ -851,20 +851,20 @@
           <code class="ruby">post &#39;/deleteTweet&#39; do</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="65">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="2" data-linenumber="65">
+          <span class="hits">2</span>
           
           <code class="ruby">    $since_id = $tweets[0].id</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="66">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="2" data-linenumber="66">
+          <span class="hits">2</span>
           
           <code class="ruby">    index = (params[:tweetindex]).to_i</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="67">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="2" data-linenumber="67">
+          <span class="hits">2</span>
           
           <code class="ruby">    $tweets.delete($tweets[index])</code>
         </li>
@@ -875,8 +875,8 @@
           <code class="ruby">    begin</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="69">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="2" data-linenumber="69">
+          <span class="hits">2</span>
           
           <code class="ruby">        $tweets =  TWITTER_CLIENT.mentions_timeline(count: &quot;1&quot;, since_id: &quot;#{$since_id}&quot;) + $tweets</code>
         </li>
@@ -905,14 +905,14 @@
           <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="74">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="2" data-linenumber="74">
+          <span class="hits">2</span>
           
           <code class="ruby">    @tweets = $tweets.dup</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="75">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="2" data-linenumber="75">
+          <span class="hits">2</span>
           
           <code class="ruby">    erb :tweetActions</code>
         </li>
@@ -1163,14 +1163,14 @@
           <code class="ruby">        @usersTable.each do |record| #Go through each user record</code>
         </li>
       
-        <li class="covered" data-hits="16" data-linenumber="117">
-          <span class="hits">16</span>
+        <li class="covered" data-hits="14" data-linenumber="117">
+          <span class="hits">14</span>
           
           <code class="ruby">            @userInfo = $db.execute(&quot;SELECT * FROM users WHERE id = ?&quot;, @userId)</code>
         </li>
       
-        <li class="covered" data-hits="16" data-linenumber="118">
-          <span class="hits">16</span>
+        <li class="covered" data-hits="14" data-linenumber="118">
+          <span class="hits">14</span>
           
           <code class="ruby">            if @userId == record[0] #If uid = id then:</code>
         </li>
@@ -1361,26 +1361,26 @@
           <code class="ruby">post &#39;/fillInfoInJourney&#39; do</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="150">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="2" data-linenumber="150">
+          <span class="hits">2</span>
           
           <code class="ruby">    gather_taxis(session[:admin_city])</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="151">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="2" data-linenumber="151">
+          <span class="hits">2</span>
           
           <code class="ruby">    @noAvailableTaxis = false</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="152">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="2" data-linenumber="152">
+          <span class="hits">2</span>
           
           <code class="ruby">    if !@availableTaxis[0].nil?</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="153">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="2" data-linenumber="153">
+          <span class="hits">2</span>
           
           <code class="ruby">	 @taxiId = @availableTaxis[0][0]</code>
         </li>
@@ -1403,56 +1403,56 @@
           <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="157">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="2" data-linenumber="157">
+          <span class="hits">2</span>
           
           <code class="ruby">	@userId = params[:userId]</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="158">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="2" data-linenumber="158">
+          <span class="hits">2</span>
           
           <code class="ruby">	@twitterHandle = params[:twitterHandle]</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="159">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="2" data-linenumber="159">
+          <span class="hits">2</span>
           
           <code class="ruby">    @convoLink = params[:convoLink]</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="160">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="2" data-linenumber="160">
+          <span class="hits">2</span>
           
           <code class="ruby">    @dateTime = Time.now.strftime(&quot;%Y/%m/%d %H:%M&quot;).to_s</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="161">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="2" data-linenumber="161">
+          <span class="hits">2</span>
           
           <code class="ruby">    @usersTable = $db.execute %{SELECT * FROM users} #Gather all user data</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="162">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="2" data-linenumber="162">
+          <span class="hits">2</span>
           
           <code class="ruby">    @usersTable.each do |record| #Go through each user record</code>
         </li>
       
-        <li class="covered" data-hits="25" data-linenumber="163">
-          <span class="hits">25</span>
+        <li class="covered" data-hits="15" data-linenumber="163">
+          <span class="hits">15</span>
           
           <code class="ruby">        if @userId == record[0] #If uid = id then:</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="164">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="2" data-linenumber="164">
+          <span class="hits">2</span>
           
           <code class="ruby">           @userInfo = $db.execute(&quot;SELECT * FROM users WHERE id = ?&quot;, @userId)</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="165">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="2" data-linenumber="165">
+          <span class="hits">2</span>
           
           <code class="ruby">           if @userInfo[0][4] != 0 then</code>
         </li>
@@ -1469,8 +1469,8 @@
           <code class="ruby">           else</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="168">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="2" data-linenumber="168">
+          <span class="hits">2</span>
           
           <code class="ruby">             @freeRide = 0</code>
         </li>
@@ -1493,20 +1493,20 @@
           <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="172">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="2" data-linenumber="172">
+          <span class="hits">2</span>
           
           <code class="ruby">    @cancelled = 0</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="173">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="2" data-linenumber="173">
+          <span class="hits">2</span>
           
           <code class="ruby">	@convoLink = params[:convoLink].strip</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="174">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="2" data-linenumber="174">
+          <span class="hits">2</span>
           
           <code class="ruby">    erb :addJourney</code>
         </li>
@@ -1692,8 +1692,8 @@
           <code class="ruby">    @usersTable.each do |record| #Go through each user record</code>
         </li>
       
-        <li class="covered" data-hits="322" data-linenumber="27">
-          <span class="hits">322</span>
+        <li class="covered" data-hits="285" data-linenumber="27">
+          <span class="hits">285</span>
           
           <code class="ruby">        if env[&#39;omniauth.auth&#39;][&#39;uid&#39;] == record[0] #If uid = id then:</code>
         </li>
@@ -2817,76 +2817,76 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="13">
-          
-          
-          <code class="ruby">#get &#39;/userAccount&#39; do</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="14">
-          
-          
-          <code class="ruby">#    redirect &#39;/index&#39; unless session[:loggedin]</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="15">
-          
-          
-          <code class="ruby">#    erb :user_account</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="16">
-          
-          
-          <code class="ruby">#end</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="17">
+        <li class="covered" data-hits="1" data-linenumber="13">
           <span class="hits">1</span>
           
-          <code class="ruby">get&#39;/userOrders&#39; do</code>
+          <code class="ruby">get&#39;/myAccount&#39; do</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="18">
+        <li class="covered" data-hits="5" data-linenumber="14">
           <span class="hits">5</span>
           
           <code class="ruby">    redirect &#39;/index&#39; unless session[:loggedin]</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="19">
+        <li class="covered" data-hits="5" data-linenumber="15">
           <span class="hits">5</span>
           
           <code class="ruby">    @results = $db.execute(&quot;SELECT * FROM journeys WHERE user_id =  &#39;#{session[:id]}&#39;&quot;)</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="20">
+        <li class="covered" data-hits="5" data-linenumber="16">
           <span class="hits">5</span>
           
           <code class="ruby">    @totalRides = get_total_rides(session[:id])</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="21">
+        <li class="covered" data-hits="5" data-linenumber="17">
           <span class="hits">5</span>
           
           <code class="ruby">    @rideDeal = $rideDeal</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="22">
+        <li class="covered" data-hits="5" data-linenumber="18">
           <span class="hits">5</span>
           
           <code class="ruby">    @temp = @totalRides % $rideDeal</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="23">
+        <li class="covered" data-hits="5" data-linenumber="19">
           <span class="hits">5</span>
           
           <code class="ruby">    @ridesUntilDeal = $rideDeal - @temp</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="24">
+        <li class="covered" data-hits="5" data-linenumber="20">
           <span class="hits">5</span>
           
-          <code class="ruby">    erb :user_orders</code>
+          <code class="ruby">    erb :myAccount</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="21">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="22">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="23">
+          <span class="hits">1</span>
+          
+          <code class="ruby">not_found do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="24">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    erb :not_found404</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="25">
@@ -2904,19 +2904,19 @@
         <li class="covered" data-hits="1" data-linenumber="27">
           <span class="hits">1</span>
           
-          <code class="ruby">not_found do</code>
+          <code class="ruby">post&#39;/addRating&#39; do</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="28">
           <span class="hits">1</span>
           
-          <code class="ruby">    erb :not_found404</code>
+          <code class="ruby">    @rating = params[:rating].to_i</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="29">
+        <li class="covered" data-hits="1" data-linenumber="29">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">end</code>
+          <code class="ruby">    @referenceNo = params[:referenceNo].to_i</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="30">
@@ -2928,130 +2928,106 @@
         <li class="covered" data-hits="1" data-linenumber="31">
           <span class="hits">1</span>
           
-          <code class="ruby">post&#39;/addRating&#39; do</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="32">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    @rating = params[:rating].to_i</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="33">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    @referenceNo = params[:referenceNo].to_i</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="34">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="35">
-          <span class="hits">1</span>
-          
           <code class="ruby">    $db.execute(&quot;UPDATE journeys SET rating = &#39;#{@rating}&#39; WHERE id = &#39;#{@referenceNo}&#39; AND user_id = &#39;#{session[:id]}&#39;&quot;)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="36">
+        <li class="never" data-hits="" data-linenumber="32">
           
           
           <code class="ruby">    # puts params[:rating]</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="37">
+        <li class="covered" data-hits="1" data-linenumber="33">
           <span class="hits">1</span>
           
           <code class="ruby">    puts params[:referenceNo]</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="38">
+        <li class="covered" data-hits="1" data-linenumber="34">
           <span class="hits">1</span>
           
-          <code class="ruby">    redirect &#39;/userOrders&#39;</code>
+          <code class="ruby">    redirect &#39;/myAccount&#39;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="39">
+        <li class="never" data-hits="" data-linenumber="35">
           
           
           <code class="ruby">end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="40">
+        <li class="never" data-hits="" data-linenumber="36">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="41">
+        <li class="covered" data-hits="1" data-linenumber="37">
           <span class="hits">1</span>
           
           <code class="ruby">post&#39;/addReview&#39; do</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="42">
+        <li class="covered" data-hits="1" data-linenumber="38">
           <span class="hits">1</span>
           
           <code class="ruby">    if params[:newReview] == &quot;&quot; then @nofdbk end</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="43">
+        <li class="covered" data-hits="1" data-linenumber="39">
           <span class="hits">1</span>
           
           <code class="ruby">    @all_ok = add_feedback(params[:referenceNo].to_i, session[:id], params[:newReview], params[:generalRating]) unless @nofdbk</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="44">
+        <li class="covered" data-hits="1" data-linenumber="40">
           <span class="hits">1</span>
           
           <code class="ruby">    erb :addReview</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="45">
+        <li class="never" data-hits="" data-linenumber="41">
           
           
           <code class="ruby">end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="46">
+        <li class="never" data-hits="" data-linenumber="42">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="47">
+        <li class="never" data-hits="" data-linenumber="43">
           
           
           <code class="ruby"># delete account</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="48">
+        <li class="covered" data-hits="1" data-linenumber="44">
           <span class="hits">1</span>
           
           <code class="ruby">post &#39;/deleteAccount/&#39; do</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="49">
+        <li class="never" data-hits="" data-linenumber="45">
           
           
           <code class="ruby">	#execute the deletion</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="50">
+        <li class="missed" data-hits="0" data-linenumber="46">
           
           
           <code class="ruby">	$db.execute(&quot;DELETE FROM users WHERE id=&#39;#{session[:id]}&#39;&quot;)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="51">
+        <li class="missed" data-hits="0" data-linenumber="47">
           
           
           <code class="ruby">	redirect &#39;/&#39;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="52">
+        <li class="never" data-hits="" data-linenumber="48">
           
           
           <code class="ruby">end</code>
@@ -3082,14 +3058,14 @@
           <code class="ruby">def gather_taxis(city)</code>
         </li>
       
-        <li class="covered" data-hits="17" data-linenumber="2">
-          <span class="hits">17</span>
+        <li class="covered" data-hits="16" data-linenumber="2">
+          <span class="hits">16</span>
           
           <code class="ruby">     @availableTaxis = $db.execute %{SELECT * FROM taxis WHERE city IS &#39;#{city}&#39; AND available IS &quot;1&quot;} #Gather all taxis</code>
         </li>
       
-        <li class="covered" data-hits="17" data-linenumber="3">
-          <span class="hits">17</span>
+        <li class="covered" data-hits="16" data-linenumber="3">
+          <span class="hits">16</span>
           
           <code class="ruby">     @unavailableTaxis = $db.execute %{SELECT * FROM taxis WHERE city IS &#39;#{city}&#39; AND available IS &quot;0&quot;} #Gather all taxis</code>
         </li>
@@ -3301,7 +3277,7 @@
         <li class="never" data-hits="" data-linenumber="38">
           
           
-          <code class="ruby">    </code>
+          <code class="ruby"></code>
         </li>
       
         <li class="covered" data-hits="2" data-linenumber="39">
@@ -3310,26 +3286,26 @@
           <code class="ruby">def get_total_rides(id)</code>
         </li>
       
-        <li class="covered" data-hits="161" data-linenumber="40">
-          <span class="hits">161</span>
+        <li class="covered" data-hits="145" data-linenumber="40">
+          <span class="hits">145</span>
           
           <code class="ruby">    @totalRides = 0</code>
         </li>
       
-        <li class="covered" data-hits="161" data-linenumber="41">
-          <span class="hits">161</span>
+        <li class="covered" data-hits="145" data-linenumber="41">
+          <span class="hits">145</span>
           
           <code class="ruby">    @journeys = $db.execute(&quot;SELECT * FROM journeys WHERE user_id =  &#39;#{id}&#39; AND free_ride = 0&quot;)</code>
         </li>
       
-        <li class="covered" data-hits="161" data-linenumber="42">
-          <span class="hits">161</span>
+        <li class="covered" data-hits="145" data-linenumber="42">
+          <span class="hits">145</span>
           
           <code class="ruby">    @journeys.each do |ride|</code>
         </li>
       
-        <li class="covered" data-hits="95" data-linenumber="43">
-          <span class="hits">95</span>
+        <li class="covered" data-hits="143" data-linenumber="43">
+          <span class="hits">143</span>
           
           <code class="ruby">        @totalRides+=1</code>
         </li>
@@ -3340,8 +3316,8 @@
           <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="161" data-linenumber="45">
-          <span class="hits">161</span>
+        <li class="covered" data-hits="145" data-linenumber="45">
+          <span class="hits">145</span>
           
           <code class="ruby">    return @totalRides</code>
         </li>
@@ -3376,20 +3352,20 @@
           <code class="ruby">      Float(string)</code>
         </li>
       
-        <li class="covered" data-hits="33" data-linenumber="51">
-          <span class="hits">33</span>
+        <li class="covered" data-hits="32" data-linenumber="51">
+          <span class="hits">32</span>
           
           <code class="ruby">      int = string.to_i</code>
         </li>
       
-        <li class="covered" data-hits="33" data-linenumber="52">
-          <span class="hits">33</span>
+        <li class="covered" data-hits="32" data-linenumber="52">
+          <span class="hits">32</span>
           
           <code class="ruby">      if int &gt;= 0</code>
         </li>
       
-        <li class="covered" data-hits="27" data-linenumber="53">
-          <span class="hits">27</span>
+        <li class="covered" data-hits="25" data-linenumber="53">
+          <span class="hits">25</span>
           
           <code class="ruby">          return true</code>
         </li>
@@ -3400,8 +3376,8 @@
           <code class="ruby">      else</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="55">
-          <span class="hits">6</span>
+        <li class="covered" data-hits="7" data-linenumber="55">
+          <span class="hits">7</span>
           
           <code class="ruby">          return false</code>
         </li>
@@ -3418,8 +3394,8 @@
           <code class="ruby">  rescue</code>
         </li>
       
-        <li class="covered" data-hits="7" data-linenumber="58">
-          <span class="hits">7</span>
+        <li class="covered" data-hits="8" data-linenumber="58">
+          <span class="hits">8</span>
           
           <code class="ruby">      return false</code>
         </li>
@@ -3444,11 +3420,11 @@
         <div class="source_table" id="4464d5354dfbdad9c90bc773d13dbe0f6a767c24">
   <div class="header">
     <h3>database/editDatabases.rb</h3>
-    <h4><span class="green">97.18 %</span> covered</h4>
+    <h4><span class="green">98.2 %</span> covered</h4>
     <div>
-      <b>284</b> relevant lines. 
-      <span class="green"><b>276</b> lines covered</span> and
-      <span class="red"><b>8</b> lines missed.</span>
+      <b>278</b> relevant lines. 
+      <span class="green"><b>273</b> lines covered</span> and
+      <span class="red"><b>5</b> lines missed.</span>
     </div>
   </div>
   
@@ -3791,8 +3767,8 @@
           <code class="ruby">	@usersInfo.each do |user|</code>
         </li>
       
-        <li class="covered" data-hits="18" data-linenumber="57">
-          <span class="hits">18</span>
+        <li class="covered" data-hits="16" data-linenumber="57">
+          <span class="hits">16</span>
           
           <code class="ruby">		if user[0] == params[:id]</code>
         </li>
@@ -4121,8 +4097,8 @@
           <code class="ruby">	@feedbackInfo.each do |feedback|</code>
         </li>
       
-        <li class="covered" data-hits="30" data-linenumber="112">
-          <span class="hits">30</span>
+        <li class="covered" data-hits="20" data-linenumber="112">
+          <span class="hits">20</span>
           
           <code class="ruby">		if feedback[0] == params[:id].to_i</code>
         </li>
@@ -4295,8 +4271,8 @@
           <code class="ruby">	@journeyInfo.each do |journey|</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="141">
-          <span class="hits">10</span>
+        <li class="covered" data-hits="16" data-linenumber="141">
+          <span class="hits">16</span>
           
           <code class="ruby">		if journey[0] == @id</code>
         </li>
@@ -4499,8 +4475,8 @@
           <code class="ruby">	@usersInfo.each do |user|</code>
         </li>
       
-        <li class="covered" data-hits="18" data-linenumber="175">
-          <span class="hits">18</span>
+        <li class="covered" data-hits="16" data-linenumber="175">
+          <span class="hits">16</span>
           
           <code class="ruby">		if user[0] == params[:id]</code>
         </li>
@@ -5129,8 +5105,8 @@
           <code class="ruby">	@feedbackInfo.each do |feedback|</code>
         </li>
       
-        <li class="covered" data-hits="30" data-linenumber="280">
-          <span class="hits">30</span>
+        <li class="covered" data-hits="20" data-linenumber="280">
+          <span class="hits">20</span>
           
           <code class="ruby">		if feedback[0] == params[:id].to_i</code>
         </li>
@@ -5531,148 +5507,148 @@
           <code class="ruby">      #looping to check for every id/name whether they are in the database</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="347">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="2" data-linenumber="347">
+          <span class="hits">2</span>
           
-          <code class="ruby">      @taxiTbl = $db.execute (&quot;SELECT * FROM taxis WHERE id = #{@taxiId}&quot;)</code>
+          <code class="ruby">      taxi = $db.execute (&quot;SELECT * FROM taxis WHERE id = #{@taxiId.to_i}&quot;)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="348">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="2" data-linenumber="348">
+          <span class="hits">2</span>
           
-          <code class="ruby">      @taxiTbl.each do |record| #Go through each user record</code>
+          <code class="ruby">      @taxiIdFound = taxi.size &gt; 0</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="349">
+        <li class="never" data-hits="" data-linenumber="349">
           
           
-          <code class="ruby">          if record[0] == @taxiId.to_i   #If uid = id then:</code>
+          <code class="ruby">    else</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="350">
           
           
-          <code class="ruby">              @taxiIdFound = true #Boolean found is true (record is already there)</code>
+          <code class="ruby">      @taxiIdFound = true</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="351">
           
           
-          <code class="ruby">          else</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="352">
-          
-          
-          <code class="ruby">              @taxiIdFound = false</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="353">
-          
-          
-          <code class="ruby">          end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="354">
-          
-          
-          <code class="ruby">      end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="355">
-          
-          
-          <code class="ruby">    else</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="356">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      @taxiIdFound = true</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="357">
-          
-          
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="358">
+        <li class="never" data-hits="" data-linenumber="352">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="359">
+        <li class="covered" data-hits="2" data-linenumber="353">
           <span class="hits">2</span>
           
           <code class="ruby">    if @currentUserId != @userId.to_i then</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="360">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="354">
           
-          <code class="ruby">      @usersTbl = $db.execute (&quot;SELECT * FROM users WHERE id = #{@userId}&quot;)</code>
+          
+          <code class="ruby">      user = $db.execute (&quot;SELECT * FROM users WHERE id = #{@userId}&quot;)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="361">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="355">
           
-          <code class="ruby">      @usersTbl.each do |record| #Go through each user record</code>
+          
+          <code class="ruby">      @userIdFound = user.size &gt; 0    </code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="362">
-          
-          
-          <code class="ruby">          if record[0] == @userId.to_i   #If uid = id then:</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="363">
-          
-          
-          <code class="ruby">              @userIdFound = true #Boolean found is true (record is already there)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="364">
-          
-          
-          <code class="ruby">          else</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="365">
-          
-          
-          <code class="ruby">              @userIdFound = false</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="366">
-          
-          
-          <code class="ruby">          end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="367">
-          
-          
-          <code class="ruby">      end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="368">
+        <li class="never" data-hits="" data-linenumber="356">
           
           
           <code class="ruby">    else</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="369">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="2" data-linenumber="357">
+          <span class="hits">2</span>
           
           <code class="ruby">       @userIdFound = true</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="370">
+        <li class="never" data-hits="" data-linenumber="358">
           
           
           <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="359">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="360">
+          
+          
+          <code class="ruby">	# perform validation</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="361">
+          <span class="hits">2</span>
+          
+          <code class="ruby">	@taxiId_ok = isPositiveNumber?(@taxiId) &amp;&amp; @taxiIdFound</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="362">
+          <span class="hits">2</span>
+          
+          <code class="ruby">    @userId_ok = isPositiveNumber?(@userId) &amp;&amp; @userIdFound</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="363">
+          <span class="hits">2</span>
+          
+          <code class="ruby">    @twitterHandle_ok = !@twitterHandle.nil? &amp;&amp; @twitterHandle != &quot;&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="364">
+          <span class="hits">2</span>
+          
+          <code class="ruby">	@dateTime_ok = !@dateTime.nil? &amp;&amp; @dateTime != &quot;&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="365">
+          <span class="hits">2</span>
+          
+          <code class="ruby">	@startLocation_ok = !@startLocation.nil? &amp;&amp; @startLocation != &quot;&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="366">
+          <span class="hits">2</span>
+          
+          <code class="ruby">	@endLocation_ok = !@endLocation.nil? &amp;&amp; @endLocation != &quot;&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="367">
+          <span class="hits">2</span>
+          
+          <code class="ruby">	@freeRide_ok = @freeRide == &#39;0&#39; || @freeRide == &#39;1&#39;</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="368">
+          <span class="hits">2</span>
+          
+          <code class="ruby">	@cancelled_ok = @cancelled == &#39;0&#39; || @cancelled == &#39;1&#39;</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="369">
+          <span class="hits">2</span>
+          
+          <code class="ruby">	@rating_ok = @rating == &#39;0&#39; || @rating == &#39;1&#39; || @rating == &#39;2&#39; || @rating == &#39;3&#39; || @rating == &#39;4&#39; || @rating == &#39;5&#39;</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="370">
+          <span class="hits">2</span>
+          
+          <code class="ruby">	@convoLink_ok =	!@convoLink.nil? &amp;&amp; @convoLink != &quot;&quot;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="371">
@@ -5681,700 +5657,700 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="372">
-          
-          
-          <code class="ruby">	# perform validation</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="373">
-          <span class="hits">2</span>
-          
-          <code class="ruby">	@taxiId_ok = isPositiveNumber?(@taxiId) &amp;&amp; @taxiIdFound</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="374">
-          <span class="hits">2</span>
-          
-          <code class="ruby">    @userId_ok = isPositiveNumber?(@userId) &amp;&amp; @userIdFound</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="375">
-          <span class="hits">2</span>
-          
-          <code class="ruby">    @twitterHandle_ok = !@twitterHandle.nil? &amp;&amp; @twitterHandle != &quot;&quot;</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="376">
-          <span class="hits">2</span>
-          
-          <code class="ruby">	@dateTime_ok = !@dateTime.nil? &amp;&amp; @dateTime != &quot;&quot;</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="377">
-          <span class="hits">2</span>
-          
-          <code class="ruby">	@startLocation_ok = !@startLocation.nil? &amp;&amp; @startLocation != &quot;&quot;</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="378">
-          <span class="hits">2</span>
-          
-          <code class="ruby">	@endLocation_ok = !@endLocation.nil? &amp;&amp; @endLocation != &quot;&quot;</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="379">
-          <span class="hits">2</span>
-          
-          <code class="ruby">	@freeRide_ok = @freeRide == &#39;0&#39; || @freeRide == &#39;1&#39;</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="380">
-          <span class="hits">2</span>
-          
-          <code class="ruby">	@cancelled_ok = @cancelled == &#39;0&#39; || @cancelled == &#39;1&#39;</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="381">
-          <span class="hits">2</span>
-          
-          <code class="ruby">	@rating_ok = @rating == &#39;0&#39; || @rating == &#39;1&#39; || @rating == &#39;2&#39; || @rating == &#39;3&#39; || @rating == &#39;4&#39; || @rating == &#39;5&#39;</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="382">
-          <span class="hits">2</span>
-          
-          <code class="ruby">	@convoLink_ok =	!@convoLink.nil? &amp;&amp; @convoLink != &quot;&quot;</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="383">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="384">
+        <li class="covered" data-hits="2" data-linenumber="372">
           <span class="hits">2</span>
           
           <code class="ruby">	@all_ok = @taxiId_ok &amp;&amp; @twitterHandle_ok &amp;&amp; @dateTime_ok &amp;&amp; @startLocation_ok &amp;&amp; @endLocation_ok &amp;&amp; @freeRide_ok &amp;&amp; @cancelled_ok &amp;&amp; @rating_ok &amp;&amp; @convoLink_ok</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="385">
+        <li class="never" data-hits="" data-linenumber="373">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="386">
+        <li class="never" data-hits="" data-linenumber="374">
           
           
           <code class="ruby">    # add data to the database</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="387">
+        <li class="covered" data-hits="2" data-linenumber="375">
           <span class="hits">2</span>
           
           <code class="ruby">    if @all_ok</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="388">
+        <li class="never" data-hits="" data-linenumber="376">
           
           
           <code class="ruby">        # do the insert</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="389">
+        <li class="covered" data-hits="1" data-linenumber="377">
           <span class="hits">1</span>
           
           <code class="ruby">        $db.execute(&quot;UPDATE journeys SET taxi_id = &#39;#{@taxiId}&#39; WHERE id=&#39;#{@id}&#39;&quot;)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="390">
+        <li class="covered" data-hits="1" data-linenumber="378">
           <span class="hits">1</span>
           
           <code class="ruby">		$db.execute(&quot;UPDATE journeys SET user_id = &#39;#{@userId}&#39; WHERE id=&#39;#{@id}&#39;&quot;)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="391">
+        <li class="covered" data-hits="1" data-linenumber="379">
           <span class="hits">1</span>
           
           <code class="ruby">		$db.execute(&quot;UPDATE journeys SET twitter_handle = &#39;#{@twitterHandle}&#39; WHERE id=&#39;#{@id}&#39;&quot;)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="392">
+        <li class="covered" data-hits="1" data-linenumber="380">
           <span class="hits">1</span>
           
           <code class="ruby">		$db.execute(&quot;UPDATE journeys SET date_time = &#39;#{@dateTime}&#39; WHERE id=&#39;#{@id}&#39;&quot;)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="393">
+        <li class="covered" data-hits="1" data-linenumber="381">
           <span class="hits">1</span>
           
           <code class="ruby">		$db.execute(&quot;UPDATE journeys SET start_location = &#39;#{@startLocation}&#39; WHERE id=&#39;#{@id}&#39;&quot;)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="394">
+        <li class="covered" data-hits="1" data-linenumber="382">
           <span class="hits">1</span>
           
           <code class="ruby">		$db.execute(&quot;UPDATE journeys SET end_location = &#39;#{@endLocation}&#39; WHERE id=&#39;#{@id}&#39;&quot;)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="395">
+        <li class="covered" data-hits="1" data-linenumber="383">
           <span class="hits">1</span>
           
           <code class="ruby">		$db.execute(&quot;UPDATE journeys SET free_ride = &#39;#{@freeRide}&#39; WHERE id=&#39;#{@id}&#39;&quot;)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="396">
+        <li class="covered" data-hits="1" data-linenumber="384">
           <span class="hits">1</span>
           
           <code class="ruby">		$db.execute(&quot;UPDATE journeys SET cancelled = &#39;#{@cancelled}&#39; WHERE id=&#39;#{@id}&#39;&quot;)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="397">
+        <li class="covered" data-hits="1" data-linenumber="385">
           <span class="hits">1</span>
           
           <code class="ruby">		$db.execute(&quot;UPDATE journeys SET rating = &#39;#{@rating}&#39; WHERE id=&#39;#{@id}&#39;&quot;)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="398">
+        <li class="covered" data-hits="1" data-linenumber="386">
           <span class="hits">1</span>
           
           <code class="ruby">		$db.execute(&quot;UPDATE journeys SET conversation_link = &#39;#{@convoLink}&#39; WHERE id=&#39;#{@id}&#39;&quot;)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="399">
+        <li class="never" data-hits="" data-linenumber="387">
           
           
           <code class="ruby">	end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="400">
+        <li class="never" data-hits="" data-linenumber="388">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="401">
+        <li class="covered" data-hits="2" data-linenumber="389">
           <span class="hits">2</span>
           
           <code class="ruby">	erb :editJourneyMain</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="402">
+        <li class="never" data-hits="" data-linenumber="390">
           
           
           <code class="ruby">end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="403">
+        <li class="never" data-hits="" data-linenumber="391">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="404">
+        <li class="never" data-hits="" data-linenumber="392">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="405">
+        <li class="never" data-hits="" data-linenumber="393">
           
           
           <code class="ruby">#---------------get add---------------#</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="406">
+        <li class="never" data-hits="" data-linenumber="394">
           
           
           <code class="ruby"># add user</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="407">
+        <li class="covered" data-hits="1" data-linenumber="395">
           <span class="hits">1</span>
           
           <code class="ruby">get &#39;/addUser&#39; do</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="408">
+        <li class="never" data-hits="" data-linenumber="396">
           
           
           <code class="ruby">    # only show page if admin</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="409">
+        <li class="covered" data-hits="3" data-linenumber="397">
           <span class="hits">3</span>
           
           <code class="ruby">	redirect &#39;/index&#39; unless session[:admin]</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="410">
+        <li class="never" data-hits="" data-linenumber="398">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="411">
+        <li class="covered" data-hits="3" data-linenumber="399">
           <span class="hits">3</span>
           
           <code class="ruby">	erb :addUserMain</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="412">
+        <li class="never" data-hits="" data-linenumber="400">
           
           
           <code class="ruby">end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="413">
+        <li class="never" data-hits="" data-linenumber="401">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="414">
+        <li class="never" data-hits="" data-linenumber="402">
           
           
           <code class="ruby"># add taxi</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="415">
+        <li class="covered" data-hits="1" data-linenumber="403">
           <span class="hits">1</span>
           
           <code class="ruby">get &#39;/addTaxi&#39; do</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="416">
+        <li class="never" data-hits="" data-linenumber="404">
           
           
           <code class="ruby">    # only show page if admin</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="417">
+        <li class="covered" data-hits="5" data-linenumber="405">
           <span class="hits">5</span>
           
           <code class="ruby">	redirect &#39;/index&#39; unless session[:admin]</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="418">
+        <li class="never" data-hits="" data-linenumber="406">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="419">
+        <li class="covered" data-hits="5" data-linenumber="407">
           <span class="hits">5</span>
           
           <code class="ruby">	erb :addTaxiMain</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="420">
+        <li class="never" data-hits="" data-linenumber="408">
           
           
           <code class="ruby">end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="421">
+        <li class="never" data-hits="" data-linenumber="409">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="422">
+        <li class="never" data-hits="" data-linenumber="410">
           
           
           <code class="ruby"># add feedback</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="423">
+        <li class="covered" data-hits="1" data-linenumber="411">
           <span class="hits">1</span>
           
           <code class="ruby">get &#39;/addFeedback&#39; do</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="424">
+        <li class="never" data-hits="" data-linenumber="412">
           
           
           <code class="ruby">    # only show page if admin</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="425">
+        <li class="covered" data-hits="3" data-linenumber="413">
           <span class="hits">3</span>
           
           <code class="ruby">	redirect &#39;/index&#39; unless session[:admin]</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="426">
+        <li class="never" data-hits="" data-linenumber="414">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="427">
+        <li class="covered" data-hits="3" data-linenumber="415">
           <span class="hits">3</span>
           
           <code class="ruby">	erb :addFeedbackMain</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="428">
+        <li class="never" data-hits="" data-linenumber="416">
           
           
           <code class="ruby">end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="429">
+        <li class="never" data-hits="" data-linenumber="417">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="430">
+        <li class="never" data-hits="" data-linenumber="418">
           
           
           <code class="ruby"># add journey</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="431">
+        <li class="covered" data-hits="1" data-linenumber="419">
           <span class="hits">1</span>
           
-          <code class="ruby">get &#39;/addJourneySettings&#39; do</code>
+          <code class="ruby">get &#39;/addJourney&#39; do</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="432">
+        <li class="never" data-hits="" data-linenumber="420">
           
           
           <code class="ruby">    # only show page if admin</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="433">
+        <li class="covered" data-hits="1" data-linenumber="421">
           <span class="hits">1</span>
           
           <code class="ruby">	redirect &#39;/index&#39; unless session[:admin]</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="434">
+        <li class="never" data-hits="" data-linenumber="422">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="435">
+        <li class="covered" data-hits="1" data-linenumber="423">
           <span class="hits">1</span>
           
           <code class="ruby">	erb :addJourneySettingsMain</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="436">
+        <li class="never" data-hits="" data-linenumber="424">
           
           
           <code class="ruby">end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="437">
+        <li class="never" data-hits="" data-linenumber="425">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="438">
+        <li class="never" data-hits="" data-linenumber="426">
           
           
           <code class="ruby">#---------------post add---------------#</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="439">
+        <li class="never" data-hits="" data-linenumber="427">
           
           
           <code class="ruby"># add user</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="440">
+        <li class="covered" data-hits="1" data-linenumber="428">
           <span class="hits">1</span>
           
           <code class="ruby">post &#39;/addUser&#39; do</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="441">
+        <li class="never" data-hits="" data-linenumber="429">
           
           
           <code class="ruby">    # only show page if admin</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="442">
+        <li class="covered" data-hits="3" data-linenumber="430">
           <span class="hits">3</span>
           
           <code class="ruby">	redirect &#39;/index&#39; unless session[:admin]</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="443">
+        <li class="never" data-hits="" data-linenumber="431">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="444">
+        <li class="covered" data-hits="3" data-linenumber="432">
           <span class="hits">3</span>
           
           <code class="ruby">	@submitted = true</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="445">
+        <li class="never" data-hits="" data-linenumber="433">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="446">
+        <li class="never" data-hits="" data-linenumber="434">
           
           
           <code class="ruby">	# sanitise values</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="447">
+        <li class="covered" data-hits="3" data-linenumber="435">
           <span class="hits">3</span>
           
           <code class="ruby">	@id = params[:id].strip</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="448">
+        <li class="covered" data-hits="3" data-linenumber="436">
           <span class="hits">3</span>
           
           <code class="ruby">	@name = params[:name].strip</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="449">
+        <li class="covered" data-hits="3" data-linenumber="437">
           <span class="hits">3</span>
           
           <code class="ruby">	@dateTime = params[:dateTime]</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="450">
+        <li class="covered" data-hits="3" data-linenumber="438">
           <span class="hits">3</span>
           
           <code class="ruby">	@userType = params[:userType].strip</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="451">
+        <li class="covered" data-hits="3" data-linenumber="439">
           <span class="hits">3</span>
           
           <code class="ruby">	@freeRide = params[:freeRide].strip</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="452">
+        <li class="never" data-hits="" data-linenumber="440">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="453">
+        <li class="never" data-hits="" data-linenumber="441">
           
           
           <code class="ruby">	# perform validation</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="454">
+        <li class="covered" data-hits="3" data-linenumber="442">
           <span class="hits">3</span>
           
           <code class="ruby">	@id_ok = !@id.nil? &amp;&amp; @id != &quot;&quot;</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="455">
+        <li class="covered" data-hits="3" data-linenumber="443">
           <span class="hits">3</span>
           
           <code class="ruby">	@name_ok = !@name.nil? &amp;&amp; @name != &quot;&quot;</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="456">
+        <li class="covered" data-hits="3" data-linenumber="444">
           <span class="hits">3</span>
           
           <code class="ruby">	@dateTime_ok = !@dateTime.nil? &amp;&amp; @dateTime != &quot;&quot;</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="457">
+        <li class="covered" data-hits="3" data-linenumber="445">
           <span class="hits">3</span>
           
           <code class="ruby">	if @userType == &quot;2&quot; || @userType == &quot;1&quot; || @userType == &quot;0&quot;</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="458">
+        <li class="covered" data-hits="2" data-linenumber="446">
           <span class="hits">2</span>
           
           <code class="ruby">		@userType_ok = true</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="459">
+        <li class="never" data-hits="" data-linenumber="447">
           
           
           <code class="ruby">	else</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="460">
+        <li class="covered" data-hits="1" data-linenumber="448">
           <span class="hits">1</span>
           
           <code class="ruby">		@userType_ok = false</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="461">
+        <li class="never" data-hits="" data-linenumber="449">
           
           
           <code class="ruby">	end</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="462">
+        <li class="covered" data-hits="3" data-linenumber="450">
           <span class="hits">3</span>
           
           <code class="ruby">	@freeRide_ok = isPositiveNumber?(@freeRide)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="463">
+        <li class="never" data-hits="" data-linenumber="451">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="464">
+        <li class="covered" data-hits="3" data-linenumber="452">
           <span class="hits">3</span>
           
           <code class="ruby">	@all_ok = @id_ok &amp;&amp; @name_ok &amp;&amp; @dateTime_ok &amp;&amp; @userType_ok &amp;&amp; @freeRide_ok</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="465">
+        <li class="never" data-hits="" data-linenumber="453">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="466">
+        <li class="never" data-hits="" data-linenumber="454">
           
           
           <code class="ruby">  	# add data to the database</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="467">
+        <li class="covered" data-hits="3" data-linenumber="455">
           <span class="hits">3</span>
           
           <code class="ruby">	if @all_ok</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="468">
+        <li class="never" data-hits="" data-linenumber="456">
           
           
           <code class="ruby">    	# do the insert</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="469">
+        <li class="covered" data-hits="2" data-linenumber="457">
           <span class="hits">2</span>
           
           <code class="ruby">		$db.execute(&#39;INSERT INTO users VALUES (?, ?, ?, ?, ?)&#39;, [@id, @name, @dateTime, @userType.to_i, @freeRide.to_i])</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="470">
+        <li class="never" data-hits="" data-linenumber="458">
           
           
           <code class="ruby">  	end</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="471">
+        <li class="covered" data-hits="3" data-linenumber="459">
           <span class="hits">3</span>
           
           <code class="ruby">	erb :addUserMain</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="472">
+        <li class="never" data-hits="" data-linenumber="460">
           
           
           <code class="ruby">end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="473">
+        <li class="never" data-hits="" data-linenumber="461">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="474">
+        <li class="never" data-hits="" data-linenumber="462">
           
           
           <code class="ruby"># add taxi</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="475">
+        <li class="covered" data-hits="1" data-linenumber="463">
           <span class="hits">1</span>
           
           <code class="ruby">post &#39;/addTaxi&#39; do</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="476">
+        <li class="never" data-hits="" data-linenumber="464">
           
           
           <code class="ruby">    # only show page if admin</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="477">
+        <li class="covered" data-hits="5" data-linenumber="465">
           <span class="hits">5</span>
           
           <code class="ruby">	redirect &#39;/index&#39; unless session[:admin]</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="478">
+        <li class="never" data-hits="" data-linenumber="466">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="479">
+        <li class="covered" data-hits="5" data-linenumber="467">
           <span class="hits">5</span>
           
           <code class="ruby">    @submitted = true</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="480">
+        <li class="covered" data-hits="5" data-linenumber="468">
           <span class="hits">5</span>
           
           <code class="ruby">    @taxiInfo= $db.execute %{SELECT * FROM taxis} # gather all user data</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="481">
+        <li class="never" data-hits="" data-linenumber="469">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="482">
+        <li class="never" data-hits="" data-linenumber="470">
           
           
           <code class="ruby">    # sanitise values</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="483">
+        <li class="covered" data-hits="5" data-linenumber="471">
           <span class="hits">5</span>
           
           <code class="ruby">    @regNum = params[:regNum].strip</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="484">
+        <li class="covered" data-hits="5" data-linenumber="472">
           <span class="hits">5</span>
           
           <code class="ruby">    @contact = params[:contact].strip</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="485">
+        <li class="covered" data-hits="5" data-linenumber="473">
           <span class="hits">5</span>
           
           <code class="ruby">    @city = params[:city].strip.upcase</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="486">
+        <li class="covered" data-hits="5" data-linenumber="474">
           <span class="hits">5</span>
           
           <code class="ruby">    @taxiType = params[:taxiType].strip.upcase</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="487">
+        <li class="covered" data-hits="5" data-linenumber="475">
           <span class="hits">5</span>
           
           <code class="ruby">	@available = 1</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="476">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="477">
+          
+          
+          <code class="ruby">	# perform validation</code>
+        </li>
+      
+        <li class="covered" data-hits="5" data-linenumber="478">
+          <span class="hits">5</span>
+          
+          <code class="ruby">    @regNum_ok = !@regNum.nil? &amp;&amp; @regNum != &quot;&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="5" data-linenumber="479">
+          <span class="hits">5</span>
+          
+          <code class="ruby">    @contact_ok = !@contact.nil? &amp;&amp; @contact != &quot;&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="5" data-linenumber="480">
+          <span class="hits">5</span>
+          
+          <code class="ruby">    @city_ok = !@city.nil? &amp;&amp; @city != &quot;&quot; &amp;&amp; (@city == &quot;SHEFFIELD&quot; || @city == &quot;MANCHESTER&quot;)</code>
+        </li>
+      
+        <li class="covered" data-hits="5" data-linenumber="481">
+          <span class="hits">5</span>
+          
+          <code class="ruby">    if @taxiType == &quot;S&quot; || @taxiType == &quot;M&quot; || @taxiType == &quot;L&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="4" data-linenumber="482">
+          <span class="hits">4</span>
+          
+          <code class="ruby">        @taxiType_ok = true</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="483">
+          
+          
+          <code class="ruby">    else</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="484">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        @taxiType_ok = false</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="485">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="covered" data-hits="5" data-linenumber="486">
+          <span class="hits">5</span>
+          
+          <code class="ruby">    @regNum_unique = true</code>
+        </li>
+      
+        <li class="covered" data-hits="5" data-linenumber="487">
+          <span class="hits">5</span>
+          
+          <code class="ruby">    @contact_unique = true</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="488">
@@ -6383,247 +6359,175 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="489">
-          
-          
-          <code class="ruby">	# perform validation</code>
-        </li>
-      
-        <li class="covered" data-hits="5" data-linenumber="490">
-          <span class="hits">5</span>
-          
-          <code class="ruby">    @regNum_ok = !@regNum.nil? &amp;&amp; @regNum != &quot;&quot;</code>
-        </li>
-      
-        <li class="covered" data-hits="5" data-linenumber="491">
-          <span class="hits">5</span>
-          
-          <code class="ruby">    @contact_ok = !@contact.nil? &amp;&amp; @contact != &quot;&quot;</code>
-        </li>
-      
-        <li class="covered" data-hits="5" data-linenumber="492">
-          <span class="hits">5</span>
-          
-          <code class="ruby">    @city_ok = !@city.nil? &amp;&amp; @city != &quot;&quot; &amp;&amp; (@city == &quot;SHEFFIELD&quot; || @city == &quot;MANCHESTER&quot;)</code>
-        </li>
-      
-        <li class="covered" data-hits="5" data-linenumber="493">
-          <span class="hits">5</span>
-          
-          <code class="ruby">    if @taxiType == &quot;S&quot; || @taxiType == &quot;M&quot; || @taxiType == &quot;L&quot;</code>
-        </li>
-      
-        <li class="covered" data-hits="4" data-linenumber="494">
-          <span class="hits">4</span>
-          
-          <code class="ruby">        @taxiType_ok = true</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="495">
-          
-          
-          <code class="ruby">    else</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="496">
-          <span class="hits">1</span>
-          
-          <code class="ruby">        @taxiType_ok = false</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="497">
-          
-          
-          <code class="ruby">    end</code>
-        </li>
-      
-        <li class="covered" data-hits="5" data-linenumber="498">
-          <span class="hits">5</span>
-          
-          <code class="ruby">    @regNum_unique = true</code>
-        </li>
-      
-        <li class="covered" data-hits="5" data-linenumber="499">
-          <span class="hits">5</span>
-          
-          <code class="ruby">    @contact_unique = true</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="500">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="5" data-linenumber="501">
+        <li class="covered" data-hits="5" data-linenumber="489">
           <span class="hits">5</span>
           
           <code class="ruby">    @taxiInfo.each do |taxi| # go through each user record</code>
         </li>
       
-        <li class="covered" data-hits="61" data-linenumber="502">
+        <li class="covered" data-hits="61" data-linenumber="490">
           <span class="hits">61</span>
           
           <code class="ruby">        if taxi[1] == @regNum # if uid = id then:</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="503">
+        <li class="covered" data-hits="1" data-linenumber="491">
           <span class="hits">1</span>
           
           <code class="ruby">            @regNum_unique = false # boolean found is true (record is already there)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="504">
+        <li class="never" data-hits="" data-linenumber="492">
           
           
           <code class="ruby">        end</code>
         </li>
       
-        <li class="covered" data-hits="61" data-linenumber="505">
+        <li class="covered" data-hits="61" data-linenumber="493">
           <span class="hits">61</span>
           
           <code class="ruby">        if taxi[2] == @contact</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="506">
+        <li class="covered" data-hits="1" data-linenumber="494">
           <span class="hits">1</span>
           
           <code class="ruby">          @contact_unique = false</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="507">
+        <li class="never" data-hits="" data-linenumber="495">
           
           
           <code class="ruby">        end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="508">
+        <li class="never" data-hits="" data-linenumber="496">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="509">
+        <li class="never" data-hits="" data-linenumber="497">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="510">
+        <li class="covered" data-hits="5" data-linenumber="498">
           <span class="hits">5</span>
           
           <code class="ruby">    @all_ok = @regNum_ok &amp;&amp; @contact_ok &amp;&amp; @taxiType_ok &amp;&amp; @city_ok &amp;&amp; @regNum_unique &amp;&amp; @contact_unique</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="511">
+        <li class="never" data-hits="" data-linenumber="499">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="512">
+        <li class="covered" data-hits="5" data-linenumber="500">
           <span class="hits">5</span>
           
           <code class="ruby">	@id = @taxiInfo[@taxiInfo.length-1][0].to_i + 1</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="513">
+        <li class="never" data-hits="" data-linenumber="501">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="514">
+        <li class="never" data-hits="" data-linenumber="502">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="515">
+        <li class="never" data-hits="" data-linenumber="503">
           
           
           <code class="ruby">    # add data to the database</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="516">
+        <li class="covered" data-hits="5" data-linenumber="504">
           <span class="hits">5</span>
           
           <code class="ruby">    if @all_ok</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="517">
+        <li class="never" data-hits="" data-linenumber="505">
           
           
           <code class="ruby">		# do the insert</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="518">
+        <li class="covered" data-hits="3" data-linenumber="506">
           <span class="hits">3</span>
           
           <code class="ruby">        $db.execute(&#39;INSERT INTO taxis VALUES (?, ?, ?, ?, ?, ?)&#39;, [@id, @regNum, @contact, @taxiType, @city, @available])</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="519">
+        <li class="never" data-hits="" data-linenumber="507">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="520">
+        <li class="covered" data-hits="5" data-linenumber="508">
           <span class="hits">5</span>
           
           <code class="ruby">    erb :addTaxiMain</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="521">
+        <li class="never" data-hits="" data-linenumber="509">
           
           
           <code class="ruby">end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="522">
+        <li class="never" data-hits="" data-linenumber="510">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="523">
+        <li class="never" data-hits="" data-linenumber="511">
           
           
           <code class="ruby"># add feedback</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="524">
+        <li class="covered" data-hits="1" data-linenumber="512">
           <span class="hits">1</span>
           
           <code class="ruby">post &#39;/addFeedback&#39; do</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="525">
+        <li class="never" data-hits="" data-linenumber="513">
           
           
           <code class="ruby">    # only show page if admin</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="526">
+        <li class="covered" data-hits="3" data-linenumber="514">
           <span class="hits">3</span>
           
           <code class="ruby">	redirect &#39;/index&#39; unless session[:admin]</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="527">
+        <li class="covered" data-hits="3" data-linenumber="515">
           <span class="hits">3</span>
           
           <code class="ruby">    add_feedback(params[:journey_id], params[:user_id], params[:feedback], params[:rating])</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="528">
+        <li class="covered" data-hits="3" data-linenumber="516">
           <span class="hits">3</span>
           
           <code class="ruby">    erb :addFeedbackMain</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="529">
+        <li class="never" data-hits="" data-linenumber="517">
           
           
           <code class="ruby">end</code>
