@@ -28,7 +28,7 @@
         <td><%=h journey[7] %></td>
         <td><%=h journey[8] %></td>
         <td><%=h journey[9] %></td>
-        <td><%=h journey[10] %></td>
+        <td><a href="<%=h journey[10] %>" target="_blank"><%=h journey[10] %></a></td>
         <td><a href='editJourney/<%=h journey[0] %>'>Edit</a></td>
         <td>
             <form method="post" action="/deleteFromTable" style="margin:0;">
@@ -42,4 +42,4 @@
     <% end %>
 </table>
 
-<p>To add a new journey click <a href="/addJourneySettings">here</a>.</p>
+<p>To add a new journey click <a href="/addJourney">here</a>.</p>

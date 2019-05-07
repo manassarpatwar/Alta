@@ -428,7 +428,7 @@ get '/addFeedback' do
 end
 
 # add journey
-get '/addJourneySettings' do
+get '/addJourney' do
     # only show page if admin
 	redirect '/index' unless session[:admin]
 
