@@ -101,10 +101,6 @@ When /^(?:|I )scroll down within "([^\"]*)"/ do |selector|
   page.execute_script "$('#{selector}').scrollTop(10000000000)"
 end
 
-When /^(?:|I )tweet to "([^\"]*)"/ do |user|
-  TWITTER_CLIENT.update("@ise19team29 this is a test")
-end
-
 When /^(?:|I )fill in "([^\"]*)" with randomid(?: within "([^\"]*)")?$/ do |field, selector|
   with_scope(selector) do
     fill_in(field, :with => rand.to_s[2..5])
@@ -117,9 +113,15 @@ When /^(?:|I )fill in "([^\"]*)" with invalid randomid(?: within "([^\"]*)")?$/ 
   end
 end
 
-When /^I delete the reply/ do 
-  TWITTER_CLIENT.destroy_status("Testing reply to tweets")
+When /^(?:|I )tweet to "([^\"]*)" with "([^\"]*)"$/ do |user, content|
+  tweet = TWITTER_CLIENT.update("@#{user} #{content}")
+  $tweetId = tweet.id
 end
+
+When /^I delete the tweet/ do 
+  TWITTER_CLIENT.destroy_status($tweetId)
+end
+
 
 # Use this to fill in an entire form with data from a table. Example:
 #
