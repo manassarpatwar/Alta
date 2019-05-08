@@ -65,7 +65,7 @@ class TestAddFeedback < Minitest::Test
         u_id = 1
         fdbk = "Testing valid feedback - minitests"
         rat = "4"
-        assert_equal false, add_feedback(j_id, u_id, fdbk, rat)
+        assert_equal true, add_feedback(j_id, u_id, fdbk, rat)
     end
 
     def test_NilUID
