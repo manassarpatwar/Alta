@@ -1,23 +1,61 @@
-<% if @all_ok %>
-<div class="generalRatingText"><span class="ratingText">Thank you for your feedback.</span></div>
-<% else %>
-<form id="addReviewForm">
-    <div class="generalRatingText">
-        <span class="ratingText">Please give us general feedback on our service!</span>
-    </div>
-    <div class="generalFeedBackText">
-        <input type="text" class="generalFeedBack" name="newReview" value="<%=h params[:genreralFeedBack] %>" placeholder="Give us general feedback on our service!">
-    </div>
+<div id="addReview">
+    <% if @all_ok %>
+    <div class="generalRatingText" style="padding-top: 130px;"><span class="ratingText">Thank you for your feedback.</span></div>
+    <% else %>
+    <form id="addReviewForm">
+        <div class="generalRatingText">
+            <span class="ratingText">Please give us general feedback on our service!</span>
+        </div>
+        <div class="generalFeedBackText">
+            <input type="text" class="generalFeedBack" name="newReview" value="<%=h params[:genreralFeedBack] %>" placeholder="Give us general feedback on our service!">
+        </div>
+        <input type="hidden" name="generalRating" id="rating-input" min="1" max="5" />
+        <input type="submit" name="submit">
+    </form>
     <p style="display:inline; font-weight:200; letter-spacing:2px;"> RATING: </p>
-    <input type="submit" id="rate1" class="fa fa-star generalRate" name="generalRating" value="1">
-    <input type="submit" id="rate2" class="fa fa-star generalRate" name="generalRating" value="2">
-    <input type="submit" id="rate3" class="fa fa-star generalRate" name="generalRating" value="3">
-    <input type="submit" id="rate4" class="fa fa-star generalRate" name="generalRating" value="4">
-    <input type="submit" id="rate5" class="fa fa-star generalRate" name="generalRating" value="5">
-</form>
-<% end %>
+    <div class="rating" role="optgroup">
+        <% for i in 1..5 %>
+        <i class="fa fa-star-o fa-2x rating-star" style="outline:none" id="rating-<%= i %>" data-rating="<%= i %>" tabindex="0" aria-label="Rate as one out of 5 stars" role="radio"></i>
+        <% end %>
+    </div>
+    <% end %>
+</div>
 
 <script>
+    //Code by aaronsama for rating stars https://embed.plnkr.co/vptHYAnWHMbX2LfR6a02/
+    function setRating(rating) {
+        $('#rating-input').val(rating);
+        // fill all the stars assigning the '.selected' class
+        $('.rating-star').removeClass('fa-star-o').addClass('selected');
+        // empty all the stars to the right of the mouse
+        $('.rating-star#rating-' + rating + ' ~ .rating-star').removeClass('selected').addClass('fa-star-o');
+    }
+
+    $('.rating-star')
+        .on('mouseover', function(e) {
+            var rating = $(e.target).data('rating');
+            // fill all the stars
+            $('.rating-star').removeClass('fa-star-o').addClass('fa-star');
+            // empty all the stars to the right of the mouse
+            $('.rating-star#rating-' + rating + ' ~ .rating-star').removeClass('fa-star').addClass('fa-star-o');
+        })
+        .on('mouseleave', function(e) {
+            // empty all the stars except those with class .selected
+            $('.rating-star').removeClass('fa-star').addClass('fa-star-o');
+        })
+        .on('click', function(e) {
+            var rating = $(e.target).data('rating');
+            setRating(rating);
+        })
+        .on('keyup', function(e) {
+            // if spacebar is pressed while selecting a star
+            if (e.keyCode === 32) {
+                // set rating (same as clicking on the star)
+                var rating = $(e.target).data('rating');
+                setRating(rating);
+            }
+        });
+    //-------------------------------------//
     $("#addReviewForm").submit(function(event) {
         // Stop form from submitting normally
         event.preventDefault();
@@ -26,7 +64,7 @@
         var term = []
         var $form = $(this);
         term[1] = $form.find("input[name='newReview']").val();
-        term[2] = $form.find("input[type=submit]:focus").val();
+        term[2] = $form.find("input[name='generalRating']").val();
         if (term[1] == undefined || term[1] == "") {
             console.log("i am running")
             $(".ratingText").empty().css("color", "red").append("Please enter feedback");
@@ -38,7 +76,7 @@
             });
             posting.done(function(data) {
                 var content = $(data);
-                $("#addReviewForm").empty().append(content);
+                $("#addReview").empty().append(content);
             });
         }
     });
