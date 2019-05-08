@@ -440,6 +440,22 @@ table {
     cursor: pointer;
 }
 
+.rating2 {
+    cursor: pointer;
+}
+
+.rating2 .rating-star_2 {
+    display: inline-block;
+    position: relative;
+    padding-right: 5px;
+    margin-left: -5px;
+    color: orange;
+}
+
+.rating2 .selected:before {
+    content: '\f005';
+}
+
 .rating .rating-star {
     display: inline-block;
     position: relative;
