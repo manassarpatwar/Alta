@@ -62,3 +62,14 @@ end
 def get_entry(id, table)
     return $db.execute("SELECT * FROM #{table} WHERE id = #{id}")[0]
 end
+
+# Retrieves data by the specified table, column and given date from database
+def get_data(table, column, date)
+    data = Hash.new()
+    date.each do |time|
+      count = $db.execute("SELECT COUNT(*) FROM #{table} WHERE #{column} < '#{time}' OR #{column} LIKE '#{time}%'")
+      data[time] = count.to_s.slice(2..-3).to_i
+    end
+
+    return data
+end

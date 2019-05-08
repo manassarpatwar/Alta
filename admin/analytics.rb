@@ -13,36 +13,26 @@ get '/analytics' do
       date.push(time)
       x -= 7
     end
-
-	@howManyUsers = $db.execute("SELECT COUNT(*) FROM users") #WHERE signup_date < '13/03/2019' OR signup_date LIKE '13/03/2019%'
+    
+    # Get total statistics currently from the database
+	@howManyUsers = $db.execute("SELECT COUNT(*) FROM users")
 	@howManyJourneys = $db.execute("SELECT COUNT(*) FROM journeys")
 	@howManyFeedbacks = $db.execute("SELECT COUNT(*) FROM feedback")
 	@howManyTaxis = $db.execute("SELECT COUNT(*) FROM taxis")
+    
+    # creates hashes and retrieves data by date about the change of user/journey/feedbck/taxi statistics
     @userData = Hash.new()
     @journeyData = Hash.new()
     @feedbackData = Hash.new()
     @taxiData = Hash.new()
     
-    date.each_with_index do |time, index|
-      many = $db.execute("SELECT COUNT(*) FROM users WHERE signup_date < '#{time}' OR signup_date LIKE '#{time}%'")
-      @userData[time] = many.to_s.slice(2..-3).to_i
-    end
+    @userData = get_data("users", "signup_date", date)
+    @journeyData = get_data("journeys", "date_time", date)
+    @feedbackData = get_data("feedback", "date_time", date)
 
-    date.each_with_index do |time, index|
-      many = $db.execute("SELECT COUNT(*) FROM journeys WHERE date_time < '#{time}' OR date_time LIKE '#{time}%'")
-      @journeyData[time] = many.to_s.slice(2..-3).to_i
-    end
-    
-    date.each_with_index do |time, index|
-      many = $db.execute("SELECT COUNT(*) FROM feedback WHERE date_time < '#{time}' OR date_time LIKE '#{time}%'")
-      @feedbackData[time] = many.to_s.slice(2..-3).to_i
-    end
-     
     @taxiData["Total Number"] = @howManyTaxis
     @taxiData["Sheffield"] = $db.execute("SELECT COUNT(*) FROM taxis WHERE city LIKE 'Sheffield'") 
     @taxiData["Manchester"] = $db.execute("SELECT COUNT(*) FROM taxis WHERE city LIKE 'Manchester'") 
-    
-    
     
     erb :analytics
 end
