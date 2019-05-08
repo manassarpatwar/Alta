@@ -41,8 +41,8 @@ post'/addReview' do
 end
 
 # delete account
-post '/deleteAccount/' do
+post '/deleteAccount' do
 	#execute the deletion
 	$db.execute("DELETE FROM users WHERE id='#{session[:id]}'")
-	redirect '/'
+	redirect '/logout'
 end

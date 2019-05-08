@@ -14,24 +14,19 @@
             <div class=" nav-signin nav-inline2 ">
                 <a href="/login">Log In</a>
             </div>
-            <% elsif !session[:admin] %>
-            <div class=" nav-inline2 nav-signin">
-                <a href="/user_editAccount" class="editBut">DELETE ACCOUNT |</a>
-                <a href="/logout"> <i class="fa fa-sign-out" style="font-size:13px; color:grey"></i></a>
-            </div>
             <% else %>
             <!--Delete Account Button-->
             <div class=" nav-inline2 nav-signin">
                 <a>
                     <button class="editAccButton" onclick="document.getElementById('deleteAccBox').style.display='block'">DELETE ACCOUNT |</button>
                     <div id="deleteAccBox" class="modal">
-                        <form class="delAccForm deleteAccAnimate" action="/deleteAccount">
+                        <form class="delAccForm deleteAccAnimate" method = "post" action="/deleteAccount">
                             <span class="closeIcon" onclick="document.getElementById('deleteAccBox').style.display='none'">&times;</span>
                             <div class="delAccContainer">
                                 <p class="delAccMessage">Are you sure?</p>
                             </div>
                             <div class="delAccButton">
-                                <input type="submit" name="deleteAcc" value="Yes I'm Sure, Delete My Account">
+                                     <input type="submit"value="Yes I'm Sure, Delete My Account" />
                             </div>
                         </form>
                     </div>
