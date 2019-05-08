@@ -15,7 +15,6 @@
     <div class="nav-cont">
       <ul class="nav-center">
 
-
         <li class="nav-inline">
           <a href="#section1" class="nav-buttons">how to?</a>
         </li>
@@ -47,21 +46,22 @@
   <div class="nav-column">
     <div class="nav-cont">
       <%if !session[:loggedin] %>
-      <div class=" nav-signin nav-inline2 ">
-        <a href="/login">Log In</a>
-      </div>
+        <div class=" nav-signin nav-inline2 ">
+          <a href="/login">Log In</a>
+        </div>
       <% elsif !session[:admin] %>
-      <div class=" nav-inline2 nav-signin">
-        <a href="/myAccount">My Account</a>
-      </div>
+        <div class=" nav-inline2 nav-signin">
+          <a href="/myAccount">My Account</a>
+        </div>
       <% else %>
-      <div class=" nav-inline2 nav-signin" style="float: right; margin-right:20px; margin-left: 0;">
-        <a href="/dashboard" style="font-size:11px;">Dashboard | </a>
-        <i class="fa fa-sign-out" style="font-size:13px; color:grey"></i>
-      </div>
+        <div class=" nav-inline2 nav-signin" style="float: right; margin-right:20px; margin-left: 0;">
+          <a href="/dashboard" style="font-size:11px;">Dashboard | </a>
+          <a href="/logout"><i class="fa fa-sign-out" style="font-size:18px; color:grey"></i></a>
+        </div>
       <% end %>
     </div>
   </div>
+  
   <a href="javascript:void(0);" class="nav-Icon" onclick="myResponsiveHeader()">
     <div class="nav-respIcon"> &#9776; </div>
   </a>

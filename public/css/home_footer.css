@@ -8,6 +8,7 @@ footer{
   padding: 10px; /*first column*/
   margin-bottom:0;
   padding-bottom:0;
+  clear:both;
   }
 
 /* Column maker*/

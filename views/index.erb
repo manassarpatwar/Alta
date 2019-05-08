@@ -17,294 +17,199 @@
 
 <body id="bg">
   <!--navigation bar-->
-  <header class="stick">
-    <%= erb :home_header %>
-  </header>
+    <header class="sticky"><%= erb :home_header %></header>
 
+  <!-- Section0: Welcome Sign -->
+    <div class="welcomeRow" id="section0">
+      <div class="welcomeColumn1"></div>
+      <div id="fade-in">
+        <div class="welcomeColumnMid">
+          <%if session[:loggedin] %>
+            <div id="welcomeTextBox">
+              <div class="welcomeHeader">RIDE WITH US NOW</div>
+              <div class="welcomeText">Tweet <a class="twitterLink" href="https://twitter.com/ise19team29">@ise19team29</a> to get a taxi</div>
+            </div>
+          <% else %>
+            <div id="welcomeTextBox">
+              <div class="welcomeHeader">JOIN US TODAY</div> <br>
+              <div class="welcomeText">Sign up with us via <a class="twitterLink" href="/login">Twitter</a><br> and get fantasitc deals</div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="welcomeColumn1"></div>
+    </div>
+
+  <!--Section1: How to use our service-->
   <div id="wrapper">
+    <div class="section1Container"id="section1">
+      <p class="sectionHeader">
+        How it works
+      </p>
+      <div class=s"section1Row">
+        <div class="section1Column">
+          <p class="section1Header">Get a taxi:</p>
+          <p class="section1Text">
+            <ol>
+                <li class="section1Text">Login to your Twitter account</li>
+                <li class="section1Text">Tweet us by tagging our account name: @ise19team29. </li>
+                <li class="section1Text">In the tweet tell us information on your start location, preferred taxi type (see below) and your end location.</li>
+                <li class="section1Text">In next no time we will reply to let you know the status of your taxi.</li>
+              </ol>
+          </p>
+        </div>
+        <div class="section1Column section1Pic"></div>
+        <div class="section1Column">
+          <p class="section1Header">After tweeting us:</p>
+          <p class="section1Text">If any more information is required, our staff will message you.</p>
+          <p class="section1Text">Once everything is OK, we will then contact our local taxi drivers and they will be on their way to you.</p>
+          <p class="section1Text">Payment will be made in the taxi after the ride. Payment method: Cash, Credit/Debit Card or any form of contactless payment.</p>
+        </div>
+      </div>
+    </div>
 
-    <div id="page-content-wrapper">
+  <!--Section 2: Types of taxi services-->
+    <p class="sectionHeader" id="section2">Taxi Types</p>
+    <div class="section2TaxiType">
+      <span class="taxiType" id="taxiButtonS" onclick="typeSfunction()">type s</span>
+      <span class="taxiType" id="taxiButtonM" onclick="typeMfunction()">type m</span>
+      <span class="taxiType" id="taxiButtonL" onclick="typeLfunction()">type l</span>
+    </div>
 
-      <!--Welcoming Sign up-->
+    <div id="taxiTypeS">
+      <div class=" section2Container section2Row">
+        <div class="section2Column"></div>
+        <div class="section2ColumnMid">
+          <div class="section2Header">Small (S) Taxi</div>
+          <div class="section2Text">
+            Type S is a 1-4 seated taxi.<br>
+            It's the cheapest taxi we offer.<br>
+            This a great option for low budget rides.<br>
+            The price will vary based on the distance of the journey.
+          </div>
+          <img class="section2Pic" src="img/taxiS.png">
+        </div>
+        <div class="section2Column"></div>
+      </div>
+    </div>
 
-      <div class="welcome-row" id="section0" style=" height:750px">
-        <div id="fade-in">
+    <div id="taxiTypeM">
+      <div class="section2Container section2Row">
+        <div class="section2Column"></div>
+        <div class="section2ColumnMid">
+          <div class="section2Header">Medium (M) Taxi</div>
+          <div class="section2Text">
+            Type M is a 1-6 seated taxi.<br>
+            This is a great option for groups.<br>
+            And a great option for average budget rides.<br>
+            The price will vary based on the distance of the journey.
+          </div>
+          <img class="section2Pic" src="img/taxiM.png">
+        </div>
+        <div class="section2Column"></div>
+      </div>
+    </div>
 
-          <div class="welcome-left">
-            <%if session[:loggedin] %>
-            <div id="welcome-left-box">
-              <div class="head-box1">RIDE WITH US NOW</div>
-              <div class="head-box2">Tweet <a class="twitter" href="https://twitter.com/ise19team29">@ise19team29</a> to get a taxi</div>
-            </div>
-            <% else %>
-            <div id="welcome-left-box">
+    <div id="taxiTypeL">
+      <div class="section2Container section2Row">
+        <div class="section2Column"></div>
+        <div class="section2ColumnMid">
+          <div class="section2Header">Luxury (L) Taxi</div>
+          <div class="section2Text">
+            Type L is a 1-4 seated taxi.<br>
+            This is our most expensive taxi type.<br>
+            Ride with the most luxurious car brands.<br>
+            The price will vary based on the distance of the journey.
+          </div>
+          <img class="section2Pic" src="img/taxiL.png">
+        </div>
+        <div class="section2Column"></div>
+      </div>
+    </div>
 
-              <div class="head-box1">JOIN US TODAY</div> <br>
-              <div class="head-box2">Sign up with us via <a class="twitter" href="/login">Twitter</a><br> and get fantasitc deals</div>
-            </div>
+  <!-- Section3: Deals-->
+    <div class="section3Container" id="section3">
+      <div class="section3Column section3Pic1"></div>
+      <div class="section3Column section3Pic2"></div>
+      <div class="section3Container">
+        <p class="sectionHeader">Deals</p>
+        <p class="section3Text">Dont miss out on fantastic deals and discounts offered to customers signed up with us.<br></p>
+        <p class="section3Text section3Deal">Our current deal :<br> For every <%=h $rideDeal %> rides with us you get a free ride!<br></p>
+        <p class="section3Text" style="margin-bottom:0; padding-bottom:50px;">
+          To see when you'll recive an offer, visit <a href="/myAccount">your account</a> after <a href="/login">signing up</a> with us.
+          <br>To use your free ride, make sure to mention it in your tweet.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- Section4: Customer Reviews-->
+      <div class="section4Container" id="section4 bg">
+        <p class="sectionHeader"style="color:white;">What do People Say</p>
+        <div class="section4Row">
+          <% @ratings.sample(3).each do |rating| %>
+          <div class="section4Column" style="padding-bottom:20px;">
+            <p class="section4Header">
+              <% @name = @users.select{|user| user[0] == rating[2]} %>
+              <% if @name.nil? || @name[0].nil? %>
+                Anonymous
+              <% else %>
+                <%= @name[0][1] %>
+              <% end %>
+              <br>
+              <% for i in 1..rating[5].to_i %>
+                <span class="fa fa-star checkedStar"></span>
+              <% end %>
+                <% for i in 1..(5-rating[5].to_i) %>
+                <span class="fa fa-star"></span>
+              <% end %>
+            </p>
+            <p class="section4Text"><%= rating[3] %></p>
+            <p class="section4Text"><%= rating[4] %></p>
           </div>
           <% end %>
         </div>
       </div>
-    </div>
 
-
-
-    <!--Content 1: How to use our service-->
-    <div class="content-wrapper">
-      <div class="info1-container" id="section1">
-        <p class="titles uppercaseT info1-title">
-          How it works
-        </p>
-
-        <div class="info1-column info1-col2">
-          <div class="info1-box info1-box2">
-            <p class="info1-content1">Get a taxi:
-            </p>
-            <p class="info1-content1">
-              <ol style="padding-left:10px;">
-                <li class="info1-lists">Login to your Twitter account</li>
-                <li class="info1-lists">Tweet us by tagging our account name: @ise19team29. </li>
-                <li class="info1-lists">In the tweet tell us information on your start location, preferred taxi type (see below) and your end location.</li>
-                <li class="info1-lists">In next no time we will reply to let you know the status of your taxi.</li>
-              </ol>
-            </p>
-          </div>
+  <!--Section5: About Us-->
+    <div class="section5Container" id="section5">
+      <div class="section5Row">
+        <div class="section5Column1">
+          <div class="sectionHeader">About Us</div>
         </div>
-
-        <div class="info1-column">
-          <img class="info1-img" src="img/background1.jpg">
-        </div>
-
-        <div class="info1-column info1-column2">
-          <div class="info1-box">
-            <p class="info1-content1">After tweeting us:</p>
-            <p class="info1-content2">
-              If any more information is required, our staff will message you.
-            </p>
-            <p class="info1-content2">
-              Once everything is OK, we will then contact our local taxi drivers and they will be on their way to you.
-            </p>
-            <p class="info1-content2">Payment will be made in the taxi after the ride. Payment method: Cash, Credit/Debit Card or any form of contactless payment.</p>
-          </div>
-        </div>
-      </div>
-
-
-      <!--Content 2: Types of taxi services-->
-
-      <div class="slideshow-container section22" id="section2">
-
-        <div class="mySlides">
-          <div class="info4-container container">
-            <div class="bd-row1" style="height:780px;">
-              <div class="info4-column">
-                <div class="info4-box">
-                  <div class="info4-title uppercaseT">Taxi Types</div>
-                  <div class="info4-content1">Small (S) Taxi</div>
-                  <div class="info4-content2">
-                    Type S is a 1-4 seated taxi.<br>
-                    It's the cheapest taxi we offer.<br>
-                    This a great option for low budget rides.<br>
-                    The price will vary based on the distance of the journey.
-                  </div>
-                </div>
-              </div>
-              <div class="info4-column">
-                <div class="info4-indicators">
-                  <span class="info4-indict" onclick="currentSlide(1)"><b>Type S</b></span>
-                  <span class="info4-indict" onclick="currentSlide(2)"><b>Type M</b></span>
-                  <span class="info4-indict" onclick="currentSlide(3)"><b>Type L</b></span>
-                  <!-- <span class="info4-indict" onclick="currentSlide(4)">Type 4</span> -->
-                </div>
-                <img class="info4-img" src="img/taxiS.png">
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="mySlides">
-          <div class="info4-container container">
-            <div class="bd-row1">
-              <div class="info4-column">
-                <div class="info4-box">
-                  <div class="info4-title uppercaseT">Taxi Types</div>
-                  <div class="info4-content1">Medium (M) Taxi</div>
-                  <div class="info4-content2">
-                    Type M is a 1-6 seated taxi.<br>
-                    This is a great option for groups.<br>
-                    And a great option for average budget rides.<br>
-                    The price will vary based on the distance of the journey.
-                  </div>
-                </div>
-              </div>
-              <div class="info4-column">
-                <div class="info4-indicators">
-                  <span class="info4-indict" onclick="currentSlide(1)"><b>Type S</b></span>
-                  <span class="info4-indict" onclick="currentSlide(2)"><b>Type M</b></span>
-                  <span class="info4-indict" onclick="currentSlide(3)"><b>Type L</b></span>
-                  <!-- <span class="info4-indict" onclick="currentSlide(4)">Type 4</span> -->
-                </div>
-                <img class="info4-img" src="img/taxiM.png">
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="mySlides">
-          <div class="info4-container container">
-            <div class="bd-row1">
-              <div class="info4-column">
-                <div class="info4-box">
-                  <div class="info4-title uppercaseT">Taxi Types</div>
-                  <div class="info4-content1">Luxury (L) Taxi</div>
-                  <div class="info4-content2">
-                    Type L is a 1-4 seated taxi.<br>
-                    This is our most expensive taxi type.<br>
-                    Ride with the most luxurious car brands.<br>
-                    The price will vary based on the distance of the journey.
-                  </div>
-                </div>
-              </div>
-              <div class="info4-column">
-                <div class="info4-indicators">
-                  <span class="info4-indict" onclick="currentSlide(1)"><b>Type S</b></span>
-                  <span class="info4-indict" onclick="currentSlide(2)"><b>Type M</b></span>
-                  <span class="info4-indict" onclick="currentSlide(3)"><b>Type L</b></span>
-                </div>
-                <img class="info4-img" src="img/taxiL.png">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Content 3: Deals-->
-
-      <div class="info3-container section33" id="section3">
-        <div class="info3-column">
-          <div class="info3-box info3-img1">
-            <div class="info5-cont">
-
-            </div>
-          </div>
-        </div>
-
-        <div class="info3-column">
-          <div class="info3-box info3-img2">
-            <div class="info5-cont">
-
-            </div>
-          </div>
-          <div class="info3-textcontainer">
-            <p class="info3-textbox1"></p>
-          </div>
-        </div>
-        <div class="info3-textcontainer ">
-          <p class="info3-textbox1 titles uppercaseT">Deals</p>
-          <p class="info3-textbox2 info3-text">Dont miss out on fantastic deals and discounts offered to customers signed up with us.<br><br></p>
-          <p class="info3-textbox2 info3-text">Our current deal is that for every <%=h $rideDeal %> rides with us you get a free ride!<br><br></p>
-          <p class="info3-textbox2 info3-text">To see when you'll recive an offer, visit <a href="/myAccount">your account</a> after <a href="/login">signing up</a> with us.<br><br></p>
-          <p class="info3-textbox2 info3-text" style="padding-bottom:100px;">To use your free ride, make sure to mention it in your tweet.<br><br></p>
+        <div class="section5Column2">
+          <p class="section5Text">We are Alta. <br> The safest online transportation network company in the UK, located in Sheffield and Manchester. <br><br> We aim to provide our customers with the best, fastest and most convenient taxi service no matter if you are needing our services for individual needs or for group rides. <br><br>What makes us unique is our revolutionary way of ordering taxis. Simply tweet us and a taxi will be on its way to your location.<br><br><br></p>
         </div>
       </div>
     </div>
 
 
-    <!-- Content 4: Customer Reviews-->
-
-    <div class="info5-container" id="section4">
-      <p class="titles info5-title uppercaseT">
-        What do People Say</p>
-      <div class="info4-CRrow">
-        <% @ratings.sample(3).each do |rating| %>
-        <div class="info5-column" style="padding-bottom:20px;">
-          <div class="info5-box">
-            <div class="info5-cont">
-              <p class="info5-name">
-                <% @name = @users.select{|user| user[0] == rating[2]} %>
-                <% if @name.nil? || @name[0].nil? %>
-                Anonymous
-                <% else %>
-                <%= @name[0][1] %>
-                <% end %>
-                <br>
-                <% for i in 1..rating[5].to_i %>
-                <span class="fa fa-star info5-checked"></span>
-                <% end %>
-                <% for i in 1..(5-rating[5].to_i) %>
-                <span class="fa fa-star"></span>
-                <% end %>
-              </p>
-              <p class="info5-date"><%= rating[3] %></p>
-              <p class="info5-reviews">
-                <%= rating[4] %>
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <% end %>
-      </div>
-    </div>
-  </div>
-
-
-  <!--Content 5: About Us-->
-
-  <div class="container info1-container" id="section5">
-    <div class="bd-row1 info1-row1">
-      <div class="bd5-column1">
-        <div class="info1-box">
-          <div class="info5-AboutusTitle uppercaseT">About Us</div>
-          <div class="info1-vl"></div>
-        </div>
-      </div>
-      <div class="bd5-column2">
-        <div class="info5-AboutUscontent">
-          <p>We are Alta. <br> The safest online transportation network company in the UK, located in Sheffield and Manchester. <br><br> We aim to provide our customers with the best, fastest and most convenient taxi service no matter if you are needing our services for individual needs or for group rides. <br><br>What makes us unique is our revolutionary way of ordering taxis. Simply tweet us and a taxi will be on its way to your location.<br><br><br></p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-
-
-
-  <!-- Content 6: Contact us and banner -->
-  <div class="info6-container" id="section6">
-
-    <div class="info6-column">
-      <div class="info6-box">
-        <div class="info6-cont">
-        </div>
-      </div>
-    </div>
-
-    <div class="info6-maincolumn">
-      <div class="info6-box">
-        <div class="info6-cont">
-          <div class="info6-title">Get in Touch</div>
-          <div class="info6-content1">
+  <!-- Section6: Contact us -->
+    <div class="section6Container" id="section6">
+      <div class="section6Row">
+        <div class="section6Column"></div>
+    
+        <div class="section6ColumnMid">
+          <div class="section6Header">Get in Touch</div>
+          <div class="section6Text">
             For any questions, please contact us on Twitter: <br>
-            <a href="https://twitter.com/ise19team29" class="ourTwitter">@ise19team29</a>
+            <a href="https://twitter.com/ise19team29" class="twitterLink">@ise19team29</a><br>
           </div>
-          <div class="info6-content2">
+          <div class="section6Text">
             Don't forget to sign up to our services <br>to receive the lastest news and exclusive offers!
           </div>
-          <div class="info6-content3">
-            <div class="ft-tw">
-              <a href="/login" class="ft-tw-link">SIGN UP NOW</a>
-            </div>
-          </div>
+          <div class="section6Text"><a href="/login" class="twitterLink">SIGN UP NOW</a></div>
         </div>
-      </div>
-    </div>
 
-    <!--footer-->
+        <div class="section6Column"></div>  
+      </div>
+
+  <!--footer-->
     <%= erb :home_footer %>
   </div>
+  
   <script async src="js/content.js"></script>
 </body>
 

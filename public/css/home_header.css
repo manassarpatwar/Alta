@@ -5,7 +5,7 @@
   white-space: nowrap; 
   font-size:14px;
   height:60px;
-  background-color:rgba(0, 0, 0, 0.315) !important;
+  background-color:rgba(0, 0, 0, 0.555) !important;
 }
 /* can be deleted */
 .navbar-fixed-top.scrolled{
@@ -241,20 +241,12 @@ a .nav-respIcon{
   }
 }
 @media only screen and (max-width: 380px) {
-  .nav-cont{
-    float:left;
-  }
   .nav-signin{
     transition-duration: 1s;
-    margin: 18px 20px 0 20px;
+    margin: 18px 20px 0 40px;
     font-size: 12px;
   }
-  img.nav-logo{
-    transition-duration: 1s;
-    width: 48px;
-    padding-left: 15px;
-    margin-top: 15px;
-  }
+
   a.nav-buttons{
     font-size:10px;
     line-height:1;
@@ -286,10 +278,6 @@ a .nav-respIcon{
     padding-left: 40%;
   }
 }
-@media only screen and (max-width:380px){
-  .nav-column2.responsive {
-    padding-left: 38%;
-  }
-}
+
 
 
