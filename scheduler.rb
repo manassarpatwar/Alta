@@ -13,6 +13,7 @@ def following_scheduler()
      scheduler = Rufus::Scheduler.new
     
     begin
+        #schedule events to follow people that tweet to us
         scheduler.every("15m") do
             puts ("loop started scheduler #{scheduler.object_id}")
                 mentions = @clientAutomaticFollowing.mentions_timeline()

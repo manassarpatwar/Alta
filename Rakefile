@@ -132,7 +132,6 @@ task :run do
         Rake::Task[:createdb].execute
     end
     require_relative 'app.rb'
-    following_scheduler()
     Sinatra::Application.run!
 end
 

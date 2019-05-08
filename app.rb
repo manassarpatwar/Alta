@@ -12,8 +12,8 @@ require 'chartkick'
 require 'csv'
 require 'socket'
 require_relative 'app/methods.rb'
-require_relative 'app/main.rb'
 require_relative 'scheduler.rb'
+require_relative 'app/main.rb'
 require_relative 'database/editDatabases.rb'
 require_relative 'admin/dashboard.rb'
 require_relative 'admin/login.rb'
@@ -55,4 +55,5 @@ configure do
         puts "Too many requests. Try again in #{error.rate_limit.reset_in} seconds"
         sleep error.rate_limit.reset_in
     end
+    following_scheduler()
 end
