@@ -6,6 +6,7 @@ Feature: Tweet actions
             And I scroll down within ".displaytweets"
             When I click "#reply_tweet_icon0" within "#incoming_tweets"
             When I fill in "reply" with "Testing reply to tweets" within "#incoming_tweets"
+            And I scroll down within ".displaytweets"
             When I press "replyBtn0" within "#incoming_tweets"
             Then I should see "Testing reply to tweets" within "#incoming_tweets"
             And I click "#destroy_tweet_icon0"
