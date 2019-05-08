@@ -22,84 +22,69 @@
     <% if @submitted && !@taxiId_ok %>
     <p style="color:red">Please enter a valid taxi ID number</p>
     <% end %>
-
-    <% if @submitted && !@userId_ok %>
-    <p style="color:red">Please enter a valid User ID</p>
-    <% end %>
-
-    <% if @submitted && !@twitterHandle_ok %>
-    <p style="color:red">Please enter a valid twitter handle</p>
-    <% end %>
-
-    <% if @submitted && !@dateTime_ok %>
-    <p style="color:red">Please enter a valid date/time</p>
-    <% end %>
-
-    <% if @submitted && !@startLocation_ok %>
-    <p style="color:red">Please enter a valid start location</p>
-    <% end %>
-
-    <% if @submitted && !@endLocation_ok %>
-    <p style="color:red">Please enter a valid end location </p>
-    <% end %>
-
-    <% if @submitted && !@freeRide_ok %>
-    <p style="color:red">Please enter a valid free ride</p>
-    <% end %>
-
-    <% if @submitted && !@cancelled_ok %>
-    <p style="color:red">Please enter a 0 or 1 for cancelled?</p>
-    <% end %>
-
-    <% if @submitted && !@rating_ok %>
-    <p style="color:red">Please enter a valid rating (0-5)</p>
-    <% end %>
-
-    <% if @submitted && !@convoLink_ok %>
-    <p style="color:red">Please enter a valid conversation link</p>
-    <% end %>
-
-
     <label class="input_label">Taxi ID:
         <input type="text" name="taxiId" value="<%=h @taxiId %>" class="inputbox" />
     </label>
 
+    <% if @submitted && !@userId_ok %>
+    <p style="color:red">Please enter a valid User ID</p>
+    <% end %>
     <label class="input_label">User ID:
         <input type="text" name="userId" value="<%=h @userId %>" class="inputbox" />
     </label>
 
+    <% if @submitted && !@twitterHandle_ok %>
+    <p style="color:red">Please enter a valid twitter handle</p>
+    <% end %>
     <label class="input_label">Twitter Handle:
         <input type="text" name="twitterHandle" value="<%=h @twitterHandle %>" class="inputbox" />
     </label>
 
+    <% if @submitted && !@dateTime_ok %>
+    <p style="color:red">Please enter a valid date/time</p>
+    <% end %>
     <label class="input_label">Date/Time:
         <input type="text" name="dateTime" value="<%=h @dateTime %>" class="inputbox" />
     </label>
 
+    <% if @submitted && !@startLocation_ok %>
+    <p style="color:red">Please enter a valid start location</p>
+    <% end %>
     <label class="input_label">Start Location:
         <input type="text" name="startLocation" value="<%=h @startLocation if @submitted%>" class="inputbox" />
     </label>
 
-
+    <% if @submitted && !@endLocation_ok %>
+    <p style="color:red">Please enter a valid end location </p>
+    <% end %>
     <label class="input_label">End Location:
         <input type="text" name="endLocation" value="<%=h @endLocation if @submitted%>" class="inputbox" />
     </label>
 
-
+    <% if @submitted && !@freeRide_ok %>
+    <p style="color:red">Please enter a valid free ride</p>
+    <% end %>
     <label class="input_label">Free Ride?:
         <input type="text" name="freeRide" value="<%=h @freeRide %>" class="inputbox" />
     </label>
 
-
+    <% if @submitted && !@cancelled_ok %>
+    <p style="color:red">Please enter a 0 or 1 for cancelled?</p>
+    <% end %>
     <label class="input_label">Cancelled:
         <input type="text" name="cancelled" value="<%=h @cancelled %>" class="inputbox" />
     </label>
 
-
+    <% if @submitted && !@rating_ok %>
+    <p style="color:red">Please enter a valid rating (0-5)</p>
+    <% end %>
     <label class="input_label">Rating:
         <input type="text" name="rating" value="<%=h @rating if @submitted %>" class="inputbox" />
     </label>
 
+    <% if @submitted && !@convoLink_ok %>
+    <p style="color:red">Please enter a valid conversation link</p>
+    <% end %>
     <label class="input_label">Conversation Link:
         <input type="text" name="convoLink" value="<%=h @convoLink %>" class="inputbox" />
     </label>

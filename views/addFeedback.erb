@@ -15,39 +15,39 @@
 <!-- if there was validation errors: -->
 <p style="color:red">There were errors in your form submission, please correct them below.</p>
 <% end %>
+<div id="add">
+    <form action="/addFeedback" method="post" id="form">
+        <% if @submitted && !@journey_id_ok %>
+        <p style="color:red">Please enter a journey ID</p>
+        <% end %>
+        <label class="input_label">Journey ID:
+            <input type="text" name="journey_id" class="inputbox" value="<%=h @journey_id if @submitted %>" />
+        </label>
 
-<form action="/addFeedback" method="post">
-    <% if @submitted && !@journey_id_ok %>
-    <p style="color:red">Please enter a journey ID</p>
-    <% end %>
-    <p>Journey ID:
-        <input type="text" name="journey_id" value="<%=h @journey_id if @submitted %>" />
-    </p>
+        <% if @submitted && !@user_id_ok %>
+        <p style="color:red">Please enter a user ID</p>
+        <% end %>
+        <label class="input_label">User ID:
+            <input type="text" name="user_id" class="inputbox" value="<%=h @user_id if @submitted %>" />
+        </label>
+        <% if @submitted && !@feedback_ok %>
+        <p style="color:red">Please enter a valid feedback</p>
+        <% end %>
+        <div class="textareaAlign">
+            <label class="input_label">Feedback:
+                <textarea class="textArea" name="feedback"><%=h @feedback%></textarea>
+            </label>
+        </div>
 
-    <% if @submitted && !@user_id_ok %>
-    <p style="color:red">Please enter a user ID</p>
-    <% end %>
-    <p>User ID:
-        <input type="text" name="user_id" value="<%=h @user_id if @submitted %>" />
-    </p>
+        <% if @submitted && !@rating_ok %>
+        <p style="color:red">Please enter a valid rating</p>
+        <% end %>
+        <label class="input_label" style="padding-top: 20px">Rating:
+            <input type="text" name="rating" class="inputbox" value="<%=h @rating%>" />
+        </label>
 
-    <% if @submitted && !@feedback_ok %>
-    <p style="color:red">Please enter a valid feedback</p>
-    <% end %>
-    <div class="textareaAlign">
-        <p>Feedback:
-            <textarea name="feedback"><%=h @feedback%></textarea>
-        </p>
-    </div>
-
-    <% if @submitted && !@rating_ok %>
-    <p style="color:red">Please enter a valid rating</p>
-    <% end %>
-    <p>Rating:
-        <input type="text" name="rating" value="<%=h @rating%>" />
-    </p>
-
-    <input type="submit" value="Submit" />
-</form>
+        <input type="submit" class="submitButton" value="Submit" />
+    </form>
+</div>
 <% end %>
 <% end %>
