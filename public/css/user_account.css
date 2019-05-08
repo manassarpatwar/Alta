@@ -409,9 +409,9 @@ table {
 
 /* General Overall Feedbacks */
 .generalReviewBox {
-    height: 300px;
     text-align: center;
     background-color: rgb(223, 223, 223);
+    padding-bottom: 15px;
     border-radius: 7px;
 }
 
@@ -420,7 +420,7 @@ table {
     text-transform: uppercase;
     letter-spacing: 3px;
     padding: 10px;
-    padding-top: 130px;
+    padding-top: 20px;
 }
 
 .generalFeedBack {

@@ -68,7 +68,10 @@
         if (term[1] == undefined || term[1] == "") {
             console.log("i am running")
             $(".ratingText").empty().css("color", "red").append("Please enter feedback");
+        }else if(term[2] == undefined || term[2] == '' || term[2] == 0){
+            $(".ratingText").empty().css("color", "red").append("Please give a rating");
         } else {
+            console.log(term[2]);
             // Send the data using post
             var posting = $.post("addReview", {
                 newReview: term[1],
