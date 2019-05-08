@@ -29,17 +29,6 @@
 .rating_star {
     background: none;
 }
-.fa-star::before{
-    font-size:18px;
-}
-.fa-star:hover::before{
-    color:orange;
-    font-size:18px;
-}
-.fa-star-o::before{
-    color:gray;
-    font-size:18px;
-}
 
 .greetingColumn {
     float: left;
@@ -451,11 +440,11 @@ table {
     cursor: pointer;
 }
 
-.rating2 {
+.ratinRev {
     cursor: pointer;
 }
 
-.rating2 .rating-star_2 {
+.ratinRev .ratRev {
     display: inline-block;
     position: relative;
     padding-right: 5px;
@@ -463,7 +452,7 @@ table {
     color: orange;
 }
 
-.rating2 .selected:before {
+.ratin .selected:before {
     content: '\f005';
 }
 
