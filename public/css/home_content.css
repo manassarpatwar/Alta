@@ -8,6 +8,7 @@ body, html {
   background-size: cover;  
   background-attachment: fixed;
   background-position: center;
+  /* background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 59%, rgba(0, 0, 0, 0.65) 100%), url("../img/background4.jpg") no-repeat; */
 }
 #wrapper{
   background-color:white;
@@ -25,6 +26,9 @@ header.sticky{
 }
 
 /* Section0: Welcome Sign */
+.welcomeRow{
+  background-color: rgba(0, 0, 0, 0.733);
+}
 .welcomeRow:after {
   content: "";
   display: table;
@@ -83,7 +87,6 @@ header.sticky{
 }
 #welcomeTextBox{
   padding:50px;
-  background-color:rgba(0, 0, 0, 0.733);
 }
 .welcomeHeader{
   padding-top:50px;
