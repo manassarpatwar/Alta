@@ -59,9 +59,7 @@
                             <div id="reply<%=h@tweets.index(tweet)%>">
                                 <textarea rows="5" cols="60" placeholder="Type your reply here" name="reply" id="replyInput<%=h@tweets.index(tweet)%>" value="<%=h params[:reply] %>" class="replyTextArea"></textarea>
                             </div>
-                            <% if params[:reply] == "" %>
-                            <p style="color:red">Please enter a valid tweet</p>
-                            <% end %>
+                            <p id = "noreply" style = "color:red"></p>
                             <% params[:tweetindex] = @tweets.index(tweet) %>
                             <% params[:tweetid] = tweet.id %>
                             <% params[:screen_name] = tweet.user.screen_name %>
@@ -139,17 +137,21 @@
         term[3] = $form.find("input[name='screen_name']").val();
         term[4] = $form.find("textarea[name='reply']").val();
         // Send the data using post
-        var posting = $.post("replyToTweet", {
-            tweetindex: term[1],
-            tweetid: term[2],
-            screen_name: term[3],
-            reply: term[4]
-        });
+        if(term[4] == ""){
+            $("#noreply").empty().append("Please enter a reply")
+        }else{
+            var posting = $.post("replyToTweet", {
+                tweetindex: term[1],
+                tweetid: term[2],
+                screen_name: term[3],
+                reply: term[4]
+            });
 
-        posting.done(function(data) {
-            var content = $(data);
-            $("#incoming_tweets").empty().append(content);
-        });
+            posting.done(function(data) {
+                var content = $(data);
+                $("#incoming_tweets").empty().append(content);
+            });
+        }
     });
     $(".deleteTweet").submit(function(event) {
 
