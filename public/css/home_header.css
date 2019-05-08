@@ -47,7 +47,7 @@ img.nav-logo{
   display: inline-block;
 }
 .nav-logo{
-  padding-top:5px;
+  padding-top:10px;
 }
 
 .nav-name:hover{
@@ -55,15 +55,15 @@ img.nav-logo{
 }
 div.nav-name{
   padding:2.5%;
-  padding-top:1%;
-  color:#5f5a50;
-  font-size: 36px;
+  padding-top:1.8%;
+  color:#d6d6d6;
+  font-size: 32px;
   font-style: normal;
   white-space: nowrap;
   font-family: Verdana,Arial,sans-serif;
   font-weight: 100;
   text-transform: uppercase;
-  letter-spacing: 0.4em;
+  letter-spacing: 0.5em;
   line-height: 1.4;
 }
 
