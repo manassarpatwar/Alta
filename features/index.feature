@@ -5,16 +5,16 @@ Feature: Testing Navigation of Home page
        Scenario: Testing go home navigation link
             Given I am on the home page
             When I follow "alta" within "nav"
-            Then I should see "SIGN UP WITH US VIA TWITTER" within "#section0"  
+            Then I should see "Sign up with us via Twitter" within "#section0"  
         
        Scenario: Testing How To? navigation link
             Given I am on the home page
             When I follow "how to?" within ".nav-center"
-            Then I should see "HOW IT WORKS" within "#section1"
+            Then I should see "How it works" within "#section1"
        Scenario: Testing Services navigation link
             Given I am on the home page within "#section1"
             When I follow "services" within ".nav-center"
-            Then I should see "TAXI TYPES" within "#section2"
+            Then I should see "Taxi Types" within "#section2"
        Scenario: Testing Deals navigation link
             Given I am on the home page
             When I follow "deals" within ".nav-center"
