@@ -87,7 +87,7 @@
 
     <!--Section3: Filtable Search bar-->
     <div id="view1_1" class="searchBarRow container searchBarContainer">
-        <select id=' filterList' name="column" class="selectStorage">
+        <select id='filterList' name="column" class="selectStorage">
             <option value="all">All</option>
             <option value='id'>Reference Number</option>
             <option value='date_time'>Travel Date</option>
@@ -165,12 +165,14 @@
                             <form method="post" action="/addRating">
                                 <span class="ratingText">(no ratings, rate us now)</span>
                                 <input type="hidden" name="referenceNo" value="<%=record[0]%>">
-                                <input type="submit" onclick="myRating1()" id="rate1" class="fa fa-star" class="rating_star" name="rating" value="1">
-                                <input type="submit" onclick="myRating2()" id="rate2" class="fa fa-star" class="rating_star" name="rating" value="2">
-                                <input type="submit" onclick="myRating3()" id="rate3" class="fa fa-star" class="rating_star" name="rating" value="3">
-                                <input type="submit" onclick="myRating4()" id="rate4" class="fa fa-star" class="rating_star" name="rating" value="4">
-                                <input type="submit" onclick="myRating5()" id="rate5" class="fa fa-star" class="rating_star" name="rating" value="5">
+                                <input type="hidden" name="rating" id="rating-input-2" min="1" max="5" />
+                                <input type="submit" name="submit" style="display:none" id="ratingSubmit">
                             </form>
+                            <div class="rating2" role="optgroup">
+                                <% for i in 1..5 %>
+                                <i class="fa fa-star-o fa-2x rating-star_2" style="outline:none" id="rating-<%= i %>" data-rating="<%= i %>" tabindex="0" aria-label="Rate as one out of 5 stars" role="radio"></i>
+                                <% end %>
+                            </div>
                             <% else %>
                             <% for i in 0..record[9]-1%>
                             <span class="fa fa-star" style="color:orange;"></span>
@@ -246,6 +248,44 @@
 
     <!--footer-->
     <%= erb :user_footer %>
+
+    <script>
+        function setRating2(rating) {
+            $('#rating-input-2').val(rating);
+            // fill all the stars assigning the '.selected' class
+            $('.rating-star_2').removeClass('fa-star-o').addClass('selected');
+            // empty all the stars to the right of the mouse
+            $('.rating-star_2#rating-' + rating + ' ~ .rating-star_2').removeClass('selected').addClass('fa-star-o');
+        }
+
+        $('.rating-star_2')
+            .on('mouseover', function(e) {
+                var rating = $(e.target).data('rating');
+                // fill all the stars
+                $('.rating-star_2').removeClass('fa-star-o').addClass('fa-star');
+                // empty all the stars to the right of the mouse
+                $('.rating-star_2#rating-' + rating + ' ~ .rating-star_2').removeClass('fa-star').addClass('fa-star-o');
+            })
+            .on('mouseleave', function(e) {
+                // empty all the stars except those with class .selected
+                $('.rating-star_2').removeClass('fa-star').addClass('fa-star-o');
+            })
+            .on('click', function(e) {
+                var rating = $(e.target).data('rating');
+                setRating2(rating);
+                $("#ratingSubmit").click();
+            })
+            .on('keyup', function(e) {
+                // if spacebar is pressed while selecting a star
+                if (e.keyCode === 32) {
+                    // set rating (same as clicking on the star)
+                    var rating = $(e.target).data('rating');
+                    setRating2(rating);
+                }
+            });
+
+    </script>
+
     <script src="js/my_account.js"></script>
 </body>
 

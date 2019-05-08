@@ -4,7 +4,7 @@
     <% else %>
     <form id="addReviewForm">
         <div class="generalRatingText">
-            <span class="ratingText">Please give us general feedback on our service!</span>
+            <span class="ratingText ratingReview">Please give us general feedback on our service!</span>
         </div>
         <div class="generalFeedBackText">
             <input type="text" class="generalFeedBack" name="newReview" value="<%=h params[:genreralFeedBack] %>" placeholder="Give us general feedback on our service!">
@@ -67,7 +67,7 @@
         term[2] = $form.find("input[name='generalRating']").val();
         if (term[1] == undefined || term[1] == "") {
             console.log("i am running")
-            $(".ratingText").empty().css("color", "red").append("Please enter feedback");
+            $(".ratingReview").empty().css("color", "red").append("Please enter feedback");
         } else {
             // Send the data using post
             var posting = $.post("addReview", {
