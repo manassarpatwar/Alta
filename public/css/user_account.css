@@ -420,7 +420,7 @@ table {
     text-transform: uppercase;
     letter-spacing: 3px;
     padding: 10px;
-    padding-top: 50px;
+    padding-top: 130px;
 }
 
 .generalFeedBack {
@@ -813,3 +813,10 @@ table {
         padding-top: 0;
     }
 }
+
+#addJourneyReviewForm #addReview .generalRatingText{
+    display:flex;
+    justify-content: center;
+    padding-top:20px;   
+}
+

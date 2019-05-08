@@ -260,10 +260,12 @@
                 </tr>
             </table>
         </tr>
+        <% @feedbackExist = $db.execute("SELECT * FROM feedback WHERE journey_id = #{record[0]}").size > 0 %>
+        <% if !@feedbackExist %>
         <tr>
             <div id = "addJourneyReview">
                 <form id = "addJourneyReviewForm">
-                    <p class = "journeyReview" style = "padding:0"></p>
+                    <p class = "journeyReview" style = "padding:0; display:flex; justify-content: center;"></p>
                     <input type="hidden" name="referenceNo" value="<%=record[0]%>">
                     <input class=" container writeReview" type="text" name="newReview" placeholder="Tell us what do you think about our service!">
                     <input type="hidden" name="generalRating" value = "<%= record[9] %>"/>
@@ -271,6 +273,7 @@
                 </form>
             </div>
         </tr>
+        <% end %>
         <% end %>
         </table>
     </div>
@@ -291,6 +294,7 @@
     <!--footer-->
     <%= erb :user_footer %>
     <script>
+        $("#addReview").find("generalRatingText").css("padding:0");
         $("#addJourneyReviewForm").submit(function(event) {
             // Stop form from submitting normally
             event.preventDefault();
@@ -300,18 +304,20 @@
             var $form = $(this);
             term[1] = $form.find("input[name='newReview']").val();
             term[2] = $form.find("input[name='generalRating']").val();
+            term[3] = $form.find("input[name='referenceNo']").val();
             if (term[1] == undefined || term[1] == "") {
                 console.log("i am running")
-                $(".journeyReview").empty().css("color", "red").append("Please enter feedback");
+                $(this).find(".journeyReview").empty().css("color", "red").append("Please enter feedback");
             } else {
                 // Send the data using post
                 var posting = $.post("addReview", {
                     newReview: term[1],
                     generalRating: term[2],
+                    referenceNo: term[3]
                 });
                 posting.done(function(data) {
                     var content = $(data);
-                    $form.empty().append(content).style("padding", "0");
+                    $form.empty().append(content);
                 });
             }
         });
