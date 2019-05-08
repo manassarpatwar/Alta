@@ -8,16 +8,20 @@ def add_feedback(j_id, u_id, fdbk, rat)
     @feedbackInfo = $db.execute("SELECT * FROM feedback")
 
     @submitted = true
-
     #sanitize values
-    @journey_id = j_id
+    if j_id.nil? then
+        @journey_id = j_id
+        @journey_id_ok = true
+    else
+        @journey_id = j_id.to_i
+        @journey_id_ok = isPositiveNumber? (@journey_id)
+    end
     @user_id = u_id
     @date_time = Time.now.strftime("%Y/%m/%d %H:%M").to_s
     @feedback = fdbk
     @rating = rat
 
     # perform validation
-    @journey_id_ok = isPositiveNumber? (@journey_id)
     @feedback_ok = !@feedback.nil? && @feedback != ""
     @user_id_ok = !@user_id.nil? && @user_id != ""
     @rating_ok = @rating == '0' || @rating == '1' || @rating == '2' || @rating == '3' || @rating == '4' || @rating == '5'
@@ -30,7 +34,11 @@ def add_feedback(j_id, u_id, fdbk, rat)
     # add data to the database
     if @all_ok
         # do the insert
-        $db.execute('INSERT INTO feedback VALUES (?, ?, ?, ?, ?, ?)', [@id, @journey_id, @user_id, @date_time, @feedback, @rating])
+        if !@journey_id.nil?
+            $db.execute('INSERT INTO feedback VALUES (?, ?, ?, ?, ?, ?)', [@id, @journey_id, @user_id, @date_time, @feedback, @rating])
+        else
+            $db.execute('INSERT INTO feedback VALUES (?, null, ?, ?, ?, ?)', [@id, @user_id, @date_time, @feedback, @rating])
+        end
         return true
     end
     return false

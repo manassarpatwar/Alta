@@ -36,7 +36,7 @@ end
 
 post'/addReview' do
     if params[:newReview] == "" then @nofdbk end
-    @all_ok = add_feedback(params[:referenceNo].to_i, session[:id], params[:newReview], params[:generalRating]) unless @nofdbk
+    @all_ok = add_feedback(params[:referenceNo], session[:id], params[:newReview], params[:generalRating]) unless @nofdbk
     erb :addReview
 end
 
