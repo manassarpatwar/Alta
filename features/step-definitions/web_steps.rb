@@ -219,6 +219,10 @@ Then /^(?:|I )should not see \/([^\/]*)\/(?: within "([^\"]*)")?$/ do |regexp, s
   end
 end
 
+Then /^(?:|I )should see css "([^\"]*)" "([^\"]*)" times$/ do  |css, count|
+    expect(page).to have_css(css, :count => count)
+end
+
 Then /^the "([^\"]*)" field(?: within "([^\"]*)")? should contain "([^\"]*)"$/ do |field, selector, value|
   with_scope(selector) do
     field = find_field(field)

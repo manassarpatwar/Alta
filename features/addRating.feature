@@ -17,5 +17,5 @@ Feature: Adding data
             When I press "Submit" within "#add_journey"
             Then I should see "Journey Added."
             And I am on the my account page
-            When I click "#rate3" within "#ratings"
-            Then I should not see "#rate3" within "#ratings"
+            When I click "#rating-3" within ".rating0"
+            Then I should see css ".rating0 .fa-star" "3" times
