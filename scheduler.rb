@@ -1,7 +1,3 @@
-require 'rufus-scheduler'
-require 'sinatra'
-require 'twitter'
-
 configure do
      autoConfig = {
         :consumer_key => 'OH20bwn5ml5a6J7cpWAfn44sw',
@@ -14,26 +10,21 @@ end
 
 # trying to make scheduler running once per server run, not working yet.
 def following_scheduler()
-    scheduler = Rufus::Scheduler.new(:frequency => '30s')
-
-    scheduler.every("1m") do
-        puts ("loop started scheduler")
-        begin
-            puts ("1")
-            mentions = @clientAutomaticFollowing.mentions_timeline()
-            puts ("2")
-            most_recent = mentions.take(5)
-            puts ("3")
-            most_recent.each do |tweet|
-                puts ("4")
-                @clientAutomaticFollowing.follow(tweet.user.screen_name)
-            end
-            puts ("Automated following initiated")
-        rescue Twitter::Error::TooManyRequests => error
-            sleep error.rate_limit.reset_in
-            puts ("To many requests to twitter API scheduler.rb line 30 before do")
+     scheduler = Rufus::Scheduler.new
+    
+    begin
+        scheduler.every("15m") do
+            puts ("loop started scheduler #{scheduler.object_id}")
+                mentions = @clientAutomaticFollowing.mentions_timeline()
+                most_recent = mentions.take(5)
+                most_recent.each do |tweet|
+                    @clientAutomaticFollowing.follow(tweet.user.screen_name)
+                end
+                puts ("Automated following completed")
         end
+    rescue Twitter::Error::TooManyRequests => error
+        sleep error.rate_limit.reset_in
+        puts ("To many requests to twitter API scheduler.rb line 28 before do")
     end
     puts("started Scheduler #{scheduler.object_id}")
-    #response.set_cookie(:automated_following, :value => "false")
 end

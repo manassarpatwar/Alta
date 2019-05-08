@@ -45,7 +45,7 @@ post '/followPeopleUsingKeyword' do
     rescue Twitter::Error::TooManyRequests => err
 
         response.set_cookie(:follow_state, :value => "false")
-        puts ("To many requests to twitter API Marketing.rb line 55, followPeopleUsingKeyword")
+        puts ("To many requests to twitter API Marketing.rb line 48, followPeopleUsingKeyword")
     end
     redirect '/marketing'
 end
@@ -55,6 +55,7 @@ post '/tweetToTimeline' do
 
     # set cookie that shows that form has been submitted and feedback should be displayed
     response.set_cookie(:tweet_state, :value => "true")
+    
     # Tweets a message from the dashboard to the Twitter and catches an error if not allowed
     begin
         if(params[:tweet] != "")
@@ -66,7 +67,7 @@ post '/tweetToTimeline' do
         end
     rescue Twitter::Error::TooManyRequests => err
         response.set_cookie(:tweet_state, :value => "false")
-        puts ("To many requests to twitter API Marketing.rb line 76 tweetToTimeline")
+        puts ("To many requests to twitter API Marketing.rb line 70 tweetToTimeline")
     end
     redirect '/marketing'
 end
