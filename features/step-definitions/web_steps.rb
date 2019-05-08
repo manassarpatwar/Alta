@@ -98,7 +98,7 @@ When /^(?:|I )click on the alert/ do
 end
 
 When /^(?:|I )scroll down within "([^\"]*)"/ do |selector|
-  page.execute_script "$('#{selector}').scrollTop(10000)"
+  page.execute_script "$('#{selector}').scrollTop(10000000000)"
 end
 
 When /^(?:|I )tweet to "([^\"]*)"/ do |user|
