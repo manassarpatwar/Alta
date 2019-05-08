@@ -164,7 +164,7 @@
                         <div id="ratings" class="tableRate">
                             <form method="post" action="/addRating">
                                 <input type="hidden" name="referenceNo" value="<%=record[0]%>">
-                                <input type="hidden" name="rating" id="rating-input-<%= @index %>" min="1" max="5" />
+                                <input type="hidden" name="rating" id="rating-input-<%= @index %>" min="0" max="5" />
                                 <input type="submit" name="submit" style="display:none" id="ratingSubmit<%= @index %>">
                             </form>
                             <div class="rating<%= @index %> ratinRev" role="optgroup">
@@ -195,10 +195,14 @@
                                     })
                                     .on('mouseleave', function(e) {
                                         var rating = <%= record[9] %>;
-                                        // fill all the stars
-                                        $('.rating-star_<%= @index %>').removeClass('fa-star-o').addClass('fa-star');
-                                        // empty all the stars to the right of the mouse
-                                        $('.rating-star_<%= @index %>#rating-' + rating + ' ~ .rating-star_<%= @index %>').removeClass('fa-star').addClass('fa-star-o');
+                                        if(rating > 0){
+                                            // fill all the stars
+                                            $('.rating-star_<%= @index %>').removeClass('fa-star-o').addClass('fa-star');
+                                            // empty all the stars to the right of the mouse
+                                            $('.rating-star_<%= @index %>#rating-' + rating + ' ~ .rating-star_<%= @index %>').removeClass('fa-star').addClass('fa-star-o');
+                                        }else{
+                                              $('.rating-star_<%= @index %>').removeClass('fa-star').addClass('fa-star-o');
+                                        }
                                     })
                                     .on('click', function(e) {
                                         var rating = $(e.target).data('rating');
@@ -257,11 +261,15 @@
             </table>
         </tr>
         <tr>
-            <form method="post" action="/addReview">
-                <input type="hidden" name="referenceNo" value="<%=record[0]%>">
-                <input class=" container writeReview" type="text" name="newReview" value="<%=h params[:newReview] %>" placeholder="Tell us what do you think about our service!">
-                <input class="container reviewSumbit" type="submit" value="SUBMIT">
-            </form>
+            <div id = "addJourneyReview">
+                <form id = "addJourneyReviewForm">
+                    <p class = "journeyReview" style = "padding:0"></p>
+                    <input type="hidden" name="referenceNo" value="<%=record[0]%>">
+                    <input class=" container writeReview" type="text" name="newReview" placeholder="Tell us what do you think about our service!">
+                    <input type="hidden" name="generalRating" value = "<%= record[9] %>"/>
+                    <input class="container reviewSumbit" type="submit" value="SUBMIT">
+                </form>
+            </div>
         </tr>
         <% end %>
         </table>
@@ -282,6 +290,32 @@
 
     <!--footer-->
     <%= erb :user_footer %>
+    <script>
+        $("#addJourneyReviewForm").submit(function(event) {
+            // Stop form from submitting normally
+            event.preventDefault();
+
+            // Get some values from elements on the page:
+            var term = []
+            var $form = $(this);
+            term[1] = $form.find("input[name='newReview']").val();
+            term[2] = $form.find("input[name='generalRating']").val();
+            if (term[1] == undefined || term[1] == "") {
+                console.log("i am running")
+                $(".journeyReview").empty().css("color", "red").append("Please enter feedback");
+            } else {
+                // Send the data using post
+                var posting = $.post("addReview", {
+                    newReview: term[1],
+                    generalRating: term[2],
+                });
+                posting.done(function(data) {
+                    var content = $(data);
+                    $form.empty().append(content).style("padding", "0");
+                });
+            }
+        });
+    </script>
 
     <script src="js/my_account.js"></script>
 </body>
