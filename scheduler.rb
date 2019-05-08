@@ -14,11 +14,11 @@ def following_scheduler()
     
     begin
         #schedule events to follow people that tweet to us
-        scheduler.every("15m") do
+        scheduler.every("3m") do
             puts ("loop started scheduler #{scheduler.object_id}")
                 mentions = @clientAutomaticFollowing.mentions_timeline()
-                most_recent = mentions.take(5)
-                most_recent.each do |tweet|
+                tweet = mentions.take(1)
+                if tweet.user.screen_name != "ise19team29"
                     @clientAutomaticFollowing.follow(tweet.user.screen_name)
                 end
                 puts ("Automated following completed")
