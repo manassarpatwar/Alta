@@ -21,13 +21,8 @@ get '/auth/twitter/callback' do
     session[:loggedin] = true #User now logged in
     session[:admin] = false #User is not an admin until confirmed
 
-    @usersTable = $db.execute %{SELECT * FROM users} #Gather all user data
-
-    @usersTable.each do |record| #Go through each user record
-        if env['omniauth.auth']['uid'] == record[0] #If uid = id then:
-            @found = true #Boolean found is true (record is already there)
-        end
-    end
+    @user = $db.execute ("SELECT * FROM users WHERE id =#{env['omniauth.auth']['uid']}") #Gather all user data
+    @found = @user.size > 0
 
 	#Gather user information from twitter
 	id = env['omniauth.auth']['uid'].to_s

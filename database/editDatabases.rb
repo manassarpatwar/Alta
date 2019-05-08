@@ -49,15 +49,8 @@ get '/editUser/:id' do
 	redirect '/index' unless session[:admin]
 
 	# get users table and journey table from the database
-	@usersInfo = $db.execute("SELECT * FROM users")
-	@journeyInfo = $db.execute("SELECT * FROM journeys")
-
-	# find user which has the ID given
-	@usersInfo.each do |user|
-		if user[0] == params[:id]
-			@userToEdit = user
-		end
-	end
+	@userToEdit =  get_entry(params[:id], "users")
+    if @userToEdit.nil? then redirect '/404' end
 
 	@submitted = false
 
@@ -77,14 +70,8 @@ get '/editTaxi/:id' do
 	redirect '/index' unless session[:admin]
 
 	# get taxi table and journey table from the database
-	@taxiInfo = $db.execute("SELECT * FROM taxis")
-
-	# find taxi which has the ID given
-	@taxiInfo.each do |taxi|
-		if taxi[0] == params[:id].to_i
-			@taxiToEdit = taxi
-		end
-	end
+	@taxiToEdit =  get_entry(params[:id], "taxis")
+    if @taxiToEdit.nil? then redirect '/404' end
 
 	@submitted = false
 
@@ -104,16 +91,9 @@ get '/editFeedback/:id' do
     # only show page if admin
 	redirect '/index' unless session[:admin]
 
-	# get feedback table from the database
-	@feedbackInfo = $db.execute("SELECT * FROM feedback")
-
-	# find user which has the ID given
-	@feedbackInfo.each do |feedback|
-		if feedback[0] == params[:id].to_i
-			@feedbackToEdit = feedback
-		end
-	end
-
+	# get feedback from the database
+	@feedbackToEdit = get_entry(params[:id], "feedback")
+    if @feedbackToEdit.nil? then redirect '/404' end
 	@submitted = false
 
 	# setting all the variables to various values from the table
@@ -133,15 +113,10 @@ get '/editJourney/:id' do
 	redirect '/index' unless session[:admin]
 
 	# get feedback table from the database
-	@journeyInfo = $db.execute("SELECT * FROM journeys")
+	@journeyToEdit = get_entry(params[:id], "journeys")
+    if @journeyToEdit.nil? then redirect '/404' end
+        
 	@id = params[:id].to_i
-
-	# find user which has the ID given
-	@journeyInfo.each do |journey|
-		if journey[0] == @id
-			@journeyToEdit = journey
-		end
-	end
 
 	@submitted = false
 
@@ -167,15 +142,7 @@ post '/editUser/:id' do
 	redirect '/index' unless session[:admin]
 
 	# get users table and journey table from the database
-	@usersInfo = $db.execute("SELECT * FROM users")
-	@journeyInfo = $db.execute("SELECT * FROM journeys")
-
-	# find user which has the ID given
-	@usersInfo.each do |user|
-		if user[0] == params[:id]
-			@userToEdit = user
-		end
-	end
+	@userToEdit = get_entry(params[:id], "users")
 
 	@submitted = true
 
@@ -216,14 +183,7 @@ post '/editTaxi/:id' do
 	redirect '/index' unless session[:admin]
 
 	# get taxi table and journey table from the database
-	@taxiInfo = $db.execute("SELECT * FROM taxis")
-
-	# find taxi which has the ID given
-	@taxiInfo.each do |taxi|
-		if taxi[0] == params[:id].to_i
-			@taxiToEdit = taxi
-		end
-	end
+	@taxiToEdit = get_entry(params[:id], "taxis")
 
 	@submitted = true
 
@@ -243,19 +203,13 @@ post '/editTaxi/:id' do
     else
         @taxiType_ok = false
     end
-    @regNum_unique = true
-    @contact_unique = true
-    @taxiInfo.each do |taxi| # go through each user record
-        if taxi[1] == @regNum && taxi != @taxiToEdit # if uid = id then:
-            @regNum_unique = false # boolean found is true (record is already there)
-        end
-        if taxi[2] == @contact && taxi != @taxiToEdit
-          @contact_unique = false
-        end
+    if @taxiToEdit[1] != @regNum && @taxiToEdit[2] != @contact then
+        @regNum_and_contact_unique = $db.execute("SELECT * FROM taxis WHERE reg_num = '#{@regNum}' AND contact_num = '#{@contact}'").size == 0
+    else
+        @regNum_and_contact_unique = true
     end
 
-    @all_ok = @regNum_ok && @contact_ok && @taxiType_ok && @city_ok && @regNum_unique && @contact_unique
-
+    @all_ok = @regNum_ok && @contact_ok && @taxiType_ok && @city_ok &&  @regNum_and_contact_unique 
 	if @all_ok
 		# do the edit
 		$db.execute("UPDATE taxis SET reg_num = '#{@regNum}' WHERE id='#{@id}'")
@@ -273,15 +227,8 @@ post '/editFeedback/:id' do
 	redirect '/index' unless session[:admin]
 
 	# get feedback table from the database
-	@feedbackInfo = $db.execute("SELECT * FROM feedback")
-
-	# find feedback which has the ID given
-	@feedbackInfo.each do |feedback|
-		if feedback[0] == params[:id].to_i
-			@feedbackToEdit = feedback
-		end
-	end
-
+	@feedbackToEdit =  get_entry(params[:id], "feedback")
+    
 	@submitted = true
 
 	# setting all the variables to various values from the table
@@ -321,7 +268,7 @@ post '/editJourney/:id' do
 
 	# get journey
     @id = params[:id].to_i
-	@journeyToEdit = $db.execute("SELECT * FROM journeys WHERE id = #{@id}")[0]
+	@journeyToEdit =  get_entry(params[:id], "journeys")
 
 	# submitted is false
 	@submitted = true

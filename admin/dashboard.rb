@@ -112,16 +112,13 @@ post '/addJourney' do
   	# add data to the database
 	if @all_ok
         $db.execute('INSERT INTO journeys VALUES (?, ?, ?, ?, ?, ? ,?, ?, ?, ?, ?)', [@id, @taxiId, @userId, @twitterHandle, @dateTime, @startLocation, @endLocation, @freeRide, @cancelled, @rating, @convoLink])
-        @usersTable = $db.execute %{SELECT * FROM users} #Gather all user data
-        @usersTable.each do |record| #Go through each user record
-            @userInfo = $db.execute("SELECT * FROM users WHERE id = ?", @userId)
-            if @userId == record[0] #If uid = id then:
-               if @freeRide == '1' then
-                 $db.execute("UPDATE users SET free_rides = #{@userInfo[0][4]-1}  WHERE id='#{@userId}'")
-               elsif (get_total_rides(@userId)) % $rideDeal == 0 && @freeRide == '0' then
-                 $db.execute("UPDATE users SET free_rides = #{@userInfo[0][4]+1}  WHERE id='#{@userId}'")
-               end
-            end
+        @userInfo = $db.execute("SELECT * FROM users WHERE id = #{@userId}") #Gather all user data
+        if @userInfo.size > 0 #If uid = id then:
+           if @freeRide == '1' then
+             $db.execute("UPDATE users SET free_rides = #{@userInfo[0][4]-1}  WHERE id='#{@userId}'")
+           elsif (get_total_rides(@userId)) % $rideDeal == 0 && @freeRide == '0' then
+             $db.execute("UPDATE users SET free_rides = #{@userInfo[0][4]+1}  WHERE id='#{@userId}'")
+           end
         end
   	end
     erb :addJourney

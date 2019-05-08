@@ -58,3 +58,7 @@ def isPositiveNumber? string
       return false
   end
 end
+
+def get_entry(id, table)
+    return $db.execute("SELECT * FROM #{table} WHERE id = #{id}")[0]
+end
