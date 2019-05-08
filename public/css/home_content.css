@@ -196,7 +196,6 @@ header.sticky{
   cursor:pointer;
   font-weight:500;
   color:black;
-  border: 1px solid rgb(226, 225, 225);
 }
 .taxiType:hover{
   color:rgb(163, 163, 163);
