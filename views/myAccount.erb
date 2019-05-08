@@ -286,7 +286,9 @@
 
     <!--General Overall Feebacks-->
     <div class="generalReviewBox container" id="addNewReview">
-        <%= erb :addReview %>
+        <div id="addReview">
+            <%= erb :addReview %>
+        </div>
     </div>
 
     <div class="separation" style="height:100px;"></div>
@@ -294,7 +296,6 @@
     <!--footer-->
     <%= erb :user_footer %>
     <script>
-        $("#addReview").find("generalRatingText").css("padding:0");
         $("#addJourneyReviewForm").submit(function(event) {
             // Stop form from submitting normally
             event.preventDefault();
