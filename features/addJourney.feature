@@ -9,6 +9,7 @@ Feature: Add Journey
             When I fill in "startLocation" with "Diamond"
             When I fill in "endLocation" with "Meadowhall"
             When I fill in "rating" with "3"
+            When I fill in "freeRide" with "0"
             When I press "Submit"
             Then I should see "Journey Added." within "#add_journey"
             
