@@ -129,7 +129,7 @@ end
 
 # testing the get_total_rides method
 class TestGetTotalRides < Minitest::Test
-    $db = SQLite3::Database.new 'database/taxi_db.sqlite'
+    $db = SQLite3::Database.new 'database/taxi_test_db.sqlite'
 
     def test_noJourneys
         u_id = 1
@@ -160,7 +160,7 @@ end
 
 # testing the get_entry method
 class TestGetEntry < Minitest::Test
-    $db = SQLite3::Database.new 'database/taxi_db.sqlite'
+    $db = SQLite3::Database.new 'database/taxi_test_db.sqlite'
 
     def test_users
         user = ['1092444312430919681', 'ise19team29', '2019/03/13 10:54', 1, 100000]
@@ -208,7 +208,7 @@ end
 
 # testing the get_data method
 class TestGetData < Minitest::Test
-    $db = SQLite3::Database.new 'database/taxi_db.sqlite'
+    $db = SQLite3::Database.new 'database/taxi_test_db.sqlite'
 
     def test_users_13_03_2019
         answer = Hash.new()
