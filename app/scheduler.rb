@@ -10,17 +10,16 @@ end
 
 def following_scheduler()
      scheduler = Rufus::Scheduler.new
-    
-    begin
-        #schedule events to follow people that tweet to us
-        scheduler.every("3m") do
-                mentions = @clientAutomaticFollowing.mentions_timeline(count: "1")
-                if mentions[0].user.screen_name != "ise19team29"
-                    @clientAutomaticFollowing.follow(mentions[0].user.screen_name)
-                end
+     scheduler.every "3m" do |job|
+        begin
+            #schedule events to follow people that tweet to us
+            mentions = @clientAutomaticFollowing.mentions_timeline(count: "1")
+            if mentions[0].user.screen_name != "ise19team29"
+                @clientAutomaticFollowing.follow(mentions[0].user.screen_name)
+            end
+        rescue Twitter::Error::TooManyRequests => error
+            puts "Too many requests. Try again in #{error.rate_limit.reset_in} seconds"
+            job.next_time = Time.now + error.rate_limit.reset_in
         end
-    rescue Twitter::Error::TooManyRequests => error
-        puts "Too many requests. Try again in #{error.rate_limit.reset_in} seconds"
-        sleep error.rate_limit.reset_in
-    end
+     end
 end
