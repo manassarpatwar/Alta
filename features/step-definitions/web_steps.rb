@@ -1,6 +1,7 @@
 require 'uri'
 require 'cgi'
 require 'sinatra'
+require 'capybara'
 require_relative '../support/paths'
 
 configure do
@@ -36,25 +37,35 @@ When /^I log out of twitter$/ do
 end
 
 When /^I am signed in as admin from sheffield$/ do
-   visit '/login' 
-   fill_in("Username or email", :with => "ise19team29")
-   fill_in("Password", :with => "SoftEng2019")
-   click_button("Sign In")
-    if page.has_content?("Help us keep your account safe.")
-       fill_in("challenge_response", :with => "tbtonner1@sheffield.ac.uk")
-       click_button("Submit")
-   end
+    begin
+        visit '/login' 
+        fill_in("Username or email", :with => "ise19team29")
+        fill_in("Password", :with => "SoftEng2019")
+        click_button("Sign In")
+        if page.has_content?("Help us keep your account safe.")
+            fill_in("challenge_response", :with => "tbtonner1@sheffield.ac.uk")
+            click_button("Submit")
+        end
+    rescue Capybara::ElementNotFound
+        puts "already signed in"
+    end
+end
+
+When /^I start a new session$/ do
+    if Capybara.current_driver == Capybara.javascript_driver
+        Capybara.current_session.driver.quit
+    end
 end
 
 When /^I am signed in as admin from manchester$/ do
-   visit "/login"
-   fill_in("Username or email", :with => "altataxis")
-   fill_in("Password", :with => "SoftEng2019")
-   click_button("Sign In")
-   if page.has_content?("Help us keep your account safe.")
-       fill_in("challenge_response", :with => "mmsarpatwar1@sheffield.ac.uk")
-       click_button("Submit")
-   end
+    visit "/login"
+    fill_in("Username or email", :with => "altataxis")
+    fill_in("Password", :with => "SoftEng2019")
+    click_button("Sign In")
+    if page.has_content?("Help us keep your account safe.")
+        fill_in("challenge_response", :with => "mmsarpatwar1@sheffield.ac.uk")
+        click_button("Submit")
+    end
 end
 
 When /^(?:|I )press "([^\"]*)"(?: within "([^\"]*)")?$/ do |button, selector|
