@@ -7,10 +7,11 @@
   "MiniTest": {
     "coverage": {
       "/home/tom/Documents/COM1001/project/app/methods.rb": [
-        null,
         1,
-        0,
-        0,
+        3,
+        3,
+        3,
+        3,
         null,
         null,
         1,
@@ -76,11 +77,13 @@
         null,
         1,
         null,
+        null,
         6,
+        6,
+        null,
+        1,
         1,
         null,
-        null,
-        5,
         null,
         null,
         null,
@@ -104,7 +107,7 @@
         null
       ]
     },
-    "timestamp": 1557402649
+    "timestamp": 1557415217
   },
   "Cucumber Features": {
     "coverage": {

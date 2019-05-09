@@ -1,0 +1,14 @@
+addcallback
+backupdb
+clean
+createdb
+createtestdb
+cucumber
+install
+installchromedriver
+installgems
+installrvm
+minitests
+run
+test
+wipedb

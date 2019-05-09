@@ -1,7 +1,8 @@
-# not testing
 def gather_taxis(city)
      @availableTaxis = $db.execute %{SELECT * FROM taxis WHERE city IS '#{city}' AND available IS "1"} #Gather all taxis
      @unavailableTaxis = $db.execute %{SELECT * FROM taxis WHERE city IS '#{city}' AND available IS "0"} #Gather all taxis
+     @returnTaxis = @availableTaxis, @unavailableTaxis
+     return @returnTaxis
 end
 
 def add_feedback(j_id, u_id, fdbk, rat)
