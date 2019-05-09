@@ -67,11 +67,10 @@ end
 
 def get_entry(id, table)
     # validation
-    if (table != "users" && table != "journeys" && table != "feedback" && table != "taxis") then
-        return nil
+    if $db.execute("SELECT name FROM sqlite_master WHERE type = 'table'").to_s.include? table then
+        return $db.execute("SELECT * FROM #{table} WHERE id = #{id}")[0]
     end
-
-    return $db.execute("SELECT * FROM #{table} WHERE id = #{id}")[0]
+    return nil    
 end
 
 # Retrieves data by the specified table, column and given date from database
@@ -79,7 +78,7 @@ def get_data(table, column, date)
     data = Hash.new()
 
     # validation
-    if (table != "users" && table != "journeys" && table != "feedback" && table != "taxis") || (table == "users" && column != "signup_date") || (table != "users" && column != "date_time") then
+    if (!$db.execute("SELECT name FROM sqlite_master WHERE type = 'table'").to_s.include? table) || (table == "users" && column != "signup_date") || (table != "users" && column != "date_time") then
         date.each do |time|
           data[time] = 0
         end
