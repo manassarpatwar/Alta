@@ -58,7 +58,7 @@
                             <div id="reply<%=h@tweets.index(tweet)%>">
                                 <textarea rows="5" cols="60" placeholder="Type your reply here" name="reply" id="replyInput<%=h@tweets.index(tweet)%>" value="<%=h params[:reply] %>" class="replyTextArea"></textarea>
                             </div>
-                            <p id = "noreply" style = "color:red"></p>
+                            <p id = "noreply<%=h@tweets.index(tweet)%>" style = "color:red"></p>
                             <% params[:tweetindex] = @tweets.index(tweet) %>
                             <% params[:tweetid] = tweet.id %>
                             <% params[:screen_name] = tweet.user.screen_name %>
@@ -137,7 +137,7 @@
         term[4] = $form.find("textarea[name='reply']").val();
         // Send the data using post
         if(term[4] == ""){
-            $("#noreply").empty().append("Please enter a reply")
+            $("#noreply"+term[1]).empty().append("Please enter a reply")
         }else{
             var posting = $.post("replyToTweet", {
                 tweetindex: term[1],
