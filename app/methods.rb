@@ -67,10 +67,13 @@ end
 
 def get_entry(id, table)
     # validation
-    if $db.execute("SELECT name FROM sqlite_master WHERE type = 'table'").to_s.include? table then
-        return $db.execute("SELECT * FROM #{table} WHERE id = #{id}")[0]
+    begin
+        if $db.execute("SELECT name FROM sqlite_master WHERE type = 'table'").to_s.include? table then
+            return $db.execute("SELECT * FROM #{table} WHERE id = #{id}")[0]
+        end
+    rescue SQLite3::SQLException
+        return nil
     end
-    return nil    
 end
 
 # Retrieves data by the specified table, column and given date from database

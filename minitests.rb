@@ -194,14 +194,14 @@ class TestGetEntry < Minitest::Test
         user = ['1092444312430919681', 'ise19team29', '2019/03/13 10:54', 1, 100000]
         table = 'user'
         id = '1092444312430919681'
-        assert_equal nil, get_entry(id, table)
+        assert_nil nil, get_entry(id, table)
     end
 
     def test_invalid_id
         user = ['1092444312430919681', 'ise19team29', '2019/03/13 10:54', 1, 100000]
         table = 'users'
         id = '0'
-        assert_equal nil, get_entry(id, table)
+        assert_nil nil, get_entry(id, table)
     end
 end
 
