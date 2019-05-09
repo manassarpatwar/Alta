@@ -1,3 +1,4 @@
+# not testing
 def gather_taxis(city)
      @availableTaxis = $db.execute %{SELECT * FROM taxis WHERE city IS '#{city}' AND available IS "1"} #Gather all taxis
      @unavailableTaxis = $db.execute %{SELECT * FROM taxis WHERE city IS '#{city}' AND available IS "0"} #Gather all taxis
@@ -17,9 +18,8 @@ def add_feedback(j_id, u_id, fdbk, rat)
     @date_time = Time.now.strftime("%Y/%m/%d %H:%M").to_s
     @feedback = fdbk
     @rating = rat
-
     # perform validation
-    @journey_id_ok = @journeyId.nil? || (isPositiveNumber? (@journey_id))
+    @journey_id_ok = @journey_id.nil? || (isPositiveNumber? (@journey_id))
     @feedback_ok = !@feedback.nil? && @feedback != ""
     @user_id_ok = !@user_id.nil? && @user_id != ""
     @rating_ok = @rating == '0' || @rating == '1' || @rating == '2' || @rating == '3' || @rating == '4' || @rating == '5'
@@ -28,13 +28,13 @@ def add_feedback(j_id, u_id, fdbk, rat)
     @all_ok = @journey_id_ok && @feedback_ok && @user_id_ok && @rating_ok
 
     @id = @feedbackCount + 1
-    
+
     # add data to the database
     if @all_ok
         # do the insert
         if @journey_id.nil? then
             $db.execute('INSERT INTO feedback VALUES (?, null, ?, ?, ?, ?)', [@id, @user_id, @date_time, @feedback, @rating])
-        else    
+        else
             $db.execute('INSERT INTO feedback VALUES (?, ?, ?, ?, ?, ?)', [@id, @journey_id, @user_id, @date_time, @feedback, @rating])
         end
         return true
@@ -66,12 +66,26 @@ def isPositiveNumber? string
 end
 
 def get_entry(id, table)
+    # validation
+    if (table != "users" && table != "journeys" && table != "feedback" && table != "taxis") then
+        return nil
+    end
+
     return $db.execute("SELECT * FROM #{table} WHERE id = #{id}")[0]
 end
 
 # Retrieves data by the specified table, column and given date from database
 def get_data(table, column, date)
     data = Hash.new()
+
+    # validation
+    if (table != "users" && table != "journeys" && table != "feedback" && table != "taxis") || (table == "users" && column != "signup_date") || (table != "users" && column != "date_time") then
+        date.each do |time|
+          data[time] = 0
+        end
+        return data
+    end
+
     date.each do |time|
       count = $db.execute("SELECT COUNT(*) FROM #{table} WHERE #{column} < '#{time}' OR #{column} LIKE '#{time}%'")
       data[time] = count.to_s.slice(2..-3).to_i
