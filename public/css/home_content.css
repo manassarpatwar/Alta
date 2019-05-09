@@ -118,7 +118,7 @@ header.sticky{
   padding-bottom:60px;
   padding-top: 50px;
   font-size: 50px;
-  font-weight: 500;
+  font-weight: 300;
   text-transform: uppercase;
   text-align: center;
   clear:both;
@@ -353,6 +353,7 @@ header.sticky{
   }
   .sectionHeader{
     padding:60px 0 30px 0;
+    font-size: 40px;
   }
   .section1Header{
     padding:30px 0 10px 0;
@@ -430,7 +431,8 @@ header.sticky{
     font-size: 17px;
   }
   .sectionHeader{
-    letter-spacing: 20px
+    letter-spacing: 20px;
+    font-size: 25px;
   }
   .section1Header, .section2Header{
     font-size:18px;
