@@ -26,7 +26,7 @@
         <% @tweets.reverse_each do |tweet| %>
         <tr>
             <td class="tweets">
-                <div>
+                <div id = "tweet<%=@tweets.index(tweet)%>">
                     <div id="tweetHTML<%=@tweets.index(tweet)%>"></div>
                     <script>
                         //Bypass twitter gem oembed rate limit by requesting oembed directly from twitter api via AJAX  
