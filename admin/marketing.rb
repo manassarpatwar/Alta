@@ -43,9 +43,9 @@ post '/followPeopleUsingKeyword' do
             end
         end
     rescue Twitter::Error::TooManyRequests => err
-
+        puts "Too many requests. Try again in #{error.rate_limit.reset_in} seconds"
         response.set_cookie(:follow_state, :value => "false")
-        puts ("To many requests to twitter API Marketing.rb line 48, followPeopleUsingKeyword")
+        sleep error.rate_limit.reset_in
     end
     redirect '/marketing'
 end
@@ -58,16 +58,15 @@ post '/tweetToTimeline' do
     
     # Tweets a message from the dashboard to the Twitter and catches an error if not allowed
     begin
-        if(params[:tweet] != "")
-            if !(params[:tweet].nil?)
-                response.set_cookie(:tweeting, :value => "false")
-                @tweet_string = params[:tweet]
-                @clientMarketing.update(@tweet_string)
-            end
+        if(params[:tweet] != "" && !(params[:tweet].nil?))
+            response.set_cookie(:tweeting, :value => "false")
+            @tweet_string = params[:tweet]
+            @clientMarketing.update(@tweet_string)
         end
     rescue Twitter::Error::TooManyRequests => err
+        puts "Too many requests. Try again in #{error.rate_limit.reset_in} seconds"
         response.set_cookie(:tweet_state, :value => "false")
-        puts ("To many requests to twitter API Marketing.rb line 70 tweetToTimeline")
+        sleep error.rate_limit.reset_in
     end
     redirect '/marketing'
 end

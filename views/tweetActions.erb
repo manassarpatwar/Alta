@@ -38,7 +38,6 @@
                             error: function(xhr, ajaxOptions, thrownError) {
                                 if (xhr.status == 404) {
                                     //alert("This is maybe due to the user deleting thier tweet.");
-                                    console.log("Triggered ajaxError handler.");
                                     var posting = $.post("handleDeletedTweet", {
                                         tweetindex: "<%=@tweets.index(tweet)%>"
                                     });
@@ -200,8 +199,6 @@
         var interval = 10;
         event.preventDefault();
         var timeNow = new Date().getTime();
-        console.log(timeNow);
-        console.log(timeNow - timePrev);
         if (timeNow - timePrev >= interval * 1000) {
             timePrev = timeNow;
             // Get some values from elements on the page:

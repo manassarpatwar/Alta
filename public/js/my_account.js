@@ -7,7 +7,6 @@ function addFilter() {
   filter = input.value.toUpperCase();
   table1 = document.getElementById("databaseView");
   tr = table1.getElementsByTagName("tr");
-  console.log(tr);
   for (i = 0; i < tr.length; i++) {
     td = tr[i].getElementsByTagName("td")[index-1];
     if (td) {
@@ -172,7 +171,6 @@ if(lastSelected) {
 
 select.onchange = function () {
    lastSelected = select.options[select.selectedIndex].value;
-   console.log(lastSelected);
    localStorage.setItem('select', lastSelected);
 }
 

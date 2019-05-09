@@ -50,7 +50,6 @@ configure do
           config.access_token_secret = 'UkK1okCoI1kFUKeofvh5Y5QQHkJyVOQxeIQGQfyCjIFQP'
       end
       $tweets = TWITTER_CLIENT.mentions_timeline(count: "5")
-      puts "fetched tweets"
     rescue Twitter::Error::TooManyRequests => error
         puts "Too many requests. Try again in #{error.rate_limit.reset_in} seconds"
         sleep error.rate_limit.reset_in

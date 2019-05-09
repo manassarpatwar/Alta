@@ -307,7 +307,6 @@
             term[2] = $form.find("input[name='generalRating']").val();
             term[3] = $form.find("input[name='referenceNo']").val();
             if (term[1] == undefined || term[1] == "") {
-                console.log("i am running")
                 $(this).find(".journeyReview").empty().css("color", "red").append("Please enter feedback");
             } else {
                 // Send the data using post

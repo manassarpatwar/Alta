@@ -8,23 +8,19 @@ configure do
     @clientAutomaticFollowing = Twitter::REST::Client.new(autoConfig)
 end
 
-# trying to make scheduler running once per server run, not working yet.
 def following_scheduler()
      scheduler = Rufus::Scheduler.new
     
     begin
         #schedule events to follow people that tweet to us
         scheduler.every("3m") do
-            puts ("loop started scheduler #{scheduler.object_id}")
                 mentions = @clientAutomaticFollowing.mentions_timeline(count: "1")
                 if mentions[0].user.screen_name != "ise19team29"
                     @clientAutomaticFollowing.follow(mentions[0].user.screen_name)
                 end
-                puts ("Automated following completed")
         end
     rescue Twitter::Error::TooManyRequests => error
+        puts "Too many requests. Try again in #{error.rate_limit.reset_in} seconds"
         sleep error.rate_limit.reset_in
-        puts ("To many requests to twitter API scheduler.rb line 28 before do")
     end
-    puts("started Scheduler #{scheduler.object_id}")
 end

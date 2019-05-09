@@ -116,7 +116,6 @@
         var term = []
         var $form = $(this);
         term[1] = $form.find("input[name='taxiId']").val();
-        console.log(term[1])
         // Send the data using post
         var posting = $.post("addToUnavailable", {
             taxiId: term[1]
@@ -136,7 +135,6 @@
         var term = []
         var $form = $(this);
         term[1] = $form.find("input[name='taxiId']").val();
-        console.log(term[1])
         // Send the data using post
         var posting = $.post("addToAvailable", {
             taxiId: term[1]

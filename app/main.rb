@@ -29,8 +29,6 @@ post'/addRating' do
     @referenceNo = params[:referenceNo].to_i
 
     $db.execute("UPDATE journeys SET rating = '#{@rating}' WHERE id = '#{@referenceNo}' AND user_id = '#{session[:id]}'")
-    # puts params[:rating]
-    puts params[:referenceNo]
     redirect '/myAccount'
 end
 
