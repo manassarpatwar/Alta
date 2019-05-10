@@ -240,7 +240,7 @@ post '/editFeedback/:id' do
     @rating = params[:rating]
 
 	# perform validation
-    @journey_id_ok = isPositiveNumber? (@journey_id)
+    @journey_id_ok = @journey_id.nil? || @journey_id == "" || (isPositiveNumber? (@journey_id))
     @feedback_ok = !@feedback.nil? && @feedback != ""
     @user_id_ok = !@user_id.nil? && @user_id != ""
 	@date_time_ok = !@date_time.nil? && @date_time != ""

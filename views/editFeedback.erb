@@ -48,7 +48,7 @@
         <input type="text" name="user_id" value="<%=h @user_id%>" />
     </p>
 
-    <% if @submitted && !@datetime_ok %>
+    <% if @submitted && !@date_time_ok %>
     <p style="color:red">Please enter a valid date time</p>
     <% end %>
     <p>Date Time:
