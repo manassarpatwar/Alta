@@ -19,4 +19,4 @@ Feature: Editing feedback on editFeedback
             When I fill in "journey_id" with ""
             When I fill in "feedback" with "I am not satisfied"
             When I press "Submit"
-            Then I should see "There were errors in your form submission"
+            Then I should see "Feedback Edited"
