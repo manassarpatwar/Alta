@@ -45,7 +45,7 @@ end
 
 def get_total_rides(id)
     @totalRides = 0
-    @journeys = $db.execute("SELECT * FROM journeys WHERE user_id =  '#{id}' AND free_ride = 0")
+    @journeys = $db.execute("SELECT * FROM journeys WHERE user_id =  '#{id}' AND free_ride = 0 AND cancelled = 0")
     @journeys.each do |ride|
         @totalRides+=1
     end
