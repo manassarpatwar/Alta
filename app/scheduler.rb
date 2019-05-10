@@ -14,9 +14,11 @@ def following_scheduler()
         begin
             #schedule events to follow people that tweet to us
             mentions = @clientAutomaticFollowing.mentions_timeline(count: "1")
+            puts "Started automatic following"
             if mentions[0].user.screen_name != "ise19team29"
                 @clientAutomaticFollowing.follow(mentions[0].user.screen_name)
             end
+            puts "Automatic following finished"
         rescue Twitter::Error::TooManyRequests => error
             puts "Too many requests. Try again in #{error.rate_limit.reset_in} seconds"
             job.next_time = Time.now + error.rate_limit.reset_in
