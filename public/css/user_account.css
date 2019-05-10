@@ -814,7 +814,7 @@ table {
     }
 }
 
-#addJourneyReviewForm #addReview .generalRatingText{
+#addJourneyReview #addJourneyReviewForm .generalRatingText .ratingText{
     display:flex;
     justify-content: center;
     padding-top:20px;   
