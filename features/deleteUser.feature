@@ -1,4 +1,4 @@
-  Feature: deleting data
+  Feature: Deleting user on setings
         @javascript
         Scenario: Correct Date/Time entered
             Given I am signed in as admin from sheffield

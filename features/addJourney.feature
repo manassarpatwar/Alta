@@ -1,4 +1,4 @@
-Feature: Add Journey
+Feature: Adding journey to addJourney
    @javascript
    Scenario: Correct Journey Data entered
             Given I am signed in as admin from sheffield

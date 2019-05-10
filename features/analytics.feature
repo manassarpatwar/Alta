@@ -1,4 +1,4 @@
-Feature: Analytics
+Feature: Analytics headings correct
         @javascript
         Scenario: Correct page heading
             Given I am signed in as admin from sheffield

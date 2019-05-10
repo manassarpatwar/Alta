@@ -1,4 +1,4 @@
-Feature: Editing data
+Feature: Editing ride deal on settings
             
         @javascript
         Scenario: Correct Deal entered

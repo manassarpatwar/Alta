@@ -1,4 +1,4 @@
-Feature: Editing data
+Feature: Editing taxi on editTaxi
             
         @javascript
         Scenario: Correct Data entered

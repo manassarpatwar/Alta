@@ -1,4 +1,4 @@
-  Feature: deleting data
+  Feature: Deleting taxi on settings
         @javascript
         Scenario: Correct Data entered
             Given I am signed in as admin from sheffield

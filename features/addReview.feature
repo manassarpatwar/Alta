@@ -1,4 +1,4 @@
-Feature: Adding review
+Feature: Adding review to addReview
             
         @javascript
         Scenario: Correct Data entered

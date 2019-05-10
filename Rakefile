@@ -67,7 +67,7 @@ task :addcallback do
     abort("Exiting")
   end
 end
-
+#---------------------------Database tasks--------------------------#
 desc "Create db"
 task :createdb do
   puts "Creating the database"
@@ -78,7 +78,12 @@ desc "Delete temporary files"
 task :clean do
   `echo deleting temporary files`
   `rm database/taxi_test_db.sqlite`
-  # ... code to delete the database ....
+end
+
+desc "Delete database"
+task :deletedb do
+  `echo deleting temporary files`
+  `rm database/taxi_db.sqlite`
 end
 
 desc "Create backup of database into csv files"
@@ -89,13 +94,17 @@ task :backupdb do
     system('sqlite3 -header -csv database/taxi_db.sqlite "select * from journeys;" > public/csv/journeys.csv')
 end
 
+desc "Create test database"
+task :createtestdb do
+    system('ruby database/createDatabase.rb testdb')
+end
 
 desc "Restore the state of the db"
 task :wipedb do
   puts "Wiping the database"
   `ruby database/wipeDatabase.rb`
 end
-
+#-------------------------------------------------------------------#
 
 desc "Run cucumber tests"
 task :cucumber do
@@ -110,12 +119,6 @@ task :minitests do
    system('ruby minitests.rb')
    Rake::Task[:clean].execute
 end
-
-desc "Create test database"
-task :createtestdb do
-    system('ruby database/createDatabase.rb testdb')
-end
-
 
 desc "Run tests"
 task :test do

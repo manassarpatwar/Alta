@@ -1,4 +1,4 @@
-Feature: Adding data
+Feature: Editing data on editUser
             
         @javascript
         Scenario: Correct Date/Time entered

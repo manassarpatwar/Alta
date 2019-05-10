@@ -1,4 +1,4 @@
-Feature: Tweet actions
+Feature: Tweet actions on dashboard 
             
    @javascript
    Scenario: Reply to tweet is shown and destroy the tweet after replying 

@@ -1,4 +1,4 @@
-Feature: DisplayTaxi features
+Feature: Switching from unavailable to available
    @javascript
    Scenario: Available taxi is now unavailable
             Given I am signed in as admin from sheffield

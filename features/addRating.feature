@@ -1,4 +1,4 @@
-Feature: Adding data
+Feature: Adding rating to addRating
             
         @javascript
         Scenario: Correct Data entered

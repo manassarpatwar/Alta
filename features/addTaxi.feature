@@ -1,4 +1,4 @@
-Feature: Adding data
+Feature: Adding taxi to addTaxi
             
         @javascript
         Scenario: Correct Data entered

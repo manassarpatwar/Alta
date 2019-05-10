@@ -1,4 +1,4 @@
-Feature: Deleting data
+Feature: Deleting feedback on settings
             
         @javascript
         Scenario: Correct Data entered

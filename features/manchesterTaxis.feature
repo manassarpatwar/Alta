@@ -1,4 +1,4 @@
-Feature: DisplayTaxi features
+Feature: Dashboard displays taxi correctly according to admin
    @javascript
    Scenario: Machester taxis are displayed when admin is from manchester
             Given I start a new session

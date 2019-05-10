@@ -1,4 +1,4 @@
-Feature: Edit Journey
+Feature: Editing Journey on editJourney
    @javascript
    Scenario: Correct Journey Data entered
             Given I am signed in as admin from sheffield

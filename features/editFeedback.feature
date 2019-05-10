@@ -1,4 +1,4 @@
-Feature: Editing data
+Feature: Editing feedback on editFeedback
             
         @javascript
         Scenario: Correct Data entered
