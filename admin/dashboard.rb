@@ -110,15 +110,20 @@ post '/addJourney' do
 	@all_ok = @taxiId_ok && @userId_ok && @twitterHandle_ok && @dateTime_ok && @startLocation_ok && @endLocation_ok && @freeRide_ok && @cancelled_ok && @rating_ok && @convoLink_ok
 
   	# add data to the database
-	if @all_ok
-        $db.execute('INSERT INTO journeys VALUES (?, ?, ?, ?, ?, ? ,?, ?, ?, ?, ?)', [@id, @taxiId, @userId, @twitterHandle, @dateTime, @startLocation, @endLocation, @freeRide, @cancelled, @rating, @convoLink])
-        @userInfo = $db.execute("SELECT * FROM users WHERE id = #{@userId}") #Gather all user data
-        if @userInfo.size > 0 #If uid = id then:
-           if @freeRide == '1' then
-             $db.execute("UPDATE users SET free_rides = #{@userInfo[0][4]-1}  WHERE id='#{@userId}'")
-           elsif (get_total_rides(@userId)) % $rideDeal == 0 && @freeRide == '0' then
-             $db.execute("UPDATE users SET free_rides = #{@userInfo[0][4]+1}  WHERE id='#{@userId}'")
-           end
+    if @all_ok
+        begin
+            $db.exec("INSERT INTO journeys VALUES (DEFAULT, #{@taxiId}, #{@userId}, '#{@twitterHandle}', '#{@dateTime}', '#{@startLocation}', '#{@endLocation}', #{@freeRide}, #{@cancelled}, #{@rating}, '#{@convoLink}')")
+            @userInfo = $db.exec("SELECT * FROM users WHERE id = #{@userId}").map{|x| x.values} #Gather all user data
+            if @userInfo.size > 0 #If uid = id then:
+                if @freeRide == '1' then
+                    $db.exec("UPDATE users SET free_rides = #{@userInfo[0][4]-1}  WHERE id='#{@userId}'")
+                elsif (get_total_rides(@userId)) % $rideDeal == 0 && @freeRide == '0' then
+                    $db.exec("UPDATE users SET free_rides = #{@userInfo[0][4]+1}  WHERE id='#{@userId}'")
+                end
+            end
+        rescue PG::Error => e
+            @all_ok = false
+            @userId_ok = false
         end
   	end
     erb :addJourney
@@ -126,14 +131,14 @@ end
 
 post '/addToAvailable' do
     taxiId = params[:taxiId].to_i
-    $db.execute("UPDATE taxis SET available = 1 WHERE id='#{taxiId}'")
+    $db.exec("UPDATE taxis SET available = 1 WHERE id='#{taxiId}'")
     gather_taxis(session[:admin_city])
     erb :displayTaxis
 end
 
 post '/addToUnavailable' do
     taxiId = params[:taxiId].to_i
-    $db.execute("UPDATE taxis SET available = 0 WHERE id='#{taxiId}'")
+    $db.exec("UPDATE taxis SET available = 0 WHERE id='#{taxiId}'")
     gather_taxis(session[:admin_city])
     erb :displayTaxis
 end
@@ -155,10 +160,10 @@ post '/fillInfoInJourney' do
 	@twitterHandle = params[:twitterHandle]
     @convoLink = params[:convoLink]
     @dateTime = Time.now.strftime("%Y/%m/%d %H:%M").to_s
-    @usersTable = $db.execute %{SELECT * FROM users} #Gather all user data
+    @usersTable = $db.exec("SELECT * FROM users").map{|x| x.values} #Gather all user data
     @usersTable.each do |record| #Go through each user record
         if @userId == record[0] #If uid = id then:
-           @userInfo = $db.execute("SELECT * FROM users WHERE id = ?", @userId)
+           @userInfo = $db.exec("SELECT * FROM users WHERE id = #{@userId}").map{|x| x.values}
            if @userInfo[0][4] != 0 then
              @freeRide = 1
            else

@@ -118,6 +118,8 @@ dashboard’ depending on which account you used to log in.
 _Note: To access the admin dashboard and functionalities you_ ​ **_must_** _use the details for the
 ise19team29 Twitter account._
 
+**PLEASE CONTACT THE OWNER OF THIS REPOSITORY FOR ADMIN ACESS**
+
 ### My account
 
 To go to ‘my account’ click the link in the top right of the navigation bar (if logged in and not

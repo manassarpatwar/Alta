@@ -15,10 +15,10 @@ get '/analytics' do
     end
     
     # Get total statistics currently from the database
-	@howManyUsers = $db.execute("SELECT COUNT(*) FROM users")
-	@howManyJourneys = $db.execute("SELECT COUNT(*) FROM journeys")
-	@howManyFeedbacks = $db.execute("SELECT COUNT(*) FROM feedback")
-	@howManyTaxis = $db.execute("SELECT COUNT(*) FROM taxis")
+	@howManyUsers = $db.exec("SELECT COUNT(*) FROM users").map{|x| x.values}
+	@howManyJourneys = $db.exec("SELECT COUNT(*) FROM journeys").map{|x| x.values}
+	@howManyFeedbacks = $db.exec("SELECT COUNT(*) FROM feedback").map{|x| x.values}
+	@howManyTaxis = $db.exec("SELECT COUNT(*) FROM taxis").map{|x| x.values}
     
     # creates hashes and retrieves data by date about the change of user/journey/feedbck/taxi statistics
     @userData = Hash.new()
@@ -31,8 +31,8 @@ get '/analytics' do
     @feedbackData = get_data("feedback", "date_time", date)
 
     @taxiData["Total Number"] = @howManyTaxis
-    @taxiData["Sheffield"] = $db.execute("SELECT COUNT(*) FROM taxis WHERE city LIKE 'Sheffield'") 
-    @taxiData["Manchester"] = $db.execute("SELECT COUNT(*) FROM taxis WHERE city LIKE 'Manchester'") 
+    @taxiData["Sheffield"] = $db.exec("SELECT COUNT(*) FROM taxis WHERE city LIKE 'Sheffield'").map{|x| x.values}
+    @taxiData["Manchester"] = $db.exec("SELECT COUNT(*) FROM taxis WHERE city LIKE 'Manchester'").map{|x| x.values}
     
     erb :analytics
 end

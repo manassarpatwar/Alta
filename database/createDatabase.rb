@@ -1,4 +1,4 @@
-require 'sqlite3'
+require 'pg'
 require 'csv'
 
 csv_text_feedback = File.read("public/csv/feedback.csv")
@@ -14,87 +14,117 @@ csv_text_users = File.read("public/csv/users.csv")
 csvUsers = CSV.parse(csv_text_users, :headers => true)
 
 inputs = ARGV
+conn = PG.connect(dbname: 'postgres')
 if inputs[0] == "testdb"
-  DB = SQLite3::Database.new 'database/taxi_test_db.sqlite'
+  begin
+    DB = PG.connect(dbname: 'taxi_test_db')
+  rescue PG::Error => e
+    conn.exec("CREATE DATABASE taxi_test_db")
+    DB = PG.connect(dbname: 'taxi_test_db')
+  end
 else
-  DB = SQLite3::Database.new 'database/taxi_db.sqlite'
+  begin
+    DB = PG.connect(dbname: 'taxi_db')
+  rescue PG::Error => e
+    conn.exec("CREATE DATABASE taxi_db")
+    DB = PG.connect(dbname: 'taxi_db')
+  end
 end
+
 # Create a table
-DB.execute <<-SQL
-  DROP TABLE IF EXISTS "feedback";
-SQL
-DB.execute <<-SQL
-  DROP TABLE IF EXISTS "journeys";
-SQL
-DB.execute <<-SQL
-  DROP TABLE IF EXISTS "taxis";
-SQL
-DB.execute <<-SQL
-  DROP TABLE IF EXISTS "users";
-SQL
+DB.exec("
+  DROP TABLE IF EXISTS feedback;
+")
+DB.exec("
+  DROP TABLE IF EXISTS journeys;
+")
+DB.exec("
+  DROP TABLE IF EXISTS taxis;
+")
+DB.exec("
+  DROP TABLE IF EXISTS users;
+")
 
-DB.execute <<-SQL
-  CREATE TABLE "feedback" (
-	"id"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
-	"journey_id"	INTEGER,
-	"user_id"	TEXT NOT NULL,
-	"date_time"	TEXT NOT NULL,
-	"feedback"	TEXT NOT NULL,
-    "rating" INTEGER,
-	FOREIGN KEY("user_id") REFERENCES "users"("id")
+DB.exec("
+  CREATE TABLE users (
+	id bigint UNIQUE,
+	name	TEXT NOT NULL,
+	signup_date	TEXT NOT NULL,
+	user_type	INT NOT NULL,
+  free_rides	INT NOT NULL,
+  PRIMARY KEY(id)
   );
-SQL
+")
 
-DB.execute <<-SQL
-  CREATE TABLE "journeys" (
-      "id"	INTEGER NOT NULL UNIQUE,
-      "taxi_id"	INTEGER NOT NULL,
-      "user_id"	TEXT,
-      "twitter_handle"	TEXT NOT NULL,
-      "date_time"	TEXT NOT NULL,
-      "start_location"	TEXT NOT NULL,
-      "end_location"	TEXT NOT NULL,
-      "free_ride"	INTEGER NOT NULL,
-      "cancelled"	INTEGER NOT NULL,
-      "rating"	INTEGER,
-      "conversation_link"	TEXT NOT NULL,
-      FOREIGN KEY("user_id") REFERENCES "users"("id"),
-      PRIMARY KEY("id"),
-      FOREIGN KEY("taxi_id") REFERENCES "taxis"("id")
+DB.exec("
+  CREATE TABLE feedback (
+  id	SERIAL PRIMARY KEY UNIQUE,
+	journey_id INT,
+	user_id	bigint NOT NULL,
+	date_time	TEXT NOT NULL,
+	feedback	TEXT NOT NULL,
+    rating INT,
+  FOREIGN KEY(user_id) REFERENCES users(id)
   );
-SQL
-DB.execute <<-SQL
-  CREATE TABLE "taxis" (
-	"id"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
-	"reg_num"	TEXT NOT NULL UNIQUE,
-	"contact_num"	TEXT NOT NULL UNIQUE,
-	"taxi_type"	TEXT NOT NULL, 
-    "city" STRING, 
-    "available" INTEGER);
-SQL
-DB.execute <<-SQL
-  CREATE TABLE "users" (
-	"id"	TEXT NOT NULL UNIQUE,
-	"name"	TEXT NOT NULL,
-	"signup_date"	TEXT NOT NULL,
-	"user_type"	INTEGER NOT NULL,
-	"free_rides"	INTEGER NOT NULL,
-	PRIMARY KEY("id")
+")
+
+DB.exec("
+  CREATE TABLE taxis (
+	id	SERIAL PRIMARY KEY UNIQUE,
+	reg_num	TEXT NOT NULL UNIQUE,
+	contact_num	TEXT NOT NULL UNIQUE,
+	taxi_type	TEXT NOT NULL, 
+    city TEXT, 
+    available INT);
+")
+
+DB.exec("
+  CREATE TABLE journeys (
+      id	SERIAL PRIMARY KEY UNIQUE,
+      taxi_id	INT NOT NULL,
+      user_id	bigint,
+      twitter_handle	TEXT NOT NULL,
+      date_time	TEXT NOT NULL,
+      start_location	TEXT NOT NULL,
+      end_location	TEXT NOT NULL,
+      free_ride	INT NOT NULL,
+      cancelled	INT NOT NULL,
+      rating	INT,
+      conversation_link	TEXT NOT NULL,
+      FOREIGN KEY(user_id) REFERENCES users(id),
+      FOREIGN KEY(taxi_id) REFERENCES taxis(id)
   );
-SQL
+")
+
+
+csvUsers.each do |row|
+  begin
+    DB.prepare('insertUsers', 'insert into users values ($1, $2, $3, $4, $5)')
+  rescue PG::Error => e
+  end
+  DB.exec_prepared('insertUsers', row.fields)
+end
 
 csvFeedback.each do |row|
-  DB.execute "insert into feedback values ( ?, ?, ?, ?, ?, ? )", row.fields
-end
-
-csvJourneys.each do |row|
-  DB.execute "insert into journeys values ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )", row.fields
+  begin
+    DB.prepare('insertFeedbacks', 'insert into feedback values (DEFAULT, $1, $2, $3, $4, $5)')
+  rescue PG::Error => e
+  end
+  DB.exec_prepared('insertFeedbacks', row.fields.drop(1))
 end
 
 csvTaxis.each do |row|
-  DB.execute "insert into taxis values ( ?, ?, ?, ?, ?, ? )", row.fields
+  begin
+    DB.prepare('insertTaxis', 'insert into taxis values (DEFAULT, $1, $2, $3, $4, $5)')
+  rescue PG::Error => e
+  end
+  DB.exec_prepared('insertTaxis', row.fields.drop(1))
 end
 
-csvUsers.each do |row|
-  DB.execute "insert into users values ( ?, ?, ?, ?, ?)", row.fields
+csvJourneys.each do |row|
+  begin
+    DB.prepare('insertJourneys', 'insert into journeys values (DEFAULT, $1, $2, $3, $4, $5, $6, $7, $8, $9, $10)')
+  rescue PG::Error => e
+  end
+  DB.exec_prepared('insertJourneys', row.fields.drop(1))
 end

@@ -5,8 +5,9 @@ source 'https://rubygems.org' do
 	gem 'thin'
 	gem 'cucumber'
 	gem 'rufus-scheduler'
+	gem "webdrivers"
 	gem 'omniauth-twitter'
-	gem 'sqlite3'
+	gem 'pg'
 	gem 'sinatra-contrib'
 	gem 'capybara'
 	gem 'rspec'

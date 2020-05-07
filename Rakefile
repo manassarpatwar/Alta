@@ -1,4 +1,5 @@
 require "rake/testtask"
+require 'pg'
 
 # replace the below with the path to your app
 
@@ -74,18 +75,6 @@ task :createdb do
   `ruby database/createDatabase.rb`
 end
 
-desc "Delete temporary files"
-task :clean do
-  `echo deleting temporary files`
-  `rm database/taxi_test_db.sqlite`
-end
-
-desc "Delete database"
-task :deletedb do
-  `echo deleting temporary files`
-  `rm database/taxi_db.sqlite`
-end
-
 desc "Create backup of database into csv files"
 task :backupdb do
     system('sqlite3 -header -csv database/taxi_db.sqlite "select * from users;" > public/csv/users.csv')
@@ -110,14 +99,12 @@ desc "Run cucumber tests"
 task :cucumber do
    system('ruby database/createDatabase.rb testdb')
    system('cucumber')  
-   Rake::Task[:clean].execute
 end
 
 desc "Run minitests"
 task :minitests do
    system('ruby database/createDatabase.rb testdb')    
    system('ruby minitests.rb')
-   Rake::Task[:clean].execute
 end
 
 desc "Run tests"
@@ -129,7 +116,7 @@ end
 desc "Run the Sinatra app locally"
 task :run do
     begin
-        File.read("database/taxi_db.sqlite")
+        PG.connect(dbname: 'taxi_db')
     rescue
         puts "No database found. Creating now..."
         Rake::Task[:createdb].execute

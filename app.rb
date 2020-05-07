@@ -7,7 +7,7 @@ require 'sinatra/cookies'
 require 'twitter'
 require 'rufus-scheduler'
 require 'omniauth-twitter'
-require 'sqlite3'
+require 'pg'
 require 'chartkick'
 require 'csv'
 require 'socket'
@@ -40,7 +40,7 @@ end
 #Configure sessions
 configure do
 	enable :sessions
-    $db = SQLite3::Database.new 'database/taxi_db.sqlite'
+    $db = PG.connect(dbname: 'taxi_db');
     $rideDeal = 5
     begin
       TWITTER_CLIENT = Twitter::REST::Client.new do |config|

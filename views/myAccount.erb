@@ -169,7 +169,7 @@
                             </form>
                             <div class="rating<%= @index %> ratinRev" role="optgroup">
                                 <% for i in 1..5 %>
-                                <% if i <= record[9] %>
+                                <% if i <= record[9].to_i %>
                                     <i class="fa fa-star fa-2x rating-star_<%= @index %> ratRev" style="outline:none" id="rating-<%= i %>" data-rating="<%= i %>" tabindex="0" aria-label="Rate as one out of 5 stars" role="radio"></i>
                                 <% else %>
                                     <i class="fa fa-star-o fa-2x rating-star_<%= @index %> ratRev" style="outline:none" id="rating-<%= i %>" data-rating="<%= i %>" tabindex="0" aria-label="Rate as one out of 5 stars" role="radio"></i>
@@ -265,7 +265,7 @@
                 </tr>
             </table>
         </tr>
-        <% @feedbackExist = $db.execute("SELECT * FROM feedback WHERE journey_id = #{record[0]}").size > 0 %>
+        <% @feedbackExist = $db.exec("SELECT * FROM feedback WHERE journey_id = #{record[0]}").map{|x| x.values}.size > 0 %>
         <% if !@feedbackExist %>
         <tr>
             <div id = "addJourneyReview">

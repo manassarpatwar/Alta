@@ -82,6 +82,7 @@ GEM
     omniauth-twitter (1.4.0)
       omniauth-oauth (~> 1.1)
       rack
+    pg (1.2.3)
     public_suffix (3.0.3)
     puma (3.12.1)
     raabro (1.1.6)
@@ -128,7 +129,6 @@ GEM
       rack-protection (= 2.0.5)
       sinatra (= 2.0.5)
       tilt (>= 1.3, < 3)
-    sqlite3 (1.4.0)
     thin (1.7.2)
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0, >= 1.0.4)
@@ -151,6 +151,10 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.5)
+    webdrivers (4.1.2)
+      nokogiri (~> 1.6)
+      rubyzip (~> 1.0)
+      selenium-webdriver (>= 3.0, < 4.0)
     xpath (3.2.0)
       nokogiri (~> 1.8)
 
@@ -164,6 +168,7 @@ DEPENDENCIES
   cucumber!
   minitest!
   omniauth-twitter!
+  pg!
   puma!
   rspec!
   rufus-scheduler!
@@ -171,9 +176,9 @@ DEPENDENCIES
   simplecov!
   sinatra!
   sinatra-contrib!
-  sqlite3!
   thin!
   twitter!
+  webdrivers!
 
 BUNDLED WITH
    1.17.2

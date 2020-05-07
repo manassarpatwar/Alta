@@ -1,15 +1,17 @@
-require 'sqlite3'
-DB = SQLite3::Database.new 'taxi_db.sqlite'
+# Create a table
+require 'pg'
 
-DB.execute <<-SQL
-  DROP TABLE IF EXISTS "feedback";
-SQL
-DB.execute <<-SQL
-  DROP TABLE IF EXISTS "journeys";
-SQL
-DB.execute <<-SQL
-  DROP TABLE IF EXISTS "taxis";
-SQL
-DB.execute <<-SQL
-  DROP TABLE IF EXISTS "users";
-SQL
+DB = PG.connect(dbname: 'taxi_db')
+
+DB.exec("
+  DROP TABLE IF EXISTS feedback;
+")
+DB.exec("
+  DROP TABLE IF EXISTS journeys;
+")
+DB.exec("
+  DROP TABLE IF EXISTS taxis;
+")
+DB.exec("
+  DROP TABLE IF EXISTS users;
+")

@@ -1,9 +1,9 @@
 require 'simplecov'
 require 'minitest/autorun'
-require 'sqlite3'
+require 'pg'
 require_relative 'app/methods.rb'
 
-$db = SQLite3::Database.new 'database/taxi_test_db.sqlite'
+$db = PG.connect(dbname: 'taxi_test_db');
 
 # testing the isPositiveNumber method
 class TestIsPositiveNumber < Minitest::Test

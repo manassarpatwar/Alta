@@ -1,13 +1,11 @@
 def gather_taxis(city)
-     @availableTaxis = $db.execute %{SELECT * FROM taxis WHERE city IS '#{city}' AND available IS "1"} #Gather all taxis
-     @unavailableTaxis = $db.execute %{SELECT * FROM taxis WHERE city IS '#{city}' AND available IS "0"} #Gather all taxis
+     @availableTaxis = $db.exec("SELECT * FROM taxis WHERE city = '#{city}' AND available = 1").map{|x| x.values} #Gather all taxis
+     @unavailableTaxis = $db.exec("SELECT * FROM taxis WHERE city = '#{city}' AND available = 0").map{|x| x.values} #Gather all taxis
      @returnTaxis = @availableTaxis, @unavailableTaxis
      return @returnTaxis
 end
 
 def add_feedback(j_id, u_id, fdbk, rat)
-  	#get feedback table from the database
-    @feedbackCount = $db.execute("SELECT COUNT(*) FROM feedback")[0][0]
     @submitted = true
     #sanitize values
     if j_id.nil? then
@@ -28,15 +26,17 @@ def add_feedback(j_id, u_id, fdbk, rat)
 
     @all_ok = @journey_id_ok && @feedback_ok && @user_id_ok && @rating_ok
 
-    @id = @feedbackCount + 1
-
     # add data to the database
     if @all_ok
         # do the insert
-        if @journey_id.nil? then
-            $db.execute('INSERT INTO feedback VALUES (?, null, ?, ?, ?, ?)', [@id, @user_id, @date_time, @feedback, @rating])
-        else
-            $db.execute('INSERT INTO feedback VALUES (?, ?, ?, ?, ?, ?)', [@id, @journey_id, @user_id, @date_time, @feedback, @rating])
+        begin
+            if @journey_id.nil? then
+                $db.exec("INSERT INTO feedback VALUES (DEFAULT, null, #{@user_id}, '#{@date_time}', '#{@feedback}', #{@rating})")
+            else
+                $db.exec("INSERT INTO feedback VALUES (DEFAULT, #{@journey_id}, #{@user_id}, '#{@date_time}', '#{@feedback}', #{@rating})")
+            end
+        rescue PG::Error => e
+            return false
         end
         return true
     end
@@ -45,7 +45,7 @@ end
 
 def get_total_rides(id)
     @totalRides = 0
-    @journeys = $db.execute("SELECT * FROM journeys WHERE user_id =  '#{id}' AND free_ride = 0 AND cancelled = 0")
+    @journeys = $db.exec("SELECT * FROM journeys WHERE user_id = #{id} AND free_ride = 0 AND cancelled = 0").map{|x| x.values}
     @journeys.each do |ride|
         @totalRides+=1
     end
@@ -69,10 +69,8 @@ end
 def get_entry(id, table)
     # validation
     begin
-        if $db.execute("SELECT name FROM sqlite_master WHERE type = 'table'").to_s.include? table then
-            return $db.execute("SELECT * FROM #{table} WHERE id = #{id}")[0]
-        end
-    rescue SQLite3::SQLException
+        return $db.exec("SELECT * FROM #{table} WHERE id = #{id}")[0].values
+    rescue PG::Error => e
         return nil
     end
 end
@@ -82,7 +80,7 @@ def get_data(table, column, date)
     data = Hash.new()
 
     # validation
-    if (!$db.execute("SELECT name FROM sqlite_master WHERE type = 'table'").to_s.include? table) || (table == "users" && column != "signup_date") || (table != "users" && column != "date_time") then
+    if (table == "users" && column != "signup_date") || (table != "users" && column != "date_time") then
         date.each do |time|
           data[time] = 0
         end
@@ -90,7 +88,7 @@ def get_data(table, column, date)
     end
 
     date.each do |time|
-      count = $db.execute("SELECT COUNT(*) FROM #{table} WHERE #{column} < '#{time}' OR #{column} LIKE '#{time}%'")
+      count = $db.exec("SELECT COUNT(*) FROM #{table} WHERE #{column} < '#{time}' OR #{column} LIKE '#{time}%'").map{|x| x.values}
       data[time] = count.to_s.slice(2..-3).to_i
     end
 

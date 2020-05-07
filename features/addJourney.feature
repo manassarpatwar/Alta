@@ -3,8 +3,6 @@ Feature: Adding journey to addJourney
    Scenario: Correct Journey Data entered
             Given I am signed in as admin from sheffield
             And I am on the dashboard page
-            When I click "#delete_icon0" within "#unavailableTaxis"
-            Then I should see "1" within "#availableTaxis"
             When I click "#reply_tweet_icon1" within "#incoming_tweets"
             When I fill in "startLocation" with "Diamond"
             When I fill in "endLocation" with "Meadowhall"

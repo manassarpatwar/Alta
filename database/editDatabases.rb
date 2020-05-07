@@ -4,10 +4,10 @@ get '/settings' do
     # only show page if admin
     redirect '/index' unless session[:admin]
     # gather data for users, journeys, feedback and taxis
-	@usersInfo = $db.execute("SELECT * FROM users")
-	@journeyInfo = $db.execute("SELECT * FROM journeys")
-	@feedbackInfo = $db.execute("SELECT * FROM feedback")
-	@taxiInfo = $db.execute("SELECT * FROM taxis")
+	@usersInfo = $db.exec("SELECT * FROM users").map{|x| x.values}
+	@journeyInfo = $db.exec("SELECT * FROM journeys").map{|x| x.values}
+	@feedbackInfo = $db.exec("SELECT * FROM feedback").map{|x| x.values}
+	@taxiInfo = $db.exec("SELECT * FROM taxis").map{|x| x.values}
     # set current local ride deal to current global ride deal
     @rideDeal = $rideDeal
     erb :settings
@@ -37,7 +37,7 @@ post '/deleteFromTable' do
     @table = params[:table]
 	@id = params[:id]
 	#execute the deletion
-	$db.execute("DELETE FROM #{@table} WHERE id='#{@id}'")
+	$db.exec("DELETE FROM #{@table} WHERE id=#{@id}")
 
 	redirect '/settings'
 end
@@ -168,10 +168,10 @@ post '/editUser/:id' do
   	# add data to the database
 	if @all_ok
 		# do the edit
-		$db.execute("UPDATE users SET name = '#{@name}' WHERE id='#{@id}'")
-    	$db.execute("UPDATE users SET signup_date = '#{@dateTime}' WHERE id='#{@id}'")
-		$db.execute("UPDATE users SET user_type = '#{@userType}' WHERE id='#{@id}'")
-		$db.execute("UPDATE users SET free_rides = '#{@freeRide}' WHERE id='#{@id}'")
+		$db.exec("UPDATE users SET name = '#{@name}' WHERE id='#{@id}'")
+    	$db.exec("UPDATE users SET signup_date = '#{@dateTime}' WHERE id='#{@id}'")
+		$db.exec("UPDATE users SET user_type = '#{@userType}' WHERE id='#{@id}'")
+		$db.exec("UPDATE users SET free_rides = '#{@freeRide}' WHERE id='#{@id}'")
   	end
 
 	erb :editUserMain
@@ -204,7 +204,7 @@ post '/editTaxi/:id' do
         @taxiType_ok = false
     end
     if @taxiToEdit[1] != @regNum && @taxiToEdit[2] != @contact then
-        @regNum_and_contact_unique = $db.execute("SELECT * FROM taxis WHERE reg_num = '#{@regNum}' AND contact_num = '#{@contact}'").size == 0
+        @regNum_and_contact_unique = $db.exec("SELECT * FROM taxis WHERE reg_num = '#{@regNum}' AND contact_num = '#{@contact}'").map{|x| x.values}.size == 0
     else
         @regNum_and_contact_unique = true
     end
@@ -212,10 +212,10 @@ post '/editTaxi/:id' do
     @all_ok = @regNum_ok && @contact_ok && @taxiType_ok && @city_ok &&  @regNum_and_contact_unique 
 	if @all_ok
 		# do the edit
-		$db.execute("UPDATE taxis SET reg_num = '#{@regNum}' WHERE id='#{@id}'")
-    	$db.execute("UPDATE taxis SET contact_num = '#{@contact}' WHERE id='#{@id}'")
-		$db.execute("UPDATE taxis SET taxi_type = '#{@taxiType}' WHERE id='#{@id}'")
-		$db.execute("UPDATE taxis SET city = '#{@city.upcase}' WHERE id='#{@id}'")
+		$db.exec("UPDATE taxis SET reg_num = '#{@regNum}' WHERE id='#{@id}'")
+    	$db.exec("UPDATE taxis SET contact_num = '#{@contact}' WHERE id='#{@id}'")
+		$db.exec("UPDATE taxis SET taxi_type = '#{@taxiType}' WHERE id='#{@id}'")
+		$db.exec("UPDATE taxis SET city = '#{@city.upcase}' WHERE id='#{@id}'")
   	end
 
 	erb :editTaxiMain
@@ -251,11 +251,11 @@ post '/editFeedback/:id' do
     # add data to the database
     if @all_ok
         # do the insert
-		$db.execute("UPDATE feedback SET journey_id = '#{@journey_id}' WHERE id='#{@id}'")
-		$db.execute("UPDATE feedback SET user_id = '#{@user_id}' WHERE id='#{@id}'")
-		$db.execute("UPDATE feedback SET date_time = '#{@date_time}' WHERE id='#{@id}'")
-		$db.execute("UPDATE feedback SET feedback = '#{@feedback}' WHERE id='#{@id}'")
-        $db.execute("UPDATE feedback SET rating = '#{@rating}' WHERE id='#{@id}'")
+		$db.exec("UPDATE feedback SET journey_id = '#{@journey_id}' WHERE id='#{@id}'")
+		$db.exec("UPDATE feedback SET user_id = '#{@user_id}' WHERE id='#{@id}'")
+		$db.exec("UPDATE feedback SET date_time = '#{@date_time}' WHERE id='#{@id}'")
+		$db.exec("UPDATE feedback SET feedback = '#{@feedback}' WHERE id='#{@id}'")
+        $db.exec("UPDATE feedback SET rating = '#{@rating}' WHERE id='#{@id}'")
 	end
 
 	erb :editFeedbackMain
@@ -291,14 +291,14 @@ post '/editJourney/:id' do
 
     if @currentTaxiId != @taxiId.to_i then
       #looping to check for every id/name whether they are in the database
-      taxi = $db.execute ("SELECT * FROM taxis WHERE id = #{@taxiId.to_i}")
+      taxi = $db.exec ("SELECT * FROM taxis WHERE id = #{@taxiId.to_i}").map{|x| x.values}
       @taxiIdFound = taxi.size > 0
     else
       @taxiIdFound = true
     end
 
     if @currentUserId != @userId.to_i then
-      user = $db.execute ("SELECT * FROM users WHERE id = #{@userId}")
+      user = $db.exec ("SELECT * FROM users WHERE id = #{@userId}").map{|x| x.values}
       @userIdFound = user.size > 0    
     else
        @userIdFound = true
@@ -321,16 +321,16 @@ post '/editJourney/:id' do
     # add data to the database
     if @all_ok
         # do the insert
-        $db.execute("UPDATE journeys SET taxi_id = '#{@taxiId}' WHERE id='#{@id}'")
-		$db.execute("UPDATE journeys SET user_id = '#{@userId}' WHERE id='#{@id}'")
-		$db.execute("UPDATE journeys SET twitter_handle = '#{@twitterHandle}' WHERE id='#{@id}'")
-		$db.execute("UPDATE journeys SET date_time = '#{@dateTime}' WHERE id='#{@id}'")
-		$db.execute("UPDATE journeys SET start_location = '#{@startLocation}' WHERE id='#{@id}'")
-		$db.execute("UPDATE journeys SET end_location = '#{@endLocation}' WHERE id='#{@id}'")
-		$db.execute("UPDATE journeys SET free_ride = '#{@freeRide}' WHERE id='#{@id}'")
-		$db.execute("UPDATE journeys SET cancelled = '#{@cancelled}' WHERE id='#{@id}'")
-		$db.execute("UPDATE journeys SET rating = '#{@rating}' WHERE id='#{@id}'")
-		$db.execute("UPDATE journeys SET conversation_link = '#{@convoLink}' WHERE id='#{@id}'")
+        $db.exec("UPDATE journeys SET taxi_id = '#{@taxiId}' WHERE id='#{@id}'")
+		$db.exec("UPDATE journeys SET user_id = '#{@userId}' WHERE id='#{@id}'")
+		$db.exec("UPDATE journeys SET twitter_handle = '#{@twitterHandle}' WHERE id='#{@id}'")
+		$db.exec("UPDATE journeys SET date_time = '#{@dateTime}' WHERE id='#{@id}'")
+		$db.exec("UPDATE journeys SET start_location = '#{@startLocation}' WHERE id='#{@id}'")
+		$db.exec("UPDATE journeys SET end_location = '#{@endLocation}' WHERE id='#{@id}'")
+		$db.exec("UPDATE journeys SET free_ride = '#{@freeRide}' WHERE id='#{@id}'")
+		$db.exec("UPDATE journeys SET cancelled = '#{@cancelled}' WHERE id='#{@id}'")
+		$db.exec("UPDATE journeys SET rating = '#{@rating}' WHERE id='#{@id}'")
+		$db.exec("UPDATE journeys SET conversation_link = '#{@convoLink}' WHERE id='#{@id}'")
 	end
 
 	erb :editJourneyMain
@@ -400,8 +400,12 @@ post '/addUser' do
 
   	# add data to the database
 	if @all_ok
-    	# do the insert
-		$db.execute('INSERT INTO users VALUES (?, ?, ?, ?, ?)', [@id, @name, @dateTime, @userType.to_i, @freeRide.to_i])
+		# do the insert
+		begin
+			$db.exec("INSERT INTO users VALUES (#{@id}, '#{@name}', '#{@dateTime}', #{@userType.to_i}, #{@freeRide.to_i})")
+		rescue PG::Error => e
+			@all_ok = false
+		end
   	end
 	erb :addUserMain
 end
@@ -412,7 +416,7 @@ post '/addTaxi' do
 	redirect '/index' unless session[:admin]
 
     @submitted = true
-    @taxiInfo= $db.execute %{SELECT * FROM taxis} # gather all user data
+    @taxiInfo= $db.exec("SELECT * FROM taxis").map{|x| x.values} # gather all user data
 
     # sanitise values
     @regNum = params[:regNum].strip
@@ -444,13 +448,15 @@ post '/addTaxi' do
 
     @all_ok = @regNum_ok && @contact_ok && @taxiType_ok && @city_ok && @regNum_unique && @contact_unique
 
-	@id = @taxiInfo[@taxiInfo.length-1][0].to_i + 1
-
 
     # add data to the database
     if @all_ok
 		# do the insert
-        $db.execute('INSERT INTO taxis VALUES (?, ?, ?, ?, ?, ?)', [@id, @regNum, @contact, @taxiType, @city, @available])
+		begin
+			$db.exec("INSERT INTO taxis VALUES (DEFAULT, '#{@regNum}', '#{@contact}', '#{@taxiType}', '#{@city}', #{@available})")
+		rescue PG::Error => e
+			@all_ok = false
+		end
     end
     erb :addTaxiMain
 end
