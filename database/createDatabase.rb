@@ -23,7 +23,7 @@ if inputs[0] == "testdb"
     DB = PG.connect(dbname: 'taxitestdb')
   end
 elsif inputs[0] == 'heroku'
-  DB = PG.connect(ENV['dbconnection'])
+  DB = PG.connect(ENV['DATABASE_URL'])
 else
   begin
     DB = PG.connect(dbname: 'altataxisdb')

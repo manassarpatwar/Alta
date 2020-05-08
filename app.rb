@@ -21,8 +21,8 @@ require_relative 'admin/marketing.rb'
 require_relative 'admin/analytics.rb'
 
 puts "#{Socket.gethostname}"
-ENV['RACK_ENV'] = 'production'
 
+puts ENV['DATABASE_URL']
 set :bind, '0.0.0.0' # Needed when running from Codio
 include ERB::Util #Ensure ERB is enabled
 #Setting up OmnuAuth-Twitter for our Twitter App
@@ -42,7 +42,7 @@ end
 configure do
     enable :sessions
 
-    $db = PG.connect(ENV['dbconnection']);
+    $db = PG.connect(ENV['DATABASE_URL']);
     $rideDeal = 5
     begin
       TWITTER_CLIENT = Twitter::REST::Client.new do |config|
