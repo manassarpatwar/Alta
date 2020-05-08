@@ -17,17 +17,19 @@ inputs = ARGV
 conn = PG.connect(dbname: 'postgres')
 if inputs[0] == "testdb"
   begin
-    DB = PG.connect(dbname: 'taxi_test_db')
+    DB = PG.connect(dbname: 'taxitestdb')
   rescue PG::Error => e
-    conn.exec("CREATE DATABASE taxi_test_db")
-    DB = PG.connect(dbname: 'taxi_test_db')
+    conn.exec("CREATE DATABASE taxitestdb")
+    DB = PG.connect(dbname: 'taxitestdb')
   end
+elsif inputs[0] == 'heroku'
+  DB = PG.connect(ENV['dbconnection'])
 else
   begin
-    DB = PG.connect(dbname: 'taxi_db')
+    DB = PG.connect(dbname: 'altataxisdb')
   rescue PG::Error => e
-    conn.exec("CREATE DATABASE taxi_db")
-    DB = PG.connect(dbname: 'taxi_db')
+    conn.exec("CREATE DATABASE altataxisdb")
+    DB = PG.connect(dbname: 'altataxisdb')
   end
 end
 

@@ -3,7 +3,7 @@ require 'minitest/autorun'
 require 'pg'
 require_relative 'app/methods.rb'
 
-$db = PG.connect(dbname: 'taxi_test_db');
+$db = PG.connect(dbname: 'taxitestdb');
 
 # testing the isPositiveNumber method
 class TestIsPositiveNumber < Minitest::Test

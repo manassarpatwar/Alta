@@ -22,7 +22,7 @@ class Sinatra::ApplicationWorld
   include RSpec::Expectations
   include RSpec::Matchers
   include Capybara::DSL
-  $db = PG.connect(dbname: 'taxi_test_db');
+  $db = PG.connect(dbname: 'taxitestdb');
 end
 
 World do

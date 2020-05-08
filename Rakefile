@@ -116,11 +116,23 @@ end
 desc "Run the Sinatra app locally"
 task :run do
     begin
-        PG.connect(dbname: 'taxi_db')
+        PG.connect(dbname: 'altataxisdb')
     rescue
         puts "No database found. Creating now..."
         Rake::Task[:createdb].execute
     end
+    ENV['dbconnection'] = 'dbname=altataxisdb'
+    require_relative 'app.rb'
+    Sinatra::Application.run!
+end
+
+desc "Run the Sinatra app on heroku"
+task :runheroku do
+    str1_markerstring = "Connection info string:"
+    str2_markerstring = "Connection URL:"
+
+    ENV['dbconnection'] = `heroku pg:credentials:url altataxisdb`[/#{str1_markerstring}(.*?)#{str2_markerstring}/m, 1].strip.tr('"', '')
+    system('ruby database/createDatabase.rb heroku')
     require_relative 'app.rb'
     Sinatra::Application.run!
 end

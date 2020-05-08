@@ -1,7 +1,7 @@
 # Create a table
 require 'pg'
 
-DB = PG.connect(dbname: 'taxi_db')
+DB = PG.connect(dbname: 'altataxisdb')
 
 DB.exec("
   DROP TABLE IF EXISTS feedback;

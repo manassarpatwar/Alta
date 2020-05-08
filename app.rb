@@ -21,6 +21,7 @@ require_relative 'admin/marketing.rb'
 require_relative 'admin/analytics.rb'
 
 puts "#{Socket.gethostname}"
+ENV['RACK_ENV'] = 'production'
 
 set :bind, '0.0.0.0' # Needed when running from Codio
 include ERB::Util #Ensure ERB is enabled
@@ -39,8 +40,9 @@ end
 
 #Configure sessions
 configure do
-	enable :sessions
-    $db = PG.connect(dbname: 'taxi_db');
+    enable :sessions
+
+    $db = PG.connect(ENV['dbconnection']);
     $rideDeal = 5
     begin
       TWITTER_CLIENT = Twitter::REST::Client.new do |config|
