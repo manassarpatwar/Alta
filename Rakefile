@@ -128,7 +128,6 @@ end
 
 desc "Run the Sinatra app on heroku"
 task :runheroku do
-    # ENV['DATABASE_URL'] = "postgres://phnpjfgucsiutu:8b506fc79eb0034916f53abec2f050d7016e3ff3de3f6925b5cd66246d6997c9@ec2-52-86-73-86.compute-1.amazonaws.com:5432/de83q6lvto885"
     require_relative 'app.rb'
     Sinatra::Application.run!
 end
