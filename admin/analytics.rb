@@ -31,8 +31,8 @@ get '/analytics' do
     @feedbackData = get_data("feedback", "date_time", date)
 
     @taxiData["Total Number"] = @howManyTaxis
-    @taxiData["Sheffield"] = $db.exec("SELECT COUNT(*) FROM taxis WHERE city LIKE 'Sheffield'").map{|x| x.values}
-    @taxiData["Manchester"] = $db.exec("SELECT COUNT(*) FROM taxis WHERE city LIKE 'Manchester'").map{|x| x.values}
+    @taxiData["Sheffield"] = $db.exec("SELECT COUNT(*) FROM taxis WHERE city = 'SHEFFIELD'").map{|x| x.values}
+    @taxiData["Manchester"] = $db.exec("SELECT COUNT(*) FROM taxis WHERE city = 'MANCHESTER'").map{|x| x.values}
     
     erb :analytics
 end
