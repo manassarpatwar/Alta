@@ -22,8 +22,6 @@ require_relative 'admin/analytics.rb'
 
 puts "#{Socket.gethostname}"
 
-puts ENV['DATABASE_URL']
-set :bind, '0.0.0.0' # Needed when running from Codio
 include ERB::Util #Ensure ERB is enabled
 #Setting up OmnuAuth-Twitter for our Twitter App
 use OmniAuth::Builder do
@@ -32,6 +30,7 @@ end
 
 #Before running load these configurations:
 before do
+    redirect request.url.sub('http', 'https') unless request.secure? || ENV['RACK_ENV'] != 'production'
     response.set_cookie(:tweeting, :value => "true")
     response.set_cookie(:following, :value => "true")
     response.set_cookie(:follow_state, :value => "true")

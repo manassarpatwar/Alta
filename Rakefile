@@ -121,6 +121,7 @@ task :run do
         puts "No database found. Creating now..."
         Rake::Task[:createdb].execute
     end
+    ENV['RACK_ENV'] = 'development'
     ENV['DATABASE_URL'] = 'dbname=altataxisdb'
     require_relative 'app.rb'
     Sinatra::Application.run!
@@ -128,6 +129,7 @@ end
 
 desc "Run the Sinatra app on heroku"
 task :runheroku do
+    ENV['RACK_ENV'] = 'production'
     require_relative 'app.rb'
     Sinatra::Application.run!
 end
