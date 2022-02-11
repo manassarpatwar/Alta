@@ -70,6 +70,7 @@ GEM
     multipart-post (2.0.0)
     mustermann (1.0.3)
     naught (1.1.0)
+    nio4r (2.5.8)
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
     oauth (0.5.4)
@@ -84,7 +85,8 @@ GEM
       rack
     pg (1.2.3)
     public_suffix (3.0.3)
-    puma (3.12.4)
+    puma (4.3.11)
+      nio4r (~> 2.0)
     raabro (1.1.6)
     rack (2.2.2)
     rack-protection (2.0.5)
